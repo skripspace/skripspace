@@ -1,5 +1,5 @@
 /* SKRIPSPACE: service worker kecil. Halaman selalu diambil dari jaringan lebih dulu supaya pembaruan langsung terlihat; salinan tersimpan hanya dipakai saat tanpa sinyal. */
-var NAMA = 'skripspace-v21';
+var NAMA = 'skripspace-v22';
 var BERKAS = ['./', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 self.addEventListener('install', function (ev) {
   self.skipWaiting();
@@ -12,7 +12,7 @@ self.addEventListener('fetch', function (ev) {
   var r = ev.request;
   if (r.method !== 'GET' || new URL(r.url).origin !== self.location.origin) return;
   ev.respondWith(fetch(r).then(function (jawab) {
-    if (jawab && jawab.ok) { var salin = jawab.clone(); caches.open(NAMA).then(function (c) { c.put(r, salin); }); }
+    if (jawab && jawab.status === 200) { var salin = jawab.clone(); caches.open(NAMA).then(function (c) { c.put(r, salin); }); }
     return jawab;
-  }).catch(function () { return caches.match(r).then(function (x) { return x || caches.match('./'); }); }));
+  }).catch(function () { return caches.match(r).then(function (x) { return x || (r.mode === 'navigate' ? caches.match('./') : Response.error()); }); }));
 });
