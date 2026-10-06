@@ -101,7 +101,6 @@ a { color: var(--accent); }
 @keyframes lintas5 { 0% { transform: translate(-20vw, 72vh) rotate(14deg); } 50% { transform: translate(52vw, 84vh) rotate(-10deg); } 100% { transform: translate(116vw, 66vh) rotate(14deg); } }
 @keyframes lintas6 { from { transform: translate(104vw, 52vh) rotate(0); } to { transform: translate(-12vw, 70vh) rotate(-360deg); } }
 @media (max-width: 680px) { .langit .l1 { width: 76px; } .langit .l2 { width: 68px; } .langit .l3 { width: 80px; } .langit .l4 { width: 72px; } .langit .l5 { width: 50px; } .langit svg { opacity: .42; } }
-@media (prefers-reduced-motion: reduce) { .langit { display: none; } }
 @media print { .langit { display: none; } }
 
 /* ---------- pembuka ---------- */
@@ -365,16 +364,15 @@ table.beban tr.mati td { color: var(--muted); text-decoration: line-through; }
 .antariksa .st text { stroke: none; } .antariksa .st .gelap { stroke: #14132b; }
 .st .punggung { font-family: var(--f-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .14em; fill: #f2f1ff; } .st .punggung.gelap { fill: #14132b; stroke: none; }
 .timbang { transform-box: fill-box; transform-origin: 50% 0; animation: timbang 4.2s ease-in-out infinite; }
-@keyframes timbang { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; } }
+@keyframes timbang { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
 .kelip { transform-box: fill-box; transform-origin: center; animation: kelip 2.8s ease-in-out infinite; } .kelip.k2 { animation-delay: -.9s; } .kelip.k3 { animation-delay: -1.8s; }
-@keyframes kelip { 50% { opacity: .25; scale: .7; } }
+@keyframes kelip { 50% { opacity: .25; transform: scale(.7); } }
 .orbitgaris { animation: orbit 14s linear infinite; } @keyframes orbit { to { stroke-dashoffset: -220; } }
-.api { transform-box: fill-box; transform-origin: 50% 0; animation: api .5s ease-in-out infinite alternate; } @keyframes api { to { scale: 1 .78; } }
+.api { transform-box: fill-box; transform-origin: 50% 0; animation: api .5s ease-in-out infinite alternate; } @keyframes api { to { transform: scaleY(.78); } }
 .angkasa::before { content: ""; position: absolute; inset: -50% 0 0 0; pointer-events: none; opacity: .7; animation: bintang 60s linear infinite;
   background: radial-gradient(1.1px 1.1px at 8% 12%, #fff 99%, transparent), radial-gradient(1.3px 1.3px at 27% 44%, #fff 99%, transparent), radial-gradient(1px 1px at 41% 78%, #fff 99%, transparent), radial-gradient(1.4px 1.4px at 58% 23%, #ffe24a 99%, transparent), radial-gradient(1px 1px at 72% 61%, #fff 99%, transparent), radial-gradient(1.2px 1.2px at 86% 36%, #fff 99%, transparent), radial-gradient(1px 1px at 95% 88%, #7df0b8 99%, transparent), radial-gradient(1.2px 1.2px at 16% 92%, #fff 99%, transparent), radial-gradient(1px 1px at 49% 55%, #fff 99%, transparent), radial-gradient(1.3px 1.3px at 66% 96%, #fff 99%, transparent); }
 @keyframes bintang { to { transform: translateY(33.3%); } }
 .angkasa > * { position: relative; }
-@media (prefers-reduced-motion: reduce) { .timbang, .kelip, .orbitgaris, .api, .angkasa::before, .ayun, .pita div { animation: none; } }
 @media (max-width: 680px) { .angkasa { grid-template-columns: minmax(0, 1fr); padding: 24px 20px; } .antariksa { order: -1; width: min(100%, 300px); margin: -6px auto -4px; } }
 .rute { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .rute li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 14px; padding-bottom: 20px; position: relative; }
@@ -446,7 +444,6 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
   #cetak .hal:last-child { page-break-after: auto; }
   #cetak p { margin: 0 0 7pt; } #cetak table { border-collapse: collapse; } #cetak td { padding: 0; vertical-align: top; } #cetak .data td { padding: 1.5pt 0; }
 }
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 </style>
 </head>
 <body>
