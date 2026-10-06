@@ -1,0 +1,33 @@
+{
+ "name": "SKRIPSPACE — Your Academic Workspace",
+ "short_name": "SKRIPSPACE",
+ "description": "Ajukan judul, izin riset, dan bimbingan skripsi Prodi S1 Ilmu Hukum FH UNISSULA.",
+ "lang": "id",
+ "dir": "ltr",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#0b0a24",
+ "theme_color": "#0b0a24",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-maskable-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}
