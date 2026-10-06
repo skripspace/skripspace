@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SKRIPSPACE — Your Academic Workspace</title>
+<meta name="description" content="SKRIPSPACE, ruang kerja skripsi Prodi S1 Ilmu Hukum FH UNISSULA: ajukan judul, izin riset, dan bimbingan skripsi.">
+<meta name="theme-color" content="#0b0a24">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SKRIPSPACE">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:title" content="SKRIPSPACE — Your Academic Workspace">
+<meta property="og:description" content="Ajukan judul, izin riset, dan bimbingan skripsi Prodi S1 Ilmu Hukum FH UNISSULA.">
+<meta property="og:image" content="icon-512.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+[hidden]{display:none!important}img{max-width:100%}
+/* Tata letak: satu kolom lebar baca, langkah bernomor di atas, tiap langkah satu lembar kerja;
+   yang menonjol hanya cap hasil cek judul. */
+:root {
+  --bg: #eceefb; --surface: #ffffff; --sunk: #f4f5fd;
+  --ink: #14132b; --muted: #595877; --hair: #cfd1e8;
+  --accent: #4330f5; --accent-ink: #ffffff; --accent-soft: #e3e0ff;
+  --pop: #ffe24a; --pop-ink: #14132b;
+  --ok: #0a7f4e; --ok-bg: #d9f6e7; --warn: #8f5600; --warn-bg: #ffefc7; --bad: #c5222f; --bad-bg: #ffe0e2;
+  --paper: #ffffff; --paper-ink: #000000;
+  --shadow: #14132b;
+  --f-display: "Bricolage Grotesque", "Plus Jakarta Sans", system-ui, sans-serif;
+  --f-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --r: 16px; --r-sm: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f0e21; --surface: #1a1935; --sunk: #141329;
+    --ink: #f2f1ff; --muted: #a9a8ca; --hair: #34335c;
+    --accent: #9184ff; --accent-ink: #0f0e21; --accent-soft: #2a2760;
+    --pop: #ffe24a; --pop-ink: #14132b;
+    --ok: #52dba0; --ok-bg: #11382a; --warn: #ffc861; --warn-bg: #3b2c0a; --bad: #ff8088; --bad-bg: #42161b;
+    --paper: #ffffff; --paper-ink: #000000;
+    --shadow: #000000; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f0e21; --surface: #1a1935; --sunk: #141329;
+  --ink: #f2f1ff; --muted: #a9a8ca; --hair: #34335c;
+  --accent: #9184ff; --accent-ink: #0f0e21; --accent-soft: #2a2760;
+  --pop: #ffe24a; --pop-ink: #14132b;
+  --ok: #52dba0; --ok-bg: #11382a; --warn: #ffc861; --warn-bg: #3b2c0a; --bad: #ff8088; --bad-bg: #42161b;
+  --paper: #ffffff; --paper-ink: #000000;
+  --shadow: #000000; color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; overflow-x: hidden; background: var(--bg) radial-gradient(var(--hair) 1px, transparent 1.5px) 0 0 / 22px 22px; color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+button, input, select, textarea { font: inherit; color: inherit; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+.app { position: relative; z-index: 1; overflow-x: clip; max-width: 760px; margin: 0 auto; padding-inline: 18px; padding-block: 14px 56px; display: flex; flex-direction: column; gap: 22px; }
+.app.lebar { max-width: 980px; }
+
+/* ---------- kepala ---------- */
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; }
+.merek { display: flex; align-items: baseline; gap: 8px; font-family: var(--f-display); font-weight: 800; font-size: 19px; letter-spacing: -0.03em; }
+.merek button { border: 0; background: none; padding: 0; font: inherit; color: inherit; cursor: pointer; letter-spacing: .02em; }
+.merek button span { color: var(--accent); }
+.merek small { font-family: var(--f-body); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.nav { display: flex; gap: 4px; padding: 4px; background: var(--surface); border: 2px solid var(--ink); border-radius: 999px; }
+.nav button { border: 0; background: transparent; padding: 7px 14px; border-radius: 999px; font-weight: 600; font-size: 14px; cursor: pointer; color: var(--muted); }
+.nav button[aria-current="true"] { background: var(--ink); color: var(--bg); }
+.nav button { white-space: nowrap; }
+@media (max-width: 480px) { .bar { justify-content: center; } .nav { max-width: 100%; overflow-x: auto; } .nav button { padding: 7px 9px; font-size: 12.5px; } }
+@media (max-width: 380px) { .nav button { padding: 6px 6px; font-size: 12px; } }
+
+.spanduk { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; padding: 10px 14px; border-radius: var(--r-sm); background: var(--pop); color: var(--pop-ink); font-size: 14px; font-weight: 500; }
+.spanduk b { font-weight: 800; }
+
+/* ---------- langit hidup: roket, toga, dan Dewi Keadilan melintas di belakang halaman ---------- */
+.langit { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.langit svg { position: absolute; left: 0; top: 0; height: auto; overflow: visible; opacity: .48; will-change: transform; animation: linear infinite; }
+.langit .st * { stroke: var(--ink); }
+.langit .l1 { width: 104px; animation-name: lintas1; animation-duration: 38s; }
+.langit .l2 { width: 92px; animation-name: lintas2; animation-duration: 52s; animation-delay: -9s; }
+.langit .l3 { width: 108px; animation-name: lintas3; animation-duration: 60s; animation-delay: -24s; }
+.langit .l4 { width: 96px; animation-name: lintas4; animation-duration: 70s; animation-delay: -30s; }
+.langit .l5 { width: 64px; animation-name: lintas5; animation-duration: 46s; animation-delay: -20s; }
+.langit .l6 { width: 30px; animation-name: lintas6; animation-duration: 33s; animation-delay: -6s; }
+@keyframes lintas1 { from { transform: translate(-22vw, 86vh); } to { transform: translate(112vw, 4vh); } }
+@keyframes lintas2 { 0% { transform: translate(108vw, 16vh) rotate(-12deg); } 50% { transform: translate(44vw, 30vh) rotate(10deg); } 100% { transform: translate(-24vw, 12vh) rotate(-12deg); } }
+@keyframes lintas3 { 0% { transform: translate(-24vw, 34vh) rotate(-8deg); } 50% { transform: translate(46vw, 60vh) rotate(8deg); } 100% { transform: translate(114vw, 42vh) rotate(-8deg); } }
+@keyframes lintas4 { from { transform: translate(78vw, 110vh) rotate(-16deg); } to { transform: translate(10vw, -24vh) rotate(22deg); } }
+@keyframes lintas5 { 0% { transform: translate(-20vw, 72vh) rotate(14deg); } 50% { transform: translate(52vw, 84vh) rotate(-10deg); } 100% { transform: translate(116vw, 66vh) rotate(14deg); } }
+@keyframes lintas6 { from { transform: translate(104vw, 52vh) rotate(0); } to { transform: translate(-12vw, 70vh) rotate(-360deg); } }
+@media (max-width: 680px) { .langit .l1 { width: 76px; } .langit .l2 { width: 68px; } .langit .l3 { width: 80px; } .langit .l4 { width: 72px; } .langit .l5 { width: 50px; } .langit svg { opacity: .42; } }
+@media (prefers-reduced-motion: reduce) { .langit { display: none; } }
+@media print { .langit { display: none; } }
+
+/* ---------- pembuka ---------- */
+.pembuka { display: grid; grid-template-columns: minmax(0, 1fr) 248px; gap: 14px 16px; align-items: center; padding-block: 8px 2px; }
+.pembuka .teks { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.pembuka h1 { font-size: clamp(34px, 8.4vw, 54px); font-weight: 800; }
+.seni { width: 100%; height: auto; overflow: visible; }
+.pita { grid-column: 1 / -1; overflow: hidden; margin-inline: 3px; border: 2px solid var(--ink); border-radius: 999px; background: var(--pop); color: var(--pop-ink); transform: rotate(-1.1deg); }
+.pita div { display: flex; width: max-content; animation: geser 30s linear infinite; }
+.pita span { padding: 6px 0; font-family: var(--f-mono); font-size: 12.5px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; white-space: pre; }
+@keyframes geser { to { transform: translateX(-50%); } }
+@media (max-width: 680px) { .pembuka { grid-template-columns: minmax(0, 1fr); } .seni { order: -1; width: 190px; margin: -4px 0 -10px -6px; } }
+/* stiker: garis tinta tetap gelap di kedua tema, seperti stiker cetak */
+.st * { stroke: #14132b; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.st .tipis { stroke-width: 2.4; } .st .tebal { stroke-width: 7; } .st .hijau { stroke: #0a7f4e; stroke-width: 3.4; }
+.st .f-no { fill: none; } .st .f-ink { fill: #14132b; } .st .f-kertas { fill: #ffffff; } .st .f-pop { fill: #ffe24a; } .st .f-acc { fill: #6d5cff; }
+.st .f-mint { fill: #7df0b8; } .st .f-pink { fill: #ff9fd6; } .st .f-sky { fill: #8fd3ff; }
+.st text { stroke: none; fill: #14132b; font-family: var(--f-display); font-weight: 800; }
+.st .capt { font-size: 18px; letter-spacing: .02em; } .st .capk { font-family: var(--f-mono); font-size: 8.5px; font-weight: 600; letter-spacing: .14em; }
+.ayun { animation: ayun 7s ease-in-out infinite; } .ayun.a2 { animation-delay: -2.3s; } .ayun.a3 { animation-delay: -4.6s; }
+@keyframes ayun { 50% { translate: 0 -5px; } }
+.ikon { width: 58px; height: 58px; overflow: visible; }
+:root[data-theme="dark"] .st .luar { stroke: #f2f1ff; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .st .luar { stroke: #f2f1ff; } }
+.stabilo { background: linear-gradient(transparent 58%, var(--pop) 58%, var(--pop) 92%, transparent 92%); padding-inline: 2px; }
+:root[data-theme="dark"] .stabilo { background: none; color: var(--pop); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stabilo { background: none; color: var(--pop); } }
+.pembuka p { color: var(--muted); max-width: 54ch; font-size: 17px; }
+.fakta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.fakta span { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border: 1.5px solid var(--ink); border-radius: 999px; font-size: 13px; font-weight: 600; background: var(--surface); }
+.fakta span b { font-family: var(--f-mono); font-weight: 600; }
+
+/* ---------- langkah ---------- */
+.langkah { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 0; margin: 0; list-style: none; }
+.langkah li { display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--muted); min-width: 0; }
+.langkah li::before { content: ""; height: 6px; border-radius: 999px; background: var(--hair); }
+.langkah li.lewat::before { background: var(--ink); }
+.langkah li.kini { color: var(--ink); }
+.langkah li.kini::before { background: var(--accent); }
+.langkah li span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.langkah li b { font-family: var(--f-mono); font-weight: 600; margin-right: 5px; }
+
+/* ---------- lembar ---------- */
+.lembar { background: var(--surface); border: 2px solid var(--ink); border-radius: var(--r); box-shadow: 5px 5px 0 var(--shadow); padding: 22px 20px; display: flex; flex-direction: column; gap: 20px; }
+.lembar > header { display: flex; flex-direction: column; gap: 6px; }
+.lembar > header.berikon { display: grid; grid-template-columns: minmax(0, 1fr) 58px; gap: 6px 12px; align-items: start; }
+.lembar > header.berikon .ikon { grid-column: 2; grid-row: 1 / span 2; }
+.lembar > header.berikon h2, .lembar > header.berikon p { grid-column: 1; }
+.pembimbing { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 16px; align-items: center; padding: 14px 16px; border: 2px solid var(--ink); border-radius: var(--r-sm); background: var(--ok-bg); }
+.pembimbing small { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ok); }
+.pembimbing b { display: block; font-family: var(--f-display); font-size: 20px; line-height: 1.2; }
+.pembimbing span { font-size: 14.5px; }
+.tombol.wa { background: #1fa855; border-color: var(--ink); color: #fff; text-decoration: none; }
+@media (max-width: 560px) { .pembimbing { grid-template-columns: minmax(0, 1fr); } }
+.lembar > header h2 { font-size: 26px; font-weight: 800; }
+.lembar > header p { color: var(--muted); font-size: 15px; max-width: 60ch; }
+.kisi { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 14px; }
+.kisi .penuh { grid-column: 1 / -1; }
+@media (max-width: 560px) { .kisi { grid-template-columns: minmax(0, 1fr); } .lembar { padding: 18px 15px; } }
+
+.isian { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.isian > label, .isian > .label { font-size: 13.5px; font-weight: 700; }
+.isian .bantu { font-size: 12.5px; color: var(--muted); }
+.isian .salah { font-size: 12.5px; color: var(--bad); font-weight: 600; }
+input[type="text"], input[type="tel"], input[type="date"], input[type="password"], input[type="number"], select, textarea {
+  width: 100%; min-width: 0; padding: 11px 13px; background: var(--sunk); border: 2px solid var(--hair); border-radius: var(--r-sm); font-size: 16px; }
+input:hover, select:hover, textarea:hover { border-color: var(--muted); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 3px var(--accent-soft); }
+textarea { resize: vertical; min-height: 92px; line-height: 1.45; }
+.isian.galat input, .isian.galat textarea, .isian.galat select { border-color: var(--bad); }
+
+.pilih { display: flex; flex-wrap: wrap; gap: 8px; }
+.pilih label { position: relative; cursor: pointer; }
+.pilih input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.pilih span { display: inline-block; padding: 9px 15px; border: 2px solid var(--hair); border-radius: 999px; font-weight: 600; font-size: 14.5px; background: var(--sunk); }
+.pilih input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.pilih input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.tombol { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; border-radius: 999px; border: 2px solid var(--ink); background: var(--surface); font-weight: 700; font-size: 15px; cursor: pointer; text-decoration: none; color: var(--ink); transition: transform .08s ease, box-shadow .08s ease; }
+.tombol:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0 var(--shadow); }
+.tombol:active { transform: translate(1px, 1px); box-shadow: none; }
+.tombol.utama { background: var(--accent); color: var(--accent-ink); }
+.tombol.kecil { padding: 8px 14px; font-size: 13.5px; }
+.tombol.polos { border-color: transparent; background: transparent; color: var(--muted); }
+.tombol.polos:hover { box-shadow: none; transform: none; color: var(--ink); text-decoration: underline; }
+.tombol.bahaya { color: var(--bad); border-color: var(--bad); }
+.tombol[disabled] { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+.tombol.sibuk { position: relative; color: transparent; pointer-events: none; }
+.tombol.sibuk::after { content: ""; position: absolute; width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid var(--muted); border-top-color: transparent; animation: putar .7s linear infinite; }
+.tombol.utama.sibuk::after { border-color: var(--accent-ink); border-top-color: transparent; }
+@keyframes putar { to { transform: rotate(360deg); } }
+.aksi { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.aksi .kanan { display: flex; flex-wrap: wrap; gap: 10px; margin-left: auto; }
+
+/* ---------- nilai ---------- */
+.mode { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 560px) { .mode { grid-template-columns: minmax(0, 1fr); } }
+.mode label { position: relative; cursor: pointer; display: block; }
+.mode input { position: absolute; opacity: 0; inset: 0; }
+.mode span { display: block; padding: 13px 15px; border: 2px solid var(--hair); border-radius: var(--r-sm); background: var(--sunk); }
+.mode span b { display: block; font-size: 15px; }
+.mode span small { color: var(--muted); font-size: 13px; }
+.mode input:checked + span { border-color: var(--ink); background: var(--surface); box-shadow: 3px 3px 0 var(--shadow); }
+.mode input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.smt { border: 2px solid var(--hair); border-radius: var(--r-sm); overflow: hidden; }
+.smt + .smt { margin-top: 8px; }
+.smt summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; cursor: pointer; font-weight: 700; list-style: none; background: var(--sunk); }
+.smt summary::-webkit-details-marker { display: none; }
+.smt summary .hitung { font-family: var(--f-mono); font-size: 12.5px; font-weight: 500; color: var(--muted); }
+.smt summary .hitung.penuh { color: var(--ok); }
+.smt[open] summary { border-bottom: 2px solid var(--hair); }
+.smt .cepat { display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding: 8px 14px; font-size: 13px; color: var(--muted); }
+.smt .cepat select { width: auto; padding: 5px 8px; font-size: 14px; }
+.mk { display: grid; grid-template-columns: minmax(0, 1fr) auto 84px; align-items: center; gap: 10px; padding: 8px 14px; border-top: 1px solid var(--hair); }
+.mk .nm { font-size: 14.5px; min-width: 0; }
+.mk .sks { font-family: var(--f-mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.mk select { padding: 7px 8px; font-size: 15px; font-weight: 600; }
+.mk select.isi { border-color: var(--ink); background: var(--surface); }
+.ipkbar { position: sticky; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 16px; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 14px; }
+.syarat { margin: 0; padding: 0; list-style: none; border: 2px solid var(--ink); border-radius: var(--r-sm); }
+.syarat li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 13px; font-size: 14.5px; font-weight: 600; border-top: 1px solid var(--hair); }
+.syarat li:first-child { border-top: 0; }
+.syarat small { display: block; color: var(--muted); font-size: 12.5px; font-weight: 500; }
+.krs input[type="file"] { padding: 10px; background: var(--sunk); border: 2px dashed var(--hair); border-radius: var(--r-sm); width: 100%; }
+.krs img, .lihatkrs img { display: block; max-width: 100%; margin-top: 8px; border: 2px solid var(--hair); border-radius: 8px; }
+.krs img { max-width: 170px; }
+.ipkbar b { font-family: var(--f-mono); font-size: 17px; font-weight: 600; color: var(--pop); }
+
+/* ---------- judul ---------- */
+.judul { display: flex; flex-direction: column; gap: 10px; padding-top: 18px; border-top: 2px dashed var(--hair); }
+.judul:first-of-type { padding-top: 0; border-top: 0; }
+.judul .atas { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.judul .atas label { font-family: var(--f-display); font-weight: 800; font-size: 18px; }
+.judul textarea { min-height: 124px; }
+.judul .atas .hit { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.hasil { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px; border-radius: var(--r-sm); border: 2px solid var(--st); background: var(--st-bg); }
+.hasil.hijau { --st: var(--ok); --st-bg: var(--ok-bg); }
+.hasil.kuning { --st: var(--warn); --st-bg: var(--warn-bg); }
+.hasil.merah { --st: var(--bad); --st-bg: var(--bad-bg); }
+.cap { align-self: center; transform: rotate(-7deg); padding: 6px 10px; border: 3px double var(--st); border-radius: 8px; color: var(--st); font-family: var(--f-display); font-weight: 800; font-size: 15px; line-height: 1.05; letter-spacing: 0.04em; text-transform: uppercase; text-align: center; max-width: 104px; animation: cap .28s cubic-bezier(.2, 1.4, .4, 1); }
+@keyframes cap { from { transform: rotate(-7deg) scale(1.7); opacity: 0; } }
+.hasil .isi { display: flex; flex-direction: column; gap: 7px; min-width: 0; font-size: 14px; }
+.hasil .isi > b { font-size: 15px; }
+.hasil ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.hasil li { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 8px; font-size: 13.5px; line-height: 1.4; }
+.hasil li .sk { font-family: var(--f-mono); font-weight: 600; color: var(--st); }
+.hasil li small { display: block; color: var(--muted); font-size: 12px; }
+.sumber { display: flex; flex-wrap: wrap; gap: 5px; }
+.sumber span { font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1.5px solid var(--st); color: var(--st); }
+.sumber span.mati { border-style: dashed; opacity: .75; }
+@media (max-width: 480px) { .hasil { grid-template-columns: minmax(0, 1fr); } .cap { justify-self: start; margin: 2px 0 2px 4px; } }
+
+/* ---------- tinjau & tiket ---------- */
+.rinci { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 7px 14px; font-size: 14.5px; margin: 0; }
+.rinci dt { color: var(--muted); font-weight: 600; font-size: 13px; padding-top: 1px; }
+.rinci dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 480px) { .rinci { grid-template-columns: minmax(0, 1fr); gap: 1px; } .rinci dd { margin-bottom: 9px; } }
+.daftarjudul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; counter-reset: j; }
+.daftarjudul li { counter-increment: j; display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 8px; align-items: start; font-size: 14.5px; }
+.daftarjudul li::before { content: counter(j); font-family: var(--f-mono); font-weight: 600; color: var(--muted); }
+.pil { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; background: var(--st-bg); color: var(--st); border: 1.5px solid var(--st); }
+.pil.hijau { --st: var(--ok); --st-bg: var(--ok-bg); } .pil.kuning { --st: var(--warn); --st-bg: var(--warn-bg); } .pil.merah { --st: var(--bad); --st-bg: var(--bad-bg); }
+.pil.netral { --st: var(--muted); --st-bg: var(--sunk); }
+.centang { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; padding: 13px 14px; border-radius: var(--r-sm); background: var(--sunk); font-size: 14.5px; cursor: pointer; }
+.centang input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); }
+
+.tiket { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0; border: 2px solid var(--ink); border-radius: var(--r); background: var(--surface); box-shadow: 5px 5px 0 var(--shadow); overflow: hidden; }
+.tiket .kiri { padding: 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.tiket .kiri h2 { font-size: 28px; font-weight: 800; }
+.tiket .kiri p { color: var(--muted); font-size: 14.5px; }
+.tiket .kanan { padding: 20px; border-left: 2px dashed var(--ink); background: var(--pop); color: var(--pop-ink); display: flex; flex-direction: column; justify-content: center; gap: 4px; text-align: center; }
+.tiket .kanan small { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.tiket .kanan b { font-family: var(--f-mono); font-size: 30px; font-weight: 600; letter-spacing: .08em; }
+.tiket .kanan button { margin-top: 4px; border: 1.5px solid var(--pop-ink); background: transparent; color: var(--pop-ink); border-radius: 999px; padding: 4px 10px; font-size: 12.5px; font-weight: 700; cursor: pointer; }
+@media (max-width: 560px) { .tiket { grid-template-columns: minmax(0, 1fr); } .tiket .kanan { border-left: 0; border-top: 2px dashed var(--ink); } }
+
+.alur { display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; list-style: none; }
+.alur li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 12px; padding-bottom: 16px; position: relative; font-size: 14.5px; }
+.alur li::before { content: ""; width: 14px; height: 14px; margin: 4px 0 0 4px; border-radius: 50%; border: 2px solid var(--hair); background: var(--surface); z-index: 1; }
+.alur li::after { content: ""; position: absolute; left: 12px; top: 20px; bottom: 0; width: 2px; background: var(--hair); }
+.alur li:last-child { padding-bottom: 0; } .alur li:last-child::after { display: none; }
+.alur li.sudah::before { background: var(--ink); border-color: var(--ink); }
+.alur li.kini::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.alur li.gagal::before { background: var(--bad); border-color: var(--bad); }
+.alur li b { display: block; } .alur li span { color: var(--muted); font-size: 13.5px; }
+
+/* ---------- surat ---------- */
+.surat { display: flex; flex-direction: column; gap: 12px; }
+.surat .tab { display: flex; flex-wrap: wrap; gap: 6px; }
+.surat .tab button { border: 2px solid var(--hair); background: var(--sunk); border-radius: 999px; padding: 6px 13px; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+.surat .tab button[aria-selected="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
+.bingkai { border: 2px solid var(--ink); border-radius: var(--r-sm); background: var(--sunk); overflow: hidden; padding: 12px; }
+.kertas-wadah { position: relative; overflow: hidden; }
+.kertas { width: 816px; min-height: 1248px; padding: 53px 72px 58px; background: var(--paper); color: var(--paper-ink); transform-origin: top left; box-shadow: 0 1px 8px rgba(0, 0, 0, .25); }
+.kertas p { margin: 0 0 7pt; } .kertas table { border-collapse: collapse; } .kertas td { padding: 0; vertical-align: top; } .kertas .data td { padding: 1.5pt 0; }
+.kertas img { max-width: none; }
+
+/* ---------- panel sekprodi ---------- */
+.angka { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 560px) { .angka { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.angka div { padding: 12px 14px; border: 2px solid var(--hair); border-radius: var(--r-sm); background: var(--surface); }
+.angka div.sorot { border-color: var(--ink); box-shadow: 3px 3px 0 var(--shadow); }
+.angka b { display: block; font-family: var(--f-display); font-size: 30px; font-weight: 800; line-height: 1; }
+.angka span { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.berkas { border: 2px solid var(--ink); border-radius: var(--r); background: var(--surface); box-shadow: 5px 5px 0 var(--shadow); padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.berkas .kepala { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; }
+.berkas .kepala h3 { font-size: 21px; font-weight: 800; }
+.berkas .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13.5px; color: var(--muted); }
+.berkas .meta b { color: var(--ink); font-weight: 600; }
+.opsi { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 10px 12px; border: 2px solid var(--hair); border-radius: var(--r-sm); cursor: pointer; font-size: 14.5px; }
+.opsi + .opsi { margin-top: 6px; }
+.opsi input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); }
+.opsi:has(input:checked) { border-color: var(--ink); background: var(--sunk); }
+.opsi small { display: block; color: var(--muted); font-size: 12.5px; margin-top: 3px; }
+.lipat { border-top: 2px solid var(--hair); padding-top: 14px; }
+.lipat > summary { cursor: pointer; font-family: var(--f-display); font-weight: 800; font-size: 20px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.lipat > summary::-webkit-details-marker { display: none; }
+.lipat > summary::after { content: "+"; font-family: var(--f-mono); font-weight: 500; color: var(--muted); }
+.lipat[open] > summary::after { content: "–"; }
+.lipat > div { padding-top: 14px; display: flex; flex-direction: column; gap: 14px; }
+.tabel-wadah { overflow-x: auto; }
+table.beban { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+table.beban th { text-align: left; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 2px solid var(--ink); }
+table.beban td { padding: 7px 8px; border-bottom: 1px solid var(--hair); vertical-align: middle; }
+table.beban td.n { font-family: var(--f-mono); text-align: right; width: 44px; }
+table.beban .batang { height: 8px; border-radius: 999px; background: var(--accent); min-width: 2px; }
+table.beban tr.mati td { color: var(--muted); text-decoration: line-through; }
+.sakelar { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-size: 14.5px; }
+.sakelar input { width: 20px; height: 20px; accent-color: var(--accent); }
+.riwayat { margin: 0; padding: 0; list-style: none; }
+.riwayat li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-size: 14px; }
+.riwayat li small { color: var(--muted); display: block; }
+.kosong { padding: 26px 18px; border: 2px dashed var(--hair); border-radius: var(--r); text-align: center; color: var(--muted); }
+.kosong b { display: block; color: var(--ink); font-family: var(--f-display); font-size: 20px; margin-bottom: 4px; }
+
+.catat { padding: 12px 14px; border-radius: var(--r-sm); background: var(--sunk); font-size: 14px; color: var(--muted); }
+.catat.galat { background: var(--bad-bg); color: var(--bad); font-weight: 600; }
+.catat.baik { background: var(--ok-bg); color: var(--ok); font-weight: 600; }
+.catat b { color: var(--ink); }
+.kaki { font-size: 12.5px; color: var(--muted); text-align: center; }
+#toast { position: fixed; left: 50%; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 14px; z-index: 30; max-width: calc(100% - 32px); text-align: center; }
+
+/* ---------- beranda antariksa ---------- */
+.angkasa { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 10px 18px; align-items: center; padding: 30px 26px; border: 2px solid var(--ink); border-radius: 22px; box-shadow: 6px 6px 0 var(--shadow); color: #f2f1ff;
+  background: radial-gradient(1.2px 1.2px at 12% 22%, #fff 99%, transparent), radial-gradient(1.4px 1.4px at 31% 71%, #fff 99%, transparent), radial-gradient(1px 1px at 47% 14%, #fff 99%, transparent), radial-gradient(1.6px 1.6px at 63% 86%, #ffe24a 99%, transparent), radial-gradient(1px 1px at 78% 33%, #fff 99%, transparent), radial-gradient(1.3px 1.3px at 91% 62%, #fff 99%, transparent), radial-gradient(1px 1px at 22% 90%, #ff9fd6 99%, transparent), radial-gradient(1.2px 1.2px at 55% 48%, #fff 99%, transparent),
+    radial-gradient(60% 80% at 88% 8%, rgba(109, 92, 255, .55), transparent 70%), radial-gradient(50% 70% at 4% 100%, rgba(255, 159, 214, .28), transparent 70%), #0b0a24; }
+.angkasa .teks { display: flex; flex-direction: column; gap: 12px; min-width: 0; align-items: flex-start; }
+.angkasa .lencana { font-family: var(--f-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border: 1.5px solid rgba(242, 241, 255, .55); border-radius: 999px; }
+.angkasa h1 { font-size: clamp(40px, 11.5vw, 72px); font-weight: 800; letter-spacing: .01em; line-height: .95; color: #fff; }
+.angkasa h1 span { color: #ffe24a; }
+.angkasa .slogan { font-family: var(--f-display); font-weight: 700; font-size: clamp(18px, 4.6vw, 24px); color: #7df0b8; margin-top: -4px; }
+.angkasa p { color: #cfcdf0; font-size: 16.5px; max-width: 52ch; }
+.angkasa .ajak { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.angkasa .tombol { border-color: #f2f1ff; background: transparent; color: #f2f1ff; }
+.angkasa .tombol.utama { background: #ffe24a; color: #14132b; border-color: #ffe24a; }
+.angkasa .tombol:hover { box-shadow: 3px 3px 0 #6d5cff; }
+.angkasa .tip-pasang { font-size: 14px; padding: 8px 12px; border: 1.5px dashed rgba(242, 241, 255, .6); border-radius: 10px; color: #f2f1ff; }
+.antariksa { width: 100%; height: auto; overflow: visible; }
+.antariksa .st * { stroke: #f2f1ff; } .st .cincin { stroke: #ff9fd6; stroke-width: 6; } .st .titik { stroke: none; }
+.antariksa .st text { stroke: none; } .antariksa .st .gelap { stroke: #14132b; }
+.st .punggung { font-family: var(--f-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .14em; fill: #f2f1ff; } .st .punggung.gelap { fill: #14132b; stroke: none; }
+.timbang { transform-box: fill-box; transform-origin: 50% 0; animation: timbang 4.2s ease-in-out infinite; }
+@keyframes timbang { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; } }
+.kelip { transform-box: fill-box; transform-origin: center; animation: kelip 2.8s ease-in-out infinite; } .kelip.k2 { animation-delay: -.9s; } .kelip.k3 { animation-delay: -1.8s; }
+@keyframes kelip { 50% { opacity: .25; scale: .7; } }
+.orbitgaris { animation: orbit 14s linear infinite; } @keyframes orbit { to { stroke-dashoffset: -220; } }
+.api { transform-box: fill-box; transform-origin: 50% 0; animation: api .5s ease-in-out infinite alternate; } @keyframes api { to { scale: 1 .78; } }
+.angkasa::before { content: ""; position: absolute; inset: -50% 0 0 0; pointer-events: none; opacity: .7; animation: bintang 60s linear infinite;
+  background: radial-gradient(1.1px 1.1px at 8% 12%, #fff 99%, transparent), radial-gradient(1.3px 1.3px at 27% 44%, #fff 99%, transparent), radial-gradient(1px 1px at 41% 78%, #fff 99%, transparent), radial-gradient(1.4px 1.4px at 58% 23%, #ffe24a 99%, transparent), radial-gradient(1px 1px at 72% 61%, #fff 99%, transparent), radial-gradient(1.2px 1.2px at 86% 36%, #fff 99%, transparent), radial-gradient(1px 1px at 95% 88%, #7df0b8 99%, transparent), radial-gradient(1.2px 1.2px at 16% 92%, #fff 99%, transparent), radial-gradient(1px 1px at 49% 55%, #fff 99%, transparent), radial-gradient(1.3px 1.3px at 66% 96%, #fff 99%, transparent); }
+@keyframes bintang { to { transform: translateY(33.3%); } }
+.angkasa > * { position: relative; }
+@media (prefers-reduced-motion: reduce) { .timbang, .kelip, .orbitgaris, .api, .angkasa::before, .ayun, .pita div { animation: none; } }
+@media (max-width: 680px) { .angkasa { grid-template-columns: minmax(0, 1fr); padding: 24px 20px; } .antariksa { order: -1; width: min(100%, 300px); margin: -6px auto -4px; } }
+.rute { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.rute li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 14px; padding-bottom: 20px; position: relative; }
+.rute li::before { content: ""; position: absolute; left: 26px; top: 54px; bottom: 0; border-left: 2px dashed var(--hair); }
+.rute li:last-child { padding-bottom: 0; } .rute li:last-child::before { display: none; }
+.rute .no { width: 54px; height: 54px; display: grid; place-items: center; border: 2px solid var(--ink); border-radius: 50%; font-family: var(--f-mono); font-weight: 600; font-size: 15px; background: var(--pop); color: var(--pop-ink); box-shadow: 3px 3px 0 var(--shadow); }
+.rute li:nth-child(3n+2) .no { background: #7df0b8; color: #14132b; } .rute li:nth-child(3n) .no { background: #ff9fd6; color: #14132b; }
+.rute small { font-family: var(--f-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.rute h3 { font-size: 20px; font-weight: 800; margin: 2px 0 4px; }
+.rute p { color: var(--muted); font-size: 15px; max-width: 62ch; }
+.pintu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.pintu button { text-align: left; display: flex; flex-direction: column; gap: 6px; padding: 16px; border: 2px solid var(--ink); border-radius: var(--r-sm); background: var(--sunk); cursor: pointer; transition: transform .08s ease, box-shadow .08s ease; }
+.pintu button:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--shadow); background: var(--surface); }
+.pintu b { font-family: var(--f-display); font-size: 19px; } .pintu span { color: var(--muted); font-size: 14px; }
+@media (max-width: 680px) { .pintu { grid-template-columns: minmax(0, 1fr); } }
+.mode.tiga { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 680px) { .mode.tiga { grid-template-columns: minmax(0, 1fr); } }
+/* ---------- ruang kerja ---------- */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tabs button { border: 2px solid var(--hair); background: var(--sunk); border-radius: 999px; padding: 7px 14px; font-size: 14px; font-weight: 700; cursor: pointer; }
+.tabs button[aria-selected="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
+.tabs button i { font-style: normal; font-family: var(--f-mono); font-size: 12px; margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: var(--pop); color: var(--pop-ink); }
+.orbit { list-style: none; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 4px; margin: 0; padding: 0; }
+.orbit li { height: 30px; display: grid; place-items: center; border: 2px solid var(--hair); border-radius: 8px; font-family: var(--f-mono); font-size: 12.5px; font-weight: 600; color: var(--muted); background: var(--sunk); }
+.orbit li.sudah { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+.orbit li.kini { background: var(--pop); border-color: var(--ink); color: var(--pop-ink); box-shadow: 2px 2px 0 var(--shadow); }
+.catatan { border: 2px solid var(--hair); border-radius: var(--r-sm); padding: 13px 15px; display: flex; flex-direction: column; gap: 8px; background: var(--surface); }
+.catatan.sah { border-color: var(--ok); }
+.catatan .atas { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 13px; color: var(--muted); }
+.catatan .atas b { font-family: var(--f-mono); color: var(--ink); font-size: 13.5px; }
+.catatan p { font-size: 15px; overflow-wrap: anywhere; }
+.catatan .dosen { padding: 9px 12px; border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 14.5px; overflow-wrap: anywhere; }
+.catatan .dosen small { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.obrolan { display: flex; flex-direction: column; gap: 8px; max-height: 440px; overflow-y: auto; padding: 12px; border: 2px solid var(--hair); border-radius: var(--r-sm); background: var(--sunk); }
+.obrolan .b { max-width: 82%; padding: 8px 12px; border-radius: 14px 14px 14px 4px; background: var(--surface); border: 1.5px solid var(--hair); font-size: 15px; overflow-wrap: anywhere; white-space: pre-wrap; }
+.obrolan .b small { display: block; font-size: 11.5px; font-weight: 700; color: var(--muted); margin-bottom: 2px; }
+.obrolan .b.aku { align-self: flex-end; border-radius: 14px 14px 4px 14px; background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.obrolan .b.aku small { color: inherit; opacity: .8; }
+.obrolan .b.prodi { align-self: center; max-width: 92%; border-radius: 12px; background: var(--pop); border-color: var(--ink); color: var(--pop-ink); }
+.obrolan .b.prodi small { color: inherit; }
+.tahapan { list-style: none; margin: 0; padding: 0; }
+.tahapan li { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 8px 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--hair); font-size: 14.5px; }
+.tahapan li:first-child { border-top: 0; }
+.tahapan .no { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; border: 2px solid var(--hair); font-family: var(--f-mono); font-size: 12.5px; font-weight: 600; }
+.tahapan li.sudah .no { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); } .tahapan li.kini .no { background: var(--pop); border-color: var(--ink); color: var(--pop-ink); }
+.tahapan small { display: block; color: var(--muted); font-size: 12.5px; }
+.tahapan .ctl { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.tahapan input { width: 92px; padding: 6px 8px; }
+@media (max-width: 560px) { .tahapan li { grid-template-columns: 34px minmax(0, 1fr); } .tahapan .ctl { grid-column: 2; justify-content: flex-start; } }
+table.pantau { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
+table.pantau th { text-align: left; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 2px solid var(--ink); white-space: nowrap; }
+table.pantau td { padding: 8px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+table.pantau td small { display: block; color: var(--muted); font-size: 12.5px; }
+table.pantau tr.macet td { background: var(--bad-bg); }
+table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
+.tombol.mini { padding: 5px 10px; font-size: 12.5px; }
+.saring { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.saring select { max-width: 320px; }
+.mhs-kartu { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 14px; align-items: center; }
+@media (max-width: 560px) { .mhs-kartu { grid-template-columns: minmax(0, 1fr); } }
+
+#cetak { display: none; }
+@media print {
+  @page { size: 8.5in 13in; margin: 0.55in 0.75in 0.6in; }
+  body { background: #fff none; }
+  .app, #toast { display: none !important; }
+  #cetak { display: block; color: #000; }
+  #cetak .hal { page-break-after: always; }
+  #cetak .hal:last-child { page-break-after: auto; }
+  #cetak p { margin: 0 0 7pt; } #cetak table { border-collapse: collapse; } #cetak td { padding: 0; vertical-align: top; } #cetak .data td { padding: 1.5pt 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="langit" aria-hidden="true">
+  <svg class="l1" viewBox="96 30 160 160"><g class="st"><g transform="rotate(58 176 110)"><path class="f-pop api" d="M164 150c2 20 6 32 12 42 6-10 10-22 12-42z"/><path class="f-acc" d="M156 118l-24 32 26-6zM196 118l24 32-26-6z"/><path class="f-kertas" d="M176 34c24 24 32 66 22 112h-44c-10-46-2-88 22-112z"/><circle class="f-sky" cx="176" cy="90" r="12"/><path class="f-no tipis" d="M158 128h36"/></g></g></svg>
+  <svg class="l2" viewBox="176 18 124 76"><g class="st"><path class="f-acc" d="M208 60v22c0 9 56 9 56 0V60l-28 12z"/><path class="f-acc" d="M236 26l54 23-54 23-54-23z"/><path class="f-no" d="M290 49v26"/><circle class="f-pop" cx="290" cy="81" r="6"/></g></svg>
+  <svg class="l3" viewBox="140 80 170 200"><g class="st"><path class="f-pink" d="M242 172q-52 18-70 78 38-26 62-12z"/><path class="f-pop api" d="M240 250l12 24 12-24z"/><path class="f-kertas" d="M231 248l9-80q12-11 24 0l9 80z"/><path class="f-no tipis" d="M246 192l-3 54M258 192l3 54M239 198h26"/><path class="f-no tebal" d="M262 176l20 26"/><path class="f-sky" d="M279 200l7-1 6 50-5 7-4-6z"/><path class="f-no" d="M272 204h22M284 190v12"/><circle class="f-kertas" cx="252" cy="146" r="14"/><path class="f-acc" d="M238 146a14 14 0 0 1 28 0q-14-9-28 0z"/><rect class="f-ink" x="237" y="143" width="30" height="8" rx="3"/><path class="f-no tebal" d="M242 176l-44-56"/><path class="f-no" d="M198 122v-24"/><g class="timbang"><path class="f-no" d="M168 98h60"/><path class="f-no tipis" d="M170 98l-10 26M170 98l10 26M226 98l-10 26M226 98l10 26"/><path class="f-pop" d="M157 124h26a13 8 0 0 1-26 0z"/><path class="f-pop" d="M213 124h26a13 8 0 0 1-26 0z"/></g></g></svg>
+  <svg class="l4" viewBox="0 0 124 44"><g class="st"><rect class="f-mint" x="4" y="6" width="116" height="32" rx="6"/><path class="f-no tipis" d="M16 16h14M16 28h14M44 22h62"/></g></svg>
+  <svg class="l5" viewBox="176 18 124 76"><g class="st"><path class="f-pink" d="M208 60v22c0 9 56 9 56 0V60l-28 12z"/><path class="f-pink" d="M236 26l54 23-54 23-54-23z"/><path class="f-no" d="M290 49v26"/><circle class="f-pop" cx="290" cy="81" r="6"/></g></svg>
+  <svg class="l6" viewBox="0 0 40 40"><g class="st"><path class="f-pop" d="M20 2c3 12 6 15 18 18-12 3-15 6-18 18-3-12-6-15-18-18 12-3 15-6 18-18z"/></g></svg>
+</div>
+<div class="app" id="app">
+  <header class="bar">
+    <div class="merek"><button type="button" data-ke-lompat="beranda">SKRIP<span>SPACE</span></button><small>FH UNISSULA</small></div>
+    <nav class="nav" aria-label="Menu">
+      <button type="button" data-ke="beranda" aria-current="true">Beranda</button>
+      <button type="button" data-ke="ajukan">Ajukan Judul</button>
+      <button type="button" data-ke="riset">Izin Riset</button>
+      <button type="button" data-ke="admin">Log in</button>
+    </nav>
+  </header>
+
+  <div class="spanduk" id="spandukDemo" hidden>
+    <b>Pratinjau.</b> <span>Semua nama, judul, dan dosen di sini data contoh. Untuk mencoba Log in: Mahasiswa sudah terisi otomatis · Dosen <b class="mono">DSN2345A</b> · Pengelola <b class="mono">246810</b> (Sekprodi) atau <b class="mono">1357900</b> (Kaprodi).</span>
+  </div>
+  <div class="catat galat" id="galatMuat" hidden></div>
+
+  <!-- ================= BERANDA ================= -->
+  <main id="vBeranda">
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <section class="angkasa">
+        <div class="teks">
+          <span class="lencana">Fakultas Hukum UNISSULA</span>
+          <h1>SKRIP<span>SPACE</span></h1>
+          <p class="slogan">Your Academic Workspace</p>
+          <p>Satu ruang untuk seluruh perjalanan skripsimu, dari judul pertama sampai toga. Ajukan judul, urus izin riset, catat bimbingan, dan kirim pesan ke pembimbing, semuanya dari sini.</p>
+          <div class="ajak"><button type="button" class="tombol utama" data-ke-lompat="ajukan">Ajukan Judul</button><button type="button" class="tombol" data-ke-lompat="admin">Log in</button><button type="button" class="tombol" id="bPasang" hidden>Pasang aplikasi</button></div>
+          <p class="tip-pasang" id="tipPasang" hidden></p>
+        </div>
+        <svg class="antariksa" viewBox="0 0 360 340" role="img" aria-label="Dewi Keadilan berdiri di atas tumpukan buku hukum di tengah antariksa"><g class="st">
+            <path class="f-no tipis orbitgaris" stroke-dasharray="2 9" d="M10 196c40-130 250-170 340-70"/>
+            <g class="ayun a2"><circle class="f-pop" cx="62" cy="262" r="38"/><path class="f-no tipis" d="M32 250c18-7 42-7 60 2M28 270c22-5 48-3 68 5"/><ellipse class="f-no cincin" cx="62" cy="262" rx="64" ry="15" transform="rotate(-16 62 262)"/></g>
+            <g class="ayun a3"><circle class="f-mint" cx="326" cy="64" r="18"/><circle class="f-no tipis" cx="320" cy="59" r="4"/><circle class="f-no tipis" cx="332" cy="71" r="3"/></g>
+            <g class="ayun a1" transform="translate(-100 4) rotate(34 176 110)"><path class="f-pop api" d="M164 150c2 20 6 32 12 42 6-10 10-22 12-42z"/><path class="f-acc" d="M156 118l-24 32 26-6zM196 118l24 32-26-6z"/><path class="f-kertas" d="M176 34c24 24 32 66 22 112h-44c-10-46-2-88 22-112z"/><circle class="f-sky" cx="176" cy="90" r="12"/><path class="f-no tipis" d="M158 128h36"/></g>
+            <g class="ayun a2">
+              <rect class="f-acc" x="170" y="298" width="164" height="26" rx="5"/><path class="f-no tipis" d="M182 306h18M182 316h18"/><text class="punggung" x="262" y="315" text-anchor="middle">UUD NRI 1945</text>
+              <rect class="f-pop" x="184" y="272" width="136" height="26" rx="5"/><path class="f-no tipis gelap" d="M196 280h14M196 290h14"/><text class="punggung gelap" x="262" y="289" text-anchor="middle">KUH PERDATA</text>
+              <rect class="f-pink" x="198" y="248" width="108" height="24" rx="5"/><path class="f-no tipis gelap" d="M208 256h12M208 264h12"/><text class="punggung gelap" x="260" y="264" text-anchor="middle">KUHP</text>
+              <g transform="translate(252 248) scale(1.3) translate(-252 -248)">
+              <path class="f-kertas" d="M231 248l9-80q12-11 24 0l9 80z"/><path class="f-no tipis gelap" d="M246 192l-3 54M258 192l3 54M239 198h26"/>
+              <path class="f-no tebal" d="M262 176l20 26"/><path class="f-sky" d="M279 200l7-1 6 50-5 7-4-6z"/><path class="f-no" d="M272 204h22M284 190v12"/>
+              <circle class="f-kertas" cx="252" cy="146" r="14"/><path class="f-acc" d="M238 146a14 14 0 0 1 28 0q-14-9-28 0z"/><rect class="f-ink" x="237" y="143" width="30" height="8" rx="3"/><path class="f-no tipis" d="M267 146l10 7"/>
+              <path class="f-no tebal" d="M242 176l-44-56"/><path class="f-no" d="M198 122v-24"/>
+              <g class="timbang"><path class="f-no" d="M168 98h60"/><path class="f-no tipis" d="M170 98l-10 26M170 98l10 26M226 98l-10 26M226 98l10 26"/><path class="f-pop" d="M157 124h26a13 8 0 0 1-26 0z"/><path class="f-pop" d="M213 124h26a13 8 0 0 1-26 0z"/><circle class="f-pop" cx="198" cy="96" r="5"/></g>
+              </g>
+            </g>
+            <path class="f-pop kelip" d="M150 28c3 12 6 15 18 18-12 3-15 6-18 18-3-12-6-15-18-18 12-3 15-6 18-18z"/>
+            <path class="f-pink kelip k2" d="M300 150c2 9 5 12 14 14-9 2-12 5-14 14-2-9-5-12-14-14 9-2 12-5 14-14z"/>
+            <path class="f-mint kelip k3" d="M130 200c2 6 3 8 9 9-6 2-7 3-9 9-2-6-3-7-9-9 6-1 7-3 9-9z"/>
+            <circle class="f-kertas titik kelip k2" cx="20" cy="30" r="2.5"/><circle class="f-kertas titik kelip" cx="344" cy="218" r="2.5"/><circle class="f-kertas titik kelip k3" cx="18" cy="150" r="2.5"/><circle class="f-kertas titik kelip k2" cx="236" cy="36" r="2.5"/><circle class="f-kertas titik kelip" cx="120" cy="322" r="2.5"/>
+          </g></svg>
+      </section>
+      <div class="pita" aria-hidden="true"><div><span>skripspace ✦ your academic workspace ✦ dari judul sampai toga ✦ bimbingan tercatat ✦ surat langsung jadi ✦ </span><span>skripspace ✦ your academic workspace ✦ dari judul sampai toga ✦ bimbingan tercatat ✦ surat langsung jadi ✦ </span></div></div>
+      <section class="lembar">
+        <header><h2>Rute penerbanganmu</h2><p>Skripsi itu perjalanan panjang, tapi rutenya jelas. Tujuh titik ini yang kamu lewati dari lepas landas sampai mendarat.</p></header>
+        <ol class="rute">
+          <li><span class="no">01</span><div><small>Lepas landas</small><h3>Ajukan judul</h3><p>Tulis tiga judul terbaikmu. Sistem mengecek kemiripannya ke database prodi dan sumber luar. Yang lolos langsung dapat surat permohonan, tanpa antre di loket.</p></div></li>
+          <li><span class="no">02</span><div><small>Dapat kopilot</small><h3>Judul disetujui, pembimbing ditetapkan</h3><p>Prodi memilih satu judul dan menunjuk dosen pembimbing. Surat persetujuan terbit, kontak pembimbing muncul, dan kode pengajuanmu jadi kunci Log in untuk seterusnya.</p></div></li>
+          <li><span class="no">03</span><div><small>Orbit pertama</small><h3>Bimbingan proposal</h3><p>Hubungi pembimbingmu dan mulai bimbingan. Tiap pertemuan kamu catat di sini, pembimbing memaraf dari akunnya. Tidak ada lagi buku bimbingan yang ketinggalan di kos.</p></div></li>
+          <li><span class="no">04</span><div><small>Turun ke lapangan</small><h3>Riset dan pengumpulan data</h3><p>Butuh data dari instansi? Ajukan izin riset. Begitu disetujui Kaprodi, surat permohonan dan surat pengantar langsung bisa diunduh.</p></div></li>
+          <li><span class="no">05</span><div><small>Mode menulis</small><h3>Bab I sampai Bab IV</h3><p>Susun naskah bab demi bab sambil terus bimbingan. Sebelum disetujui, naskah diuji Turnitin dengan batas kemiripan 24,99%.</p></div></li>
+          <li><span class="no">06</span><div><small>Siap mendarat</small><h3>Naskah disetujui dan ujian skripsi</h3><p>Pembimbing menyatakan naskahmu siap diuji. Buku catatan bimbingan tinggal dicetak dari sini sebagai syarat daftar ujian.</p></div></li>
+          <li><span class="no">07</span><div><small>Touchdown</small><h3>Revisi dan naskah akhir</h3><p>Perbaiki naskah sesuai masukan penguji, serahkan naskah akhir, lalu selesai. Misi skripsi tuntas, saatnya pakai toga.</p></div></li>
+        </ol>
+      </section>
+      <section class="lembar">
+        <header><h2>Tiga pintu masuk</h2><p>Mahasiswa, dosen pembimbing, dan pengelola prodi bekerja di ruang yang sama, dengan hak yang berbeda.</p></header>
+        <div class="pintu">
+          <button type="button" data-pintu="mhs"><b>Mahasiswa</b><span>Riwayat judul, izin riset, catatan bimbingan, dan pesan ke pembimbing. Masuk dengan NIM dan kode pengajuan.</span></button>
+          <button type="button" data-pintu="dsn"><b>Dosen pembimbing</b><span>Daftar mahasiswa bimbingan, paraf catatan, tandai tahapan, dan balas pesan. Masuk dengan kode akses pribadi.</span></button>
+          <button type="button" data-pintu="adm"><b>Pengelola prodi</b><span>Persetujuan judul dan izin riset, pantauan seluruh bimbingan, dan pengingat untuk yang macet.</span></button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ================= AJUKAN ================= -->
+  <main id="vAjukan" hidden>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <section class="pembuka" id="pembuka">
+        <div class="teks">
+          <h1>Ajukan judul skripsimu, <span class="stabilo">sekali isi.</span></h1>
+          <p>Judulmu langsung dicek ke database prodi dan sumber luar. Lolos cek, surat permohonan jadi saat itu juga.</p>
+          <div class="fakta">
+            <span><b id="fJumlah">…</b> judul di database</span>
+            <span>T.A. <b id="fTa">…</b></span>
+            <span>Prodi S1 Ilmu Hukum</span>
+          </div>
+        </div>
+        <svg class="seni" viewBox="0 0 300 250" aria-hidden="true" focusable="false"><g class="st">
+          <g class="ayun a1" transform="rotate(-7 135 125)"><rect class="f-ink" x="68" y="38" width="150" height="190" rx="12"/><rect class="f-kertas" x="60" y="30" width="150" height="190" rx="12"/>
+            <rect class="f-pop" x="76" y="48" width="92" height="16" rx="4"/><path class="f-no tipis" d="M76 82h118M76 100h118M76 118h80"/>
+            <rect class="f-mint" x="76" y="138" width="18" height="18" rx="5"/><path class="f-no" d="M80 147l4 4 7-8"/><path class="f-no tipis" d="M104 147h86"/>
+            <rect class="f-mint" x="76" y="164" width="18" height="18" rx="5"/><path class="f-no" d="M80 173l4 4 7-8"/><path class="f-no tipis" d="M104 173h70"/>
+            <rect class="f-kertas" x="76" y="190" width="18" height="18" rx="5"/><path class="f-no tipis" d="M104 199h52"/></g>
+          <g class="ayun a2" transform="rotate(13 226 172)"><circle class="f-mint" cx="226" cy="172" r="45"/><circle class="f-no tipis" cx="226" cy="172" r="36" stroke-dasharray="2 6"/>
+            <text class="capt" x="226" y="176" text-anchor="middle">LOLOS</text><text class="capk" x="226" y="191" text-anchor="middle">CEK JUDUL</text></g>
+          <g class="ayun a3" transform="rotate(9 236 54)"><path class="f-acc" d="M208 60v22c0 9 56 9 56 0V60l-28 12z"/><path class="f-acc" d="M236 26l54 23-54 23-54-23z"/><path class="f-no luar" d="M290 49v26"/><circle class="f-pop" cx="290" cy="81" r="6"/></g>
+          <g transform="rotate(-18 40 196)"><circle class="f-sky" cx="40" cy="190" r="20"/><path class="f-no" d="M32 186c2-5 7-7 12-6"/><path class="f-no tebal luar" d="M54 205l15 16"/></g>
+          <path class="f-pop ayun a2" d="M36 38c3 13 6 16 19 19-13 3-16 6-19 19-3-13-6-16-19-19 13-3 16-6 19-19z"/>
+          <path class="f-pink" d="M270 110c2 8 4 10 12 12-8 2-10 4-12 12-2-8-4-10-12-12 8-2 10-4 12-12z"/>
+          <g class="ayun a3"><circle class="f-pink" cx="146" cy="24" r="17"/><path class="f-no" d="M140 20v3M152 20v3M138 28c4 6 12 6 16 0"/></g>
+        </g></svg>
+        <div class="pita" aria-hidden="true"><div><span>cek judul otomatis ✦ anti judul kembar ✦ surat langsung jadi ✦ pembimbing ditetapkan prodi ✦ </span><span>cek judul otomatis ✦ anti judul kembar ✦ surat langsung jadi ✦ pembimbing ditetapkan prodi ✦ </span></div></div>
+      </section>
+
+      <div class="catat galat" id="tutup" hidden>Pengajuan judul sedang ditutup. Pengajuan yang sudah dikirim tetap bisa dilihat lewat menu Log in.</div>
+
+      <ol class="langkah" id="langkah">
+        <li><span><b>1</b>Data diri</span></li>
+        <li><span><b>2</b>Syarat</span></li>
+        <li><span><b>3</b>Tiga judul</span></li>
+        <li><span><b>4</b>Kirim</span></li>
+      </ol>
+
+      <!-- langkah 1 -->
+      <section class="lembar" data-langkah="1">
+        <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st" transform="rotate(-6 32 32)"><rect class="f-ink" x="9" y="17" width="50" height="36" rx="7"/><rect class="f-kertas" x="5" y="13" width="50" height="36" rx="7"/><circle class="f-pink" cx="20" cy="29" r="8"/><path class="f-no tipis" d="M17 28v1M23 28v1M17 32c2 2 4 2 6 0"/><path class="f-no tipis" d="M34 24h14M34 31h14M12 42h36"/></g></svg><h2>Kenalan dulu</h2><p>Isi sesuai data akademikmu. Data ini yang tercetak di surat permohonan.</p></header>
+        <div class="kisi">
+          <div class="isian penuh"><label for="fNama">Nama lengkap</label><input type="text" id="fNama" autocomplete="name" maxlength="80" placeholder="Sesuai KTM"></div>
+          <div class="isian"><label for="fNim">NIM</label><input type="text" id="fNim" class="mono" inputmode="numeric" maxlength="11" placeholder="11 digit"><span class="bantu">Contoh: 30302300123</span></div>
+          <div class="isian"><label for="fWa">No. HP / WhatsApp</label><input type="tel" id="fWa" inputmode="tel" maxlength="16" placeholder="08…"></div>
+          <div class="isian penuh"><span class="label" id="lKelas">Kelas</span>
+            <div class="pilih" role="radiogroup" aria-labelledby="lKelas" id="gKelas">
+              <label><input type="radio" name="kelas" value="Reguler" id="kReguler"><span>Reguler</span></label>
+              <label><input type="radio" name="kelas" value="Eksekutif" id="kEksekutif"><span>Eksekutif</span></label>
+              <label><input type="radio" name="kelas" value="RPL" id="kRpl"><span>RPL</span></label>
+            </div></div>
+          <div class="isian penuh"><span class="label" id="lKek">Program kekhususan</span>
+            <div class="pilih" role="radiogroup" aria-labelledby="lKek" id="gKek"></div></div>
+          <div class="isian"><label for="fTempat">Tempat lahir</label><input type="text" id="fTempat" maxlength="40" placeholder="Kota / kabupaten"></div>
+          <div class="isian"><label for="fTgl">Tanggal lahir</label><input type="date" id="fTgl"></div>
+          <div class="isian penuh"><label for="fWali">Dosen wali</label><input type="text" id="fWali" list="dDosen" maxlength="90" placeholder="Ketik nama, lalu pilih"><datalist id="dDosen"></datalist>
+            <span class="bantu">Dosen wali tidak akan ditunjuk jadi pembimbingmu.</span></div>
+        </div>
+        <div class="catat galat" data-galat hidden></div>
+        <div class="aksi"><button type="button" class="tombol polos" id="bContoh" hidden>Isi dengan data contoh</button><div class="kanan"><button type="button" class="tombol utama" data-lanjut="2">Lanjut ke syarat</button></div></div>
+      </section>
+
+      <!-- langkah 2 -->
+      <section class="lembar" data-langkah="2" hidden>
+        <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st" transform="rotate(5 32 32)"><rect class="f-ink" x="15" y="12" width="40" height="48" rx="7"/><rect class="f-kertas" x="11" y="8" width="40" height="48" rx="7"/><rect class="f-pop" x="22" y="4" width="18" height="9" rx="4"/><path class="f-no hijau" d="M18 24l3 3 6-7M18 37l3 3 6-7"/><path class="f-no tipis" d="M32 24h12M32 37h12M19 48h25"/></g></svg><h2>Syarat mengajukan skripsi</h2><p>Sesuai Buku Pedoman Akademik. Kelima syarat harus terpenuhi dulu, baru kamu bisa lanjut ke judul.</p></header>
+        <ul class="syarat" id="syarat"></ul>
+        <div class="mode" role="radiogroup" aria-label="Cara mengisi nilai">
+          <label><input type="radio" name="mode" value="transkrip" id="mTranskrip" checked><span><b>Isi nilai per mata kuliah</b><small>Semua semester dan mata kuliah kekhususan. IPK dan SKS dihitung otomatis.</small></span></label>
+          <label><input type="radio" name="mode" value="manual" id="mManual"><span><b>Isi IPK dan SKS saja</b><small>Untuk kurikulum lama atau nilai konversi RPL.</small></span></label>
+        </div>
+        <div id="wTranskrip"><div id="daftarSmt"></div></div>
+        <div id="wManual" class="kisi" hidden>
+          <div class="isian"><label for="fIpk">IPK</label><input type="text" id="fIpk" class="mono" inputmode="decimal" maxlength="4" placeholder="3,50"></div>
+          <div class="isian"><label for="fSks">Kredit kumulatif (SKS)</label><input type="text" id="fSks" class="mono" inputmode="numeric" maxlength="3" placeholder="130"></div>
+          <label class="centang penuh"><input type="checkbox" id="fTanpaD"><span>Saya tidak memiliki nilai D pada transkrip.</span></label>
+          <label class="centang penuh"><input type="checkbox" id="fLulusMph"><span>Saya sudah lulus mata kuliah Metode Penelitian Hukum.</span></label>
+        </div>
+        <div class="isian krs"><label for="fKrs">Scan KRS terakhir</label><input type="file" id="fKrs" accept="image/*,application/pdf">
+          <span class="bantu">KRS semester ini yang memuat mata kuliah Skripsi. Foto/scan JPG atau PNG, atau PDF maksimal 500 KB.</span><div id="krsInfo"></div></div>
+        <label class="centang"><input type="checkbox" id="fKrsSkripsi"><span>Mata kuliah Skripsi tercantum pada KRS yang saya unggah.</span></label>
+        <div class="ipkbar" id="ipkbar"><span id="ipkKet">Belum ada nilai</span><span>IPK <b id="ipkAngka">0,00</b></span></div>
+        <div class="catat galat" data-galat hidden></div>
+        <div class="aksi"><button type="button" class="tombol polos" data-kembali="1">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-lanjut="3">Lanjut ke judul</button></div></div>
+      </section>
+
+      <!-- langkah 3 -->
+      <section class="lembar" data-langkah="3" hidden>
+        <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st"><path class="f-pop" d="M32 10c-10 0-17 7-17 16 0 7 4 11 7 14v6h20v-6c3-3 7-7 7-14 0-9-7-16-17-16z"/><path class="f-kertas" d="M24 46h16v6c0 2-2 4-4 4h-8c-2 0-4-2-4-4z"/><path class="f-no tipis" d="M27 34l5-7 5 7M32 27v13"/><path class="f-no" d="M8 12l4 4M56 12l-4 4M4 30h5M60 30h-5"/></g></svg><h2>Tiga judul andalanmu</h2><p>Tulis tiga judul berbeda, lalu cek satu per satu. Yang sudah pernah dipakai atau terlalu mirip tidak bisa diajukan.</p></header>
+        <div id="daftarJudul"></div>
+        <div class="catat galat" data-galat hidden></div>
+        <div class="aksi"><button type="button" class="tombol polos" data-kembali="2">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-lanjut="4">Tinjau pengajuan</button></div></div>
+      </section>
+
+      <!-- langkah 4 -->
+      <section class="lembar" data-langkah="4" hidden>
+        <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st"><path class="f-ink" d="M10 30l48-18-14 44-12-16z" transform="translate(3 4)"/><path class="f-sky" d="M10 30l48-18-14 44-12-16z"/><path class="f-kertas" d="M32 40l26-28-14 44z"/><path class="f-no tipis" d="M6 46c5-1 8 1 10 5M4 56c6-2 12 0 15 4"/></g></svg><h2>Cek sekali lagi</h2><p>Setelah dikirim, data tidak bisa diubah sampai Sekprodi memutuskan.</p></header>
+        <dl class="rinci" id="tinjau"></dl>
+        <ol class="daftarjudul" id="tinjauJudul"></ol>
+        <div class="isian" style="max-width:320px"><label for="fKodeLama">Kode pengajuan <span style="font-weight:500;color:var(--muted)">(hanya bila pernah mengajukan)</span></label><input type="text" id="fKodeLama" class="mono" maxlength="6" autocapitalize="characters" autocomplete="off" placeholder="Kosongkan bila baru pertama"><span class="bantu">Satu mahasiswa satu kode. Pengajuan ulang memakai kode yang sama.</span></div>
+        <label class="centang"><input type="checkbox" id="fSetuju"><span>Data yang saya isi benar, dan ketiga judul adalah gagasan saya sendiri, bukan salinan karya orang lain.</span></label>
+        <div class="catat galat" data-galat hidden></div>
+        <div class="aksi"><button type="button" class="tombol polos" data-kembali="3">Kembali</button><div class="kanan"><button type="button" class="tombol utama" id="bKirim">Kirim pengajuan</button></div></div>
+      </section>
+
+      <!-- selesai / status -->
+      <section id="wSelesai" hidden></section>
+    </div>
+  </main>
+
+  <!-- ================= IZIN RISET ================= -->
+  <main id="vRiset" hidden>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <section class="pembuka" id="pembukaRiset">
+        <div class="teks">
+          <h1>Turun ke lapangan, <span class="stabilo">suratnya beres.</span></h1>
+          <p>Isi sekali, Kaprodi menyetujui, dua surat resmi langsung terbit: surat permohonan dan surat pengantar riset untuk instansi tujuanmu.</p>
+          <div class="fakta"><span>Disetujui Kaprodi</span><span><b>2</b> surat sekali jadi</span><span>Satu permohonan per instansi</span></div>
+        </div>
+        <svg class="seni" viewBox="0 0 300 250" aria-hidden="true" focusable="false"><g class="st">
+          <g class="ayun a1"><path class="f-ink" d="M158 66l88-34 88 34z" transform="translate(-70 6)"/><path class="f-sky" d="M150 60l88-34 88 34z" transform="translate(-70 6)"/><rect class="f-kertas" x="92" y="66" width="152" height="12" rx="3"/>
+            <rect class="f-kertas" x="102" y="78" width="18" height="76" rx="4"/><rect class="f-kertas" x="136" y="78" width="18" height="76" rx="4"/><rect class="f-kertas" x="182" y="78" width="18" height="76" rx="4"/><rect class="f-kertas" x="216" y="78" width="18" height="76" rx="4"/>
+            <rect class="f-acc" x="84" y="154" width="168" height="16" rx="4"/><circle class="f-pop" cx="168" cy="48" r="8"/></g>
+          <g class="ayun a2" transform="rotate(-9 86 178)"><rect class="f-ink" x="30" y="136" width="120" height="96" rx="10"/><rect class="f-kertas" x="24" y="130" width="120" height="96" rx="10"/><rect class="f-pop" x="38" y="144" width="62" height="12" rx="4"/><path class="f-no tipis" d="M38 170h92M38 184h92M38 198h56"/></g>
+          <g class="ayun a3" transform="rotate(12 222 196)"><circle class="f-mint" cx="222" cy="196" r="40"/><circle class="f-no tipis" cx="222" cy="196" r="32" stroke-dasharray="2 6"/><text class="capt" x="222" y="198" text-anchor="middle" style="font-size:15px">DISETUJUI</text><text class="capk" x="222" y="212" text-anchor="middle">KAPRODI</text></g>
+          <g class="ayun a2"><path class="f-pink" d="M270 96c0-14-10-24-22-24s-22 10-22 24c0 16 22 38 22 38s22-22 22-38z"/><circle class="f-kertas" cx="248" cy="95" r="8"/></g>
+          <g class="ayun a1"><path class="f-ink" d="M14 58l62-24-18 56-14-20z" transform="translate(3 4)"/><path class="f-pop" d="M14 58l62-24-18 56-14-20z"/><path class="f-kertas" d="M44 70l32-36-18 56z"/><path class="f-no tipis" d="M8 86c6-1 10 1 12 6M4 100c7-2 14 0 18 5"/></g>
+          <path class="f-pop ayun a3" d="M150 8c2 9 5 12 14 14-9 2-12 5-14 14-2-9-5-12-14-14 9-2 12-5 14-14z"/>
+        </g></svg>
+        <div class="pita" aria-hidden="true"><div><span>izin riset tanpa antre ✦ disetujui kaprodi ✦ dua surat sekali jadi ✦ siap turun lapangan ✦ </span><span>izin riset tanpa antre ✦ disetujui kaprodi ✦ dua surat sekali jadi ✦ siap turun lapangan ✦ </span></div></div>
+      </section>
+      <div class="mode" role="radiogroup" aria-label="Izin riset">
+        <label><input type="radio" name="rmode" value="ajukan" id="rmAjukan" checked><span><b>Ajukan izin riset</b><small>Isi data, lalu tunggu persetujuan Kaprodi.</small></span></label>
+        <label><input type="radio" name="rmode" value="status" id="rmStatus"><span><b>Lihat status dan surat</b><small>Sudah mengajukan? Buka dengan NIM dan kode izin riset.</small></span></label>
+      </div>
+
+      <div id="rAjukan" style="display:flex;flex-direction:column;gap:22px">
+        <ol class="langkah" id="rLangkah">
+          <li><span><b>1</b>Data diri</span></li>
+          <li><span><b>2</b>Penelitian</span></li>
+          <li><span><b>3</b>Instansi</span></li>
+          <li><span><b>4</b>Kirim</span></li>
+        </ol>
+        <section class="lembar" data-rl="1">
+          <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st" transform="rotate(-5 32 32)"><rect class="f-ink" x="10" y="20" width="50" height="36" rx="6"/><rect class="f-kertas" x="6" y="16" width="50" height="36" rx="6"/><path class="f-no" d="M6 22l25 17 25-17"/><circle class="f-mint" cx="48" cy="14" r="10"/><path class="f-no hijau" d="M43 14l4 4 6-7"/></g></svg><h2>Izin riset</h2><p>Isi sesuai data akademikmu. Setelah disetujui Kaprodi, surat permohonan dan surat pengantar riset langsung bisa diunduh.</p></header>
+          <div class="kisi">
+            <div class="isian penuh"><label for="rNama">Nama lengkap</label><input type="text" id="rNama" autocomplete="name" maxlength="80" placeholder="Sesuai KTM"></div>
+            <div class="isian"><label for="rNimBaru">NIM</label><input type="text" id="rNimBaru" class="mono" inputmode="numeric" maxlength="11" placeholder="11 digit"></div>
+            <div class="isian"><label for="rWa">No. HP / WhatsApp</label><input type="tel" id="rWa" inputmode="tel" maxlength="16" placeholder="08…"></div>
+            <div class="isian penuh"><span class="label" id="lRKelas">Kelas</span>
+              <div class="pilih" role="radiogroup" aria-labelledby="lRKelas">
+                <label><input type="radio" name="rkelas" value="Reguler" id="rkReguler"><span>Reguler</span></label>
+                <label><input type="radio" name="rkelas" value="Eksekutif"><span>Eksekutif</span></label>
+                <label><input type="radio" name="rkelas" value="RPL"><span>RPL</span></label>
+              </div></div>
+          </div>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-rlanjut="2">Lanjut ke penelitian</button></div></div>
+        </section>
+        <section class="lembar" data-rl="2" hidden>
+          <header><h2>Penelitianmu</h2><p>Tulis judul skripsi yang sudah disetujui dan dosen pembimbingmu. Kaprodi mencocokkannya dengan data prodi.</p></header>
+          <div class="isian"><label for="rJudul">Judul penelitian</label><textarea id="rJudul" maxlength="400" placeholder="Judul skripsi yang sudah disetujui"></textarea></div>
+          <div class="isian"><label for="rDosen">Dosen pembimbing</label><input type="text" id="rDosen" list="dDosen" maxlength="90" placeholder="Ketik nama, lalu pilih"></div>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><button type="button" class="tombol polos" data-rkembali="1">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-rlanjut="3">Lanjut ke instansi</button></div></div>
+        </section>
+        <section class="lembar" data-rl="3" hidden>
+          <header><h2>Instansi tujuan</h2><p>Satu permohonan untuk satu instansi. Instansi lain bisa ditambahkan setelah permohonan ini terkirim.</p></header>
+          <div class="isian"><label for="rInstansi">Instansi tujuan riset</label><input type="text" id="rInstansi" maxlength="120" placeholder="Contoh: Pengadilan Negeri Semarang"><span class="bantu">Tulis nama resmi instansi, lengkap. Nama ini tercetak di kedua surat.</span></div>
+          <div class="isian"><label for="rPimpinan">Jabatan pimpinan instansi</label><input type="text" id="rPimpinan" maxlength="80" placeholder="Contoh: Ketua"><span class="bantu">Surat ditujukan kepada jabatan ini. Kosongkan bila tidak tahu; surat akan tertulis "Pimpinan".</span></div>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><button type="button" class="tombol polos" data-rkembali="2">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-rlanjut="4">Tinjau permohonan</button></div></div>
+        </section>
+        <section class="lembar" data-rl="4" hidden>
+          <header><h2>Cek sekali lagi</h2><p>Data ini yang tercetak di surat. Setelah dikirim, tidak bisa diubah.</p></header>
+          <dl class="rinci" id="rTinjau"></dl>
+          <label class="centang"><input type="checkbox" id="rSetuju"><span>Data yang saya isi benar, dan judul ini adalah judul skripsi saya yang sudah disetujui.</span></label>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><button type="button" class="tombol polos" data-rkembali="3">Kembali</button><div class="kanan"><button type="button" class="tombol utama" id="bRisetKirim">Kirim permohonan</button></div></div>
+        </section>
+      </div>
+
+      <section class="lembar" id="rMasuk" hidden>
+        <header><h2>Sudah sampai mana?</h2><p>Masukkan NIM dan kode izin riset yang kamu dapat saat mengirim permohonan.</p></header>
+        <div class="kisi">
+          <div class="isian"><label for="rNim">NIM</label><input type="text" id="rNim" class="mono" inputmode="numeric" maxlength="11"></div>
+          <div class="isian"><label for="rKode">Kode izin riset</label><input type="text" id="rKode" class="mono" maxlength="6" autocapitalize="characters" placeholder="6 karakter"></div>
+        </div>
+        <div class="catat galat" id="rGalat" hidden></div>
+        <div class="aksi"><div class="kanan"><button type="button" class="tombol utama" id="bRiset">Lihat status</button></div></div>
+      </section>
+      <div id="rIsi" hidden style="display:flex;flex-direction:column;gap:22px"></div>
+    </div>
+  </main>
+
+  <!-- ================= SEKPRODI ================= -->
+  <main id="vAdmin" hidden>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <section class="pembuka" id="pembukaMasuk">
+        <div class="teks">
+          <h1>Satu pintu, <span class="stabilo">tiga ruang kerja.</span></h1>
+          <p>Mahasiswa, dosen pembimbing, dan pengelola prodi masuk dari sini. Bimbingan tercatat, pesan tersambung, progres skripsi terpantau.</p>
+          <div class="fakta"><span>Mahasiswa</span><span>Dosen pembimbing</span><span>Pengelola prodi</span></div>
+        </div>
+        <svg class="seni" viewBox="0 0 300 250" aria-hidden="true" focusable="false"><g class="st">
+          <g class="ayun a1"><rect class="f-ink" x="104" y="34" width="112" height="190" rx="14"/><rect class="f-acc" x="96" y="26" width="112" height="190" rx="14"/><rect class="f-sky" x="112" y="42" width="80" height="70" rx="8"/><path class="f-pop" d="M152 54c2 9 5 12 14 14-9 2-12 5-14 14-2-9-5-12-14-14 9-2 12-5 14-14z"/><rect class="f-kertas" x="112" y="126" width="80" height="74" rx="8"/><circle class="f-pop" cx="182" cy="164" r="7"/><path class="f-no tebal luar" d="M70 218h172"/></g>
+          <g class="ayun a2" transform="rotate(-28 52 96)"><circle class="f-pop" cx="52" cy="76" r="22"/><circle class="f-kertas" cx="52" cy="76" r="8"/><path class="f-pop" d="M46 96h12v58h-12z"/><path class="f-pop" d="M58 124h16v10H58zM58 142h12v10H58z"/></g>
+          <g class="ayun a3" transform="rotate(10 252 84)"><rect class="f-ink" x="222" y="52" width="68" height="84" rx="10"/><rect class="f-kertas" x="216" y="46" width="68" height="84" rx="10"/><circle class="f-pink" cx="250" cy="76" r="13"/><path class="f-no tipis" d="M230 104h40M236 116h28"/><rect class="f-pop" x="238" y="38" width="24" height="12" rx="4"/></g>
+          <g class="ayun a1"><path class="f-mint" d="M222 160h60c8 0 12 4 12 12v26c0 8-4 12-12 12h-34l-16 16v-16h-10c-8 0-12-4-12-12v-26c0-8 4-12 12-12z"/><path class="f-no tipis" d="M228 178h48M228 192h30"/></g>
+          <g class="ayun a2"><path class="f-acc" d="M22 190v16c0 7 40 7 40 0v-16l-20 9z"/><path class="f-acc" d="M42 166l40 17-40 17-40-17z"/><path class="f-no luar" d="M82 183v20"/><circle class="f-pop" cx="82" cy="208" r="5"/></g>
+          <path class="f-pink ayun a3" d="M34 24c2 8 4 10 12 12-8 2-10 4-12 12-2-8-4-10-12-12 8-2 10-4 12-12z"/>
+        </g></svg>
+        <div class="pita" aria-hidden="true"><div><span>log in ✦ mahasiswa ✦ dosen pembimbing ✦ pengelola prodi ✦ bimbingan tercatat ✦ pesan tersambung ✦ </span><span>log in ✦ mahasiswa ✦ dosen pembimbing ✦ pengelola prodi ✦ bimbingan tercatat ✦ pesan tersambung ✦ </span></div></div>
+      </section>
+      <section class="lembar" id="aMasuk">
+        <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st"><path class="f-no tebal luar" d="M21 30V21c0-7 5-11 11-11s11 4 11 11v9"/><rect class="f-ink" x="15" y="32" width="42" height="28" rx="8"/><rect class="f-acc" x="11" y="28" width="42" height="28" rx="8"/><circle class="f-pop" cx="32" cy="39" r="4"/><path class="f-no" d="M32 43v6"/></g></svg><h2>Log in</h2><p>Pilih pintu masukmu. Tiap peran punya ruang kerjanya sendiri.</p></header>
+        <div class="mode tiga" role="radiogroup" aria-label="Masuk sebagai">
+          <label><input type="radio" name="peran" value="mhs" id="pMhs" checked><span><b>Mahasiswa</b><small>NIM dan kode pengajuan.</small></span></label>
+          <label><input type="radio" name="peran" value="dsn" id="pDsn"><span><b>Dosen pembimbing</b><small>Kode akses pribadi.</small></span></label>
+          <label><input type="radio" name="peran" value="adm" id="pAdm"><span><b>Pengelola Prodi S1 Ilmu Hukum</b><small>Kode akses pengelola.</small></span></label>
+        </div>
+        <div class="kisi" id="fmMhs">
+          <div class="isian"><label for="mNim">NIM</label><input type="text" id="mNim" class="mono" inputmode="numeric" maxlength="11" placeholder="11 digit"></div>
+          <div class="isian"><label for="mKode">Kode pengajuan</label><input type="text" id="mKode" class="mono" maxlength="6" autocapitalize="characters" autocomplete="off" placeholder="6 karakter"><span class="bantu">Kode yang kamu dapat saat mengajukan judul. Satu kode untuk satu mahasiswa, berlaku seterusnya.</span></div>
+        </div>
+        <div class="isian" id="fmDsn" style="max-width:320px" hidden><label for="dKode">Kode akses dosen</label><input type="password" id="dKode" class="mono" maxlength="12" autocapitalize="characters" autocomplete="off"><span class="bantu">Kode pribadi dari pengelola Prodi. Jangan dibagikan.</span></div>
+        <div class="isian" id="fmAdm" style="max-width:320px" hidden><label for="aPin">Kode akses pengelola</label><input type="password" id="aPin" class="mono" inputmode="numeric" maxlength="12" autocomplete="off"></div>
+        <div class="catat galat" id="aGalat" hidden></div>
+        <div class="aksi"><div class="kanan"><button type="button" class="tombol utama" id="bMasuk">Masuk</button></div></div>
+      </section>
+      <div id="aIsi" hidden style="display:flex;flex-direction:column;gap:22px"></div>
+      <div id="dIsi" hidden style="display:flex;flex-direction:column;gap:22px"></div>
+      <div id="mIsi" hidden style="display:flex;flex-direction:column;gap:22px"></div>
+    </div>
+  </main>
+
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung</p>
+</div>
+<div id="cetak"></div>
+<div id="toast" role="status" hidden></div>
+<script>
+window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjshojmFPOxvD3hznZemPmj-hRh_7pEN2sCX7J0GKcCVzrJBQLp9Rtk9gw/exec";
+</script>
+<script>
+(function () {
+  'use strict';
+  var GAS = !!(window.google && google.script && google.script.run);
+  var API = GAS ? '' : String(window.SKRIPSPACE_API || '');   // alamat API bila aplikasi dipasang di luar Apps Script
+  var HIDUP = GAS || !!API;
+  var $ = function (id) { return document.getElementById(id); };
+  var semua = function (sel, akar) { return [].slice.call((akar || document).querySelectorAll(sel)); };
+  function e(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function koma(n, d) { return Number(n || 0).toFixed(d).replace('.', ','); }
+
+  function api(nama) {
+    var args = [].slice.call(arguments, 1);
+    return new Promise(function (ok, gagal) {
+      if (GAS) {
+        var r = google.script.run
+          .withSuccessHandler(function (v) { try { ok(JSON.parse(v)); } catch (x) { gagal(new Error('Jawaban server tidak terbaca. Coba lagi.')); } })
+          .withFailureHandler(function (err) { gagal(new Error(String((err && err.message) || err).replace(/^(Exception|Error):\s*/i, ''))); });
+        r[nama].apply(r, args);
+      } else if (API) {
+        fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow', cache: 'no-store', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ fn: nama, args: args }) })
+          .then(function (r) { if (!r.ok) throw new Error('Server sedang tidak bisa dihubungi (' + r.status + '). Coba lagi sebentar lagi.'); return r.json(); })
+          .then(function (j) {
+            if (!j || !j.ok) { gagal(new Error((j && j.pesan) || 'Permintaan gagal. Coba lagi.')); return; }
+            var v; try { v = JSON.parse(j.hasil); } catch (x) { gagal(new Error('Jawaban server tidak terbaca. Coba lagi.')); return; }
+            ok(v);
+          })
+          .catch(function (x) {
+            var m = String((x && x.message) || x);
+            gagal(new Error(/failed to fetch|networkerror|load failed|network request failed/i.test(m) ? 'Tidak tersambung ke server. Periksa internetmu, lalu coba lagi.' : m));
+          });
+      } else {
+        setTimeout(function () {
+          try { ok(JSON.parse(window[nama].apply(window, args))); } catch (x) { gagal(x); }
+        }, 320 + Math.random() * 380);
+      }
+    });
+  }
+
+  var S = {
+    init: null, langkah: 1, mode: 'transkrip', nilai: {},
+    judul: [{ teks: '', cek: null }, { teks: '', cek: null }, { teks: '', cek: null }],
+    pin: '', admin: null, krs: null, riset: null,
+    sesi: null, ruang: null, ruangId: '', rTab: 'bimbingan', muat: {}, dosen: null, pantau: null, aTab: 'antre', saring: { dosen: '', keadaan: '', cari: '' }
+  };
+
+  /* ---------------- util tampilan ---------------- */
+  var tToast = null;
+  function toast(t) {
+    var el = $('toast'); el.textContent = t; el.hidden = false;
+    clearTimeout(tToast); tToast = setTimeout(function () { el.hidden = true; }, 3200);
+  }
+  function sibuk(btn, ya) { if (!btn) return; btn.classList.toggle('sibuk', !!ya); btn.disabled = !!ya; }
+  function galat(el, pesan) { if (!el) return; el.textContent = pesan || ''; el.hidden = !pesan; if (pesan) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+  var MEM = {};
+  function simpanLokal(k, v) { MEM[k] = JSON.stringify(v); try { localStorage.setItem(k, MEM[k]); } catch (x) { /* abaikan */ } }
+  function bacaLokal(k) { try { return JSON.parse(localStorage.getItem(k) || MEM[k] || 'null'); } catch (x) { try { return JSON.parse(MEM[k] || 'null'); } catch (y) { return null; } } }
+  function hapusLokal(k) { delete MEM[k]; try { localStorage.removeItem(k); } catch (x) { /* abaikan */ } }
+  function pilPil(status) {
+    var k = { HIJAU: ['hijau', 'Aman'], KUNING: ['kuning', 'Mirip'], MERAH: ['merah', 'Ditolak'] }[status] || ['netral', status || '-'];
+    return '<span class="pil ' + k[0] + '">' + e(k[1]) + '</span>';
+  }
+
+  function tampil(v) {
+    ['Beranda', 'Ajukan', 'Admin', 'Riset'].forEach(function (n) { $('v' + n).hidden = v !== n.toLowerCase(); });
+    $('app').classList.toggle('lebar', v === 'admin' || v === 'beranda');
+    semua('.nav button').forEach(function (b) { b.setAttribute('aria-current', b.getAttribute('data-ke') === v ? 'true' : 'false'); });
+    window.scrollTo(0, 0);
+    if (v === 'admin' && !S.sesi) pilihPeran(nilaiRadio('peran') || 'mhs');
+  }
+
+  /* ---------------- formulir ---------------- */
+  function nilaiRadio(nama) { var r = document.querySelector('input[name="' + nama + '"]:checked'); return r ? r.value : ''; }
+  function setRadio(nama, v) { semua('input[name="' + nama + '"]').forEach(function (r) { r.checked = r.value === v; }); }
+  function dataDiri() {
+    return { nama: $('fNama').value.trim(), nim: $('fNim').value.trim(), wa: $('fWa').value.trim(), kelas: nilaiRadio('kelas'),
+      kekhususan: nilaiRadio('kek'), tempatLahir: $('fTempat').value.trim(), tglLahir: $('fTgl').value, dosenWali: $('fWali').value.trim() };
+  }
+  function simpanDraf() {
+    var d = dataDiri();
+    d.mode = S.mode; d.nilai = S.nilai; d.ipk = $('fIpk').value; d.sks = $('fSks').value;
+    d.judul = S.judul.map(function (j) { return j.teks; });
+    simpanLokal('pjs-draf', d);
+  }
+  function isiForm(d) {
+    $('fNama').value = d.nama || ''; $('fNim').value = d.nim || ''; $('fWa').value = d.wa || '';
+    setRadio('kelas', d.kelas || ''); setRadio('kek', d.kekhususan || '');
+    $('fTempat').value = d.tempatLahir || ''; $('fTgl').value = d.tglLahir || ''; $('fWali').value = d.dosenWali || '';
+    S.mode = d.mode === 'manual' ? 'manual' : 'transkrip'; setRadio('mode', S.mode);
+    S.nilai = d.nilai || {}; $('fIpk').value = d.ipk || ''; $('fSks').value = d.sks || '';
+    (d.judul || []).forEach(function (t, i) { if (S.judul[i]) { S.judul[i].teks = t || ''; S.judul[i].cek = null; } });
+  }
+
+  function keLangkah(n) {
+    S.langkah = n;
+    semua('[data-langkah]').forEach(function (s) { s.hidden = Number(s.getAttribute('data-langkah')) !== n; });
+    semua('#langkah li').forEach(function (li, i) { li.className = i + 1 < n ? 'lewat' : (i + 1 === n ? 'kini' : ''); });
+    $('langkah').hidden = false; $('pembuka').hidden = n !== 1; $('wSelesai').hidden = true;
+    if (n === 2) { renderSmt(); gantiMode(); }
+    if (n === 3) renderJudul();
+    if (n === 4) renderTinjau();
+    var atas = $('langkah').getBoundingClientRect().top + window.scrollY - 12;
+    if (n !== 1) window.scrollTo(0, atas);
+  }
+
+  function periksa1() {
+    var d = dataDiri();
+    if (d.nama.length < 3) return ['fNama', 'Nama lengkap belum diisi.'];
+    if (!/^\d{11}$/.test(d.nim)) return ['fNim', 'NIM harus 11 digit angka.'];
+    if (d.wa.replace(/\D/g, '').length < 9) return ['fWa', 'Nomor HP/WhatsApp belum benar.'];
+    if (!d.kelas) return ['kReguler', 'Pilih kelasmu: Reguler, Eksekutif, atau RPL.'];
+    if (!d.kekhususan) return ['gKek', 'Pilih program kekhususan.'];
+    if (!d.tempatLahir) return ['fTempat', 'Tempat lahir belum diisi.'];
+    if (!d.tglLahir) return ['fTgl', 'Tanggal lahir belum diisi.'];
+    if (d.dosenWali.length < 3) return ['fWali', 'Dosen wali belum diisi.'];
+    return null;
+  }
+  function periksa2() {
+    if (S.mode === 'transkrip') {
+      if (hitung().terisi < 1) return ['daftarSmt', 'Isi dulu nilai mata kuliah yang sudah kamu tempuh.'];
+    } else {
+      var ipk = Number($('fIpk').value.replace(',', '.')), sks = parseInt($('fSks').value, 10);
+      if (!(ipk > 0 && ipk <= 4)) return ['fIpk', 'IPK harus di antara 0 dan 4, contoh 3,50.'];
+      if (!(sks > 0 && sks <= 200)) return ['fSks', 'Kredit kumulatif (SKS) belum benar.'];
+    }
+    var kurang = syarat().filter(function (s) { return !s.ok; })[0];
+    return kurang ? [kurang.ke, kurang.galat] : null;
+  }
+  function periksa3() {
+    for (var i = 0; i < 3; i++) {
+      var j = S.judul[i];
+      if (j.teks.trim().split(/\s+/).length < 5) return ['fJudul' + i, 'Judul ' + (i + 1) + ' belum lengkap. Minimal 5 kata.'];
+      if (!j.cek) return ['fJudul' + i, 'Judul ' + (i + 1) + ' belum dicek. Tekan "Cek judul ini".'];
+      if (j.cek.status === 'MERAH') return ['fJudul' + i, 'Judul ' + (i + 1) + ' tidak bisa diajukan. Ganti dulu, lalu cek lagi.'];
+    }
+    var b = S.judul.map(function (j) { return j.teks.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); });
+    if (b[0] === b[1] || b[0] === b[2] || b[1] === b[2]) return ['fJudul1', 'Tiga judul harus berbeda satu sama lain.'];
+    return null;
+  }
+  function lanjut(ke, tombol) {
+    var cek = { 2: periksa1, 3: periksa2, 4: periksa3 }[ke], h = cek ? cek() : null;
+    var kotak = tombol.closest('.lembar').querySelector('[data-galat]');
+    if (h) { galat(kotak, h[1]); var el = $(h[0]); if (el && el.focus) el.focus({ preventScroll: true }); return; }
+    galat(kotak, ''); simpanDraf(); keLangkah(ke);
+  }
+
+  /* ---------------- nilai ---------------- */
+  function mkSemester(i) {
+    var s = S.init.kurikulum[i], kek = nilaiRadio('kek'), h = [];
+    if (i === 'pk') return (S.init.kurikulumPk[kek] || []).slice();
+    s.mk.forEach(function (mk) { if (mk[3] !== 'PK' && mk[0] !== 'Skripsi') h.push(mk); });
+    return h;
+  }
+  function daftarBagian() {
+    var b = S.init.kurikulum.map(function (s, i) { return { kunci: i, nama: s.nama.charAt(0) + s.nama.slice(1).toLowerCase().replace(/ [ivx]+$/, function (x) { return x.toUpperCase(); }) }; });
+    b.push({ kunci: 'pk', nama: 'Program Kekhususan · ' + (nilaiRadio('kek') || '').replace('Hukum ', '') });
+    return b;
+  }
+  function hitung() {
+    var sks = 0, mutu = 0, terisi = 0, total = 0, lulus = 0, nilaiD = 0;
+    daftarBagian().forEach(function (b) {
+      mkSemester(b.kunci).forEach(function (mk) {
+        total++; var n = S.nilai[mk[1]];
+        if (n && S.init.bobotNilai.hasOwnProperty(n)) { sks += mk[2]; mutu += mk[2] * S.init.bobotNilai[n]; terisi++; if (n === 'D' || n === 'E') nilaiD++; else lulus += mk[2]; }
+      });
+    });
+    var m = S.nilai[S.init.kodeMph];
+    return { sks: sks, lulus: lulus, nilaiD: nilaiD, mph: !!m && m !== 'D' && m !== 'E', terisi: terisi, total: total, ipk: sks ? Math.round(mutu / sks * 100) / 100 : 0 };
+  }
+  /** Lima syarat buku pedoman beserta statusnya saat ini. */
+  function syarat() {
+    var tr = S.mode === 'transkrip', t = tr ? hitung() : null, min = S.init.sksMin;
+    var ipk = tr ? t.ipk : (Number($('fIpk').value.replace(',', '.')) || 0), sks = tr ? t.lulus : (parseInt($('fSks').value, 10) || 0);
+    var tanpaD = tr ? t.nilaiD === 0 : $('fTanpaD').checked, mph = tr ? t.mph : $('fLulusMph').checked;
+    return [
+      { ke: tr ? 'daftarSmt' : 'fSks', nama: 'Menyelesaikan minimal ' + min + ' SKS', ket: sks + ' SKS', ok: sks >= min,
+        galat: 'Baru ' + sks + ' SKS yang diselesaikan, kurang ' + (min - sks) + ' SKS. Syarat mengajukan skripsi minimal ' + min + ' SKS, jadi kamu belum bisa lanjut.' },
+      { ke: tr ? 'daftarSmt' : 'fIpk', nama: 'IPK minimal ' + koma(S.init.ipkMin, 2), ket: 'IPK ' + koma(ipk, 2), ok: ipk >= S.init.ipkMin && ipk <= 4,
+        galat: 'IPK-mu ' + koma(ipk, 2) + ', belum mencapai syarat minimal ' + koma(S.init.ipkMin, 2) + '. Kamu belum bisa lanjut.' },
+      { ke: tr ? 'daftarSmt' : 'fTanpaD', nama: 'Tanpa nilai D', ket: tr ? (t.nilaiD ? t.nilaiD + ' mata kuliah bernilai D/E' : 'Tidak ada nilai D') : (tanpaD ? 'Dinyatakan tidak ada' : 'Belum dinyatakan'), ok: tanpaD,
+        galat: tr ? 'Masih ada ' + (t ? t.nilaiD : 0) + ' mata kuliah bernilai D atau E. Syarat mengajukan skripsi tanpa nilai D, jadi kamu belum bisa lanjut sampai nilainya diperbaiki.' : 'Kalau masih ada nilai D, kamu belum bisa mengajukan skripsi. Kalau tidak ada, centang pernyataannya.' },
+      { ke: tr ? 'daftarSmt' : 'fLulusMph', nama: 'Lulus Metode Penelitian Hukum', ket: mph ? 'Sudah lulus' : 'Belum lulus', ok: mph,
+        galat: tr ? 'Mata kuliah Metode Penelitian Hukum (MPH dan Statistik, Semester V) belum lulus. Isi nilainya; bila belum lulus, kamu belum bisa mengajukan skripsi.' : 'Syaratnya sudah lulus Metode Penelitian Hukum. Centang pernyataannya bila sudah lulus.' },
+      { ke: S.krs ? 'fKrsSkripsi' : 'fKrs', nama: 'Scan KRS memuat mata kuliah Skripsi', ket: S.krs ? S.krs.nama : 'Belum diunggah', ok: !!S.krs && $('fKrsSkripsi').checked,
+        galat: S.krs ? 'Centang pernyataan bahwa mata kuliah Skripsi tercantum pada KRS yang kamu unggah.' : 'Unggah dulu scan KRS terakhir yang memuat mata kuliah Skripsi.' }
+    ];
+  }
+  function renderSyarat() {
+    $('syarat').innerHTML = syarat().map(function (s) {
+      return '<li><span>' + e(s.nama) + '<small>' + e(s.ket) + '</small></span><span class="pil ' + (s.ok ? 'hijau' : 'merah') + '">' + (s.ok ? 'Terpenuhi' : 'Belum') + '</span></li>';
+    }).join('');
+  }
+  function infoKrs() {
+    $('krsInfo').innerHTML = S.krs ? '<span class="bantu"><b>Terpasang:</b> ' + e(S.krs.nama) + ' \u00b7 ' + Math.round(S.krs.b64.length * 0.75 / 1024) + ' KB</span>' + (S.krs.mime === 'image/jpeg' ? '<img alt="Pratinjau KRS" src="data:image/jpeg;base64,' + S.krs.b64 + '">' : '') : '';
+    renderSyarat();
+  }
+  function pilihKrs(berkas) {
+    function gagal(pesan) { S.krs = null; $('fKrs').value = ''; infoKrs(); toast(pesan); }
+    if (!berkas) return;
+    var baca = new FileReader();
+    if (berkas.type === 'application/pdf') {
+      if (berkas.size > 500 * 1024) return gagal('PDF terlalu besar (maksimal 500 KB). Perkecil dulu, atau unggah foto/scan JPG.');
+      baca.onload = function () { S.krs = { nama: berkas.name, mime: 'application/pdf', b64: String(baca.result).split(',')[1] }; infoKrs(); };
+    } else if (/^image\//.test(berkas.type)) {
+      baca.onload = function () {
+        var img = new Image();
+        img.onload = function () {
+          var hasil = '', sisi = 1500, mutu = 0.62;
+          for (var k = 0; k < 4; k++) {
+            var s = Math.min(1, sisi / Math.max(img.width, img.height)), c = document.createElement('canvas');
+            c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+            var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+            hasil = c.toDataURL('image/jpeg', mutu).split(',')[1];
+            if (hasil.length < 600000) break;
+            sisi = Math.round(sisi * 0.75); mutu -= 0.08;
+          }
+          if (hasil.length > 900000) return gagal('Gambar terlalu besar. Coba foto ulang dengan ukuran lebih kecil.');
+          S.krs = { nama: berkas.name.replace(/\.[^.]+$/, '') + '.jpg', mime: 'image/jpeg', b64: hasil }; infoKrs();
+        };
+        img.onerror = function () { gagal('Gambar tidak bisa dibaca. Pakai JPG, PNG, atau PDF.'); };
+        img.src = baca.result;
+      };
+    } else return gagal('Berkas harus berupa gambar (JPG/PNG) atau PDF.');
+    baca.onerror = function () { gagal('Berkas tidak bisa dibaca.'); };
+    baca.readAsDataURL(berkas);
+  }
+  function opsiNilai(pilih) {
+    return '<option value="">–</option>' + Object.keys(S.init.bobotNilai).map(function (n) { return '<option' + (n === pilih ? ' selected' : '') + '>' + n + '</option>'; }).join('');
+  }
+  function renderSmt() {
+    var buka = semua('#daftarSmt details').map(function (d) { return d.open; });
+    $('daftarSmt').innerHTML = daftarBagian().map(function (bag, urut) {
+      var i = bag.kunci, mk = mkSemester(i), isi = mk.filter(function (m) { return S.nilai[m[1]]; }).length;
+      return '<details class="smt"' + ((buka.length ? buka[urut] : urut === 0) ? ' open' : '') + ' data-smt="' + i + '">' +
+        '<summary><span>' + e(bag.nama) + '</span><span class="hitung' + (isi === mk.length ? ' penuh' : '') + '">' + isi + '/' + mk.length + ' terisi</span></summary>' +
+        '<div class="cepat"><label for="cepat' + i + '">Isi semua dengan</label><select id="cepat' + i + '" data-cepat="' + i + '">' + opsiNilai('') + '</select></div>' +
+        mk.map(function (m) {
+          return '<div class="mk"><span class="nm">' + e(m[0]) + '</span><span class="sks">' + m[2] + ' SKS</span>' +
+            '<select id="n-' + m[1] + '" data-kode="' + m[1] + '" aria-label="Nilai ' + e(m[0]) + '"' + (S.nilai[m[1]] ? ' class="isi"' : '') + '>' + opsiNilai(S.nilai[m[1]]) + '</select></div>';
+        }).join('') + '</details>';
+    }).join('');
+    segarIpk();
+  }
+  function segarIpk() {
+    if (S.mode === 'transkrip') {
+      var t = hitung();
+      $('ipkAngka').textContent = koma(t.ipk, 2);
+      $('ipkKet').textContent = t.lulus + ' / ' + S.init.sksMin + ' SKS';
+    } else {
+      var ipk = Number($('fIpk').value.replace(',', '.')) || 0;
+      $('ipkAngka').textContent = koma(ipk, 2);
+      $('ipkKet').textContent = ($('fSks').value || '0') + ' / ' + S.init.sksMin + ' SKS';
+    }
+    renderSyarat();
+  }
+  function gantiMode() {
+    S.mode = nilaiRadio('mode') || 'transkrip';
+    $('wTranskrip').hidden = S.mode !== 'transkrip'; $('wManual').hidden = S.mode !== 'manual';
+    segarIpk();
+  }
+
+  /* ---------------- judul ---------------- */
+  function renderJudul() {
+    $('daftarJudul').innerHTML = S.judul.map(function (j, i) {
+      return '<div class="judul" data-i="' + i + '"><div class="atas"><label for="fJudul' + i + '">Judul ' + (i + 1) + '</label><span class="hit" data-hit></span></div>' +
+        '<textarea id="fJudul' + i + '" maxlength="400" placeholder="Tulis judul lengkap, termasuk objek dan lokasi penelitiannya">' + e(j.teks) + '</textarea>' +
+        '<div class="aksi"><div class="kanan"><button type="button" class="tombol kecil" data-cek="' + i + '">Cek judul ini</button></div></div>' +
+        '<div data-hasil></div></div>';
+    }).join('');
+    S.judul.forEach(function (j, i) { hitKata(i); if (j.cek) tampilHasil(i); });
+  }
+  function hitKata(i) {
+    var n = S.judul[i].teks.trim() ? S.judul[i].teks.trim().split(/\s+/).length : 0;
+    document.querySelector('.judul[data-i="' + i + '"] [data-hit]').textContent = n + ' kata';
+  }
+  function tampilHasil(i) {
+    var c = S.judul[i].cek, w = document.querySelector('.judul[data-i="' + i + '"] [data-hasil]');
+    if (!c) { w.innerHTML = ''; return; }
+    var kelas = { HIJAU: 'hijau', KUNING: 'kuning', MERAH: 'merah' }[c.status];
+    var cap = c.status === 'HIJAU' ? 'Aman dipakai' : (c.status === 'KUNING' ? 'Mirip, ditinjau' : (c.skor >= 95 ? 'Sudah dipakai' : 'Terlalu mirip'));
+    var kepala = c.status === 'HIJAU' ? 'Belum pernah dipakai. Judul ini bisa diajukan.' :
+      (c.status === 'KUNING' ? 'Ada judul yang mirip. Boleh diajukan, tapi ditandai untuk ditinjau Sekprodi.' : 'Tidak bisa diajukan. Ganti topik, objek, atau fokusnya, lalu cek lagi.');
+    var mirip = (c.miripDb || []).map(function (m) { return { skor: m.skor, judul: m.judul, ket: m.sumber }; })
+      .concat(((c.luar && c.luar.mirip) || []).map(function (m) { return { skor: m.skor, judul: m.judul, ket: m.sumber + (m.tahun ? ' ' + m.tahun : '') }; }))
+      .sort(function (a, b) { return b.skor - a.skor; }).slice(0, 3);
+    if (c.status === 'HIJAU') mirip = [];
+    var luar = c.luar || { aktif: false, sumber: [] }, chip = '<span>Database prodi · ' + c.jumlahDb + ' judul</span>';
+    if (!luar.aktif) chip += '<span class="mati">Sumber luar dimatikan</span>';
+    else luar.sumber.forEach(function (s) { chip += '<span' + (s.ok ? '' : ' class="mati"') + '>' + e(s.nama) + (s.ok ? '' : ' · tidak terjangkau') + '</span>'; });
+    var ket = '';
+    if (luar.aktif && !luar.terjangkau) ket = '<span>Sumber luar sedang tidak bisa dihubungi, jadi judul ini baru dicek ke database prodi.</span>';
+    w.innerHTML = '<div class="hasil ' + kelas + '"><div class="cap">' + cap + '</div><div class="isi"><b>' + kepala + '</b>' +
+      '<span>Kemiripan tertinggi <b class="mono">' + c.skor + '%</b></span>' +
+      (mirip.length ? '<ul>' + mirip.map(function (m) { return '<li><span class="sk">' + m.skor + '%</span><span>' + e(m.judul) + '<small>' + e(m.ket) + '</small></span></li>'; }).join('') + '</ul>' : '') +
+      ket + '<div class="sumber">' + chip + '</div></div></div>';
+  }
+  function cekJudul(i, tombol) {
+    var teks = S.judul[i].teks.trim(), kotak = $('daftarJudul').closest('.lembar').querySelector('[data-galat]');
+    galat(kotak, '');
+    if (teks.split(/\s+/).length < 5) { galat(kotak, 'Judul ' + (i + 1) + ' terlalu pendek. Tulis judul lengkap, minimal 5 kata.'); return; }
+    sibuk(tombol, true);
+    api('apiCekJudul', teks, $('fNim').value.trim()).then(function (c) {
+      if (S.judul[i].teks.trim() !== teks) return;
+      S.judul[i].cek = c; tampilHasil(i);
+    }).catch(function (x) { galat(kotak, x.message); }).then(function () { sibuk(tombol, false); });
+  }
+
+  /* ---------------- tinjau & kirim ---------------- */
+  function ipkSks() {
+    if (S.mode === 'transkrip') { var t = hitung(); return { ipk: t.ipk, sks: t.lulus }; }
+    return { ipk: Number($('fIpk').value.replace(',', '.')) || 0, sks: parseInt($('fSks').value, 10) || 0 };
+  }
+  function renderTinjau() {
+    var d = dataDiri(), n = ipkSks();
+    var baris = [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['Kekhususan', d.kekhususan], ['Tempat, tgl lahir', d.tempatLahir + ', ' + d.tglLahir.split('-').reverse().join('-')],
+      ['No. HP / WA', d.wa], ['Dosen wali', d.dosenWali], ['IPK', koma(n.ipk, 2)], ['Kredit kumulatif', n.sks + ' SKS'], ['Scan KRS', S.krs ? S.krs.nama : '-']];
+    $('tinjau').innerHTML = baris.map(function (b) { return '<dt>' + b[0] + '</dt><dd>' + e(b[1]) + '</dd>'; }).join('');
+    var tk = bacaLokal('pjs-terakhir'); if (tk && tk.nim === d.nim && !$('fKodeLama').value) $('fKodeLama').value = tk.kode;
+    $('tinjauJudul').innerHTML = S.judul.map(function (j) { return '<li><span>' + e(j.teks.trim()) + '</span>' + pilPil(j.cek && j.cek.status) + '</li>'; }).join('');
+  }
+  function kirim() {
+    var kotak = $('bKirim').closest('.lembar').querySelector('[data-galat]');
+    if (!$('fSetuju').checked) { galat(kotak, 'Centang pernyataan di atas dulu.'); return; }
+    galat(kotak, '');
+    var d = dataDiri();
+    d.modeNilai = S.mode; d.nilai = S.nilai; d.ipk = $('fIpk').value; d.sks = $('fSks').value;
+    d.tanpaD = $('fTanpaD').checked; d.lulusMph = $('fLulusMph').checked; d.krsSkripsi = $('fKrsSkripsi').checked;
+    d.krs = S.krs ? { nama: S.krs.nama, mime: S.krs.mime, b64: S.krs.b64 } : null;
+    d.judul = S.judul.map(function (j) { return j.teks.trim(); }); d.setuju = true; d.kodeLama = $('fKodeLama').value.trim().toUpperCase();
+    sibuk($('bKirim'), true);
+    api('apiKirim', d).then(function (h) {
+      simpanLokal('pjs-terakhir', { nim: h.rekaman.nim, kode: h.rekaman.kode }); hapusLokal('pjs-draf');
+      semua('[data-langkah]').forEach(function (s) { s.hidden = true; });
+      $('langkah').hidden = true; $('pembuka').hidden = true;
+      $('wSelesai').hidden = false; renderStatus(h, $('wSelesai'), true);
+      S.krs = null; $('fKrs').value = ''; $('fKrsSkripsi').checked = false; infoKrs();
+      $('fSetuju').checked = false; $('fKodeLama').value = ''; S.judul.forEach(function (j) { j.teks = ''; j.cek = null; });
+      window.scrollTo(0, 0);
+    }).catch(function (x) { galat(kotak, x.message); }).then(function () { sibuk($('bKirim'), false); });
+  }
+
+  /* ---------------- status & surat ---------------- */
+  function renderStatus(h, wadah, baru) {
+    var r = h.rekaman, st = r.status, tiket, alur;
+    if (st === 'ACC') {
+      tiket = ['Disetujui. Selamat!', 'Judul dan dosen pembimbingmu sudah ditetapkan. Unduh suratnya, lalu segera hubungi pembimbingmu.'];
+    } else if (st === 'Revisi') {
+      tiket = ['Perlu revisi', 'Sekprodi meminta judulmu diperbaiki. Baca catatannya, lalu ajukan lagi.'];
+    } else if (st === 'Ditolak') {
+      tiket = ['Belum disetujui', 'Pengajuan ini tidak disetujui. Baca catatannya, lalu ajukan judul baru.'];
+    } else {
+      tiket = [baru ? 'Terkirim. Tinggal tunggu.' : 'Sedang ditinjau', 'Pengajuanmu sudah masuk ke Sekprodi. Simpan kode di samping: itu kunci Log in-mu di SKRIPSPACE, berlaku seterusnya.'];
+    }
+    alur = '<li class="sudah"><div><b>Pengajuan dikirim</b><span>' + e(r.waktu) + ' WIB · ' + e(r.id) + '</span></div></li>';
+    if (st === 'Menunggu') alur += '<li class="kini"><div><b>Ditinjau Sekprodi</b><span>Judul dipilih dan dosen pembimbing ditetapkan.</span></div></li><li><div><b>Surat persetujuan terbit</b><span>Muncul di halaman ini setelah disetujui.</span></div></li>';
+    else if (st === 'ACC') alur += '<li class="sudah"><div><b>Ditinjau Sekprodi</b><span>' + e(r.tanggalKeputusan.split('-').reverse().join('-')) + '</span></div></li><li class="kini"><div><b>Disetujui</b><span>Pembimbing: ' + e(r.dosenPembimbing) + '</span></div></li>';
+    else alur += '<li class="gagal"><div><b>' + (st === 'Revisi' ? 'Diminta revisi' : 'Tidak disetujui') + '</b><span>' + e(r.catatan || '') + '</span></div></li>';
+
+    var rinci = '';
+    if (st === 'ACC') rinci = '<div class="pembimbing"><div><small>Dosen pembimbingmu</small><b>' + e(r.dosenPembimbing) + '</b><span>' + (r.waPembimbing ? 'WhatsApp <span class="mono">' + e(tampilWa(r.waPembimbing)) + '</span>' : 'Nomor WhatsApp belum tersedia. Tanyakan ke admin prodi.') + '</span></div>' +
+      (r.waPembimbing ? '<a class="tombol wa" href="https://wa.me/' + e(r.waPembimbing) + '" target="_blank" rel="noopener">Chat WhatsApp</a>' : '') + '</div>' +
+      '<dl class="rinci"><dt>Judul disetujui</dt><dd><b>' + e(r.judulDisetujui) + '</b></dd>' + (r.nomorSurat ? '<dt>Nomor surat</dt><dd class="mono">' + e(r.nomorSurat) + '</dd>' : '') + (r.catatan ? '<dt>Catatan</dt><dd>' + e(r.catatan) + '</dd>' : '') + '</dl>';
+    else rinci = '<ol class="daftarjudul">' + r.judul.map(function (j, i) { return '<li><span>' + e(j) + '</span>' + pilPil(r.statusJudul[i]) + '</li>'; }).join('') + '</ol>';
+
+    var lanjutan = st === 'Menunggu' ? '<div class="catat"><b>Yang perlu kamu lakukan:</b> unduh surat permohonan di bawah, cetak, dan minta tanda tangan dosen wali. Hasil persetujuan bisa dilihat lewat menu <b>Log in</b> sebagai Mahasiswa, dengan NIM dan kode pengajuan.</div>' + (baru ? '<div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-masuk-mhs>Masuk ke ruang kerjaku</button></div></div>' : '') :
+      (st === 'ACC' ? '<div class="catat baik">Perkenalkan diri dengan sopan saat pertama menghubungi pembimbing: sebutkan nama, NIM, dan judul yang disetujui. Cetak surat persetujuan, pindai jadi PDF, lalu kirim ke staf akademik dan dosen pembimbing. Setiap bimbingan wajib dicatat di tab <b>Bimbingan</b>.</div>' :
+        '<div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-ajukan-lagi>Ajukan judul baru</button></div></div>');
+
+    wadah.innerHTML = '<div style="display:flex;flex-direction:column;gap:22px">' +
+      '<div class="tiket"><div class="kiri"><h2>' + e(tiket[0]) + '</h2><p>' + e(tiket[1]) + '</p><div class="fakta"><span>' + e(r.nama) + '</span><span class="mono">' + e(r.nim) + '</span><span>' + e(r.kelas) + '</span></div></div>' +
+      '<div class="kanan"><small>Kode pengajuan</small><b>' + e(r.kode) + '</b><button type="button" data-salin="' + e(r.kode) + '">Salin kode</button></div></div>' +
+      '<section class="lembar"><ol class="alur">' + alur + '</ol>' + rinci + lanjutan + '</section>' +
+      '<section class="lembar"><header><h2>Suratmu</h2><p>' + (st === 'ACC' ? 'Permohonan, persetujuan Kaprodi, dan penunjukan dosen pembimbing.' : 'Surat permohonan sudah terisi otomatis dari data yang kamu kirim.') + '</p></header>' +
+      '<div class="surat" data-surat></div></section></div>';
+    pasangSurat(wadah.querySelector('[data-surat]'), h, r);
+  }
+
+  function pasangSurat(w, h, r) {
+    var aktif = 0;
+    w.innerHTML = '<div class="tab" role="tablist">' + h.surat.map(function (s, i) { return '<button type="button" role="tab" aria-selected="' + (i === 0) + '" data-hal="' + i + '">' + e(s.judul) + '</button>'; }).join('') + '</div>' +
+      '<div class="bingkai"><div class="kertas-wadah"><div class="kertas" style="' + e(h.gayaSurat) + '"></div></div></div>' +
+      (HIDUP ? '<div class="aksi"><span class="isian"><span class="bantu">Kertas ' + (h.kertas || 'F4') + '. Semua halaman jadi satu berkas.</span></span><div class="kanan"><button type="button" class="tombol" data-cetak>Cetak</button><button type="button" class="tombol utama" data-pdf>Unduh PDF</button></div></div>'
+        : '<div class="catat">Di pratinjau ini surat hanya bisa dilihat. Tombol <b>Unduh PDF</b> dan <b>Cetak</b> muncul setelah aplikasi dipasang.</div>');
+    var kertas = w.querySelector('.kertas'), wadah = w.querySelector('.kertas-wadah');
+    function skala() {
+      var lebar = wadah.clientWidth; if (!lebar) return;
+      var s = Math.min(1, lebar / 816);
+      kertas.style.transform = 'scale(' + s + ')'; wadah.style.height = Math.ceil(kertas.offsetHeight * s) + 'px';
+      wadah.style.width = s < 1 ? '100%' : '816px'; wadah.style.margin = s < 1 ? '0' : '0 auto';
+    }
+    function buka(i) {
+      aktif = i; kertas.innerHTML = h.surat[i].html;
+      semua('[data-hal]', w).forEach(function (b, n) { b.setAttribute('aria-selected', String(n === i)); });
+      skala(); semua('img', kertas).forEach(function (im) { im.addEventListener('load', skala); });
+    }
+    w.addEventListener('click', function (ev) {
+      var t = ev.target.closest('button'); if (!t) return;
+      if (t.hasAttribute('data-hal')) buka(Number(t.getAttribute('data-hal')));
+      if (t.hasAttribute('data-cetak')) cetak(h);
+      if (t.hasAttribute('data-pdf')) unduhPdf(r, h, t);
+    });
+    window.addEventListener('resize', skala);
+    buka(0); setTimeout(skala, 60); setTimeout(skala, 600);
+  }
+  function cetak(h) {
+    var g = $('gayaCetak');
+    if (!g) { g = document.createElement('style'); g.id = 'gayaCetak'; document.head.appendChild(g); }
+    g.textContent = h.kertas === 'A4' ? '@media print{@page{size:A4;margin:0.5in 0.85in}}' : '';
+    $('cetak').innerHTML = h.surat.map(function (s) { return '<div class="hal" style="' + e(h.gayaSurat) + '">' + s.html + '</div>'; }).join('');
+    setTimeout(function () { try { window.print(); } catch (x) { toast('Browser ini tidak bisa mencetak dari sini. Pakai Unduh PDF.'); } }, 80);
+  }
+  function unduhPdf(r, h, tombol) {
+    sibuk(tombol, true);
+    (h.pdf ? h.pdf() : api('apiPdf', r.nim, r.kode)).then(function (p) {
+      var biner = atob(p.b64), u8 = new Uint8Array(biner.length);
+      for (var i = 0; i < biner.length; i++) u8[i] = biner.charCodeAt(i);
+      var url = URL.createObjectURL(new Blob([u8], { type: 'application/pdf' })), a = document.createElement('a');
+      a.href = url; a.download = p.nama; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 20000);
+      toast('PDF diunduh.');
+    }).catch(function () { toast('PDF belum bisa dibuat. Membuka dialog cetak, pilih "Simpan sebagai PDF".'); cetak(h); })
+      .then(function () { sibuk(tombol, false); });
+  }
+
+  /* ---------------- izin riset (mahasiswa) ---------------- */
+  function rData() {
+    var k = document.querySelector('input[name="rkelas"]:checked');
+    return { nama: $('rNama').value.trim(), nim: $('rNimBaru').value.trim(), wa: $('rWa').value.trim(), kelas: k ? k.value : '',
+      judul: $('rJudul').value.replace(/\s+/g, ' ').trim(), dosenPembimbing: $('rDosen').value.trim(), instansi: $('rInstansi').value.trim(), pimpinan: $('rPimpinan').value.trim() };
+  }
+  function rPeriksa(n) {
+    var d = rData();
+    if (n === 1) {
+      if (d.nama.length < 3) return ['rNama', 'Nama lengkap belum diisi.'];
+      if (!/^\d{11}$/.test(d.nim)) return ['rNimBaru', 'NIM harus 11 digit angka.'];
+      if (d.wa.replace(/\D/g, '').length < 9) return ['rWa', 'Nomor HP/WhatsApp belum benar.'];
+      if (!d.kelas) return ['rkReguler', 'Pilih kelasmu: Reguler, Eksekutif, atau RPL.'];
+    }
+    if (n === 2) {
+      if (d.judul.split(' ').length < 5) return ['rJudul', 'Tulis judul penelitian dengan lengkap, minimal 5 kata.'];
+      if (d.dosenPembimbing.length < 3) return ['rDosen', 'Dosen pembimbing belum diisi.'];
+    }
+    if (n === 3 && d.instansi.length < 4) return ['rInstansi', 'Tulis nama instansi tujuan riset dengan lengkap.'];
+    return null;
+  }
+  function rLangkah(n) {
+    semua('[data-rl]').forEach(function (s) { s.hidden = Number(s.getAttribute('data-rl')) !== n; });
+    semua('#rLangkah li').forEach(function (li, i) { li.className = i + 1 < n ? 'lewat' : (i + 1 === n ? 'kini' : ''); });
+    if (n === 4) {
+      var d = rData();
+      $('rTinjau').innerHTML = [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['No. HP / WA', d.wa], ['Judul penelitian', d.judul], ['Dosen pembimbing', d.dosenPembimbing],
+        ['Instansi tujuan', d.instansi], ['Ditujukan kepada', d.pimpinan || 'Pimpinan']].map(function (b) { return '<dt>' + e(b[0]) + '</dt><dd>' + e(b[1]) + '</dd>'; }).join('');
+    }
+    if (n !== 1) window.scrollTo(0, $('rLangkah').getBoundingClientRect().top + window.scrollY - 12);
+  }
+  function rMode(m) {
+    $('rmAjukan').checked = m === 'ajukan'; $('rmStatus').checked = m === 'status';
+    $('rAjukan').hidden = m !== 'ajukan'; $('rMasuk').hidden = m !== 'status' || !!S.riset; $('rIsi').hidden = m !== 'status' || !S.riset; $('pembukaRiset').hidden = m === 'status' && !!S.riset;
+    if (m === 'status' && !S.riset) { var t = bacaLokal('pjs-riset') || window.__contohRiset; if (t && !$('rNim').value) { $('rNim').value = t.nim; $('rKode').value = t.kode; } }
+  }
+  function tampilRiset(d, baru) {
+    S.riset = { nim: d.mahasiswa.nim, kode: d.mahasiswa.kode }; simpanLokal('pjs-riset', S.riset);
+    renderRiset(d, baru); rMode('status'); window.scrollTo(0, 0);
+  }
+  function kirimRiset() {
+    var kotak = document.querySelector('[data-rl="4"] [data-galat]'), d = rData();
+    for (var n = 1; n <= 3; n++) { var g = rPeriksa(n); if (g) { rLangkah(n); galat(document.querySelector('[data-rl="' + n + '"] [data-galat]'), g[1]); return; } }
+    if (!$('rSetuju').checked) { galat(kotak, 'Centang pernyataan terlebih dahulu.'); return; }
+    d.setuju = true; galat(kotak, ''); sibuk($('bRisetKirim'), true);
+    api('apiRisetKirim', d).then(function (h) {
+      $('rInstansi').value = ''; $('rPimpinan').value = ''; $('rSetuju').checked = false; rLangkah(1); tampilRiset(h, true);
+    }).catch(function (x) { galat(kotak, x.message); }).then(function () { sibuk($('bRisetKirim'), false); });
+  }
+  function bukaRiset() {
+    var nim = $('rNim').value.trim(), kode = $('rKode').value.trim().toUpperCase();
+    if (!/^\d{11}$/.test(nim) || kode.length < 6) { galat($('rGalat'), 'Isi NIM (11 digit) dan kode izin riset (6 karakter).'); return; }
+    galat($('rGalat'), ''); sibuk($('bRiset'), true);
+    api('apiRiset', nim, kode).then(function (d) { tampilRiset(d, false); })
+      .catch(function (x) { galat($('rGalat'), x.message); }).then(function () { sibuk($('bRiset'), false); });
+  }
+  function renderRiset(d, baru) {
+    var m = d.mahasiswa, tunggu = d.riset.filter(function (x) { return x.status === 'Menunggu'; }).length;
+    var h = '<div class="tiket"><div class="kiri"><h2>' + (baru ? 'Terkirim. Tinggal tunggu.' : (tunggu ? 'Menunggu Kaprodi' : 'Izin risetmu')) + '</h2><p>' +
+      (baru ? 'Permohonanmu sudah masuk ke Kaprodi. Simpan kode di samping untuk melihat status dan mengunduh surat.' : 'Surat muncul di bawah begitu permohonan disetujui Kaprodi.') + '</p>' +
+      '<div class="fakta"><span>' + e(m.nama) + '</span><span class="mono">' + e(m.nim) + '</span><span>' + e(m.kelas) + '</span></div></div>' +
+      '<div class="kanan"><small>Kode izin riset</small><b>' + e(m.kode) + '</b><button type="button" data-salin="' + e(m.kode) + '">Salin kode</button></div></div>';
+    d.riset.forEach(function (x, i) {
+      var pil = x.status === 'Disetujui' ? 'hijau' : (x.status === 'Ditolak' ? 'merah' : 'kuning');
+      h += '<article class="berkas"><div class="kepala"><h3>' + e(x.instansi) + '</h3><span class="pil ' + pil + '">' + e(x.status === 'Menunggu' ? 'Menunggu Kaprodi' : x.status) + '</span></div>' +
+        '<div class="meta"><span>Kepada: <b>' + e(x.pimpinan) + '</b></span><span>Diajukan ' + e(x.waktu) + '</span>' + (x.nomor ? '<span>No. <b class="mono">' + e(x.nomor) + '</b></span>' : '') + '</div>' +
+        (x.status === 'Menunggu' ? '<div class="catat">Permohonan ini sedang menunggu persetujuan Kaprodi. Buka lagi menu ini nanti; begitu disetujui, kedua surat muncul di sini.</div>' : '') +
+        (x.status === 'Ditolak' ? '<div class="catat galat"><b>Tidak disetujui.</b> ' + e(x.catatan) + '</div>' : '') +
+        (x.status === 'Disetujui' ? '<div class="catat baik">Disetujui Kaprodi. Cetak kedua surat, tanda tangani surat permohonan, lalu serahkan keduanya ke instansi tujuan.</div><div class="surat" data-riset-surat="' + i + '"></div>' : '') + '</article>';
+    });
+    h += '<section class="lembar"><header><h2 style="font-size:22px">Riset di instansi lain?</h2><p>Data diri, judul, dan pembimbing memakai yang sudah kamu kirim. Cukup tulis instansinya.</p></header>' +
+      '<dl class="rinci"><dt>Judul penelitian</dt><dd>' + e(m.judul) + '</dd><dt>Dosen pembimbing</dt><dd>' + e(m.dosenPembimbing) + '</dd></dl>' +
+      '<div class="kisi"><div class="isian"><label for="rInstansi2">Instansi tujuan riset</label><input type="text" id="rInstansi2" maxlength="120" placeholder="Contoh: Kejaksaan Negeri Kota Semarang"></div>' +
+      '<div class="isian"><label for="rPimpinan2">Jabatan pimpinan instansi</label><input type="text" id="rPimpinan2" maxlength="80" placeholder="Contoh: Kepala"></div></div>' +
+      '<div class="catat galat" data-galat hidden></div><div class="aksi"><button type="button" class="tombol polos" data-r="tutup">Ganti NIM</button><div class="kanan"><button type="button" class="tombol utama" data-r="tambah">Ajukan instansi ini</button></div></div></section>';
+    $('rIsi').innerHTML = h;
+    semua('[data-riset-surat]', $('rIsi')).forEach(function (w) {
+      var x = d.riset[Number(w.getAttribute('data-riset-surat'))];
+      pasangSurat(w, { surat: x.surat, gayaSurat: d.gayaSurat, kertas: 'A4', pdf: function () { return api('apiRisetPdf', S.riset.nim, S.riset.kode, x.id); } }, m);
+    });
+  }
+  function klikRiset(ev) {
+    var t = ev.target.closest('button'); if (!t) return;
+    if (t.hasAttribute('data-rlanjut') || t.hasAttribute('data-rkembali')) {
+      var maju = t.hasAttribute('data-rlanjut'), ke = Number(t.getAttribute(maju ? 'data-rlanjut' : 'data-rkembali')), bagian = t.closest('[data-rl]'), kotak = bagian.querySelector('[data-galat]');
+      if (maju) { var g = rPeriksa(ke - 1); if (g) { galat(kotak, g[1]); var el = $(g[0]); if (el) el.focus(); return; } }
+      galat(kotak, ''); rLangkah(ke); return;
+    }
+    var a = t.getAttribute('data-r');
+    if (a === 'tutup') { S.riset = null; $('rIsi').innerHTML = ''; $('rNim').value = ''; $('rKode').value = ''; rMode('status'); return; }
+    if (a === 'tambah') {
+      var kt = t.closest('.lembar').querySelector('[data-galat]'), ins = $('rInstansi2').value.trim(), pim = $('rPimpinan2').value.trim();
+      if (ins.length < 4) { galat(kt, 'Tulis nama instansi tujuan riset dengan lengkap.'); $('rInstansi2').focus(); return; }
+      galat(kt, ''); sibuk(t, true);
+      api('apiRisetAjukan', S.riset.nim, S.riset.kode, { instansi: ins, pimpinan: pim }).then(function (d) { renderRiset(d, false); window.scrollTo(0, 0); toast('Permohonan terkirim. Menunggu persetujuan Kaprodi.'); })
+        .catch(function (x) { galat(kt, x.message); sibuk(t, false); });
+    }
+  }
+
+  /* ---------------- panel sekprodi ---------------- */
+  function opsiDosen(r) {
+    var aktif = r.calon.filter(function (c) { return c.beban > 0; }), belum = r.calon.filter(function (c) { return c.beban === 0; });
+    if (!aktif.length) { aktif = belum; belum = []; }
+    var sudah = {}; r.calon.forEach(function (c) { sudah[c.nama] = 1; });
+    // semua dosen lain di luar bidang mahasiswa, tetap bisa dipilih
+    var lain = S.admin.dosen.filter(function (d) { return !sudah[d.nama]; }).sort(function (x, y) { return (x.aktif ? 0 : 1) - (y.aktif ? 0 : 1) || x.beban - y.beban || x.nama.localeCompare(y.nama); });
+    function o(c) {
+      var ket = c.aktif === false ? ' · tidak aktif' : '';
+      return '<option value="' + e(c.nama) + '"' + (c.nama === r.usulan ? ' selected' : '') + (c.aktif === false ? ' disabled' : '') + '>' + e(c.nama) + ' · ' + c.beban + ' bimbingan' + ket + '</option>';
+    }
+    return '<optgroup label="Sesuai bidang · urut dari perolehan paling sedikit">' + aktif.map(o).join('') + '</optgroup>' +
+      (belum.length ? '<optgroup label="Sesuai bidang · belum membimbing semester ini">' + belum.map(o).join('') + '</optgroup>' : '') +
+      (lain.length ? '<optgroup label="Semua dosen lain (termasuk dosen wali)">' + lain.map(o).join('') + '</optgroup>' : '') +
+      '<optgroup label="Lainnya"><option value="__lain">Tulis nama lain…</option></optgroup>';
+  }
+  function tampilWa(no) { var n = String(no || ''); return n ? '+' + n.slice(0, 2) + ' ' + n.slice(2, 5) + '-' + n.slice(5, 9) + '-' + n.slice(9) : ''; }
+  function renderAdmin() {
+    var a = S.admin, h = '';
+    h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Antrean pengajuan judul</h2></div></div>';
+    h += '<div class="angka"><div class="sorot"><b>' + (a.hitung.Menunggu || 0) + '</b><span>Menunggu</span></div><div><b>' + (a.hitung.ACC || 0) + '</b><span>Disetujui</span></div><div><b>' + (a.hitung.Revisi || 0) + '</b><span>Revisi</span></div><div><b>' + (a.hitung.Ditolak || 0) + '</b><span>Ditolak</span></div></div>';
+    var kap = a.peran === 'kaprodi', rs = a.riset || { menunggu: [], riwayat: [] }, hr = '';
+    hr += '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Izin riset</h2></div><span class="pil ' + (rs.menunggu.length ? 'kuning' : 'netral') + '">' + rs.menunggu.length + ' menunggu</span></div>';
+    if (!rs.menunggu.length) hr += '<div class="kosong"><b>Tidak ada permohonan izin riset</b>Permohonan dari mahasiswa akan muncul di sini.</div>';
+    rs.menunggu.forEach(function (x) {
+      hr += '<article class="berkas" data-riset-id="' + e(x.id) + '"><div class="kepala"><h3>' + e(x.nama) + '</h3><span class="pil kuning">Izin riset</span></div>' +
+        '<div class="meta"><span class="mono"><b>' + e(x.nim) + '</b></span><span>' + e(x.kelas) + '</span><span>WA <b class="mono">' + e(x.wa) + '</b></span><span>' + e(x.waktu) + '</span></div>' +
+        '<dl class="rinci"><dt>Instansi tujuan</dt><dd><b>' + e(x.instansi) + '</b></dd><dt>Ditujukan kepada</dt><dd>' + e(x.pimpinan) + '</dd><dt>Judul penelitian</dt><dd>' + e(x.judul) + '</dd><dt>Dosen pembimbing</dt><dd>' + e(x.dosenPembimbing) + '</dd></dl>' +
+        (function (c) {
+          if (!c) return '';
+          if (!c.ada) return '<div class="catat galat"><b>NIM tidak ditemukan di data pengajuan judul prodi.</b> Periksa dulu sebelum menyetujui.</div>';
+          if (c.judulSama && c.dosenSama) return '<div class="catat baik"><b>Cocok dengan data prodi.</b> Judul dan dosen pembimbing sama dengan yang tercatat.</div>';
+          return '<div class="catat"><b>Berbeda dengan data prodi.</b>' + (c.judulSama ? '' : ' Judul tercatat: ' + e(c.judul) + '.') + (c.dosenSama ? '' : ' Pembimbing tercatat: ' + e(c.dosen) + '.') + '</div>';
+        })(x.resmi) +
+        (kap ? '<div class="kisi"><div class="isian"><label for="rn-' + e(x.id) + '">Nomor surat pengantar</label><input type="text" id="rn-' + e(x.id) + '" class="mono" data-f="nomor" value="' + e(a.nomorBerikut) + '" maxlength="40"></div>' +
+          '<div class="isian penuh"><label for="rc-' + e(x.id) + '">Catatan untuk mahasiswa</label><textarea id="rc-' + e(x.id) + '" data-f="catatan" maxlength="300" style="min-height:56px" placeholder="Wajib diisi bila menolak"></textarea></div></div>' +
+          '<div class="catat galat" data-galat hidden></div><div class="aksi"><button type="button" class="tombol kecil bahaya" data-riset-aksi="TOLAK">Tolak</button><div class="kanan"><button type="button" class="tombol utama" data-riset-aksi="SETUJU">Setujui dan terbitkan surat</button></div></div>'
+          : '<div class="catat">Menunggu persetujuan Kaprodi. Kaprodi masuk lewat menu ini dengan kode aksesnya sendiri.</div>') + '</article>';
+    });
+    if (rs.riwayat.length) hr += '<details class="lipat"><summary>Riwayat izin riset (' + rs.riwayat.length + ')</summary><div><ul class="riwayat">' + rs.riwayat.map(function (x) {
+      return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>' + e(x.instansi + (x.status === 'Disetujui' ? ' · No. ' + x.nomor : ' · ' + x.catatan)) + '</small></span><span class="pil ' + (x.status === 'Disetujui' ? 'hijau' : 'merah') + '">' + e(x.status) + '</span></li>';
+    }).join('') + '</ul></div></details>';
+    if (kap) h += '<div class="catat baik">Anda masuk sebagai <b>Kaprodi</b>. Persetujuan izin riset hanya bisa dilakukan dari akses ini.</div>' + hr;
+    if (!a.antrean.length) h += '<div class="kosong"><b>Antrean kosong</b>Pengajuan baru dari mahasiswa akan muncul di sini.</div>';
+    a.antrean.forEach(function (r) {
+      h += '<article class="berkas" data-id="' + e(r.id) + '"><div class="kepala"><h3>' + e(r.nama) + '</h3><span>' + (r.ulang ? '<span class="pil kuning">Pengajuan ulang</span> ' : '') + '<span class="pil netral">' + e(r.kelas) + '</span></span></div>' +
+        '<div class="meta"><span class="mono"><b>' + e(r.nim) + '</b></span><span>' + e(r.kekhususan) + '</span><span>IPK <b class="mono">' + koma(r.ipk, 2) + '</b></span><span><b class="mono">' + r.sks + '</b> SKS</span><span>Wali: <b>' + e(r.dosenWali) + '</b></span><span>WA <b class="mono">' + e(r.wa) + '</b></span><span>' + e(r.waktu) + '</span></div>' +
+        '<div class="aksi"><span class="bantu" style="font-size:13.5px;color:var(--muted)">' + (r.manual ? 'IPK dan SKS diisi manual; tanpa nilai D dan lulus MPH berdasarkan pernyataan mahasiswa. ' : 'Syarat SKS, IPK, nilai D, dan MPH sudah diperiksa dari isian nilai. ') + (r.krs ? 'Scan KRS: <b>' + e(r.krs.nama) + '</b> (' + r.krs.kb + ' KB)' : 'Scan KRS tidak ada (pengajuan lama).') + '</span>' +
+        (r.krs ? '<div class="kanan"><button type="button" class="tombol kecil" data-krs="' + e(r.id) + '">Lihat KRS</button></div>' : '') + '</div><div class="lihatkrs" data-krs-wadah></div>' +
+        '<div role="radiogroup" aria-label="Judul yang disetujui">' + r.judul.map(function (j, i) {
+          var c = r.cek[i] || {}, m = (c.mirip || [])[0];
+          return '<label class="opsi"><input type="radio" name="j-' + e(r.id) + '" value="' + i + '"' + (i === r.saranJudul ? ' checked' : '') + '><span>' + e(j) +
+            '<small>Kemiripan ' + (r.skor[i] || 0) + '%' + (m ? ' · termirip: ' + e(m.judul) + ' (' + e(m.sumber) + ')' : '') + '</small></span>' + pilPil(c.status) + '</label>';
+        }).join('') + '</div>' +
+        '<div class="isian"><label for="jd-' + e(r.id) + '">Judul yang disetujui</label><textarea id="jd-' + e(r.id) + '" data-f="judul" maxlength="400">' + e(r.judul[r.saranJudul]) + '</textarea><span class="bantu">Boleh disunting sebelum disetujui.</span></div>' +
+        '<div class="kisi"><div class="isian"><label for="ds-' + e(r.id) + '">Dosen pembimbing</label><select id="ds-' + e(r.id) + '" data-f="dosen">' + opsiDosen(r) + '</select>' +
+        '<input type="text" id="dl-' + e(r.id) + '" data-f="dosenLain" placeholder="Nama dan gelar lengkap" hidden><span class="bantu">Usulan otomatis: perolehan paling sedikit di bidangnya, bukan dosen wali. Semua dosen lain ada di bagian bawah daftar.</span></div>' +
+        '<div class="isian"><label for="ns-' + e(r.id) + '">Nomor surat</label><input type="text" id="ns-' + e(r.id) + '" class="mono" data-f="nomor" value="' + e(a.nomorBerikut) + '" maxlength="40"></div>' +
+        '<div class="isian penuh"><label for="ct-' + e(r.id) + '">Catatan untuk mahasiswa</label><textarea id="ct-' + e(r.id) + '" data-f="catatan" maxlength="400" style="min-height:64px" placeholder="Wajib diisi bila meminta revisi atau menolak"></textarea></div></div>' +
+        '<div class="catat galat" data-galat hidden></div>' +
+        '<div class="aksi"><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="tombol kecil bahaya" data-aksi="TOLAK">Tolak</button><button type="button" class="tombol kecil" data-aksi="REVISI">Minta revisi</button></div>' +
+        '<div class="kanan"><button type="button" class="tombol utama" data-aksi="ACC">Setujui dan terbitkan surat</button></div></div></article>';
+    });
+    if (!kap) h += hr;
+    var maks = Math.max.apply(null, a.dosen.map(function (d) { return d.beban; }).concat([1]));
+    var total = a.dosen.reduce(function (n, d) { return n + d.beban; }, 0);
+    h += '<details class="lipat" open><summary>Daftar dosen dan perolehan bimbingan (' + a.dosen.length + ' dosen · ' + total + ' bimbingan)</summary><div><div class="tabel-wadah"><table class="beban"><thead><tr><th>Dosen</th><th>Bidang</th><th>WhatsApp</th><th>Kode akses</th><th colspan="2">Perolehan</th></tr></thead><tbody>' +
+      a.dosen.slice().sort(function (x, y) { return y.beban - x.beban; }).map(function (d) {
+        return '<tr' + (d.aktif ? '' : ' class="mati"') + '><td>' + e(d.nama) + '</td><td>' + e(d.rumpun + (d.bidang ? ' / ' + d.bidang : '')) + '</td><td class="mono" style="white-space:nowrap;font-size:12.5px">' + (d.wa ? e(tampilWa(d.wa)) : '<span style="color:var(--bad)">belum ada</span>') + '</td><td class="mono" style="white-space:nowrap;font-size:12.5px"><b>' + e(d.kode || '-') + '</b></td><td class="n">' + d.beban + '</td><td style="width:22%"><div class="batang" style="width:' + Math.round(100 * d.beban / maks) + '%"></div></td></tr>';
+      }).join('') + '</tbody></table></div><p class="catat">Perolehan dihitung dari tab REGULER dan EKS &amp; RPL, ditambah usulan yang masih menunggu. Dosen yang dicoret tidak diusulkan lagi. Nomor WhatsApp diambil dari tab <b>KONTAK DOSEN</b>; ubah di sana bila ada nomor yang berganti. <b>Kode akses</b> tiap dosen dibuat otomatis, berbeda satu sama lain, dan tersimpan di kolom "Kode Akses" tab yang sama.</p></div></details>';
+    h += '<details class="lipat"><summary>Riwayat keputusan</summary><div>' + (a.riwayat.length ? '<ul class="riwayat">' + a.riwayat.map(function (r) {
+      var k = r.status === 'ACC' ? 'hijau' : (r.status === 'Revisi' ? 'kuning' : 'merah');
+      return '<li><span><b>' + e(r.nama) + '</b> <span class="mono">' + e(r.nim) + '</span><small>' + e(r.status === 'ACC' ? r.judulDisetujui + ' · ' + r.dosenPembimbing : r.catatan) + '</small></span>' +
+        '<span style="text-align:right"><span class="pil ' + k + '">' + e(r.status === 'ACC' ? 'Disetujui' : r.status) + '</span><br><button type="button" class="tombol kecil polos" data-surat-nim="' + e(r.nim) + '" data-surat-kode="' + e(r.kode) + '">Lihat surat</button></span></li>';
+    }).join('') + '</ul>' : '<p class="catat">Belum ada keputusan.</p>') + '<div id="aSurat"></div></div></details>';
+    var t = a.atur;
+    h += '<details class="lipat"><summary>Pengaturan</summary><div>' +
+      '<div><label class="sakelar"><span><b>Pengajuan dibuka</b><br><span class="bantu" style="color:var(--muted);font-size:13px">Matikan untuk menutup formulir mahasiswa.</span></span><input type="checkbox" data-atur="dibuka"' + (t.dibuka ? ' checked' : '') + '></label>' +
+      '<label class="sakelar"><span><b>Cek sumber luar</b><br><span style="color:var(--muted);font-size:13px">OpenAlex, Crossref, Repository UNISSULA.</span></span><input type="checkbox" data-atur="cekLuar"' + (t.cekLuar ? ' checked' : '') + '></label>' +
+      '<label class="sakelar"><span><b>Tulis ke tab resmi saat disetujui</b><br><span style="color:var(--muted);font-size:13px">Menambah baris di tab REGULER atau EKS &amp; RPL.</span></span><input type="checkbox" data-atur="tulisResmi"' + (t.tulisResmi ? ' checked' : '') + '></label></div>' +
+      '<div class="kisi"><div class="isian"><label for="atNomor">Nomor surat terakhir</label><input type="text" id="atNomor" class="mono" value="' + e(t.nomorTerakhir) + '" inputmode="numeric" maxlength="6"><span class="bantu">Kosongkan bila nomor ditulis tangan.</span></div>' +
+      '<div class="isian"><label for="atTa">Tahun akademik</label><input type="text" id="atTa" class="mono" value="' + e(t.tahunAkademik) + '" maxlength="9"></div>' +
+      '<div class="isian penuh"><label for="atMati">Dosen yang tidak lagi membimbing</label><input type="text" id="atMati" value="' + e(t.tidakAktif) + '" maxlength="300"><span class="bantu">Pisahkan dengan titik koma (;).</span></div></div>' +
+      '<div class="aksi"><div class="kanan"><button type="button" class="tombol kecil" data-a="simpanAtur">Simpan pengaturan</button></div></div>' +
+      '<div class="isian"><label for="atTtd">Tanda tangan Kaprodi untuk surat ' + (a.adaTtd ? '<span class="pil kuning">Unggahan dipakai</span>' : '<span class="pil hijau">Bawaan terpasang</span>') + '</label><input type="file" id="atTtd" accept="image/png,image/jpeg"><span class="bantu">Tanda tangan Kaprodi (dengan cap fakultas) dan Wakil Dekan I sudah terpasang. Unggah gambar hanya bila ingin mengganti tanda tangan Kaprodi.</span></div>' +
+      (a.adaTtd ? '<div class="aksi"><div class="kanan"><button type="button" class="tombol kecil bahaya" data-a="hapusTtd">Kembali ke tanda tangan bawaan</button></div></div>' : '') +
+      '<div class="aksi"><span class="bantu" style="font-size:13px;color:var(--muted)">Uji apakah sumber luar dan pembuat PDF bisa dipakai.</span><div class="kanan"><button type="button" class="tombol kecil" data-a="uji">Uji sambungan</button></div></div><div id="aUji"></div>' +
+      (a.kodeKaprodi ? '<p class="catat">Kode akses Kaprodi: <b class="mono">' + e(a.kodeKaprodi) + '</b>. Berikan hanya kepada Kaprodi; dengan kode ini beliau masuk lewat Log in (Pengelola Prodi) dan menyetujui izin riset.</p>' : '') +
+      '<p class="catat">Pengaturan lain (kode akses pada baris "PIN Admin" dan "Kode Kaprodi", nama pejabat, ambang kemiripan) ada di tab <b>PENGATURAN</b> pada spreadsheet.</p></div></details>';
+    var atas = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang pengelola prodi</h2><span style="color:var(--muted);font-size:14.5px">Masuk sebagai ' + (kap ? 'Kaprodi' : 'Sekprodi') + ' · S1 Ilmu Hukum</span></div><div class="kanan"><button type="button" class="tombol kecil" data-a="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-a="keluar">Keluar</button></div></div>' +
+      '<div class="tabs" role="tablist">' + [['antre', 'Persetujuan', (a.hitung.Menunggu || 0) + rs.menunggu.length], ['pantau', 'Pantauan bimbingan', S.pantau ? S.pantau.mahasiswa.filter(function (x) { return x.rekap.macet; }).length : 0], ['akun', 'Akun & kode akses', 0]].map(function (x) {
+        return '<button type="button" role="tab" data-atab="' + x[0] + '" aria-selected="' + (S.aTab === x[0]) + '">' + x[1] + (x[2] ? '<i>' + x[2] + '</i>' : '') + '</button>'; }).join('') + '</div>';
+    $('aIsi').innerHTML = atas + (S.aTab === 'pantau' ? hPantau() : (S.aTab === 'akun' ? hAkun() : h));
+  }
+  function segarAdmin(a) { S.admin = a; S.adaBaru = false; renderAdmin(); }
+  function klikAdmin(ev) {
+    var t = ev.target.closest('button'); if (!t) return;
+    var a = t.getAttribute('data-a'), aksi = t.getAttribute('data-aksi');
+    if (a === 'keluar') { keluar(); return; }
+    if (a === 'muat') { sibuk(t, true); S.pantau = null; api('apiAdminData', S.pin).then(segarAdmin).catch(function (x) { toast(x.message); sibuk(t, false); }); return; }
+    if (a === 'simpanAtur') {
+      var p = { nomorTerakhir: $('atNomor').value.trim(), tahunAkademik: $('atTa').value.trim(), tidakAktif: $('atMati').value.trim() };
+      semua('[data-atur]').forEach(function (c) { p[c.getAttribute('data-atur')] = c.checked; });
+      sibuk(t, true); api('apiAdminAtur', S.pin, p).then(function (d) { segarAdmin(d); toast('Pengaturan disimpan.'); }).catch(function (x) { toast(x.message); sibuk(t, false); }); return;
+    }
+    if (a === 'hapusTtd') { sibuk(t, true); api('apiAdminTtd', S.pin, '').then(function (d) { segarAdmin(d); toast('Kembali memakai tanda tangan bawaan.'); }).catch(function (x) { toast(x.message); sibuk(t, false); }); return; }
+    if (a === 'uji') {
+      sibuk(t, true);
+      api('apiAdminUji', S.pin).then(function (u) {
+        $('aUji').innerHTML = '<div class="catat"><b>Hasil uji</b><br>' + u.sumber.map(function (s) { return e(s.nama) + ': ' + (s.ok ? 'terjangkau (' + s.jumlah + ' hasil)' : 'TIDAK terjangkau' + (s.kode ? ' (kode ' + s.kode + ')' : '')); }).join('<br>') +
+          '<br>Pembuat PDF: ' + (u.pdf ? 'berfungsi' : 'tidak tersedia, mahasiswa memakai tombol Cetak') + '<br>Judul di database: ' + u.jumlahJudul + '</div>';
+      }).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); }); return;
+    }
+    if (t.hasAttribute('data-krs')) {
+      var wk = t.closest('.berkas').querySelector('[data-krs-wadah]');
+      sibuk(t, true);
+      api('apiAdminKrs', S.pin, t.getAttribute('data-krs')).then(function (k) {
+        if (k.mime === 'image/jpeg') { wk.innerHTML = '<img alt="Scan KRS" src="data:image/jpeg;base64,' + k.b64 + '">'; return; }
+        var biner = atob(k.b64), u8 = new Uint8Array(biner.length);
+        for (var i = 0; i < biner.length; i++) u8[i] = biner.charCodeAt(i);
+        var url = URL.createObjectURL(new Blob([u8], { type: 'application/pdf' }));
+        wk.innerHTML = '<p class="catat">KRS berupa PDF. <a href="' + url + '" download="' + e(k.nama) + '">Unduh ' + e(k.nama) + '</a></p>';
+      }).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); }); return;
+    }
+    if (t.hasAttribute('data-surat-nim')) {
+      sibuk(t, true);
+      api('apiStatus', t.getAttribute('data-surat-nim'), t.getAttribute('data-surat-kode')).then(function (h) {
+        $('aSurat').innerHTML = '<div class="surat" data-surat></div>'; pasangSurat($('aSurat').firstChild, h, h.rekaman); $('aSurat').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); }); return;
+    }
+    var ra = t.getAttribute('data-riset-aksi');
+    if (ra) {
+      var rb = t.closest('.berkas'), rk = rb.querySelector('[data-galat]');
+      var kr = { aksi: ra, nomor: rb.querySelector('[data-f="nomor"]').value.trim(), catatan: rb.querySelector('[data-f="catatan"]').value.trim() };
+      if (ra === 'TOLAK' && kr.catatan.length < 5) { galat(rk, 'Tulis alasan penolakan untuk mahasiswa dulu.'); return; }
+      if (ra === 'SETUJU' && kr.nomor.length < 3) { galat(rk, 'Isi nomor surat pengantar.'); return; }
+      if (t.getAttribute('data-yakin') !== '1') {
+        var asalR = t.textContent; t.setAttribute('data-yakin', '1'); t.textContent = 'Yakin? Tekan sekali lagi';
+        setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-yakin'); t.textContent = asalR; } }, 4000); return;
+      }
+      galat(rk, ''); sibuk(t, true);
+      api('apiAdminRiset', S.pin, rb.getAttribute('data-riset-id'), kr).then(function (d) { segarAdmin(d); toast(ra === 'SETUJU' ? 'Disetujui. Dua surat sudah terbit untuk mahasiswa.' : 'Keputusan disimpan.'); })
+        .catch(function (x) { galat(rk, x.message); sibuk(t, false); t.removeAttribute('data-yakin'); });
+      return;
+    }
+    if (aksi) {
+      var b = t.closest('.berkas'), id = b.getAttribute('data-id'), kotak = b.querySelector('[data-galat]');
+      var f = function (n) { return b.querySelector('[data-f="' + n + '"]'); };
+      var dosen = f('dosen').value === '__lain' ? f('dosenLain').value.trim() : f('dosen').value;
+      var k = { aksi: aksi, judul: f('judul').value.trim(), dosen: dosen, nomorSurat: f('nomor').value.trim(), catatan: f('catatan').value.trim() };
+      if (aksi !== 'ACC' && k.catatan.length < 5) { galat(kotak, 'Tulis catatan untuk mahasiswa dulu.'); f('catatan').focus(); return; }
+      if (aksi === 'ACC' && !dosen) { galat(kotak, 'Pilih dosen pembimbing.'); return; }
+      if (t.getAttribute('data-yakin') !== '1') {
+        var asal = t.textContent; t.setAttribute('data-yakin', '1'); t.textContent = 'Yakin? Tekan sekali lagi';
+        setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-yakin'); t.textContent = asal; } }, 4000); return;
+      }
+      galat(kotak, ''); sibuk(t, true);
+      api('apiAdminPutus', S.pin, id, k).then(function (d) { segarAdmin(d); toast(aksi === 'ACC' ? 'Disetujui. Surat sudah terbit untuk mahasiswa.' : 'Keputusan disimpan.'); })
+        .catch(function (x) { galat(kotak, x.message); sibuk(t, false); t.removeAttribute('data-yakin'); });
+    }
+  }
+  function ubahAdmin(ev) {
+    var t = ev.target, b = t.closest('.berkas');
+    if (b && t.type === 'radio') {
+      var r = S.admin.antrean.filter(function (x) { return x.id === b.getAttribute('data-id'); })[0];
+      if (r) b.querySelector('[data-f="judul"]').value = r.judul[Number(t.value)];
+    }
+    if (b && t.getAttribute('data-f') === 'dosen') { var l = b.querySelector('[data-f="dosenLain"]'); l.hidden = t.value !== '__lain'; if (!l.hidden) l.focus(); }
+    if (t.id === 'atTtd' && t.files && t.files[0]) {
+      var baca = new FileReader();
+      baca.onload = function () {
+        var img = new Image();
+        img.onload = function () {
+          var s = Math.min(1, 520 / img.width, 260 / img.height), c = document.createElement('canvas');
+          c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+          api('apiAdminTtd', S.pin, c.toDataURL('image/png')).then(function (d) { segarAdmin(d); toast('Tanda tangan terpasang.'); }).catch(function (x) { toast(x.message); });
+        };
+        img.onerror = function () { toast('Gambar tidak bisa dibaca.'); };
+        img.src = baca.result;
+      };
+      baca.readAsDataURL(t.files[0]);
+    }
+  }
+
+  /* ---------------- ruang kerja (mahasiswa, dosen, pengelola) ---------------- */
+  var DARI = { mhs: 'mahasiswa', dsn: 'dosen', adm: 'prodi' };
+  function tglID(iso) { return iso ? String(iso).slice(0, 10).split('-').reverse().join('-') : ''; }
+  function hariIniLokal() { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
+  function jamMenit(m) { return m >= 60 ? Math.floor(m / 60) + ' jam' + (m % 60 ? ' ' + (m % 60) + ' mnt' : '') : m + ' mnt'; }
+  function salin(teks, pesan) {
+    try { navigator.clipboard.writeText(teks).then(function () { toast(pesan || 'Disalin.'); }, function () { toast(teks); }); } catch (x) { toast(teks); }
+  }
+  function yakin(t) {
+    if (t.getAttribute('data-yakin') === '1') return true;
+    var asal = t.textContent; t.setAttribute('data-yakin', '1'); t.textContent = 'Yakin? Tekan sekali lagi';
+    setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-yakin'); t.textContent = asal; } }, 4000);
+    return false;
+  }
+  function pilihPeran(p) {
+    setRadio('peran', p); $('fmMhs').hidden = p !== 'mhs'; $('fmDsn').hidden = p !== 'dsn'; $('fmAdm').hidden = p !== 'adm'; galat($('aGalat'), '');
+    if (p === 'mhs' && !$('mNim').value) { var t = bacaLokal('pjs-terakhir') || window.__contohMasuk; if (t) { $('mNim').value = t.nim; $('mKode').value = t.kode; } }
+  }
+  function masuk() {
+    var p = nilaiRadio('peran') || 'mhs', g = $('aGalat'), janji;
+    if (p === 'mhs') {
+      var nim = $('mNim').value.trim(), kode = $('mKode').value.trim().toUpperCase();
+      if (!/^\d{11}$/.test(nim) || kode.length < 6) { galat(g, 'Isi NIM (11 digit) dan kode pengajuan (6 karakter).'); return; }
+      janji = api('apiRuang', 'mhs', nim, kode, 'buka', null).then(function (R) { S.sesi = { peran: 'mhs', k1: nim, k2: kode }; simpanLokal('pjs-terakhir', { nim: nim, kode: kode }); bukaRuang(R); });
+    } else if (p === 'dsn') {
+      var kd = $('dKode').value.trim().toUpperCase();
+      if (kd.length < 6) { galat(g, 'Isi kode akses dosen.'); return; }
+      janji = api('apiDosen', kd).then(function (D) { S.sesi = { peran: 'dsn', k1: kd }; S.dosen = D; $('dIsi').hidden = false; renderDosen(); });
+    } else {
+      var pin = $('aPin').value.trim();
+      if (!pin) { galat(g, 'Masukkan kode akses pengelola.'); return; }
+      janji = api('apiAdminData', pin).then(function (a) { S.sesi = { peran: 'adm', k1: pin }; S.pin = pin; S.admin = a; S.aTab = 'antre'; $('aIsi').hidden = false; renderAdmin(); });
+    }
+    galat(g, ''); sibuk($('bMasuk'), true);
+    janji.then(function () { $('aMasuk').hidden = true; $('pembukaMasuk').hidden = true; mulaiSegar(); window.scrollTo(0, 0); })
+      .catch(function (x) { galat(g, x.message); }).then(function () { sibuk($('bMasuk'), false); });
+  }
+  function keluar() {
+    hentiSegar(); S.sesi = null; S.ruang = null; S.dosen = null; S.admin = null; S.pantau = null; S.pin = ''; S.muat = {};
+    ['aIsi', 'dIsi', 'mIsi'].forEach(function (id) { $(id).hidden = true; $(id).innerHTML = ''; });
+    $('aPin').value = ''; $('dKode').value = ''; $('aMasuk').hidden = false; $('pembukaMasuk').hidden = false; window.scrollTo(0, 0);
+  }
+
+  function wadahRuang() { return $(S.sesi.peran === 'mhs' ? 'mIsi' : (S.sesi.peran === 'dsn' ? 'dIsi' : 'aIsi')); }
+  function panggilRuang(aksi, d) {
+    var s = S.sesi;
+    return api('apiRuang', s.peran, s.k1, s.peran === 'mhs' ? s.k2 : S.ruangId, aksi || 'buka', d || null);
+  }
+  function bukaRuang(R) {
+    S.ruang = R; S.ruangId = R.id; S.muat = {}; S.pesanLihat = R.pesan.length;
+    S.rTab = R.status === 'ACC' ? 'bimbingan' : 'judul';
+    var w = wadahRuang(); w.hidden = false;
+    w.innerHTML = '<div id="ruKepala" style="display:flex;flex-direction:column;gap:22px"></div><div class="tabs" id="ruTabs" role="tablist"></div><div id="ruPanel" style="display:flex;flex-direction:column;gap:22px"></div>';
+    renderKepala(); renderTabs(); renderPanel(); window.scrollTo(0, 0);
+  }
+  function bukaRuangId(id, tombol) {
+    sibuk(tombol, true); S.ruangId = id;
+    panggilRuang('buka').then(bukaRuang).catch(function (x) { toast(x.message); sibuk(tombol, false); });
+  }
+  function tutupRuang() {
+    S.ruang = null; S.muat = {};
+    if (S.sesi.peran === 'dsn') { renderDosen(); api('apiDosen', S.sesi.k1).then(function (D) { S.dosen = D; if (!S.ruang) renderDosen(); }).catch(function () {}); }
+    else { S.pantau = null; renderAdmin(); }
+    window.scrollTo(0, 0);
+  }
+  function renderKepala() {
+    var R = S.ruang, p = S.sesi.peran, k = R.rekap, acc = R.status === 'ACC', h = '';
+    h += '<div class="aksi"><div>' + (p === 'mhs' ? '' : '<button type="button" class="tombol kecil" data-u="kembali">&larr; Kembali ke daftar</button>') + '</div><div class="kanan"><button type="button" class="tombol kecil" data-u="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-u="keluar">Keluar</button></div></div>';
+    h += '<div class="tiket"><div class="kiri"><h2>' + e(p === 'mhs' ? 'Halo, ' + R.nama.split(' ')[0] + '!' : R.nama) + '</h2><p>' + e(acc ? R.judul : 'Judulmu belum disetujui. Ruang bimbingan terbuka begitu prodi menyetujui judul dan menetapkan dosen pembimbing.') + '</p>' +
+      '<div class="fakta"><span class="mono">' + e(R.nim) + '</span><span>' + e(R.kelas) + '</span>' + (R.kekhususan ? '<span>' + e(R.kekhususan) + '</span>' : '') + '</div></div>' +
+      (p === 'mhs' ? '<div class="kanan"><small>Kode pengajuan</small><b>' + e(R.kode) + '</b><button type="button" data-salin="' + e(R.kode) + '">Salin kode</button></div>'
+        : '<div class="kanan"><small>Bimbingan sah</small><b>' + k.jumlah + '&times;</b><span style="font-size:12.5px;font-weight:600">' + e(jamMenit(k.durasi)) + '</span></div>') + '</div>';
+    if (acc) {
+      var selesai = R.tahap.kini === 0;
+      h += '<section class="lembar"><header><h2 style="font-size:22px">' + (selesai ? 'Touchdown. Semua tahapan selesai.' : 'Posisi: tahap ' + R.tahap.kini + ' dari 10') + '</h2><p>' + e(selesai ? 'Seluruh rekam tahapan penyusunan skripsi sudah ditandai.' : k.tahapNama) + '</p></header>' +
+        '<ol class="orbit" aria-label="Tahapan skripsi">' + R.tahap.daftar.map(function (t) { return '<li class="' + (t.tanggal ? 'sudah' : (t.no === R.tahap.kini ? 'kini' : '')) + '" title="' + e(t.nama) + '">' + t.no + '</li>'; }).join('') + '</ol>' +
+        '<div class="angka"><div class="sorot"><b>' + k.jumlah + '</b><span>Bimbingan sah</span></div><div><b>' + (k.tungguDosen + k.tungguMhs) + '</b><span>Menunggu paraf</span></div><div><b>' + e(jamMenit(k.durasi)) + '</b><span>Total durasi</span></div><div><b>' + k.hari + '</b><span>Hari sejak catatan terakhir</span></div></div>' +
+        (k.macet ? '<div class="catat galat"><b>Bimbingan macet.</b> Sudah ' + k.hari + ' hari tidak ada catatan baru (batas ' + R.batasMacet + ' hari). ' + (p === 'mhs' ? 'Segera hubungi pembimbingmu dan catat bimbingan berikutnya.' : (p === 'dsn' ? 'Mohon mahasiswa ini dihubungi.' : 'Ingatkan mahasiswa dan dosen pembimbing lewat tab Pesan atau WhatsApp.')) + '</div>' : '') +
+        '<div class="pembimbing"><div><small>' + (p === 'mhs' ? 'Dosen pembimbingmu' : 'Dosen pembimbing') + '</small><b>' + e(R.dosen) + '</b><span>' + (p === 'mhs' ? (k.tercatat ? 'Catat tiap pertemuan di tab Bimbingan.' : 'Kamu wajib menghubungi pembimbing dan memulai bimbingan. Perkenalkan diri: nama, NIM, dan judul.') : 'Mahasiswa: ' + e(R.nama) + ' · ' + e(R.nim)) + '</span></div><div style="display:flex;gap:8px;flex-wrap:wrap">' +
+        (p !== 'dsn' && R.waDosen ? '<a class="tombol wa kecil" href="https://wa.me/' + e(R.waDosen) + '" target="_blank" rel="noopener">WhatsApp dosen</a>' : '') +
+        (p !== 'mhs' && R.wa ? '<a class="tombol wa kecil" href="https://wa.me/' + e(R.wa) + '" target="_blank" rel="noopener">WhatsApp mahasiswa</a>' : '') + '</div></div></section>';
+    }
+    $('ruKepala').innerHTML = h;
+  }
+  function renderTabs() {
+    var R = S.ruang, p = S.sesi.peran, acc = R.status === 'ACC', baru = Math.max(0, R.pesan.length - (S.pesanLihat || 0)), tunggu = p === 'dsn' ? R.rekap.tungguDosen : (p === 'mhs' ? R.rekap.tungguMhs : 0);
+    var t = [];
+    if (acc) t.push(['bimbingan', 'Bimbingan', tunggu], ['pesan', 'Pesan', baru], ['tahapan', 'Tahapan', 0]);
+    if (p === 'mhs') t.push(['judul', 'Judul & surat', 0], ['riset', 'Izin riset', 0]);
+    if (acc) t.push(['buku', 'Buku catatan', 0]);
+    $('ruTabs').innerHTML = t.map(function (x) { return '<button type="button" role="tab" data-tab="' + x[0] + '" aria-selected="' + (S.rTab === x[0]) + '">' + x[1] + (x[2] ? '<i>' + x[2] + '</i>' : '') + '</button>'; }).join('');
+  }
+  function hObrolan() {
+    var R = S.ruang, aku = DARI[S.sesi.peran];
+    if (!R.pesan.length) return '<p class="catat">Belum ada pesan. Mulai percakapan dari kotak di bawah.</p>';
+    return R.pesan.map(function (m) {
+      return '<div class="b' + (m.dari === aku ? ' aku' : (m.dari === 'prodi' ? ' prodi' : '')) + '"><small>' + e(m.dari === aku ? 'Anda' : m.nama) + ' · ' + e(tglID(m.waktu) + ' ' + String(m.waktu).slice(11, 16)) + '</small>' + e(m.isi) + '</div>';
+    }).join('');
+  }
+  function gulirObrolan() { var o = $('ruObrolan'); if (o) o.scrollTop = o.scrollHeight; }
+  function hBimbingan() {
+    var R = S.ruang, p = S.sesi.peran, b = R.bimbingan, hari = hariIniLokal(), h = '';
+    h += '<section class="lembar"><header><h2>Catatan bimbingan</h2><p>' + (p === 'mhs' ? 'Catat tiap pertemuan di sini. Catatan menjadi sah setelah diparaf pembimbingmu dari akunnya.' : (p === 'dsn' ? 'Paraf catatan mahasiswa, tambahkan arahan Anda, atau catat pertemuan baru.' : 'Seluruh catatan bimbingan mahasiswa ini. Pengelola prodi hanya memantau.')) + '</p></header>';
+    if (p !== 'adm') h += '<details class="lipat"' + (b.length ? '' : ' open') + ' style="border-top:0;padding-top:0"><summary>Catat bimbingan baru</summary><div>' +
+      '<div class="kisi"><div class="isian"><label for="bTgl">Tanggal bimbingan</label><input type="date" id="bTgl" value="' + hari + '" max="' + hari + '" min="' + e(R.tanggalAcc) + '"></div>' +
+      '<div class="isian"><label for="bDurasi">Durasi (menit)</label><input type="number" id="bDurasi" min="5" max="600" value="60" inputmode="numeric"></div>' +
+      '<div class="isian penuh"><span class="label">Bentuk bimbingan</span><div class="pilih"><label><input type="radio" name="bBentuk" value="Luring" checked><span>Luring (tatap muka)</span></label><label><input type="radio" name="bBentuk" value="Daring"><span>Daring</span></label></div></div>' +
+      '<div class="isian penuh"><label for="bMateri">Materi bimbingan</label><textarea id="bMateri" maxlength="600" placeholder="Contoh: Revisi rumusan masalah dan kerangka teori Bab I"></textarea></div>' +
+      (p === 'dsn' ? '<div class="isian penuh"><label for="bCatatan">Catatan dosen pembimbing</label><textarea id="bCatatan" maxlength="600" style="min-height:70px" placeholder="Arahan untuk mahasiswa"></textarea></div>' : '') + '</div>' +
+      '<div class="catat galat" data-galat hidden></div><div class="aksi"><span class="bantu" style="font-size:13px;color:var(--muted)">' + (p === 'mhs' ? 'Catatanmu langsung muncul di akun pembimbing untuk diparaf.' : 'Catatan Anda langsung muncul di akun mahasiswa untuk diparaf.') + '</span><div class="kanan"><button type="button" class="tombol utama" data-u="catat">Catat bimbingan</button></div></div></div></details>';
+    if (!b.length) h += '<div class="kosong"><b>Belum ada catatan bimbingan</b>' + (p === 'mhs' ? 'Hubungi pembimbingmu, lalu catat pertemuan pertamamu di sini.' : 'Catatan muncul di sini begitu mahasiswa atau dosen mencatat pertemuan.') + '</div>';
+    b.slice().reverse().forEach(function (x) {
+      var no = b.indexOf(x) + 1, sah = x.parafMhs && x.parafDsn;
+      h += '<article class="catatan' + (sah ? ' sah' : '') + '" data-bid="' + e(x.id) + '"><div class="atas"><b>#' + no + ' · ' + e(tglID(x.tanggal)) + '</b><span>' + e(x.bentuk) + '</span><span>' + x.durasi + ' menit</span>' +
+        (sah ? '<span class="pil hijau">Sah · diparaf keduanya</span>' : (!x.parafDsn ? '<span class="pil kuning">Menunggu paraf pembimbing</span>' : '<span class="pil kuning">Menunggu paraf mahasiswa</span>')) + '</div>' +
+        '<p>' + e(x.materi) + '</p>' + (x.catatan ? '<div class="dosen"><small>Catatan pembimbing</small>' + e(x.catatan) + '</div>' : '');
+      if (p === 'mhs' && !x.parafMhs) h += '<div class="aksi"><div class="kanan"><button type="button" class="tombol kecil utama" data-u="paraf">Paraf: saya sudah membaca</button></div></div>';
+      if (p === 'mhs' && x.oleh === 'mahasiswa' && !x.parafDsn) h += '<div class="aksi"><div class="kanan"><button type="button" class="tombol mini bahaya" data-u="hapus">Hapus catatan</button></div></div>';
+      if (p === 'dsn' && !x.parafDsn) h += '<div class="isian"><label for="cd-' + e(x.id) + '">Catatan Anda untuk mahasiswa</label><textarea id="cd-' + e(x.id) + '" data-f="catatan" maxlength="600" style="min-height:64px" placeholder="Boleh dikosongkan"></textarea></div><div class="aksi"><div class="kanan"><button type="button" class="tombol kecil utama" data-u="paraf">Paraf catatan ini</button></div></div>';
+      if (p === 'dsn' && x.parafDsn) h += '<details><summary style="cursor:pointer;font-size:13px;font-weight:700;color:var(--muted)">Ubah catatan Anda</summary><div class="isian" style="margin-top:8px"><textarea data-f="catatan" maxlength="600" style="min-height:64px" aria-label="Catatan pembimbing">' + e(x.catatan) + '</textarea></div><div class="aksi" style="margin-top:8px"><div class="kanan"><button type="button" class="tombol mini" data-u="paraf">Simpan catatan</button></div></div></details>';
+      h += '</article>';
+    });
+    return h + '</section>';
+  }
+  function hTahapan() {
+    var R = S.ruang, p = S.sesi.peran, hari = hariIniLokal();
+    return '<section class="lembar"><header><h2>Rekam tahapan</h2><p>' + (p === 'mhs' ? 'Sepuluh tonggak penyusunan skripsi. Tahap 3 sampai 10 ditandai oleh dosen pembimbingmu.' : 'Tandai tahap yang sudah dilewati mahasiswa. Tahap 1 dan 2 terisi otomatis saat judul disetujui.') + '</p></header><ol class="tahapan">' +
+      R.tahap.daftar.map(function (t) {
+        var ctl = '';
+        if (p !== 'mhs' && t.no >= 3) ctl = t.tanggal ? '<button type="button" class="tombol mini polos" data-u="tahap" data-no="' + t.no + '" data-selesai="0">Batalkan</button>'
+          : '<input type="date" data-f="tgl" value="' + hari + '" max="' + hari + '" style="width:150px" aria-label="Tanggal selesai">' + (t.no === 7 ? '<input type="text" data-f="turnitin" inputmode="decimal" placeholder="% Turnitin" aria-label="Hasil Turnitin dalam persen">' : '') + '<button type="button" class="tombol mini" data-u="tahap" data-no="' + t.no + '" data-selesai="1">Tandai selesai</button>';
+        return '<li class="' + (t.tanggal ? 'sudah' : (t.no === R.tahap.kini ? 'kini' : '')) + '"><span class="no">' + t.no + '</span><div><b>' + e(t.nama) + '</b><small>' + (t.tanggal ? 'Selesai ' + e(tglID(t.tanggal)) + (t.no === 7 && R.tahap.turnitin ? ' · Turnitin ' + e(R.tahap.turnitin) + '%' : '') : (t.no === R.tahap.kini ? 'Sedang dijalani' : 'Belum')) + '</small></div><div class="ctl">' + ctl + '</div></li>';
+      }).join('') + '</ol><div class="catat galat" data-galat hidden></div></section>';
+  }
+  function hRisetRuang(d) {
+    var R = S.ruang, h = '';
+    if (R.status !== 'ACC') return '<div class="kosong"><b>Belum bisa mengajukan izin riset</b>Izin riset dibuka setelah judul skripsimu disetujui.</div>';
+    if (!d.riset.length) h += '<div class="kosong"><b>Belum ada permohonan izin riset</b>Butuh data dari instansi? Ajukan lewat formulir di bawah.</div>';
+    d.riset.forEach(function (x, i) {
+      var pil = x.status === 'Disetujui' ? 'hijau' : (x.status === 'Ditolak' ? 'merah' : 'kuning');
+      h += '<article class="berkas"><div class="kepala"><h3>' + e(x.instansi) + '</h3><span class="pil ' + pil + '">' + e(x.status === 'Menunggu' ? 'Menunggu Kaprodi' : x.status) + '</span></div>' +
+        '<div class="meta"><span>Kepada: <b>' + e(x.pimpinan) + '</b></span><span>Diajukan ' + e(x.waktu) + '</span>' + (x.nomor ? '<span>No. <b class="mono">' + e(x.nomor) + '</b></span>' : '') + '</div>' +
+        (x.status === 'Menunggu' ? '<div class="catat">Menunggu persetujuan Kaprodi. Begitu disetujui, kedua surat muncul di sini.</div>' : '') +
+        (x.status === 'Ditolak' ? '<div class="catat galat"><b>Tidak disetujui.</b> ' + e(x.catatan) + '</div>' : '') +
+        (x.status === 'Disetujui' ? '<div class="catat baik">Disetujui Kaprodi. Cetak kedua surat, tanda tangani surat permohonan, lalu serahkan ke instansi tujuan.</div><div class="surat" data-riset-surat="' + i + '"></div>' : '') + '</article>';
+    });
+    return h + '<section class="lembar"><header><h2 style="font-size:22px">Ajukan izin riset</h2><p>Data diri, judul, dan pembimbing diambil dari akunmu. Cukup tulis instansi tujuannya; satu permohonan untuk satu instansi.</p></header>' +
+      '<div class="kisi"><div class="isian"><label for="ruInstansi">Instansi tujuan riset</label><input type="text" id="ruInstansi" maxlength="120" placeholder="Contoh: Kejaksaan Negeri Kota Semarang"></div>' +
+      '<div class="isian"><label for="ruPimpinan">Jabatan pimpinan instansi</label><input type="text" id="ruPimpinan" maxlength="80" placeholder="Contoh: Kepala"></div></div>' +
+      '<div class="catat galat" data-galat hidden></div><div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-u="riset">Ajukan ke Kaprodi</button></div></div></section>';
+  }
+  function pasangRisetRuang(d) {
+    var s = S.sesi;
+    $('ruPanel').innerHTML = hRisetRuang(d);
+    semua('[data-riset-surat]', $('ruPanel')).forEach(function (w) {
+      var x = d.riset[Number(w.getAttribute('data-riset-surat'))];
+      pasangSurat(w, { surat: x.surat, gayaSurat: d.gayaSurat, kertas: 'A4', pdf: function () { return api('apiMhsRisetPdf', s.k1, s.k2, x.id); } }, S.ruang);
+    });
+  }
+  function renderPanel() {
+    var R = S.ruang, w = $('ruPanel'), t = S.rTab, s = S.sesi, memuat = '<div class="kosong"><b>Memuat…</b>Sebentar ya.</div>';
+    function gagal(x) { if (S.rTab === t) w.innerHTML = '<div class="catat galat">' + e(x.message) + '</div>'; }
+    if (t === 'bimbingan') { w.innerHTML = hBimbingan(); return; }
+    if (t === 'tahapan') { w.innerHTML = hTahapan(); return; }
+    if (t === 'pesan') {
+      w.innerHTML = '<section class="lembar"><header><h2>Pesan</h2><p>Percakapan mahasiswa, dosen pembimbing, dan prodi dalam satu ruang. Pesan baru muncul otomatis tiap 20 detik.</p></header><div class="obrolan" id="ruObrolan">' + hObrolan() + '</div>' +
+        '<div class="isian"><label for="ruPesan">Tulis pesan</label><textarea id="ruPesan" maxlength="1000" style="min-height:70px" placeholder="' + (s.peran === 'adm' ? 'Pesan dari prodi untuk mahasiswa dan dosen pembimbing' : 'Tulis dengan sopan dan jelas') + '"></textarea></div>' +
+        '<div class="catat galat" data-galat hidden></div><div class="aksi"><span class="bantu" style="font-size:13px;color:var(--muted)">Terbaca oleh mahasiswa, dosen pembimbing, dan pengelola prodi.</span><div class="kanan"><button type="button" class="tombol utama" data-u="pesan">Kirim pesan</button></div></div></section>';
+      S.pesanLihat = R.pesan.length; gulirObrolan(); renderTabs(); return;
+    }
+    if (t === 'buku') {
+      w.innerHTML = '<section class="lembar"><header><h2>Buku catatan bimbingan</h2><p>Disusun otomatis dari data di ruang ini, mengikuti format buku catatan bimbingan prodi. Cetak sebagai syarat pendaftaran ujian skripsi.</p></header><div class="surat" id="ruBuku">' + memuat + '</div></section>';
+      (S.muat.buku ? Promise.resolve(S.muat.buku) : panggilRuang('buku')).then(function (b) {
+        S.muat.buku = b; if (S.rTab !== 'buku' || !$('ruBuku')) return;
+        pasangSurat($('ruBuku'), { surat: b.buku, gayaSurat: b.gayaSurat, kertas: 'A4', pdf: function () { return panggilRuang('bukupdf'); } }, R);
+      }).catch(gagal);
+      return;
+    }
+    if (t === 'judul') {
+      w.innerHTML = memuat;
+      (S.muat.judul ? Promise.resolve(S.muat.judul) : api('apiStatus', s.k1, s.k2)).then(function (h) {
+        S.muat.judul = h; if (S.rTab !== 'judul') return;
+        w.innerHTML = '<div data-status></div>' + (R.pengajuan && R.pengajuan.length > 1 ? '<section class="lembar"><header><h2 style="font-size:22px">Riwayat pengajuan judul</h2></header><ul class="riwayat">' + R.pengajuan.map(function (r) {
+          var k = r.status === 'ACC' ? 'hijau' : (r.status === 'Menunggu' ? 'kuning' : (r.status === 'Revisi' ? 'kuning' : 'merah'));
+          return '<li><span><b>' + e(r.waktu) + '</b> <span class="mono">' + e(r.id) + '</span><small>' + e(r.status === 'ACC' ? r.judulDisetujui : (r.catatan || r.judul[0])) + '</small></span><span class="pil ' + k + '">' + e(r.status === 'ACC' ? 'Disetujui' : r.status) + '</span></li>';
+        }).join('') + '</ul></section>' : '');
+        renderStatus(h, w.querySelector('[data-status]'), false);
+      }).catch(gagal);
+      return;
+    }
+    if (t === 'riset') {
+      w.innerHTML = memuat;
+      (S.muat.riset ? Promise.resolve(S.muat.riset) : api('apiMhsRiset', s.k1, s.k2, null)).then(function (d) { S.muat.riset = d; if (S.rTab === 'riset') pasangRisetRuang(d); }).catch(gagal);
+    }
+  }
+  function terimaRuang(R, diam) {
+    var lama = S.ruang, tanda = function (x) { return JSON.stringify([x.pesan.length, x.bimbingan, x.tahap, x.status]); };
+    var berubah = tanda(lama) !== tanda(R), pesanBaru = R.pesan.length > lama.pesan.length;
+    S.ruang = R; if (R.kode == null) R.kode = lama.kode; if (!R.pengajuan) R.pengajuan = lama.pengajuan;
+    if (!diam) { S.muat.buku = null; renderKepala(); renderTabs(); renderPanel(); return; }
+    if (!berubah) return;
+    S.muat.buku = null;
+    var a = document.activeElement, mengetik = a && $('ruPanel').contains(a) && /^(TEXTAREA|INPUT|SELECT)$/.test(a.tagName);
+    renderKepala();
+    if (S.rTab === 'pesan') { if (pesanBaru) { $('ruObrolan').innerHTML = hObrolan(); gulirObrolan(); S.pesanLihat = R.pesan.length; } }
+    else if (!mengetik && (S.rTab === 'bimbingan' || S.rTab === 'tahapan')) renderPanel();
+    if (pesanBaru && S.rTab !== 'pesan') toast('Ada pesan baru di ruang ini.');
+    renderTabs();
+  }
+  var tSegar = null, nSegar = 0;
+  function hentiSegar() { clearInterval(tSegar); tSegar = null; }
+  function mulaiSegar() { hentiSegar(); tSegar = setInterval(segar, 20000); }
+  function segar() {
+    if (!S.sesi || document.hidden || $('vAdmin').hidden || S.sedangSegar) return;
+    nSegar++;
+    if (S.ruang) {
+      var id = S.ruang.id; S.sedangSegar = true;
+      panggilRuang('buka').then(function (R) { if (S.ruang && S.ruang.id === id && R.id === id) terimaRuang(R, true); }).catch(function () { /* coba lagi di putaran berikut */ }).then(function () { S.sedangSegar = false; });
+    } else if (S.sesi.peran === 'adm') {
+      var mengetik = function () { var el = document.activeElement; return !!(el && $('aIsi').contains(el) && /^(TEXTAREA|INPUT|SELECT)$/.test(el.tagName)); };
+      if (S.aTab !== 'antre' && S.pantau) {
+        S.sedangSegar = true;
+        api('apiAdminPantau', S.pin).then(function (P) {
+          if (!S.admin || S.ruang || S.aTab === 'antre') return;
+          var beda = JSON.stringify(P) !== JSON.stringify(S.pantau); S.pantau = P;
+          if (!beda) return;
+          if (S.aTab === 'pantau' && !mengetik()) renderAdmin();
+          else { if ($('ptBadan')) $('ptBadan').innerHTML = hBarisPantau(); if ($('akBadan')) $('akBadan').innerHTML = hBarisAkun(); }
+        }).catch(function () {}).then(function () { S.sedangSegar = false; });
+      } else if (S.aTab === 'antre' && nSegar % 2 === 0) {
+        S.sedangSegar = true;
+        api('apiAdminData', S.pin).then(function (a) {
+          if (!S.admin || S.ruang || S.aTab !== 'antre') return;
+          var kunci = function (x) { return JSON.stringify([x.antrean.map(function (r) { return r.id; }), x.riset.menunggu.map(function (r) { return r.id; }), x.hitung]); };
+          if (kunci(a) === kunci(S.admin)) return;
+          if (mengetik() || document.querySelector('#aIsi [data-yakin]')) { if (!S.adaBaru) toast('Ada pengajuan baru. Tekan Muat ulang.'); S.adaBaru = true; return; }
+          S.adaBaru = false; S.admin = a; renderAdmin(); toast('Antrean diperbarui.');
+        }).catch(function () {}).then(function () { S.sedangSegar = false; });
+      }
+    } else if (S.sesi.peran === 'dsn' && nSegar % 3 === 0) {
+      S.sedangSegar = true;
+      api('apiDosen', S.sesi.k1).then(function (D) { if (S.sesi && S.sesi.peran === 'dsn' && !S.ruang) { S.dosen = D; renderDosen(); } }).catch(function () {}).then(function () { S.sedangSegar = false; });
+    }
+  }
+  function klikRuang(ev) {
+    var t = ev.target.closest('button'); if (!t || !S.sesi) return;
+    var tab = t.getAttribute('data-tab'), u = t.getAttribute('data-u'), s = S.sesi;
+    if (tab && t.closest('#ruTabs')) { S.rTab = tab; renderTabs(); renderPanel(); return; }
+    if (t.hasAttribute('data-buka')) { bukaRuangId(t.getAttribute('data-buka'), t); return; }
+    if (!u) return;
+    if (u === 'keluar') { keluar(); return; }
+    if (u === 'kembali') { tutupRuang(); return; }
+    if (u === 'muatDosen') { sibuk(t, true); api('apiDosen', s.k1).then(function (D) { S.dosen = D; renderDosen(); }).catch(function (x) { toast(x.message); sibuk(t, false); }); return; }
+    if (!S.ruang) return;
+    var kotak = (t.closest('.lembar') || $('ruPanel')).querySelector('[data-galat]');
+    function jalan(aksi, d, pesan) {
+      galat(kotak, ''); sibuk(t, true);
+      return panggilRuang(aksi, d).then(function (R) { terimaRuang(R, false); if (pesan) toast(pesan); })
+        .catch(function (x) { if (kotak) galat(kotak, x.message); else toast(x.message); sibuk(t, false); t.removeAttribute('data-yakin'); });
+    }
+    if (u === 'muat') { sibuk(t, true); S.muat = {}; panggilRuang('buka').then(function (R) { terimaRuang(R, false); toast('Data terbaru dimuat.'); }).catch(function (x) { toast(x.message); sibuk(t, false); }); return; }
+    if (u === 'catat') {
+      var d = { tanggal: $('bTgl').value, bentuk: nilaiRadio('bBentuk'), materi: $('bMateri').value.trim(), durasi: $('bDurasi').value, catatan: $('bCatatan') ? $('bCatatan').value.trim() : '' };
+      if (!d.tanggal) { galat(kotak, 'Tanggal bimbingan belum diisi.'); return; }
+      if (d.materi.length < 5) { galat(kotak, 'Tulis materi bimbingan, minimal 5 karakter.'); $('bMateri').focus(); return; }
+      if (!(Number(d.durasi) >= 5 && Number(d.durasi) <= 600)) { galat(kotak, 'Durasi diisi dalam menit, 5 sampai 600.'); $('bDurasi').focus(); return; }
+      jalan('catat', d, s.peran === 'mhs' ? 'Tercatat. Menunggu paraf pembimbing.' : 'Tercatat. Menunggu paraf mahasiswa.'); return;
+    }
+    if (u === 'paraf' || u === 'hapus') {
+      var art = t.closest('[data-bid]'), ta = art.querySelector('[data-f="catatan"]');
+      if (u === 'hapus' && !yakin(t)) return;
+      jalan(u, { id: art.getAttribute('data-bid'), catatan: ta ? ta.value.trim() : '' }, u === 'hapus' ? 'Catatan dihapus.' : 'Tersimpan.'); return;
+    }
+    if (u === 'pesan') {
+      var isi = $('ruPesan').value.trim();
+      if (!isi) { galat(kotak, 'Tulis pesannya dulu.'); $('ruPesan').focus(); return; }
+      jalan('pesan', { isi: isi }, 'Pesan terkirim.'); return;
+    }
+    if (u === 'tahap') {
+      var li = t.closest('li'), no = Number(t.getAttribute('data-no')), selesai = t.getAttribute('data-selesai') === '1', tn = li.querySelector('[data-f="turnitin"]');
+      if (selesai && no === 7 && !/^\d{1,2}([.,]\d{1,2})?$/.test(tn.value.trim())) { galat(kotak, 'Isi hasil Turnitin dalam persen, misalnya 18,5. Batas maksimal 24,99%.'); tn.focus(); return; }
+      if (!selesai && !yakin(t)) return;
+      jalan('tahap', { no: no, selesai: selesai, tanggal: selesai ? li.querySelector('[data-f="tgl"]').value : '', turnitin: tn ? tn.value.trim() : '' }, selesai ? 'Tahap ' + no + ' ditandai selesai.' : 'Tanda tahap ' + no + ' dibatalkan.'); return;
+    }
+    if (u === 'riset') {
+      var ins = $('ruInstansi').value.trim(), pim = $('ruPimpinan').value.trim();
+      if (ins.length < 4) { galat(kotak, 'Tulis nama instansi tujuan riset dengan lengkap.'); $('ruInstansi').focus(); return; }
+      galat(kotak, ''); sibuk(t, true);
+      api('apiMhsRiset', s.k1, s.k2, { instansi: ins, pimpinan: pim }).then(function (dd) { S.muat.riset = dd; pasangRisetRuang(dd); toast('Permohonan terkirim. Menunggu persetujuan Kaprodi.'); })
+        .catch(function (x) { galat(kotak, x.message); sibuk(t, false); });
+    }
+  }
+
+  /* ---------------- dosen pembimbing ---------------- */
+  function renderDosen() {
+    var D = S.dosen, m = D.mahasiswa.slice().sort(function (a, b) { return (b.rekap.tungguDosen - a.rekap.tungguDosen) || ((b.rekap.macet ? 1 : 0) - (a.rekap.macet ? 1 : 0)) || a.nama.localeCompare(b.nama); });
+    var jml = function (f) { return m.filter(f).length; };
+    var h = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang pembimbing</h2><span style="color:var(--muted);font-size:14.5px">' + e(D.dosen.nama) + '</span></div><div class="kanan"><button type="button" class="tombol kecil" data-u="muatDosen">Muat ulang</button><button type="button" class="tombol kecil polos" data-u="keluar">Keluar</button></div></div>' +
+      '<div class="angka"><div class="sorot"><b>' + m.length + '</b><span>Mahasiswa bimbingan</span></div><div><b>' + m.reduce(function (n, x) { return n + x.rekap.tungguDosen; }, 0) + '</b><span>Catatan menunggu paraf Anda</span></div><div><b>' + jml(function (x) { return x.rekap.macet; }) + '</b><span>Macet lebih dari ' + D.batasMacet + ' hari</span></div><div><b>' + jml(function (x) { return x.rekap.tahapKini === 0; }) + '</b><span>Selesai</span></div></div>';
+    if (!m.length) h += '<div class="kosong"><b>Belum ada mahasiswa bimbingan</b>Begitu prodi menetapkan Anda sebagai pembimbing, mahasiswanya langsung muncul di sini.</div>';
+    m.forEach(function (x) {
+      var k = x.rekap;
+      h += '<article class="berkas"><div class="kepala"><h3>' + e(x.nama) + '</h3><span>' + (k.tungguDosen ? '<span class="pil kuning">' + k.tungguDosen + ' menunggu paraf</span> ' : '') + (k.macet ? '<span class="pil merah">Diam ' + k.hari + ' hari</span> ' : '') + (x.pesanAkhir && x.pesanAkhir.dari !== 'dosen' ? '<span class="pil netral">Pesan dari ' + e(x.pesanAkhir.dari) + '</span>' : '') + '</span></div>' +
+        '<div class="meta"><span class="mono"><b>' + e(x.nim) + '</b></span><span>' + e(x.kelas) + '</span><span>Tahap <b>' + (k.tahapKini || 10) + '/10</b> · ' + e(k.tahapNama) + '</span><span>Bimbingan sah <b>' + k.jumlah + '&times;</b></span>' + (k.terakhir ? '<span>Terakhir ' + e(tglID(k.terakhir)) + '</span>' : '<span>Belum pernah bimbingan</span>') + '</div>' +
+        '<p style="font-size:15px">' + e(x.judul) + '</p><div class="aksi"><div>' + (x.wa ? '<a class="tombol wa kecil" href="https://wa.me/' + e(x.wa) + '" target="_blank" rel="noopener">WhatsApp</a>' : '') + '</div><div class="kanan"><button type="button" class="tombol utama" data-buka="' + e(x.id) + '">Buka ruang bimbingan</button></div></div></article>';
+    });
+    $('dIsi').innerHTML = h;
+  }
+
+  /* ---------------- pengelola: pantauan dan akun ---------------- */
+  function muatPantau() {
+    if (S.memuatPantau) return; S.memuatPantau = true;
+    api('apiAdminPantau', S.pin).then(function (P) { S.pantau = P; }).catch(function (x) { toast(x.message); S.pantau = S.pantau || { mahasiswa: [], dosen: [], batasMacet: 30 }; })
+      .then(function () { S.memuatPantau = false; if (S.admin && !S.ruang && S.aTab !== 'antre') renderAdmin(); });
+  }
+  function tersaring() {
+    var f = S.saring, q = f.cari.toLowerCase();
+    return S.pantau.mahasiswa.filter(function (x) {
+      var k = x.rekap;
+      if (f.dosen && x.dosen !== f.dosen) return false;
+      if (f.keadaan === 'macet' && !k.macet) return false;
+      if (f.keadaan === 'paraf' && !k.tungguDosen) return false;
+      if (f.keadaan === 'belum' && k.tercatat) return false;
+      if (f.keadaan === 'selesai' && k.tahapKini !== 0) return false;
+      return !q || (x.nama + ' ' + x.nim + ' ' + x.dosen).toLowerCase().indexOf(q) >= 0;
+    }).sort(function (a, b) { return ((b.rekap.macet ? 1 : 0) - (a.rekap.macet ? 1 : 0)) || (b.rekap.hari - a.rekap.hari); });
+  }
+  function hBarisPantau() {
+    var m = tersaring();
+    if (!m.length) return '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:22px">Tidak ada mahasiswa yang cocok dengan saringan ini.</td></tr>';
+    return m.map(function (x) {
+      var k = x.rekap;
+      return '<tr' + (k.macet ? ' class="macet"' : '') + ' data-pid="' + e(x.id) + '"><td><b>' + e(x.nama) + '</b><small class="mono">' + e(x.nim) + ' · ' + e(x.kelas) + '</small></td><td>' + e(x.dosen) + '</td>' +
+        '<td><b>' + (k.tahapKini || 10) + '/10</b><small>' + e(k.tahapNama) + '</small></td><td><b>' + k.jumlah + '&times; sah</b><small>' + (k.terakhir ? 'terakhir ' + e(tglID(k.terakhir)) : 'belum pernah') + (k.tungguDosen ? ' · ' + k.tungguDosen + ' menunggu paraf dosen' : '') + '</small></td>' +
+        '<td><b' + (k.macet ? ' style="color:var(--bad)"' : '') + '>' + k.hari + ' hari</b>' + (k.macet ? '<small>macet</small>' : '') + '</td>' +
+        '<td><div class="aksi-b"><button type="button" class="tombol mini utama" data-buka="' + e(x.id) + '">Buka</button><button type="button" class="tombol mini" data-p="ingat">Ingatkan di aplikasi</button>' +
+        (x.wa ? '<a class="tombol mini" target="_blank" rel="noopener" href="https://wa.me/' + e(x.wa) + '?text=' + encodeURIComponent(teksIngat(x, 'mhs')) + '">WA mahasiswa</a>' : '') +
+        (x.waDosen ? '<a class="tombol mini" target="_blank" rel="noopener" href="https://wa.me/' + e(x.waDosen) + '?text=' + encodeURIComponent(teksIngat(x, 'dsn')) + '">WA dosen</a>' : '') + '</div></td></tr>';
+    }).join('');
+  }
+  function teksIngat(x, untuk) {
+    var k = x.rekap;
+    if (untuk === 'mhs') return 'Assalamu\'alaikum ' + x.nama + '. Kami dari Prodi S1 Ilmu Hukum FH UNISSULA. Catatan bimbingan skripsimu di SKRIPSPACE sudah ' + k.hari + ' hari belum bertambah (posisi: ' + k.tahapNama + '). Mohon segera menghubungi dosen pembimbing dan mencatat bimbinganmu di SKRIPSPACE. Terima kasih.';
+    if (untuk === 'dsn') return 'Assalamu\'alaikum Bapak/Ibu. Kami dari Prodi S1 Ilmu Hukum FH UNISSULA. Mohon izin mengingatkan, bimbingan skripsi mahasiswa a.n. ' + x.nama + ' (NIM ' + x.nim + ') di SKRIPSPACE belum ada catatan baru selama ' + k.hari + ' hari' + (k.tungguDosen ? ', dan ada ' + k.tungguDosen + ' catatan yang menunggu paraf Bapak/Ibu' : '') + '. Terima kasih atas perhatiannya.';
+    return 'Pengingat dari Prodi: sudah ' + k.hari + ' hari belum ada catatan bimbingan baru (posisi: ' + k.tahapNama + '). Mohon mahasiswa segera menghubungi dosen pembimbing dan mencatat bimbingan di sini. Mohon Bapak/Ibu pembimbing berkenan memantau. Terima kasih.';
+  }
+  function hPantau() {
+    var P = S.pantau;
+    if (!P) { muatPantau(); return '<div class="kosong"><b>Memuat pantauan…</b>Mengambil catatan bimbingan seluruh mahasiswa.</div>'; }
+    var m = P.mahasiswa, jml = function (f) { return m.filter(f).length; }, f = S.saring;
+    var dosen = {}; m.forEach(function (x) { dosen[x.dosen] = (dosen[x.dosen] || 0) + 1; });
+    return '<div class="angka"><div class="sorot"><b>' + m.length + '</b><span>Mahasiswa dalam bimbingan</span></div><div><b>' + jml(function (x) { return x.rekap.macet; }) + '</b><span>Macet lebih dari ' + P.batasMacet + ' hari</span></div><div><b>' + jml(function (x) { return x.rekap.tungguDosen > 0; }) + '</b><span>Menunggu paraf dosen</span></div><div><b>' + jml(function (x) { return !x.rekap.tercatat; }) + '</b><span>Belum pernah bimbingan</span></div></div>' +
+      '<section class="lembar"><header><h2>Pantauan bimbingan</h2><p>Semua mahasiswa yang judulnya sudah disetujui. Baris merah berarti tidak ada catatan baru melewati batas ' + P.batasMacet + ' hari. Buka ruangnya untuk membaca catatan dan pesan, atau ingatkan langsung.</p></header>' +
+      '<div class="saring"><select id="ptDosen" aria-label="Saring dosen pembimbing"><option value="">Semua pembimbing</option>' + Object.keys(dosen).sort().map(function (n) { return '<option value="' + e(n) + '"' + (f.dosen === n ? ' selected' : '') + '>' + e(n) + ' (' + dosen[n] + ')</option>'; }).join('') + '</select>' +
+      '<select id="ptKeadaan" aria-label="Saring keadaan" style="max-width:240px">' + [['', 'Semua keadaan'], ['macet', 'Macet'], ['paraf', 'Menunggu paraf dosen'], ['belum', 'Belum pernah bimbingan'], ['selesai', 'Selesai']].map(function (o) { return '<option value="' + o[0] + '"' + (f.keadaan === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select>' +
+      '<input type="text" id="ptCari" placeholder="Cari nama atau NIM" value="' + e(f.cari) + '" style="max-width:240px" aria-label="Cari mahasiswa"></div>' +
+      '<div class="tabel-wadah"><table class="pantau"><thead><tr><th>Mahasiswa</th><th>Pembimbing</th><th>Tahap</th><th>Bimbingan</th><th>Diam</th><th>Tindakan</th></tr></thead><tbody id="ptBadan">' + hBarisPantau() + '</tbody></table></div>' +
+      '<p class="catat">Batas macet diatur di tab <b>PENGATURAN</b> spreadsheet, baris "Batas Macet (hari)". Catatan bimbingan tersimpan di tab <b>BIMBINGAN</b> dan pesan di tab <b>PESAN</b>.</p></section>';
+  }
+  function hAkun() {
+    var P = S.pantau;
+    if (!P) { muatPantau(); return '<div class="kosong"><b>Memuat akun…</b>Menyiapkan kode akses dosen.</div>'; }
+    return '<section class="lembar"><header><h2>Akun mahasiswa</h2><p>Mahasiswa masuk dengan NIM dan kode pengajuan; satu kode untuk satu mahasiswa, berlaku seterusnya. Ketik NIM untuk melihat kodenya. Bila judulnya disetujui sebelum aplikasi ini dipakai, akunnya dibuat otomatis dari tab pengajuan judul.</p></header>' +
+      '<div class="kisi"><div class="isian"><label for="akNim">NIM mahasiswa</label><input type="text" id="akNim" class="mono" inputmode="numeric" maxlength="11" placeholder="11 digit"></div>' +
+      '<div class="isian"><label for="akKelas">Kelas (untuk akun baru)</label><select id="akKelas"><option value="">Ikuti tab asal data</option><option>Reguler</option><option>Eksekutif</option><option>RPL</option></select></div></div>' +
+      '<div class="catat galat" data-galat hidden></div><div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-p="akun">Cari atau buat akun</button></div></div><div id="akHasil"></div></section>' +
+      '<section class="lembar"><header><h2>Kode pengajuan mahasiswa</h2><p>Setiap kode yang diterima mahasiswa saat mengajukan judul tersimpan otomatis di sini. Daftar diperbarui sendiri tiap 20 detik.</p></header>' +
+      '<div class="saring"><input type="text" id="akCari" placeholder="Cari nama atau NIM" value="' + e(S.cariAkun || '') + '" style="max-width:280px" aria-label="Cari akun mahasiswa"><span class="pil netral">' + (P.akun || []).length + ' mahasiswa</span></div>' +
+      '<div class="tabel-wadah"><table class="pantau" style="min-width:640px"><thead><tr><th>Mahasiswa</th><th>Kode pengajuan</th><th>Status judul</th><th>Terakhir mengajukan</th><th>Tindakan</th></tr></thead><tbody id="akBadan">' + hBarisAkun() + '</tbody></table></div></section>' +
+      '<section class="lembar"><header><h2>Kode akses dosen pembimbing</h2><p>Tiap dosen punya kode pribadi. Begitu Sekprodi menyetujui judul dan menetapkan pembimbing, mahasiswanya langsung muncul di akun dosen tersebut.</p></header>' +
+      '<div class="tabel-wadah"><table class="pantau" style="min-width:560px"><thead><tr><th>Dosen</th><th>Kode akses</th><th>Mahasiswa</th><th>Tindakan</th></tr></thead><tbody>' +
+      P.dosen.slice().sort(function (a, b) { return b.jumlah - a.jumlah || a.nama.localeCompare(b.nama); }).map(function (d) {
+        return '<tr><td><b>' + e(d.nama) + '</b></td><td class="mono"><b>' + e(d.kode || '-') + '</b></td><td>' + d.jumlah + '</td><td><div class="aksi-b"><button type="button" class="tombol mini" data-p="salinKode" data-nama="' + e(d.nama) + '" data-kode="' + e(d.kode) + '">Salin pesan kode</button>' +
+          (d.wa ? '<a class="tombol mini" target="_blank" rel="noopener" href="https://wa.me/' + e(d.wa) + '">Buka WhatsApp</a>' : '') + '</div></td></tr>';
+      }).join('') + '</tbody></table></div>' +
+      '<p class="catat">Tekan <b>Salin pesan kode</b>, lalu tempel di WhatsApp dosen yang bersangkutan. Kode tersimpan di tab <b>KONTAK DOSEN</b> kolom "Kode Akses"; ganti di sana bila kode perlu diperbarui.</p></section>';
+  }
+  function hBarisAkun() {
+    var q = (S.cariAkun || '').toLowerCase(), m = (S.pantau.akun || []).filter(function (x) { return !q || (x.nama + ' ' + x.nim).toLowerCase().indexOf(q) >= 0; });
+    if (!m.length) return '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:22px">' + (q ? 'Tidak ada yang cocok.' : 'Belum ada mahasiswa yang mengajukan judul lewat aplikasi.') + '</td></tr>';
+    return m.map(function (x) {
+      var k = x.status === 'ACC' ? 'hijau' : (x.status === 'Ditolak' ? 'merah' : 'kuning');
+      return '<tr><td><b>' + e(x.nama) + '</b><small class="mono">' + e(x.nim) + ' \u00b7 ' + e(x.kelas) + '</small></td><td class="mono"><b style="font-size:15px;letter-spacing:.06em">' + e(x.kode) + '</b></td>' +
+        '<td><span class="pil ' + k + '">' + e(x.status === 'ACC' ? 'Disetujui' : x.status) + '</span>' + (x.dosen ? '<small>' + e(x.dosen) + '</small>' : '') + '</td><td>' + e(x.waktu) + (x.jumlah > 1 ? '<small>' + x.jumlah + ' kali mengajukan</small>' : '') + '</td>' +
+        '<td><button type="button" class="tombol mini" data-salin="' + e(x.kode) + '">Salin kode</button></td></tr>';
+    }).join('');
+  }
+  function klikPantau(ev) {
+    var t = ev.target.closest('button'); if (!t) return;
+    var p = t.getAttribute('data-p');
+    if (t.hasAttribute('data-atab')) {
+      S.aTab = t.getAttribute('data-atab'); renderAdmin();
+      if (S.aTab === 'antre') api('apiAdminData', S.pin).then(function (d) { if (S.admin && !S.ruang && S.aTab === 'antre' && !document.querySelector('#aIsi [data-yakin]')) segarAdmin(d); }).catch(function () {});
+      return;
+    }
+    if (p === 'ingat') {
+      var id = t.closest('[data-pid]').getAttribute('data-pid'), x = S.pantau.mahasiswa.filter(function (y) { return y.id === id; })[0];
+      if (!x || !yakin(t)) return;
+      sibuk(t, true);
+      api('apiRuang', 'adm', S.pin, id, 'pesan', { isi: teksIngat(x, 'app') }).then(function () { toast('Pengingat terkirim ke ruang ' + x.nama + '.'); t.textContent = 'Terkirim'; t.classList.remove('sibuk'); })
+        .catch(function (z) { toast(z.message); sibuk(t, false); });
+      return;
+    }
+    if (p === 'salinKode') {
+      salin('Assalamu\'alaikum Bapak/Ibu ' + t.getAttribute('data-nama') + '. Berikut kode akses pribadi Bapak/Ibu untuk Log in sebagai Dosen Pembimbing di SKRIPSPACE, Prodi S1 Ilmu Hukum FH UNISSULA: ' + t.getAttribute('data-kode') + '. Mohon kode ini tidak dibagikan. Terima kasih.', 'Pesan berisi kode disalin. Tempel di WhatsApp dosen.');
+      return;
+    }
+    if (p === 'akun') {
+      var kotak = t.closest('.lembar').querySelector('[data-galat]'), nim = $('akNim').value.trim();
+      if (!/^\d{11}$/.test(nim)) { galat(kotak, 'NIM harus 11 digit angka.'); $('akNim').focus(); return; }
+      galat(kotak, ''); sibuk(t, true);
+      api('apiAdminAkunLama', S.pin, nim, $('akKelas').value).then(function (r) {
+        $('akHasil').innerHTML = '<div class="tiket" style="margin-top:6px"><div class="kiri"><h2 style="font-size:22px">' + e(r.nama) + '</h2><p>' + e(r.judul || '-') + '</p><div class="fakta"><span class="mono">' + e(r.nim) + '</span><span>' + e(r.status === 'ACC' ? 'Disetujui' : r.status) + '</span>' + (r.dosen ? '<span>' + e(r.dosen) + '</span>' : '') + '</div>' +
+          '<p>' + (r.baru ? 'Akun baru dibuat dari data pengajuan judul. Berikan kode di samping kepada mahasiswa.' : 'Mahasiswa ini sudah punya akun. Kodenya di samping.') + '</p></div><div class="kanan"><small>Kode pengajuan</small><b>' + e(r.kode) + '</b><button type="button" data-salin="' + e(r.kode) + '">Salin kode</button></div></div>';
+        if (r.baru) S.pantau = null;
+      }).catch(function (x) { galat(kotak, x.message); }).then(function () { sibuk(t, false); });
+    }
+  }
+  function ubahPantau(ev) {
+    var id = ev.target.id;
+    if (id === 'akCari' && ev.type === 'input') { S.cariAkun = ev.target.value.trim(); $('akBadan').innerHTML = hBarisAkun(); return; }
+    if (!((id === 'ptCari' && ev.type === 'input') || ((id === 'ptDosen' || id === 'ptKeadaan') && ev.type === 'change'))) return;
+    S.saring = { dosen: $('ptDosen').value, keadaan: $('ptKeadaan').value, cari: $('ptCari').value.trim() };
+    $('ptBadan').innerHTML = hBarisPantau();
+  }
+
+  /* ---------------- mulai ---------------- */
+  var CONTOH = { nama: 'Nadia Kusumawardani', nim: '30302300417', wa: '081234500417', kelas: 'Reguler', kekhususan: 'Hukum Pidana', tempatLahir: 'Semarang', tglLahir: '2005-03-14', dosenWali: '',
+    mode: 'transkrip', judul: ['Pertanggungjawaban Pidana Pembuat Konten Deepfake Bermuatan Asusila Menurut Undang-Undang Informasi dan Transaksi Elektronik',
+      'Perlindungan Hukum terhadap Konsumen dalam Transaksi Jual Beli Online', 'Efektivitas Diversi dalam Perkara Anak Pelaku Perundungan Siber di Wilayah Hukum Polrestabes Semarang'] };
+  function isiContoh() {
+    var d = JSON.parse(JSON.stringify(CONTOH)); d.dosenWali = S.init.dosen[2] || ''; d.nilai = {};
+    var pola = ['A', 'AB', 'A', 'B', 'AB', 'A', 'AB', 'BC'], n = 0;
+    S.init.kurikulum.forEach(function (s) { s.mk.forEach(function (mk) { if (mk[1] && mk[0] !== 'Skripsi') d.nilai[mk[1]] = pola[n++ % pola.length]; }); });
+    (S.init.kurikulumPk[d.kekhususan] || []).forEach(function (mk) { d.nilai[mk[1]] = pola[n++ % pola.length]; });
+    isiForm(d);
+    var c = document.createElement('canvas'); c.width = 420; c.height = 260;
+    var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 420, 260); g.fillStyle = '#14132b'; g.font = 'bold 22px sans-serif'; g.fillText('CONTOH KRS', 24, 48);
+    g.font = '15px sans-serif'; g.fillText('Semester Gasal 2026/2027', 24, 80); g.fillText('1. Skripsi ............ 4 SKS', 24, 124); g.fillText('2. Kuliah Kerja Nyata .. 3 SKS', 24, 150);
+    S.krs = { nama: 'contoh-krs.jpg', mime: 'image/jpeg', b64: c.toDataURL('image/jpeg', 0.6).split(',')[1] }; $('fKrsSkripsi').checked = true; infoKrs();
+  }
+
+  /* ---------------- pasang sebagai aplikasi (PWA) ---------------- */
+  var tundaPasang = null;
+  function siapPasang() {
+    if (!API) return;
+    var mandiri = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+    if (mandiri) return;
+    var ua = navigator.userAgent || '', ios = /iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+    window.addEventListener('beforeinstallprompt', function (ev) { ev.preventDefault(); tundaPasang = ev; $('bPasang').hidden = false; });
+    window.addEventListener('appinstalled', function () { $('bPasang').hidden = true; $('tipPasang').hidden = true; toast('SKRIPSPACE terpasang.'); });
+    if (ios) $('bPasang').hidden = false;
+    $('bPasang').addEventListener('click', function () {
+      if (tundaPasang) { var p = tundaPasang; tundaPasang = null; p.prompt(); return; }
+      $('tipPasang').textContent = ios ? 'Di iPhone/iPad: ketuk tombol Bagikan di browser, lalu pilih "Tambahkan ke Layar Utama".' : 'Buka menu browser (titik tiga), lalu pilih "Instal aplikasi" atau "Tambahkan ke layar utama".';
+      $('tipPasang').hidden = false;
+    });
+  }
+
+  function pasang() {
+    semua('.nav button').forEach(function (b) { b.addEventListener('click', function () { tampil(b.getAttribute('data-ke')); }); });
+    semua('input[name="peran"]').forEach(function (r) { r.addEventListener('change', function () { pilihPeran(r.value); }); });
+    ['aIsi', 'dIsi', 'mIsi'].forEach(function (id) { $(id).addEventListener('click', klikRuang); });
+    $('aIsi').addEventListener('click', klikPantau); $('aIsi').addEventListener('input', ubahPantau); $('aIsi').addEventListener('change', ubahPantau);
+    ['mNim'].forEach(function (id) { $(id).addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); }); });
+    ['mKode', 'dKode', 'aPin'].forEach(function (id) { $(id).addEventListener('keydown', function (ev) { if (ev.key === 'Enter') masuk(); }); });
+    $('bRiset').addEventListener('click', bukaRiset); $('vRiset').addEventListener('click', klikRiset); $('bRisetKirim').addEventListener('click', kirimRiset);
+    semua('input[name="rmode"]').forEach(function (r) { r.addEventListener('change', function () { rMode(r.value); }); });
+    $('rNimBaru').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); }); $('rNim').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); });
+    rLangkah(1);
+    document.addEventListener('click', function (ev) {
+      var t = ev.target.closest('button'); if (!t) return;
+      if (t.hasAttribute('data-lanjut')) lanjut(Number(t.getAttribute('data-lanjut')), t);
+      if (t.hasAttribute('data-kembali')) keLangkah(Number(t.getAttribute('data-kembali')));
+      if (t.hasAttribute('data-cek')) cekJudul(Number(t.getAttribute('data-cek')), t);
+      if (t.hasAttribute('data-salin')) {
+        var kode = t.getAttribute('data-salin');
+        try { navigator.clipboard.writeText(kode).then(function () { toast('Kode disalin.'); }, function () { toast('Kode: ' + kode); }); } catch (x) { toast('Kode: ' + kode); }
+      }
+      if (t.hasAttribute('data-ajukan-lagi')) { tampil('ajukan'); keLangkah(3); }
+      if (t.hasAttribute('data-ke-lompat')) tampil(t.getAttribute('data-ke-lompat'));
+      if (t.hasAttribute('data-pintu')) { tampil('admin'); if (!S.sesi) pilihPeran(t.getAttribute('data-pintu')); }
+      if (t.hasAttribute('data-masuk-mhs')) { var tm = bacaLokal('pjs-terakhir'); tampil('admin'); if (S.sesi) keluar(); pilihPeran('mhs'); if (tm) { $('mNim').value = tm.nim; $('mKode').value = tm.kode; masuk(); } }
+    });
+    $('bKirim').addEventListener('click', kirim);
+    $('bMasuk').addEventListener('click', masuk);
+    $('aIsi').addEventListener('click', klikAdmin);
+    $('aIsi').addEventListener('change', ubahAdmin);
+    $('bContoh').addEventListener('click', function () { isiContoh(); toast('Formulir diisi data contoh.'); });
+    $('fNim').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); });
+    semua('input[name="mode"]').forEach(function (r) { r.addEventListener('change', gantiMode); });
+    $('fIpk').addEventListener('input', segarIpk); $('fSks').addEventListener('input', segarIpk);
+    ['fTanpaD', 'fLulusMph', 'fKrsSkripsi'].forEach(function (id) { $(id).addEventListener('change', renderSyarat); });
+    $('fKrs').addEventListener('change', function () { pilihKrs(this.files && this.files[0]); });
+    $('daftarSmt').addEventListener('change', function (ev) {
+      var t = ev.target;
+      if (t.hasAttribute('data-kode')) { if (t.value) S.nilai[t.getAttribute('data-kode')] = t.value; else delete S.nilai[t.getAttribute('data-kode')]; renderSmt(); simpanDraf(); }
+      if (t.hasAttribute('data-cepat') && t.value) { var kc = t.getAttribute('data-cepat'); mkSemester(kc === 'pk' ? 'pk' : Number(kc)).forEach(function (mk) { S.nilai[mk[1]] = t.value; }); renderSmt(); simpanDraf(); }
+    });
+    $('daftarJudul').addEventListener('input', function (ev) {
+      var k = ev.target.closest('.judul'); if (!k || ev.target.tagName !== 'TEXTAREA') return;
+      var i = Number(k.getAttribute('data-i'));
+      S.judul[i].teks = ev.target.value; hitKata(i);
+      if (S.judul[i].cek) { S.judul[i].cek = null; tampilHasil(i); }
+    });
+    $('daftarJudul').addEventListener('change', simpanDraf);
+    semua('[data-langkah="1"] input').forEach(function (i) { i.addEventListener('change', simpanDraf); });
+  }
+
+  function mulai() {
+    pasang(); tampil('beranda');
+    $('spandukDemo').hidden = HIDUP; $('bContoh').hidden = HIDUP; siapPasang();
+    api('apiInit').then(function (init) {
+      S.init = init;
+      $('fJumlah').textContent = init.jumlahJudul.toLocaleString('id-ID'); $('fTa').textContent = init.tahunAkademik || '-';
+      $('gKek').innerHTML = init.kekhususan.map(function (k, i) { return '<label><input type="radio" name="kek" value="' + e(k) + '" id="kek' + i + '"><span>' + e(k.replace('Hukum ', '')) + '</span></label>'; }).join('');
+      $('dDosen').innerHTML = init.dosen.map(function (d) { return '<option value="' + e(d) + '">'; }).join('');
+      semua('input[name="kek"]').forEach(function (r) { r.addEventListener('change', simpanDraf); });
+      var draf = bacaLokal('pjs-draf');
+      if (draf) isiForm(draf); else if (!HIDUP) isiContoh();
+      $('tutup').hidden = init.dibuka;
+      if (!init.dibuka) { semua('[data-langkah]').forEach(function (s) { s.hidden = true; }); $('langkah').hidden = true; } else keLangkah(1);
+    }).catch(function (x) { galat($('galatMuat'), 'Aplikasi belum bisa dimuat: ' + x.message); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mulai); else mulai();
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () { /* tetap jalan tanpa SW */ }); }); }
+</script>
+</body>
+</html>
