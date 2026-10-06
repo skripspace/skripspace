@@ -16,14 +16,14 @@
 <meta property="og:url" content="https://skripspace.github.io/skripspace/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=23">
-<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=23">
+<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=24">
+<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=24">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=23">
+<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=24">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -178,10 +178,14 @@ a { color: var(--accent); }
 .isian .salah { font-size: 12.5px; color: var(--bad); font-weight: 600; }
 input[type="text"], input[type="tel"], input[type="date"], input[type="password"], input[type="number"], select, textarea {
   width: 100%; min-width: 0; padding: 11px 13px; background: var(--sunk); border: 2px solid var(--hair); border-radius: var(--r-sm); font-size: 16px; }
-/* iPhone: kotak tanggal bawaan Safari melebar keluar bingkai dan menyusut saat kosong */
-input[type="date"] { -webkit-appearance: none; appearance: none; display: block; max-width: 100%; height: calc(1.55em + 26px); margin: 0; line-height: 1.55; text-align: left; color: var(--ink); }
-input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; min-height: 1.55em; }
-input[type="date"]::-webkit-datetime-edit { padding: 0; }
+/* Kotak tanggal: bingkainya digambar pembungkus .tgl dan isinya dipotong, karena Safari iPhone memberi input tanggal lebar bawaan yang menembus bingkai */
+.tgl { display: block; width: 100%; min-width: 0; max-width: 100%; height: 51px; overflow: hidden; background: var(--sunk); border: 2px solid var(--hair); border-radius: var(--r-sm); font-size: 16px; }
+.tgl:hover { border-color: var(--muted); }
+.tgl:focus-within { border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 3px var(--accent-soft); }
+.isian.galat .tgl { border-color: var(--bad); }
+.tgl input[type="date"], .tgl input[type="date"]:focus { -webkit-appearance: none; appearance: none; display: block; box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%; height: 100%; margin: 0; padding: 0 13px; border: 0; border-radius: 0; background: transparent; box-shadow: none; outline: none; line-height: 47px; text-align: left; color: var(--ink); font-size: 16px; }
+.tgl input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
+.tgl input[type="date"]::-webkit-datetime-edit { padding: 0; }
 input:hover, select:hover, textarea:hover { border-color: var(--muted); }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 3px var(--accent-soft); }
 textarea { resize: vertical; min-height: 92px; line-height: 1.45; }
@@ -602,7 +606,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <div class="isian penuh"><span class="label" id="lKek">Program kekhususan</span>
             <div class="pilih" role="radiogroup" aria-labelledby="lKek" id="gKek"></div></div>
           <div class="isian"><label for="fTempat">Tempat lahir</label><input type="text" id="fTempat" maxlength="40" placeholder="Kota / kabupaten"></div>
-          <div class="isian"><label for="fTgl">Tanggal lahir</label><input type="date" id="fTgl"></div>
+          <div class="isian"><label for="fTgl">Tanggal lahir</label><span class="tgl"><input type="date" id="fTgl"></span></div>
           <div class="isian penuh"><label for="fWali">Dosen wali</label><input type="text" id="fWali" list="dDosen" maxlength="90" placeholder="Ketik nama, lalu pilih"><datalist id="dDosen"></datalist></div>
         </div>
         <div class="catat galat" data-galat hidden></div>
@@ -782,7 +786,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung</p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 24</span></p>
 </div>
 <div id="cetak"></div>
 <div id="toast" role="status" hidden></div>
@@ -1625,7 +1629,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var R = S.ruang, p = S.sesi.peran, b = R.bimbingan, hari = hariIniLokal(), h = '';
     h += '<section class="lembar"><header><h2>Catatan bimbingan</h2><p>' + (p === 'mhs' ? 'Catat tiap pertemuan di sini. Catatan menjadi sah setelah diparaf pembimbingmu dari akunnya.' : (p === 'dsn' ? 'Paraf catatan mahasiswa, tambahkan arahan Anda, atau catat pertemuan baru.' : 'Seluruh catatan bimbingan mahasiswa ini. Pengelola prodi hanya memantau.')) + '</p></header>';
     if (p !== 'adm') h += '<details class="lipat"' + (b.length ? '' : ' open') + ' style="border-top:0;padding-top:0"><summary>Catat bimbingan baru</summary><div>' +
-      '<div class="kisi"><div class="isian"><label for="bTgl">Tanggal bimbingan</label><input type="date" id="bTgl" value="' + hari + '" max="' + hari + '" min="' + e(R.tanggalAcc) + '"></div>' +
+      '<div class="kisi"><div class="isian"><label for="bTgl">Tanggal bimbingan</label><span class="tgl"><input type="date" id="bTgl" value="' + hari + '" max="' + hari + '" min="' + e(R.tanggalAcc) + '"></span></div>' +
       '<div class="isian"><label for="bDurasi">Durasi (menit)</label><input type="number" id="bDurasi" min="5" max="600" value="60" inputmode="numeric"></div>' +
       '<div class="isian penuh"><span class="label">Bentuk bimbingan</span><div class="pilih"><label><input type="radio" name="bBentuk" value="Luring" checked><span>Luring (tatap muka)</span></label><label><input type="radio" name="bBentuk" value="Daring"><span>Daring</span></label></div></div>' +
       '<div class="isian penuh"><label for="bMateri">Materi bimbingan</label><textarea id="bMateri" maxlength="600" placeholder="Contoh: Revisi rumusan masalah dan kerangka teori Bab I"></textarea></div>' +
@@ -1651,7 +1655,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       R.tahap.daftar.map(function (t) {
         var ctl = '';
         if (p !== 'mhs' && t.no >= 3) ctl = t.tanggal ? '<button type="button" class="tombol mini polos" data-u="tahap" data-no="' + t.no + '" data-selesai="0">Batalkan</button>'
-          : '<input type="date" data-f="tgl" value="' + hari + '" max="' + hari + '" style="width:150px" aria-label="Tanggal selesai">' + (t.no === 7 ? '<input type="text" data-f="turnitin" inputmode="decimal" placeholder="% Turnitin" aria-label="Hasil Turnitin dalam persen">' : '') + '<button type="button" class="tombol mini" data-u="tahap" data-no="' + t.no + '" data-selesai="1">Tandai selesai</button>';
+          : '<span class="tgl" style="width:150px;flex:none"><input type="date" data-f="tgl" value="' + hari + '" max="' + hari + '" aria-label="Tanggal selesai"></span>' + (t.no === 7 ? '<input type="text" data-f="turnitin" inputmode="decimal" placeholder="% Turnitin" aria-label="Hasil Turnitin dalam persen">' : '') + '<button type="button" class="tombol mini" data-u="tahap" data-no="' + t.no + '" data-selesai="1">Tandai selesai</button>';
         return '<li class="' + (t.tanggal ? 'sudah' : (t.no === R.tahap.kini ? 'kini' : '')) + '"><span class="no">' + t.no + '</span><div><b>' + e(t.nama) + '</b><small>' + (t.tanggal ? 'Selesai ' + e(tglID(t.tanggal)) + (t.no === 7 && R.tahap.turnitin ? ' · Turnitin ' + e(R.tahap.turnitin) + '%' : '') : (t.no === R.tahap.kini ? 'Sedang dijalani' : 'Belum')) + '</small></div><div class="ctl">' + ctl + '</div></li>';
       }).join('') + '</ol><div class="catat galat" data-galat hidden></div></section>';
   }
