@@ -16,14 +16,14 @@
 <meta property="og:url" content="https://skripspace.github.io/skripspace/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=19">
-<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=19">
+<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=20">
+<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=20">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=19">
+<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=20">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -1557,6 +1557,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     else { S.pantau = null; renderAdmin(); }
     window.scrollTo(0, 0);
   }
+  var PEDOMAN = 'https://skripspace.github.io/skripspace/buku-pedoman-penulisan-skripsi.pdf';
   function renderKepala() {
     var R = S.ruang, p = S.sesi.peran, k = R.rekap, acc = R.status === 'ACC', h = '';
     h += '<div class="aksi"><div>' + (p === 'mhs' ? '' : '<button type="button" class="tombol kecil" data-u="kembali">&larr; Kembali ke daftar</button>') + '</div><div class="kanan"><button type="button" class="tombol kecil" data-u="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-u="keluar">Keluar</button></div></div>';
@@ -1572,7 +1573,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         (k.macet ? '<div class="catat galat"><b>Bimbingan macet.</b> Sudah ' + k.hari + ' hari tidak ada catatan baru (batas ' + R.batasMacet + ' hari). ' + (p === 'mhs' ? 'Segera hubungi pembimbingmu dan catat bimbingan berikutnya.' : (p === 'dsn' ? 'Mohon mahasiswa ini dihubungi.' : 'Ingatkan mahasiswa dan dosen pembimbing lewat tab Pesan atau WhatsApp.')) + '</div>' : '') +
         '<div class="pembimbing"><div><small>' + (p === 'mhs' ? 'Dosen pembimbingmu' : 'Dosen pembimbing') + '</small><b>' + e(R.dosen) + '</b><span>' + (p === 'mhs' ? (k.tercatat ? 'Catat tiap pertemuan di tab Bimbingan.' : 'Kamu wajib menghubungi pembimbing dan memulai bimbingan. Perkenalkan diri: nama, NIM, dan judul.') : 'Mahasiswa: ' + e(R.nama) + ' · ' + e(R.nim)) + '</span></div><div style="display:flex;gap:8px;flex-wrap:wrap">' +
         (p !== 'dsn' && R.waDosen ? '<a class="tombol wa kecil" href="https://wa.me/' + e(R.waDosen) + '" target="_blank" rel="noopener">WhatsApp dosen</a>' : '') +
-        (p !== 'mhs' && R.wa ? '<a class="tombol wa kecil" href="https://wa.me/' + e(R.wa) + '" target="_blank" rel="noopener">WhatsApp mahasiswa</a>' : '') + '</div></div></section>';
+        (p !== 'mhs' && R.wa ? '<a class="tombol wa kecil" href="https://wa.me/' + e(R.wa) + '" target="_blank" rel="noopener">WhatsApp mahasiswa</a>' : '') + '</div></div>' +
+        (p === 'mhs' ? '<div class="pembimbing"><div><small>Aturan format penulisan</small><b>Buku Pedoman Penulisan Skripsi</b><span>Pedoman resmi Prodi S1 Ilmu Hukum FH UNISSULA, edisi 2026. Ikuti buku ini untuk sistematika, pengetikan, sitasi, dan daftar pustaka skripsimu. PDF, 41 halaman, 3,2 MB.</span></div><a class="tombol utama" href="' + PEDOMAN + '" target="_blank" rel="noopener" download="Buku Pedoman Penulisan Skripsi FH UNISSULA.pdf">Unduh PDF</a></div>' : '') + '</section>';
     }
     $('ruKepala').innerHTML = h;
   }
