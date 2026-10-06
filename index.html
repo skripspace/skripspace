@@ -16,14 +16,14 @@
 <meta property="og:url" content="https://skripspace.github.io/skripspace/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=22">
-<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=22">
+<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=23">
+<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=23">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=22">
+<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=23">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -178,6 +178,10 @@ a { color: var(--accent); }
 .isian .salah { font-size: 12.5px; color: var(--bad); font-weight: 600; }
 input[type="text"], input[type="tel"], input[type="date"], input[type="password"], input[type="number"], select, textarea {
   width: 100%; min-width: 0; padding: 11px 13px; background: var(--sunk); border: 2px solid var(--hair); border-radius: var(--r-sm); font-size: 16px; }
+/* iPhone: kotak tanggal bawaan Safari melebar keluar bingkai dan menyusut saat kosong */
+input[type="date"] { -webkit-appearance: none; appearance: none; display: block; max-width: 100%; height: calc(1.55em + 26px); margin: 0; line-height: 1.55; text-align: left; color: var(--ink); }
+input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; min-height: 1.55em; }
+input[type="date"]::-webkit-datetime-edit { padding: 0; }
 input:hover, select:hover, textarea:hover { border-color: var(--muted); }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 3px var(--accent-soft); }
 textarea { resize: vertical; min-height: 92px; line-height: 1.45; }
