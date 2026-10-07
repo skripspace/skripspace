@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=34">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=34">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=35">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=35">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=34">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=35">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -906,7 +906,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <label><input type="radio" name="peran" value="mhs" id="pMhs" checked><span><b>Mahasiswa</b><small>NIM dan kode pengajuan.</small></span></label>
           <label><input type="radio" name="peran" value="wali" id="pWali"><span><b>Dosen wali</b><small>Kode akses pribadi.</small></span></label>
           <label><input type="radio" name="peran" value="dsn" id="pDsn"><span><b>Dosen pembimbing</b><small>Kode akses pribadi.</small></span></label>
-          <label><input type="radio" name="peran" value="adm" id="pAdm"><span><b>Pengelola Prodi S1 Ilmu Hukum</b><small>Kode akses pengelola.</small></span></label>
+          <label><input type="radio" name="peran" value="adm" id="pAdm"><span><b>Pengelola Prodi S1 Ilmu Hukum</b><small>Sekprodi, Kaprodi, atau admin pengajuan sidang.</small></span></label>
         </div>
         <div class="kisi" id="fmMhs">
           <div class="isian"><label for="mNim">NIM</label><input type="text" id="mNim" class="mono" inputmode="numeric" maxlength="11" placeholder="11 digit"></div>
@@ -923,7 +923,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 34</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 35</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1949,6 +1949,10 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   function tampilWa(no) { var n = String(no || ''); return n ? '+' + n.slice(0, 2) + ' ' + n.slice(2, 5) + '-' + n.slice(5, 9) + '-' + n.slice(9) : ''; }
   function renderAdmin() {
     var a = S.admin, h = '';
+    if (a.peran === 'sidang') {
+      $('aIsi').innerHTML = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang admin sidang</h2><span style="color:var(--muted);font-size:14.5px">Admin pengajuan sidang · S1 Ilmu Hukum</span></div><div class="kanan"><button type="button" class="tombol kecil" data-a="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-a="keluar">Keluar</button></div></div>' + hSidangAdmin();
+      return;
+    }
     h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Antrean pengajuan judul</h2></div></div>';
     h += '<div class="angka"><div class="sorot"><b>' + (a.hitung.Menunggu || 0) + '</b><span>Menunggu</span></div><div><b>' + (a.hitung.ACC || 0) + '</b><span>Disetujui</span></div><div><b>' + (a.hitung.Revisi || 0) + '</b><span>Revisi</span></div><div><b>' + (a.hitung.Ditolak || 0) + '</b><span>Ditolak</span></div></div>';
     var kap = a.peran !== 'sekprodi', kapSaja = a.peran === 'kaprodi', rs = a.riset || { menunggu: [], riwayat: [] }, hr = '';
@@ -2037,6 +2041,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       '<div class="isian"><label for="atTtd">Tanda tangan Kaprodi untuk surat ' + (a.adaTtd ? '<span class="pil kuning">Unggahan dipakai</span>' : '<span class="pil hijau">Bawaan terpasang</span>') + '</label><input type="file" id="atTtd" accept="image/png,image/jpeg"><span class="bantu">Tanda tangan Kaprodi (dengan cap fakultas) dan Wakil Dekan I sudah terpasang. Unggah gambar hanya bila ingin mengganti tanda tangan Kaprodi.</span></div>' +
       (a.adaTtd ? '<div class="aksi"><div class="kanan"><button type="button" class="tombol kecil bahaya" data-a="hapusTtd">Kembali ke tanda tangan bawaan</button></div></div>' : '') +
       '<div class="aksi"><span class="bantu" style="font-size:13px;color:var(--muted)">Uji apakah sumber luar dan pembuat PDF bisa dipakai.</span><div class="kanan"><button type="button" class="tombol kecil" data-a="uji">Uji sambungan</button></div></div><div id="aUji"></div>' +
+      (a.kodeSidang ? '<p class="catat">Kode akses <b>admin pengajuan sidang</b>: <b class="mono">' + e(a.kodeSidang) + '</b> <button type="button" class="tombol mini" data-salin="' + e(a.kodeSidang) + '">Salin kode</button><br>Dengan kode ini petugas masuk lewat Log in (Pengelola Prodi) dan hanya melihat pengajuan sidang. Kodenya bisa diganti di baris "Kode Admin Sidang" pada tab PENGATURAN.</p>' : '') +
       (a.peran === 'prodi' ? '<p class="catat">Sekprodi dan Kaprodi masuk dengan <b>satu kode yang sama</b>, yaitu isi baris "PIN Admin" di tab PENGATURAN, dengan hak yang sama (termasuk menyetujui izin riset). Baris "Kode Kaprodi" boleh dikosongkan.</p>' : (a.kodeKaprodi ? '<p class="catat">Kode akses Kaprodi: <b class="mono">' + e(a.kodeKaprodi) + '</b>.</p>' : '')) +
       '<p class="catat">Pengaturan lain (kode akses pengelola pada baris "PIN Admin", nama pejabat, ambang kemiripan) ada di tab <b>PENGATURAN</b> pada spreadsheet.</p></div></details>';
     var atas = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang pengelola prodi</h2><span style="color:var(--muted);font-size:14.5px">' + (a.peran === 'prodi' ? 'Pengelola prodi (Sekprodi dan Kaprodi)' : 'Masuk sebagai ' + (kap ? 'Kaprodi' : 'Sekprodi')) + ' · S1 Ilmu Hukum</span></div><div class="kanan"><button type="button" class="tombol kecil" data-a="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-a="keluar">Keluar</button></div></div>' +
@@ -2433,6 +2438,11 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     if (S.ruang) {
       var id = S.ruang.id; S.sedangSegar = true;
       panggilRuang('buka').then(function (R) { if (S.ruang && S.ruang.id === id && R.id === id) terimaRuang(R, true); }).catch(function () { /* coba lagi di putaran berikut */ }).then(function () { S.sedangSegar = false; });
+    } else if (S.sesi.peran === 'adm' && S.admin && S.admin.peran === 'sidang') {
+      if (nSegar % 3 === 0) { S.sedangSegar = true; api('apiAdminData', S.pin).then(function (a) {
+        var el = document.activeElement, id = function (x) { return JSON.stringify(x.sidang.menunggu.map(function (r) { return r.id; })); };
+        if (!S.admin || id(a) === id(S.admin) || (el && el.tagName === 'TEXTAREA' && el.value) || document.querySelector('#aIsi [data-yakin]')) return;
+        S.admin = a; renderAdmin(); toast('Daftar pengajuan sidang diperbarui.'); }).catch(function () {}).then(function () { S.sedangSegar = false; }); }
     } else if (S.sesi.peran === 'adm') {
       var mengetik = function () { var el = document.activeElement; return !!(el && $('aIsi').contains(el) && /^(TEXTAREA|INPUT|SELECT)$/.test(el.tagName)); };
       if (S.aTab !== 'antre' && S.pantau) {
