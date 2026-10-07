@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=33">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=33">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=34">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=34">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=33">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=34">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -527,9 +527,9 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     <div class="merek"><button type="button" data-ke-lompat="beranda">SKRIP<span>SPACE</span></button><small>FH UNISSULA</small></div>
     <nav class="nav" aria-label="Menu">
       <button type="button" data-ke="beranda" aria-current="true">Beranda</button>
-      <button type="button" data-ke="ajukan"><span class="pjg">Ajukan </span>Judul</button>
-      <button type="button" data-ke="riset">Izin Riset</button>
-      <button type="button" data-ke="sidang"><span class="pjg">Ajukan </span>Sidang</button>
+      <button type="button" data-ke="ajukan">Skripsi</button>
+      <button type="button" data-ke="riset">Riset</button>
+      <button type="button" data-ke="sidang">Sidang</button>
       <button type="button" data-ke="admin">Log in</button>
     </nav>
   </header>
@@ -583,7 +583,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <li><span class="no">03</span><div><small>Orbit pertama</small><h3>Bimbingan proposal</h3><p>Hubungi pembimbingmu dan mulai bimbingan. Tiap pertemuan kamu catat di sini, pembimbing memaraf dari akunnya. Tidak ada lagi buku bimbingan yang ketinggalan di kos.</p></div></li>
           <li><span class="no">04</span><div><small>Turun ke lapangan</small><h3>Riset dan pengumpulan data</h3><p>Butuh data dari instansi? Ajukan izin riset. Begitu disetujui Kaprodi, surat permohonan dan surat pengantar langsung bisa diunduh.</p></div></li>
           <li><span class="no">05</span><div><small>Mode menulis</small><h3>Bab I sampai Bab IV</h3><p>Susun naskah bab demi bab sambil terus bimbingan. Sebelum disetujui, naskah diuji Turnitin dengan batas kemiripan 24,99%.</p></div></li>
-          <li><span class="no">06</span><div><small>Siap mendarat</small><h3>Naskah disetujui dan ujian skripsi</h3><p>Pembimbing menyatakan naskahmu siap diuji. Buku catatan bimbingan tinggal dicetak dari sini, lalu daftar ujian lewat menu Ajukan Sidang: semua syarat diunggah sekali dan digabung menjadi satu berkas.</p></div></li>
+          <li><span class="no">06</span><div><small>Siap mendarat</small><h3>Naskah disetujui dan ujian skripsi</h3><p>Pembimbing menyatakan naskahmu siap diuji. Buku catatan bimbingan tinggal dicetak dari sini, lalu daftar ujian lewat menu Sidang: semua syarat diunggah sekali dan digabung menjadi satu berkas.</p></div></li>
           <li><span class="no">07</span><div><small>Touchdown</small><h3>Revisi dan naskah akhir</h3><p>Perbaiki naskah sesuai masukan penguji, serahkan naskah akhir, lalu selesai. Misi skripsi tuntas, saatnya pakai toga.</p></div></li>
         </ol>
       </section>
@@ -923,7 +923,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 33</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 34</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1775,7 +1775,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     SD.status = { nim: x.nim, kode: x.kode }; simpanLokal('pjs-sidang', SD.status);
     var st = x.status, tiket = st === 'Diterima' ? ['Berkas sidang diterima', 'Seluruh berkasmu sudah diperiksa dan diterima prodi. Tunggu informasi jadwal ujian dari prodi.']
       : (st === 'Dikembalikan' ? ['Perlu diperbaiki', 'Pengajuanmu dikembalikan. Baca catatan di bawah, lalu ajukan ulang dengan berkas yang sudah diperbaiki.']
-        : [baru ? 'Terkirim. Tinggal tunggu.' : 'Sedang diperiksa', 'Berkasmu sudah masuk ke pengelola prodi. Simpan kode di samping untuk melihat hasilnya lewat menu Ajukan Sidang, Lihat status.']);
+        : [baru ? 'Terkirim. Tinggal tunggu.' : 'Sedang diperiksa', 'Berkasmu sudah masuk ke pengelola prodi. Simpan kode di samping untuk melihat hasilnya lewat menu Sidang, Lihat status.']);
     $('sdIsi').innerHTML = '<div class="tiket"><div class="kiri">' + pilPil(st === 'Diterima' ? 'ACC' : (st === 'Dikembalikan' ? 'Revisi' : 'Menunggu')) + '<h2>' + tiket[0] + '</h2><p>' + tiket[1] + '</p></div>' +
       '<div class="kanan"><small>Kode sidang</small><b>' + e(x.kode) + '</b><button type="button" data-salin="' + e(x.kode) + '">Salin kode</button></div></div>' +
       '<section class="lembar"><dl class="rinci"><dt>Nama</dt><dd>' + e(x.nama) + '</dd><dt>NIM</dt><dd class="mono">' + e(x.nim) + '</dd><dt>Kelas</dt><dd>' + e(x.kelas) + '</dd><dt>Dikirim</dt><dd>' + e(x.waktu) + ' WIB</dd>' +
@@ -1821,7 +1821,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
   function siapSidang(init) {
     var I = init.sidang;
-    if (!I) { $('sdTutup').textContent = 'Menu Ajukan Sidang sedang disiapkan. Coba lagi beberapa saat lagi.'; $('sdModeWadah').hidden = true; sdMode('ajukan'); return; }
+    if (!I) { $('sdTutup').textContent = 'Menu Sidang sedang disiapkan. Coba lagi beberapa saat lagi.'; $('sdModeWadah').hidden = true; sdMode('ajukan'); return; }
     $('sdMaks').textContent = koma(I.turnitinMaks, 2);
     $('sdTutup').textContent = 'Pengajuan sidang sedang ditutup oleh prodi. Pengajuan yang sudah dikirim tetap bisa dilihat lewat "Lihat status".';
     $('sdToga').innerHTML = '<option value="">Pilih ukuran</option>' + I.ukuranToga.map(function (u) { return '<option>' + e(u) + '</option>'; }).join('');
