@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=28">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=28">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=29">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=29">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=28">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=29">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -427,12 +427,12 @@ table.beban tr.mati td { color: var(--muted); text-decoration: line-through; }
 .rute small { font-family: var(--f-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
 .rute h3 { font-size: 20px; font-weight: 800; margin: 2px 0 4px; }
 .rute p { color: var(--muted); font-size: 15px; max-width: 62ch; }
-.pintu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.pintu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .pintu button { text-align: left; display: flex; flex-direction: column; gap: 6px; padding: 16px; border: 2px solid var(--ink); border-radius: var(--r-sm); background: var(--sunk); cursor: pointer; transition: transform .08s ease, box-shadow .08s ease; }
 .pintu button:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--shadow); background: var(--surface); }
 .pintu b { font-family: var(--f-display); font-size: 19px; } .pintu span { color: var(--muted); font-size: 14px; }
 @media (max-width: 680px) { .pintu { grid-template-columns: minmax(0, 1fr); } }
-.mode.tiga { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mode.tiga { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 680px) { .mode.tiga { grid-template-columns: minmax(0, 1fr); } }
 /* ---------- ruang kerja ---------- */
 .tabs { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -564,9 +564,10 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
         </ol>
       </section>
       <section class="lembar">
-        <header><h2>Tiga pintu masuk</h2><p>Mahasiswa, dosen pembimbing, dan pengelola prodi bekerja di ruang yang sama, dengan hak yang berbeda.</p></header>
+        <header><h2>Empat pintu masuk</h2><p>Mahasiswa, dosen wali, dosen pembimbing, dan pengelola prodi bekerja di ruang yang sama, dengan hak yang berbeda.</p></header>
         <div class="pintu">
           <button type="button" data-pintu="mhs"><b>Mahasiswa</b><span>Riwayat judul, izin riset, catatan bimbingan, dan pesan ke pembimbing. Masuk dengan NIM dan kode pengajuan.</span></button>
+          <button type="button" data-pintu="wali"><b>Dosen wali</b><span>Menyetujui (Mengetahui) pengajuan judul mahasiswa perwalian dengan satu klik. Masuk dengan kode akses pribadi.</span></button>
           <button type="button" data-pintu="dsn"><b>Dosen pembimbing</b><span>Daftar mahasiswa bimbingan, paraf catatan, tandai tahapan, dan balas pesan. Masuk dengan kode akses pribadi.</span></button>
           <button type="button" data-pintu="adm"><b>Pengelola prodi</b><span>Persetujuan judul dan izin riset, pantauan seluruh bimbingan, dan pengingat untuk yang macet.</span></button>
         </div>
@@ -784,7 +785,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
       <section class="pembuka" id="pembukaMasuk">
         <div class="teks">
           <h1>Satu pintu, <span class="stabilo">tiga ruang kerja.</span></h1>
-          <p>Mahasiswa, dosen pembimbing, dan pengelola prodi masuk dari sini. Bimbingan tercatat, pesan tersambung, progres skripsi terpantau.</p>
+          <p>Mahasiswa, dosen wali, dosen pembimbing, dan pengelola prodi masuk dari sini. Bimbingan tercatat, pesan tersambung, progres skripsi terpantau.</p>
           <div class="fakta"><span>Mahasiswa</span><span>Dosen pembimbing</span><span>Pengelola prodi</span></div>
         </div>
         <svg class="seni" viewBox="0 0 300 250" aria-hidden="true" focusable="false"><g class="st">
@@ -801,6 +802,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
         <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st"><path class="f-no tebal luar" d="M21 30V21c0-7 5-11 11-11s11 4 11 11v9"/><rect class="f-ink" x="15" y="32" width="42" height="28" rx="8"/><rect class="f-acc" x="11" y="28" width="42" height="28" rx="8"/><circle class="f-pop" cx="32" cy="39" r="4"/><path class="f-no" d="M32 43v6"/></g></svg><h2>Log in</h2><p>Pilih pintu masukmu. Tiap peran punya ruang kerjanya sendiri.</p></header>
         <div class="mode tiga" role="radiogroup" aria-label="Masuk sebagai">
           <label><input type="radio" name="peran" value="mhs" id="pMhs" checked><span><b>Mahasiswa</b><small>NIM dan kode pengajuan.</small></span></label>
+          <label><input type="radio" name="peran" value="wali" id="pWali"><span><b>Dosen wali</b><small>Kode akses pribadi.</small></span></label>
           <label><input type="radio" name="peran" value="dsn" id="pDsn"><span><b>Dosen pembimbing</b><small>Kode akses pribadi.</small></span></label>
           <label><input type="radio" name="peran" value="adm" id="pAdm"><span><b>Pengelola Prodi S1 Ilmu Hukum</b><small>Kode akses pengelola.</small></span></label>
         </div>
@@ -808,7 +810,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <div class="isian"><label for="mNim">NIM</label><input type="text" id="mNim" class="mono" inputmode="numeric" maxlength="11" placeholder="11 digit"></div>
           <div class="isian"><label for="mKode">Kode pengajuan</label><input type="text" id="mKode" class="mono" maxlength="6" autocapitalize="characters" autocomplete="off" placeholder="6 karakter"><span class="bantu">Kode yang kamu dapat saat mengajukan judul. Satu kode untuk satu mahasiswa, berlaku seterusnya.</span></div>
         </div>
-        <div class="isian" id="fmDsn" style="max-width:320px" hidden><label for="dKode">Kode akses dosen</label><input type="password" id="dKode" class="mono" maxlength="12" autocapitalize="characters" autocomplete="off"><span class="bantu">Kode pribadi dari pengelola Prodi. Jangan dibagikan.</span></div>
+        <div class="isian" id="fmDsn" style="max-width:320px" hidden><label for="dKode">Kode akses dosen</label><input type="password" id="dKode" class="mono" maxlength="12" autocapitalize="characters" autocomplete="off"><span class="bantu">Kode pribadi dari pengelola Prodi, sama untuk peran dosen wali maupun dosen pembimbing. Jangan dibagikan.</span></div>
         <div class="isian" id="fmAdm" style="max-width:320px" hidden><label for="aPin">Kode akses pengelola</label><input type="password" id="aPin" class="mono" inputmode="numeric" maxlength="12" autocomplete="off"></div>
         <div class="catat galat" id="aGalat" hidden></div>
         <div class="aksi"><div class="kanan"><button type="button" class="tombol utama" id="bMasuk">Masuk</button></div></div>
@@ -819,7 +821,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 28</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 29</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1123,10 +1125,16 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     };
     baca.readAsDataURL(berkas);
   }
+  function pesanAdminWali(x) {
+    return 'Assalamu\'alaikum Wr. Wb. Bapak/Ibu ' + x.dosenWali + '.\n\nMohon izin, kami dari pengelola Prodi S1 Ilmu Hukum FH UNISSULA. Mahasiswa perwalian Bapak/Ibu, ' + x.nama + ' (NIM ' + x.nim + '), mengajukan judul skripsi melalui SKRIPSPACE dan menunggu persetujuan Bapak/Ibu selaku dosen wali.\n\n' +
+      'Mohon kesediaan Bapak/Ibu membuka tautan berikut, memilih Dosen wali, memasukkan kode akses, lalu menekan tombol Mengetahui:\n\nhttps://skripspace.com/?wali=' + x.id + '\n\n' +
+      (x.kodeWali ? 'Kode akses Bapak/Ibu: ' + x.kodeWali + '\n(kode ini pribadi, mohon tidak dibagikan)\n\n' : '') +
+      'Terima kasih atas waktu dan perhatian Bapak/Ibu.\nWassalamu\'alaikum Wr. Wb.\nPengelola Prodi S1 Ilmu Hukum FH UNISSULA';
+  }
   function pesanWali(r) {
     return 'Assalamu\'alaikum Wr. Wb. Bapak/Ibu ' + r.dosenWali + '.\n\nMohon maaf mengganggu waktunya. Saya ' + r.nama + ' (NIM ' + r.nim + '), mahasiswa perwalian Bapak/Ibu di Prodi S1 Ilmu Hukum FH UNISSULA.\n\n' +
-      'Saya baru saja mengajukan judul skripsi melalui SKRIPSPACE dan memohon persetujuan Bapak/Ibu selaku dosen wali. Mohon kesediaan Bapak/Ibu membuka tautan berikut, masuk sebagai Dosen dengan kode akses Bapak/Ibu, lalu menekan tombol Mengetahui pada nama saya:\n\n' +
-      'https://skripspace.com/?wali=' + r.id + '\n\nBila kode akses belum Bapak/Ibu terima, kode tersebut dapat diminta ke pengelola Prodi S1 Ilmu Hukum.\n\nTerima kasih banyak atas waktu dan arahan Bapak/Ibu.\nWassalamu\'alaikum Wr. Wb.';
+      'Saya baru saja mengajukan judul skripsi melalui SKRIPSPACE dan memohon persetujuan Bapak/Ibu selaku dosen wali. Mohon kesediaan Bapak/Ibu membuka tautan berikut, memilih Dosen wali, memasukkan kode akses Bapak/Ibu, lalu menekan tombol Mengetahui pada nama saya:\n\n' +
+      'https://skripspace.com/?wali=' + r.id + '\n\nKode akses Bapak/Ibu dikirimkan oleh pengelola Prodi S1 Ilmu Hukum. Bila belum diterima, kode tersebut dapat diminta ke pengelola prodi.\n\nTerima kasih banyak atas waktu dan arahan Bapak/Ibu.\nWassalamu\'alaikum Wr. Wb.';
   }
 
   /* ---------------- DKN ---------------- */
@@ -1342,7 +1350,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       tiket = [baru ? 'Terkirim. Tinggal tunggu.' : 'Sedang ditinjau', 'Pengajuanmu sudah masuk ke Sekprodi. Simpan kode di samping: itu kunci Log in-mu di SKRIPSPACE, berlaku seterusnya.'];
     }
     alur = '<li class="sudah"><div><b>Pengajuan dikirim</b><span>' + e(r.waktu) + ' WIB · ' + e(r.id) + '</span></div></li>';
-    var wl = r.wali, alurWali = !wl ? '' : (wl.status === 'setuju' ? '<li class="sudah"><div><b>Diketahui dosen wali</b><span>' + e(wl.oleh || r.dosenWali) + ' · ' + e(wl.waktu) + ' WIB</span></div></li>'
+    var wl = r.wali, alurWali = !wl ? '' : (wl.status === 'setuju' ? '<li class="sudah"><div><b>' + (wl.wakil ? 'Diketahui pengelola prodi atas nama dosen wali' : 'Diketahui dosen wali') + '</b><span>' + e(wl.wakil ? r.dosenWali : (wl.oleh || r.dosenWali)) + ' · ' + e(wl.waktu) + ' WIB</span></div></li>'
       : (wl.status === 'dilewati' ? '<li class="sudah"><div><b>Diteruskan pengelola prodi</b><span>Tanpa persetujuan dosen wali · ' + e(wl.waktu) + ' WIB</span></div></li>' : ''));
     if (st === 'Menunggu Wali') alur += '<li class="kini"><div><b>Menunggu dosen wali</b><span>' + e(r.dosenWali) + ' perlu menekan Mengetahui di SKRIPSPACE.</span></div></li><li><div><b>Ditinjau Sekprodi</b><span>Judul dipilih dan dosen pembimbing ditetapkan.</span></div></li><li><div><b>Surat persetujuan terbit</b><span>Muncul di halaman ini setelah disetujui.</span></div></li>';
     else if (st === 'Menunggu') alur += alurWali + '<li class="kini"><div><b>Ditinjau Sekprodi</b><span>Judul dipilih dan dosen pembimbing ditetapkan.</span></div></li><li><div><b>Surat persetujuan terbit</b><span>Muncul di halaman ini setelah disetujui.</span></div></li>';
@@ -1359,7 +1367,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         (r.waWali ? '<a class="tombol wa" href="https://wa.me/' + e(r.waWali) + '?text=' + encodeURIComponent(pesanWali(r)) + '" target="_blank" rel="noopener">Kirim WhatsApp ke dosen wali</a>' : '<button type="button" class="tombol" data-salin-pesan="wali">Salin pesan untuk dosen wali</button>') + '</div>' +
         '<div class="catat">' + (r.waWali ? '' : 'Nomor WhatsApp dosen walimu belum ada di data prodi. Salin pesannya, lalu kirim lewat nomor beliau yang kamu punya. ') + 'Pengajuanmu belum masuk antrean prodi sebelum dosen wali menekan <b>Mengetahui</b>. Hasilnya bisa dilihat lewat menu <b>Log in</b> sebagai Mahasiswa, dengan NIM dan kode pengajuan.</div>' +
         (baru ? '<div class="aksi"><div class="kanan"><button type="button" class="tombol" data-masuk-mhs>Masuk ke ruang kerjaku</button></div></div>' : '')
-      : st === 'Menunggu' ? '<div class="catat">' + (wl && wl.status === 'setuju' ? '<b>Dosen wali sudah mengetahui.</b> Barcode buktinya tercetak di surat permohonan. Sekarang pengajuanmu menunggu ditinjau Sekprodi.' : (wl ? 'Pengajuanmu sudah diteruskan ke Sekprodi.' : '<b>Yang perlu kamu lakukan:</b> unduh surat permohonan di bawah, cetak, dan minta tanda tangan dosen wali.')) + ' Hasil persetujuan bisa dilihat lewat menu <b>Log in</b> sebagai Mahasiswa, dengan NIM dan kode pengajuan.</div>' + (baru ? '<div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-masuk-mhs>Masuk ke ruang kerjaku</button></div></div>' : '') :
+      : st === 'Menunggu' ? '<div class="catat">' + (wl && wl.status === 'setuju' ? (wl.wakil ? '<b>Pengelola prodi sudah menekan Mengetahui atas nama dosen walimu.</b>' : '<b>Dosen wali sudah mengetahui.</b>') + ' Barcode buktinya tercetak di surat permohonan. Sekarang pengajuanmu menunggu ditinjau Sekprodi.' : (wl ? 'Pengajuanmu sudah diteruskan ke Sekprodi.' : '<b>Yang perlu kamu lakukan:</b> unduh surat permohonan di bawah, cetak, dan minta tanda tangan dosen wali.')) + ' Hasil persetujuan bisa dilihat lewat menu <b>Log in</b> sebagai Mahasiswa, dengan NIM dan kode pengajuan.</div>' + (baru ? '<div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-masuk-mhs>Masuk ke ruang kerjaku</button></div></div>' : '') :
       (st === 'ACC' ? '<div class="catat baik">Perkenalkan diri dengan sopan saat pertama menghubungi pembimbing: sebutkan nama, NIM, dan judul yang disetujui. Cetak surat persetujuan, pindai jadi PDF, lalu kirim ke staf akademik dan dosen pembimbing. Setiap bimbingan wajib dicatat di tab <b>Bimbingan</b>.</div>' :
         '<div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-ajukan-lagi>Ajukan judul baru</button></div></div>');
 
@@ -1556,7 +1564,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var a = S.admin, h = '';
     h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Antrean pengajuan judul</h2></div></div>';
     h += '<div class="angka"><div class="sorot"><b>' + (a.hitung.Menunggu || 0) + '</b><span>Menunggu</span></div><div><b>' + (a.hitung.ACC || 0) + '</b><span>Disetujui</span></div><div><b>' + (a.hitung.Revisi || 0) + '</b><span>Revisi</span></div><div><b>' + (a.hitung.Ditolak || 0) + '</b><span>Ditolak</span></div></div>';
-    var kap = a.peran === 'kaprodi', rs = a.riset || { menunggu: [], riwayat: [] }, hr = '';
+    var kap = a.peran !== 'sekprodi', kapSaja = a.peran === 'kaprodi', rs = a.riset || { menunggu: [], riwayat: [] }, hr = '';
     hr += '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Izin riset</h2></div><span class="pil ' + (rs.menunggu.length ? 'kuning' : 'netral') + '">' + rs.menunggu.length + ' menunggu</span></div>';
     if (!rs.menunggu.length) hr += '<div class="kosong"><b>Tidak ada permohonan izin riset</b>Permohonan dari mahasiswa akan muncul di sini.</div>';
     rs.menunggu.forEach(function (x) {
@@ -1572,18 +1580,27 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         (kap ? '<div class="kisi"><div class="isian"><label for="rn-' + e(x.id) + '">Nomor surat pengantar</label><input type="text" id="rn-' + e(x.id) + '" class="mono" data-f="nomor" value="' + e(a.nomorBerikut) + '" maxlength="40"></div>' +
           '<div class="isian penuh"><label for="rc-' + e(x.id) + '">Catatan untuk mahasiswa</label><textarea id="rc-' + e(x.id) + '" data-f="catatan" maxlength="300" style="min-height:56px" placeholder="Wajib diisi bila menolak"></textarea></div></div>' +
           '<div class="catat galat" data-galat hidden></div><div class="aksi"><button type="button" class="tombol kecil bahaya" data-riset-aksi="TOLAK">Tolak</button><div class="kanan"><button type="button" class="tombol utama" data-riset-aksi="SETUJU">Setujui dan terbitkan surat</button></div></div>'
-          : '<div class="catat">Menunggu persetujuan Kaprodi. Kaprodi masuk lewat menu ini dengan kode aksesnya sendiri.</div>') + '</article>';
+          : '<div class="catat">Persetujuan izin riset belum tersedia dari akses ini. Muat ulang halaman.</div>') + '</article>';
     });
     if (rs.riwayat.length) hr += '<details class="lipat"><summary>Riwayat izin riset (' + rs.riwayat.length + ')</summary><div><ul class="riwayat">' + rs.riwayat.map(function (x) {
       return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>' + e(x.instansi + (x.status === 'Disetujui' ? ' · No. ' + x.nomor : ' · ' + x.catatan)) + '</small></span><span class="pil ' + (x.status === 'Disetujui' ? 'hijau' : 'merah') + '">' + e(x.status) + '</span></li>';
     }).join('') + '</ul></div></details>';
-    if (kap) h += '<div class="catat baik">Anda masuk sebagai <b>Kaprodi</b>. Persetujuan izin riset hanya bisa dilakukan dari akses ini.</div>' + hr;
-    var tw = a.tungguWali || [];
-    if (tw.length) h += '<section class="lembar"><header><h2 style="font-size:20px">Menunggu dosen wali (' + tw.length + ')</h2><p>Pengajuan ini belum masuk antrean karena dosen walinya belum menekan Mengetahui. Ingatkan lewat WhatsApp, atau teruskan sendiri bila dosen wali berhalangan lama.</p></header><ul class="riwayat">' + tw.map(function (x) {
-      var psn = 'Assalamu\'alaikum Wr. Wb. Bapak/Ibu ' + x.dosenWali + '. Mohon izin mengingatkan, mahasiswa perwalian Bapak/Ibu, ' + x.nama + ' (NIM ' + x.nim + '), menunggu persetujuan Bapak/Ibu atas pengajuan judul skripsinya. Mohon kesediaan membuka https://skripspace.com/?wali=' + x.id + ' , masuk sebagai Dosen, lalu menekan Mengetahui. Terima kasih. Prodi S1 Ilmu Hukum FH UNISSULA.';
-      return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>Dosen wali: ' + e(x.dosenWali) + ' · diajukan ' + e(x.waktu) + '</small></span><span class="aksi-b">' +
-        (x.waWali ? '<a class="tombol mini" target="_blank" rel="noopener" href="https://wa.me/' + e(x.waWali) + '?text=' + encodeURIComponent(psn) + '">Ingatkan dosen wali</a>' : '') +
-        '<button type="button" class="tombol mini" data-teruskan-wali="' + e(x.id) + '" data-nama="' + e(x.nama) + '">Teruskan tanpa dosen wali</button></span></li>'; }).join('') + '</ul></section>';
+    if (kapSaja) h += '<div class="catat baik">Anda masuk sebagai <b>Kaprodi</b>. Persetujuan izin riset hanya bisa dilakukan dari akses ini.</div>' + hr;
+    var tw = a.tungguWali || [], rw = a.riwayatWali || [];
+    if (tw.length || rw.length) {
+      h += '<section class="lembar"><header><h2 style="font-size:20px">Dosen wali' + (tw.length ? ' · ' + tw.length + ' menunggu' : '') + '</h2><p>Pengajuan baru masuk antrean setelah dosen walinya masuk ke SKRIPSPACE dan menekan <b>Mengetahui</b>. Kirim kode akses dan tautannya lewat WhatsApp. Bila dosen wali lama tidak merespons, Anda bisa menekan Mengetahui atas nama beliau; itu tercatat dan tertulis di surat.</p></header>';
+      if (!tw.length) h += '<div class="catat baik">Tidak ada pengajuan yang tertahan di dosen wali.</div>';
+      else h += '<ul class="riwayat">' + tw.map(function (x) {
+        var psn = pesanAdminWali(x);
+        return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>Dosen wali: ' + e(x.dosenWali) + ' · diajukan ' + e(x.waktu) + (x.kodeWali ? '' : ' · dosen ini belum ada di tab Kontak dosen, jadi belum punya kode akses') + '</small></span><span class="aksi-b">' +
+          (x.waWali ? '<a class="tombol mini" target="_blank" rel="noopener" href="https://wa.me/' + e(x.waWali) + '?text=' + encodeURIComponent(psn) + '">' + (x.kodeWali ? 'Kirim kode dan tautan ke dosen wali' : 'Ingatkan dosen wali') + '</a>'
+            : '<button type="button" class="tombol mini" data-salin-teks="' + e(psn) + '">Salin pesan untuk dosen wali</button>') +
+          '<button type="button" class="tombol mini" data-teruskan-wali="' + e(x.id) + '" data-nama="' + e(x.nama) + '">Mengetahui atas nama dosen wali</button></span></li>'; }).join('') + '</ul>';
+      if (rw.length) h += '<details class="kembalikan"><summary>Riwayat dosen wali (' + rw.length + ')</summary><ul class="riwayat">' + rw.map(function (x) {
+        var lab = x.wali === 'setuju' ? (x.wakil ? 'Diketahui prodi a.n. wali' : 'Diketahui') : (x.wali === 'kembali' ? 'Dikembalikan' : 'Diteruskan prodi');
+        return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>Dosen wali: ' + e(x.dosenWali) + ' · ' + e(x.waktu ? x.waktu + ' WIB' : '') + ' · status pengajuan: ' + e(x.status) + '</small></span><span class="pil ' + (x.wali === 'setuju' ? (x.wakil ? 'kuning' : 'hijau') : 'netral') + '">' + lab + '</span></li>'; }).join('') + '</ul></details>';
+      h += '</section>';
+    }
     if (!a.antrean.length) h += '<div class="kosong"><b>Antrean kosong</b>Pengajuan baru dari mahasiswa akan muncul di sini.</div>';
     a.antrean.forEach(function (r) {
       h += '<article class="berkas" data-id="' + e(r.id) + '"><div class="kepala"><h3>' + e(r.nama) + '</h3><span>' + (r.ulang ? '<span class="pil kuning">Pengajuan ulang</span> ' : '') + '<span class="pil netral">' + e(r.kelas) + '</span></span></div>' +
@@ -1609,7 +1626,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         '<div class="aksi"><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="tombol kecil bahaya" data-aksi="TOLAK">Tolak</button><button type="button" class="tombol kecil" data-aksi="REVISI">Minta revisi</button></div>' +
         '<div class="kanan"><button type="button" class="tombol utama" data-aksi="ACC">Setujui dan terbitkan surat</button></div></div></article>';
     });
-    if (!kap) h += hr;
+    if (!kapSaja) h += hr;
     var maks = Math.max.apply(null, a.dosen.map(function (d) { return d.beban; }).concat([1]));
     var total = a.dosen.reduce(function (n, d) { return n + d.beban; }, 0);
     h += '<details class="lipat" open><summary>Daftar dosen dan perolehan bimbingan (' + a.dosen.length + ' dosen · ' + total + ' bimbingan)</summary><div><div class="tabel-wadah"><table class="beban"><thead><tr><th>Dosen</th><th>Bidang</th><th>WhatsApp</th><th>Kode akses</th><th colspan="2">Perolehan</th></tr></thead><tbody>' +
@@ -1633,9 +1650,9 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       '<div class="isian"><label for="atTtd">Tanda tangan Kaprodi untuk surat ' + (a.adaTtd ? '<span class="pil kuning">Unggahan dipakai</span>' : '<span class="pil hijau">Bawaan terpasang</span>') + '</label><input type="file" id="atTtd" accept="image/png,image/jpeg"><span class="bantu">Tanda tangan Kaprodi (dengan cap fakultas) dan Wakil Dekan I sudah terpasang. Unggah gambar hanya bila ingin mengganti tanda tangan Kaprodi.</span></div>' +
       (a.adaTtd ? '<div class="aksi"><div class="kanan"><button type="button" class="tombol kecil bahaya" data-a="hapusTtd">Kembali ke tanda tangan bawaan</button></div></div>' : '') +
       '<div class="aksi"><span class="bantu" style="font-size:13px;color:var(--muted)">Uji apakah sumber luar dan pembuat PDF bisa dipakai.</span><div class="kanan"><button type="button" class="tombol kecil" data-a="uji">Uji sambungan</button></div></div><div id="aUji"></div>' +
-      (a.kodeKaprodi ? '<p class="catat">Kode akses Kaprodi: <b class="mono">' + e(a.kodeKaprodi) + '</b>. Berikan hanya kepada Kaprodi; dengan kode ini beliau masuk lewat Log in (Pengelola Prodi) dan menyetujui izin riset.</p>' : '') +
-      '<p class="catat">Pengaturan lain (kode akses pada baris "PIN Admin" dan "Kode Kaprodi", nama pejabat, ambang kemiripan) ada di tab <b>PENGATURAN</b> pada spreadsheet.</p></div></details>';
-    var atas = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang pengelola prodi</h2><span style="color:var(--muted);font-size:14.5px">Masuk sebagai ' + (kap ? 'Kaprodi' : 'Sekprodi') + ' · S1 Ilmu Hukum</span></div><div class="kanan"><button type="button" class="tombol kecil" data-a="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-a="keluar">Keluar</button></div></div>' +
+      (a.peran === 'prodi' ? '<p class="catat">Sekprodi dan Kaprodi masuk dengan <b>satu kode yang sama</b>, yaitu isi baris "PIN Admin" di tab PENGATURAN, dengan hak yang sama (termasuk menyetujui izin riset). Baris "Kode Kaprodi" boleh dikosongkan.</p>' : (a.kodeKaprodi ? '<p class="catat">Kode akses Kaprodi: <b class="mono">' + e(a.kodeKaprodi) + '</b>.</p>' : '')) +
+      '<p class="catat">Pengaturan lain (kode akses pengelola pada baris "PIN Admin", nama pejabat, ambang kemiripan) ada di tab <b>PENGATURAN</b> pada spreadsheet.</p></div></details>';
+    var atas = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang pengelola prodi</h2><span style="color:var(--muted);font-size:14.5px">' + (a.peran === 'prodi' ? 'Pengelola prodi (Sekprodi dan Kaprodi)' : 'Masuk sebagai ' + (kap ? 'Kaprodi' : 'Sekprodi')) + ' · S1 Ilmu Hukum</span></div><div class="kanan"><button type="button" class="tombol kecil" data-a="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-a="keluar">Keluar</button></div></div>' +
       '<div class="tabs" role="tablist">' + [['antre', 'Persetujuan', (a.hitung.Menunggu || 0) + rs.menunggu.length], ['pantau', 'Pantauan bimbingan', S.pantau ? S.pantau.mahasiswa.filter(function (x) { return x.rekap.macet; }).length : 0], ['akun', 'Akun & kode akses', 0]].map(function (x) {
         return '<button type="button" role="tab" data-atab="' + x[0] + '" aria-selected="' + (S.aTab === x[0]) + '">' + x[1] + (x[2] ? '<i>' + x[2] + '</i>' : '') + '</button>'; }).join('') + '</div>';
     $('aIsi').innerHTML = atas + (S.aTab === 'pantau' ? hPantau() : (S.aTab === 'akun' ? hAkun() : h));
@@ -1659,10 +1676,11 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
           '<br>Pembuat PDF: ' + (u.pdf ? 'berfungsi' : 'tidak tersedia, mahasiswa memakai tombol Cetak') + '<br>Judul di database: ' + u.jumlahJudul + '</div>';
       }).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); }); return;
     }
+    if (t.hasAttribute('data-salin-teks')) { salin(t.getAttribute('data-salin-teks'), 'Pesan disalin. Tempel di WhatsApp dosen wali.'); return; }
     if (t.hasAttribute('data-teruskan-wali')) {
-      if (t.getAttribute('data-yakin') !== '1') { t.setAttribute('data-yakin', '1'); t.textContent = 'Tekan sekali lagi untuk meneruskan'; setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-yakin'); t.textContent = 'Teruskan tanpa dosen wali'; } }, 5000); return; }
+      if (t.getAttribute('data-yakin') !== '1') { t.setAttribute('data-yakin', '1'); t.textContent = 'Tekan sekali lagi: Mengetahui a.n. dosen wali'; setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-yakin'); t.textContent = 'Mengetahui atas nama dosen wali'; } }, 5000); return; }
       sibuk(t, true);
-      api('apiAdminWali', S.pin, t.getAttribute('data-teruskan-wali')).then(function (d) { segarAdmin(d); toast('Diteruskan ke antrean tanpa persetujuan dosen wali.'); }).catch(function (x) { toast(x.message); sibuk(t, false); });
+      api('apiAdminWali', S.pin, t.getAttribute('data-teruskan-wali')).then(function (d) { segarAdmin(d); toast('Tercatat: diketahui pengelola prodi atas nama dosen wali. Pengajuan masuk antrean.'); }).catch(function (x) { toast(x.message); sibuk(t, false); });
       return;
     }
     if (t.hasAttribute('data-dkn')) {
@@ -1768,7 +1786,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     return false;
   }
   function pilihPeran(p) {
-    setRadio('peran', p); $('fmMhs').hidden = p !== 'mhs'; $('fmDsn').hidden = p !== 'dsn'; $('fmAdm').hidden = p !== 'adm'; galat($('aGalat'), '');
+    setRadio('peran', p); $('fmMhs').hidden = p !== 'mhs'; $('fmDsn').hidden = p !== 'dsn' && p !== 'wali'; $('fmAdm').hidden = p !== 'adm'; galat($('aGalat'), '');
     if (p === 'mhs' && !$('mNim').value) { var t = bacaLokal('pjs-terakhir') || window.__contohMasuk; if (t) { $('mNim').value = t.nim; $('mKode').value = t.kode; } }
   }
   function masuk() {
@@ -1777,10 +1795,10 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       var nim = $('mNim').value.trim(), kode = $('mKode').value.trim().toUpperCase();
       if (!/^\d{11}$/.test(nim) || kode.length < 6) { galat(g, 'Isi NIM (11 digit) dan kode pengajuan (6 karakter).'); return; }
       janji = api('apiRuang', 'mhs', nim, kode, 'buka', null).then(function (R) { S.sesi = { peran: 'mhs', k1: nim, k2: kode }; simpanLokal('pjs-terakhir', { nim: nim, kode: kode }); bukaRuang(R); });
-    } else if (p === 'dsn') {
+    } else if (p === 'dsn' || p === 'wali') {
       var kd = $('dKode').value.trim().toUpperCase();
       if (kd.length < 6) { galat(g, 'Isi kode akses dosen.'); return; }
-      janji = api('apiDosen', kd).then(function (D) { S.sesi = { peran: 'dsn', k1: kd }; S.dosen = D; $('dIsi').hidden = false; renderDosen(); });
+      janji = api('apiDosen', kd).then(function (D) { S.sesi = { peran: 'dsn', k1: kd }; S.sebagaiWali = p === 'wali'; S.dosen = D; $('dIsi').hidden = false; renderDosen(); });
     } else {
       var pin = $('aPin').value.trim();
       if (!pin) { galat(g, 'Masukkan kode akses pengelola.'); return; }
@@ -2063,10 +2081,11 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   function renderDosen() {
     var D = S.dosen, m = D.mahasiswa.slice().sort(function (a, b) { return (b.rekap.tungguDosen - a.rekap.tungguDosen) || ((b.rekap.macet ? 1 : 0) - (a.rekap.macet ? 1 : 0)) || a.nama.localeCompare(b.nama); });
     var jml = function (f) { return m.filter(f).length; };
-    var h = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang pembimbing</h2><span style="color:var(--muted);font-size:14.5px">' + e(D.dosen.nama) + '</span></div><div class="kanan"><button type="button" class="tombol kecil" data-u="muatDosen">Muat ulang</button><button type="button" class="tombol kecil polos" data-u="keluar">Keluar</button></div></div>' +
-      '<div class="angka"><div class="sorot"><b>' + m.length + '</b><span>Mahasiswa bimbingan</span></div><div><b>' + m.reduce(function (n, x) { return n + x.rekap.tungguDosen; }, 0) + '</b><span>Catatan menunggu paraf Anda</span></div><div><b>' + jml(function (x) { return x.rekap.macet; }) + '</b><span>Macet lebih dari ' + D.batasMacet + ' hari</span></div><div><b>' + jml(function (x) { return x.rekap.tahapKini === 0; }) + '</b><span>Selesai</span></div></div>';
+    var h = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">' + (S.sebagaiWali ? 'Ruang dosen wali' : 'Ruang pembimbing') + '</h2><span style="color:var(--muted);font-size:14.5px">' + e(D.dosen.nama) + '</span></div><div class="kanan"><button type="button" class="tombol kecil" data-u="muatDosen">Muat ulang</button><button type="button" class="tombol kecil polos" data-u="keluar">Keluar</button></div></div>' +
+      (S.sebagaiWali ? '' : '<div class="angka"><div class="sorot"><b>' + m.length + '</b><span>Mahasiswa bimbingan</span></div><div><b>' + m.reduce(function (n, x) { return n + x.rekap.tungguDosen; }, 0) + '</b><span>Catatan menunggu paraf Anda</span></div><div><b>' + jml(function (x) { return x.rekap.macet; }) + '</b><span>Macet lebih dari ' + D.batasMacet + ' hari</span></div><div><b>' + jml(function (x) { return x.rekap.tahapKini === 0; }) + '</b><span>Selesai</span></div></div>');
     var W = D.wali || { menunggu: [], riwayat: [] };
-    if (W.menunggu.length || W.riwayat.length) {
+    if (S.sebagaiWali) h += '<div class="angka"><div class="sorot"><b>' + W.menunggu.length + '</b><span>Menunggu Anda</span></div><div><b>' + W.riwayat.filter(function (x) { return x.wali === 'setuju' && !x.wakil; }).length + '</b><span>Sudah Anda ketahui</span></div><div><b>' + W.riwayat.filter(function (x) { return x.wali === 'kembali'; }).length + '</b><span>Dikembalikan</span></div><div><b>' + m.length + '</b><span>Mahasiswa bimbingan skripsi</span></div></div>';
+    if (S.sebagaiWali || W.menunggu.length || W.riwayat.length) {
       h += '<section class="lembar"><header><h2>Persetujuan dosen wali</h2><p>Mahasiswa perwalian Anda yang mengajukan judul skripsi. Tekan <b>Mengetahui</b> bila Anda menyetujui pengajuannya; tanda tangan tidak diperlukan, surat permohonannya otomatis memuat barcode bukti persetujuan Anda.</p></header>';
       if (!W.menunggu.length) h += '<div class="catat baik">Tidak ada pengajuan yang menunggu persetujuan Anda.</div>';
       W.menunggu.forEach(function (x) {
@@ -2078,10 +2097,11 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
           '<div class="aksi"><div>' + (x.wa ? '<a class="tombol wa kecil" href="https://wa.me/' + e(x.wa) + '" target="_blank" rel="noopener">WhatsApp mahasiswa</a>' : '') + '</div><div class="kanan"><button type="button" class="tombol utama" data-wali-aksi="setuju">Mengetahui</button></div></div></article>';
       });
       if (W.riwayat.length) h += '<details class="kembalikan"><summary>Riwayat persetujuan (' + W.riwayat.length + ')</summary><ul class="riwayat">' + W.riwayat.map(function (x) {
-        return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>' + e(x.wali === 'setuju' ? 'Diketahui ' + x.waliWaktu : (x.wali === 'kembali' ? 'Dikembalikan ' + x.waliWaktu : 'Diteruskan pengelola prodi')) + '</small></span><span class="pil ' + (x.wali === 'setuju' ? 'hijau' : 'netral') + '">' + e(x.wali === 'setuju' ? 'Diketahui' : (x.wali === 'kembali' ? 'Dikembalikan' : 'Dilewati')) + '</span></li>'; }).join('') + '</ul></details>';
+        return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>' + e(x.wali === 'setuju' ? (x.wakil ? 'Diketahui pengelola prodi atas nama Anda ' : 'Diketahui ') + x.waliWaktu : (x.wali === 'kembali' ? 'Dikembalikan ' + x.waliWaktu : 'Diteruskan pengelola prodi')) + '</small></span><span class="pil ' + (x.wali === 'setuju' ? 'hijau' : 'netral') + '">' + e(x.wali === 'setuju' ? (x.wakil ? 'Oleh prodi' : 'Diketahui') : (x.wali === 'kembali' ? 'Dikembalikan' : 'Dilewati')) + '</span></li>'; }).join('') + '</ul></details>';
       h += '</section>';
     }
-    if (!m.length) h += '<div class="kosong"><b>Belum ada mahasiswa bimbingan</b>Begitu prodi menetapkan Anda sebagai pembimbing, mahasiswanya langsung muncul di sini.</div>';
+    if (S.sebagaiWali && m.length) h += '<div class="aksi"><div><h2 style="font-size:22px;font-weight:800">Mahasiswa bimbingan skripsi Anda</h2></div></div>';
+    if (!m.length && !S.sebagaiWali) h += '<div class="kosong"><b>Belum ada mahasiswa bimbingan</b>Begitu prodi menetapkan Anda sebagai pembimbing, mahasiswanya langsung muncul di sini.</div>';
     m.forEach(function (x) {
       var k = x.rekap;
       h += '<article class="berkas"><div class="kepala"><h3>' + e(x.nama) + '</h3><span>' + (k.tungguDosen ? '<span class="pil kuning">' + k.tungguDosen + ' menunggu paraf</span> ' : '') + (k.macet ? '<span class="pil merah">Diam ' + k.hari + ' hari</span> ' : '') + (x.pesanAkhir && x.pesanAkhir.dari !== 'dosen' ? '<span class="pil netral">Pesan dari ' + e(x.pesanAkhir.dari) + '</span>' : '') + '</span></div>' +
@@ -2151,7 +2171,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     api('apiVerifikasi', tanda).then(function (v) {
       if (!v.sah) return isi('<span class="pil merah">Tidak ditemukan</span><h2>Barcode tidak tercatat</h2><p>Barcode ini tidak cocok dengan dokumen mana pun di SKRIPSPACE. Hubungi Program Studi S1 Ilmu Hukum FH UNISSULA.</p>');
       if (v.jenis === 'wali') return isi('<span class="pil hijau">Tercatat sah</span><h2>Mengetahui Dosen Wali</h2><p>Persetujuan elektronik pada permohonan penyusunan skripsi, tercatat di Program Studi S1 Ilmu Hukum FH UNISSULA.</p>' +
-        '<dl class="rinci"><dt>Dosen wali</dt><dd><b>' + e(v.dosenWali) + '</b></dd><dt>Waktu menyetujui</dt><dd>' + e(v.waktu) + ' WIB</dd><dt>Nama mahasiswa</dt><dd>' + e(v.nama) + '</dd><dt>NIM</dt><dd class="mono">' + e(v.nim) + '</dd><dt>Judul yang diajukan</dt><dd>' + v.judul.map(e).join('<br>') + '</dd></dl>');
+        '<dl class="rinci"><dt>Dosen wali</dt><dd><b>' + e(v.dosenWali) + '</b></dd>' + (v.wakil ? '<dt>Disetujui oleh</dt><dd>' + e(v.oleh) + ', atas nama dosen wali</dd>' : '') + '<dt>Waktu menyetujui</dt><dd>' + e(v.waktu) + ' WIB</dd><dt>Nama mahasiswa</dt><dd>' + e(v.nama) + '</dd><dt>NIM</dt><dd class="mono">' + e(v.nim) + '</dd><dt>Judul yang diajukan</dt><dd>' + v.judul.map(e).join('<br>') + '</dd></dl>');
       isi('<span class="pil hijau">Dokumen sah</span><h2>Persetujuan Penyusunan Skripsi</h2><p>Tercatat di Program Studi S1 Ilmu Hukum FH UNISSULA.</p>' +
         '<dl class="rinci"><dt>Nomor surat</dt><dd>' + e(v.nomorSurat || '-') + '</dd><dt>Tanggal</dt><dd>' + e(tglID(v.tanggal)) + '</dd><dt>Nama mahasiswa</dt><dd>' + e(v.nama) + '</dd><dt>NIM</dt><dd class="mono">' + e(v.nim) + '</dd><dt>Judul skripsi</dt><dd>' + v.judul.map(e).join('<br>') + '</dd><dt>Dosen pembimbing</dt><dd>' + e(v.dosenPembimbing) + '</dd></dl>');
     }).catch(function (x) { isi('<span class="pil kuning">Belum bisa diperiksa</span><h2>Server tidak terjangkau</h2><p>' + e(x.message) + '</p>'); });
@@ -2329,7 +2349,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       $('tutup').hidden = init.dibuka;
       if (!init.dibuka) { semua('[data-langkah]').forEach(function (s) { s.hidden = true; }); $('langkah').hidden = true; } else keLangkah(1);
       var qs = {}; location.search.replace(/^\?/, '').split('&').forEach(function (x) { var p = x.split('='); if (p[0]) qs[decodeURIComponent(p[0])] = decodeURIComponent((p[1] || '').replace(/\+/g, ' ')); });
-      if (qs.wali) { S.waliTuju = qs.wali; tampil('admin'); pilihPeran('dsn'); setTimeout(function () { toast('Masuk sebagai Dosen dengan kode akses Anda untuk menyetujui pengajuan.'); try { $('dKode').focus(); } catch (x) {} }, 400); }
+      if (qs.wali) { S.waliTuju = qs.wali; tampil('admin'); pilihPeran('wali'); setTimeout(function () { toast('Masuk sebagai Dosen wali dengan kode akses Anda, lalu tekan Mengetahui.'); try { $('dKode').focus(); } catch (x) {} }, 400); }
     }).catch(function (x) { galat($('galatMuat'), 'Aplikasi belum bisa dimuat: ' + x.message); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mulai); else mulai();
