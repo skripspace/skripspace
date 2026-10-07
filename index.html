@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=35">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=35">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=36">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=36">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=35">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=36">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -511,6 +511,15 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
 @media (max-width: 520px) { .sdrek { grid-template-columns: minmax(0, 1fr); } }
 .sdcek { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 13.5px; }
 .togarekap { display: flex; flex-wrap: wrap; gap: 6px; font-size: 13.5px; } .togarekap span { padding: 3px 10px; border: 1px solid var(--hair); border-radius: 999px; background: var(--surface); }
+#sdLangkah { grid-template-columns: repeat(5, 1fr); }
+.isian label small { font-weight: 500; color: var(--muted); }
+.jadwalhari { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 6px 0 2px; font-family: var(--f-display); font-weight: 800; font-size: 17px; }
+.jadwalbaris { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; padding: 12px 14px; border: 2px solid var(--hair); border-radius: var(--r-sm); background: var(--surface); }
+.jadwalbaris .jam { font-family: var(--f-display); font-weight: 800; font-size: 20px; line-height: 1.1; color: var(--accent); } .jadwalbaris .jam small { display: block; font-family: var(--f-body); font-size: 12px; font-weight: 600; color: var(--muted); margin-top: 3px; }
+.jadwalbaris .isi { display: flex; flex-direction: column; gap: 6px; min-width: 0; } .jadwalbaris .isi b { overflow-wrap: anywhere; } .jadwalbaris .isi p { margin: 0; font-size: 13.5px; color: var(--muted); overflow-wrap: anywhere; }
+.jadwalbaris .dewan { font-size: 13.5px; display: flex; flex-direction: column; gap: 2px; } .jadwalbaris .dewan span { overflow-wrap: anywhere; }
+.jadwalbaris .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
+.formwadah { margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -655,7 +664,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
             <div class="pilih" role="radiogroup" aria-labelledby="lKek" id="gKek"></div></div>
           <div class="isian"><label for="fTempat">Tempat lahir</label><input type="text" id="fTempat" maxlength="40" placeholder="Kota / kabupaten"></div>
           <div class="isian"><label for="fTgl">Tanggal lahir</label><span class="tgl"><input type="date" id="fTgl"></span></div>
-          <div class="isian penuh"><label for="fWali">Dosen wali</label><input type="text" id="fWali" list="dDosen" maxlength="90" placeholder="Ketik nama, lalu pilih"><datalist id="dDosen"></datalist>
+          <div class="isian penuh"><label for="fWali">Dosen wali</label><input type="text" id="fWali" list="dDosen" maxlength="90" placeholder="Ketik nama, lalu pilih"><datalist id="dDosen"></datalist><datalist id="dPenguji"></datalist><datalist id="dRuang"></datalist>
             <span class="bantu" id="waliBantu" hidden>Pilih nama dari daftar. Setelah pengajuan dikirim, dosen wali menekan <b>Mengetahui</b> di SKRIPSPACE; baru sesudah itu pengajuanmu diteruskan ke prodi.</span></div>
           <div class="isian penuh krs" id="wTtd" hidden><label for="fTtd">Tanda tanganmu</label><input type="file" id="fTtd" accept="image/*">
             <span class="bantu">Tanda tangani kertas putih polos dengan pulpen hitam, foto dari atas dengan cahaya terang, lalu unggah fotonya (JPG atau PNG). Tanda tangan ini dicetak pada surat permohonanmu.</span><div id="ttdInfo"></div></div>
@@ -823,9 +832,10 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
       <div id="sdAjukan" style="display:flex;flex-direction:column;gap:22px">
         <ol class="langkah" id="sdLangkah">
           <li><span><b>1</b>Data diri</span></li>
-          <li><span><b>2</b>Berkas</span></li>
-          <li><span><b>3</b>Bayar &amp; toga</span></li>
-          <li><span><b>4</b>Kirim</span></li>
+          <li><span><b>2</b>Peserta</span></li>
+          <li><span><b>3</b>Berkas</span></li>
+          <li><span><b>4</b>Bayar</span></li>
+          <li><span><b>5</b>Kirim</span></li>
         </ol>
         <section class="lembar" data-sl="1">
           <header><h2>Data diri</h2><p>Tulis nama dan NIM persis seperti di KTM. Keduanya dicocokkan dengan database sertifikat PWI prodi dan menjadi nama berkas PDF-mu.</p></header>
@@ -841,14 +851,55 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
               </div></div>
           </div>
           <div class="catat galat" data-galat hidden></div>
-          <div class="aksi"><button type="button" class="tombol polos" id="sdContoh" hidden>Isi dengan data dan berkas contoh</button><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="2">Cek database dan lanjut</button></div></div>
+          <div class="aksi"><button type="button" class="tombol polos" id="sdContoh" hidden>Isi dengan data dan berkas contoh</button><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="5">Cek database dan lanjut</button></div></div>
+        </section>
+        <section class="lembar" data-sl="5" hidden>
+          <header><h2>Data peserta</h2><p>Data ini mengisi otomatis formulir <b>Data Peserta Tahap Akhir</b> dan lembar nilaimu. Tulis sesuai ijazah terakhir.</p></header>
+          <div id="sdResmi"></div>
+          <div class="kisi">
+            <div class="isian"><label for="sdTempat">Tempat lahir</label><input type="text" id="sdTempat" maxlength="40"></div>
+            <div class="isian"><label for="sdTgl">Tanggal lahir</label><span class="tgl"><input type="date" id="sdTgl"></span></div>
+            <div class="isian"><label for="sdEmail">Email</label><input type="text" id="sdEmail" inputmode="email" autocomplete="email" maxlength="80" placeholder="nama@email.com"></div>
+            <div class="isian"><span class="label" id="lSdJk">Jenis kelamin</span>
+              <div class="pilih" role="radiogroup" aria-labelledby="lSdJk">
+                <label><input type="radio" name="sdjk" value="Laki-laki" id="sdjkL"><span>Laki-laki</span></label>
+                <label><input type="radio" name="sdjk" value="Perempuan" id="sdjkP"><span>Perempuan</span></label>
+              </div></div>
+            <div class="isian penuh"><label for="sdAlamatAsal">Alamat asal</label><input type="text" id="sdAlamatAsal" maxlength="200" placeholder="Jalan, desa/kelurahan, kecamatan, kabupaten/kota"></div>
+            <div class="isian"><label for="sdTelpAsal">No. telp./HP di alamat asal <small>(boleh kosong)</small></label><input type="tel" id="sdTelpAsal" inputmode="tel" maxlength="20"></div>
+            <div class="isian penuh"><label for="sdAlamatSmg">Alamat di Semarang</label><input type="text" id="sdAlamatSmg" maxlength="200" placeholder="Sama dengan alamat asal bila tinggal di rumah"></div>
+            <div class="isian"><label for="sdPekerjaan">Pekerjaan <small>(boleh kosong)</small></label><input type="text" id="sdPekerjaan" maxlength="60"></div>
+            <div class="isian"><label for="sdTelpKerja">No. telp. pekerjaan <small>(boleh kosong)</small></label><input type="tel" id="sdTelpKerja" inputmode="tel" maxlength="20"></div>
+            <div class="isian penuh"><label for="sdAlamatKerja">Alamat pekerjaan <small>(boleh kosong)</small></label><input type="text" id="sdAlamatKerja" maxlength="160"></div>
+          </div>
+          <header><h2 style="font-size:20px">Skripsi dan nilai</h2></header>
+          <div class="kisi">
+            <div class="isian"><label for="sdKek">Program kekhususan</label><select id="sdKek"><option value="">Pilih</option></select></div>
+            <div class="isian"><label for="sdMulai">Tanggal mulai bimbingan</label><span class="tgl"><input type="date" id="sdMulai"></span></div>
+            <div class="isian penuh"><label for="sdWali">Dosen wali</label><input type="text" id="sdWali" list="dDosen" maxlength="90" placeholder="Ketik nama, lalu pilih"></div>
+            <div class="isian penuh"><label for="sdPembimbing">Dosen pembimbing</label><input type="text" id="sdPembimbing" list="dDosen" maxlength="90" placeholder="Ketik nama, lalu pilih"><span class="bantu" id="sdPembimbingBantu">Otomatis menjadi anggota penguji/pembimbing. Ketua dan anggota penguji lain ditetapkan Kaprodi.</span></div>
+            <div class="isian penuh"><label for="sdJudul">Judul penulisan hukum (skripsi)</label><textarea id="sdJudul" maxlength="400" style="min-height:76px" placeholder="Judul skripsi yang sudah disetujui pembimbing"></textarea></div>
+            <div class="isian"><label for="sdIpk">IP Kumulatif</label><input type="text" id="sdIpk" inputmode="decimal" maxlength="5" placeholder="Contoh: 3,45"><span class="bantu">Sesuai INDEX PRESTASI pada DKN.</span></div>
+            <div class="isian"><label for="sdDknPdf">PDF DKN dari SIM <small>(tidak wajib)</small></label><input type="file" id="sdDknPdf" accept="application/pdf"><span class="bantu">Bila diunggah, nilai tiap mata kuliah dan IPK di lembar nilai terisi otomatis.</span><div id="sdDknInfo"></div></div>
+          </div>
+          <header><h2 style="font-size:20px">Data orang tua</h2><p>Nama ditulis lengkap beserta gelarnya.</p></header>
+          <div class="kisi">
+            <div class="isian"><label for="sdBapak">Nama bapak</label><input type="text" id="sdBapak" maxlength="80"></div>
+            <div class="isian"><label for="sdIbu">Nama ibu</label><input type="text" id="sdIbu" maxlength="80"></div>
+            <div class="isian penuh"><label for="sdAlamatOrtu">Alamat rumah orang tua</label><input type="text" id="sdAlamatOrtu" maxlength="200"></div>
+            <div class="isian"><label for="sdTelpOrtu">No. telp. rumah <small>(boleh kosong)</small></label><input type="tel" id="sdTelpOrtu" inputmode="tel" maxlength="20"></div>
+            <div class="isian"><label for="sdKerjaOrtu">Pekerjaan orang tua</label><input type="text" id="sdKerjaOrtu" maxlength="60"></div>
+            <div class="isian"><label for="sdDidikOrtu">Pendidikan terakhir orang tua</label><select id="sdDidikOrtu"><option value="">Pilih</option><option>SD</option><option>SMP</option><option>SMA/SMK</option><option>D1/D2/D3</option><option>S1/D4</option><option>S2</option><option>S3</option><option>Lainnya</option></select></div>
+          </div>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><button type="button" class="tombol polos" data-sdkembali="1">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="2">Lanjut ke berkas</button></div></div>
         </section>
         <section class="lembar" data-sl="2" hidden>
           <header><h2>Berkas akademik dan sertifikat</h2><p>Tiap berkas berupa foto atau scan <b>JPG/PNG</b>: tegak, terang, dan seluruh tulisan terbaca. Ukurannya diperkecil otomatis.</p></header>
           <div id="sdCek"></div>
           <div class="sdaftar" id="sdDok2"></div>
           <div class="catat galat" data-galat hidden></div>
-          <div class="aksi"><button type="button" class="tombol polos" data-sdkembali="1">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="3">Lanjut</button></div></div>
+          <div class="aksi"><button type="button" class="tombol polos" data-sdkembali="5">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="3">Lanjut</button></div></div>
         </section>
         <section class="lembar" data-sl="3" hidden>
           <header><h2>Pembayaran dan toga</h2><p>Transfer ke rekening fakultas, lalu unggah bukti transfernya.</p></header>
@@ -923,7 +974,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 35</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 36</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1565,6 +1616,31 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     return { nama: $('sdNama').value.replace(/\s+/g, ' ').trim(), nim: $('sdNim').value.trim(), wa: $('sdWa').value.trim(), kelas: k ? k.value : '',
       turnitin: ($('sdTurnitin') ? $('sdTurnitin').value : (SD.turnitin || '')).trim(), toga: $('sdToga').value };
   }
+  var SD_URUT = [1, 5, 2, 3, 4];
+  function sdPeserta() {
+    var v = function (id) { return $(id).value.replace(/\s+/g, ' ').trim(); }, jk = document.querySelector('input[name="sdjk"]:checked');
+    return { tempatLahir: v('sdTempat'), tglLahir: $('sdTgl').value, email: v('sdEmail'), jk: jk ? jk.value : '', alamatAsal: v('sdAlamatAsal'), telpAsal: v('sdTelpAsal'), alamatSmg: v('sdAlamatSmg'),
+      pekerjaan: v('sdPekerjaan'), alamatKerja: v('sdAlamatKerja'), telpKerja: v('sdTelpKerja'), kekhususan: $('sdKek').value, dosenWali: v('sdWali'), dosenPembimbing: v('sdPembimbing'), tglMulai: $('sdMulai').value,
+      ipk: v('sdIpk'), judul: v('sdJudul'), bapak: v('sdBapak'), ibu: v('sdIbu'), alamatOrtu: v('sdAlamatOrtu'), telpOrtu: v('sdTelpOrtu'), kerjaOrtu: v('sdKerjaOrtu'), pendidikanOrtu: $('sdDidikOrtu').value, dknToken: SD.dknToken || '' };
+  }
+  /* PDF DKN dari SIM (tidak wajib): bila terbaca penuh, nilai tiap mata kuliah dan IPK diisi server dari berkas itu */
+  function sdBacaDkn(berkas) {
+    var info = $('sdDknInfo'), d = sdData();
+    SD.dknToken = ''; $('sdIpk').readOnly = false;
+    if (!berkas) { info.innerHTML = ''; return; }
+    if (berkas.type !== 'application/pdf') { info.innerHTML = '<span class="bantu">Berkas ini bukan PDF. Lewati saja bila tidak punya PDF DKN dari SIM.</span>'; $('sdDknPdf').value = ''; return; }
+    if (berkas.size > 1400000) { info.innerHTML = '<span class="bantu">PDF terlalu besar (maksimal 1,4 MB). Lewati saja, lalu isi IP Kumulatif sendiri.</span>'; $('sdDknPdf').value = ''; return; }
+    var baca = new FileReader();
+    info.innerHTML = '<span class="bantu">Membaca DKN…</span>';
+    baca.onload = function () {
+      api('apiDkn', { nim: d.nim, nama: d.nama, berkas: [{ nama: berkas.name, mime: 'application/pdf', b64: String(baca.result).split(',')[1] }] }).then(function (h) {
+        if (h.status === 'cocok') { SD.dknToken = h.token; $('sdIpk').value = koma(h.ip != null ? h.ip : h.ipk, 2); $('sdIpk').readOnly = true;
+          info.innerHTML = '<span class="pil hijau">DKN terbaca</span> <span class="bantu">' + h.jumlahMk + ' mata kuliah, ' + h.jumlahSks + ' SKS, IPK ' + koma(h.ip != null ? h.ip : h.ipk, 2) + '. Lembar nilai terisi otomatis.</span>'; }
+        else info.innerHTML = '<span class="pil kuning">Tidak terbaca penuh</span> <span class="bantu">Lembar nilai tidak terisi otomatis. Isi IP Kumulatif sendiri; pengelola mencocokkannya dengan DKN yang kamu unggah.</span>';
+      }).catch(function (x) { info.innerHTML = '<span class="bantu">' + e(x.message) + '</span>'; $('sdDknPdf').value = ''; });
+    };
+    baca.readAsDataURL(berkas);
+  }
   function sdDokumen(langkah) {
     var I = S.init && S.init.sidang, kelas = sdData().kelas;
     if (!I) return [];
@@ -1633,6 +1709,25 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       if (d.wa.replace(/\D/g, '').length < 9) return ['sdWa', 'Nomor HP/WhatsApp belum benar.'];
       if (!d.kelas) return ['sdkReguler', 'Pilih kelasmu: Reguler, Eksekutif, atau RPL.'];
     }
+    if (n === 5) {
+      var q = sdPeserta(), ip = parseFloat(q.ipk.replace(',', '.'));
+      if (q.tempatLahir.length < 2) return ['sdTempat', 'Tempat lahir belum diisi.'];
+      if (!q.tglLahir) return ['sdTgl', 'Tanggal lahir belum diisi.'];
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(q.email)) return ['sdEmail', 'Alamat email belum benar.'];
+      if (!q.jk) return ['sdjkL', 'Pilih jenis kelamin.'];
+      if (q.alamatAsal.length < 5) return ['sdAlamatAsal', 'Alamat asal belum diisi.'];
+      if (q.alamatSmg.length < 5) return ['sdAlamatSmg', 'Alamat di Semarang belum diisi.'];
+      if (!q.kekhususan) return ['sdKek', 'Pilih program kekhususan.'];
+      if (q.dosenWali.length < 3) return ['sdWali', 'Dosen wali belum diisi.'];
+      if (q.dosenPembimbing.length < 3) return ['sdPembimbing', 'Dosen pembimbing belum diisi.'];
+      if (q.judul.split(' ').length < 5) return ['sdJudul', 'Tulis judul skripsi dengan lengkap, minimal 5 kata.'];
+      if (isNaN(ip) || ip <= 0 || ip > 4) return ['sdIpk', 'Isi IP Kumulatif sesuai DKN, misalnya 3,45.'];
+      if (q.bapak.length < 2) return ['sdBapak', 'Nama bapak belum diisi.'];
+      if (q.ibu.length < 2) return ['sdIbu', 'Nama ibu belum diisi.'];
+      if (q.alamatOrtu.length < 5) return ['sdAlamatOrtu', 'Alamat rumah orang tua belum diisi.'];
+      if (q.kerjaOrtu.length < 2) return ['sdKerjaOrtu', 'Pekerjaan orang tua belum diisi.'];
+      if (!q.pendidikanOrtu) return ['sdDidikOrtu', 'Pilih pendidikan terakhir orang tua.'];
+    }
     if (n === 2 || n === 3) {
       sdDokumen(n).forEach(function (x) { if (!kurang && (SD.berkas[x.kunci] || []).length < x.min) kurang = x; });
       if (kurang) return ['', (kurang.min > 1 ? 'Unggah ' + kurang.min + ' lembar untuk: ' : 'Belum diunggah: ') + kurang.nama + '.', kurang.kunci];
@@ -1653,7 +1748,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
   function sdLangkah(n) {
     semua('[data-sl]').forEach(function (s) { s.hidden = Number(s.getAttribute('data-sl')) !== n; });
-    semua('#sdLangkah li').forEach(function (li, i) { li.className = i + 1 < n ? 'lewat' : (i + 1 === n ? 'kini' : ''); });
+    var pos = SD_URUT.indexOf(n);
+    semua('#sdLangkah li').forEach(function (li, i) { li.className = i < pos ? 'lewat' : (i === pos ? 'kini' : ''); });
     if (n === 2 || n === 3) sdRender(n);
     if (n === 2 && SD.cek) {
       var c = SD.cek;
@@ -1663,7 +1759,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     if (n === 4) {
       var d = sdData(), lembar = 0, kb = 0;
       var isi = sdDokumen(0).map(function (x) { var B = SD.berkas[x.kunci] || []; lembar += B.length; B.forEach(function (b) { kb += b.kb; }); return x.nama + ' (' + B.length + ')'; });
-      $('sdTinjau').innerHTML = [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['No. HP / WA', d.wa], ['Hasil cek plagiasi', d.turnitin + '%'], ['Ukuran toga', d.toga],
+      var q = sdPeserta();
+      $('sdTinjau').innerHTML = [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['No. HP / WA', d.wa], ['Judul skripsi', q.judul], ['Dosen pembimbing', q.dosenPembimbing], ['IP Kumulatif', q.ipk + (SD.dknToken ? ' (dari PDF DKN)' : '')], ['Hasil cek plagiasi', d.turnitin + '%'], ['Ukuran toga', d.toga],
         ['Berkas', isi.join('; ')], ['Hasil gabungan', 'Satu PDF, ' + (lembar + 1) + ' halaman, kira-kira ' + (kb > 1000 ? koma(kb / 1024, 1) + ' MB' : kb + ' KB')],
         ['Nama berkas', 'SIDANG - ' + d.nama + ' - ' + d.nim + '.pdf']].map(function (b) { return '<dt>' + e(b[0]) + '</dt><dd>' + e(b[1]) + '</dd>'; }).join('');
     }
@@ -1671,7 +1768,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
   function sdLanjut(ke, tombol) {
     if (!S.init || !S.init.sidang) { toast('Sebentar, aplikasi masih memuat data. Coba lagi beberapa detik lagi.'); return; }
-    var dari = ke - 1, g = sdPeriksa(dari);
+    var dari = SD_URUT[SD_URUT.indexOf(ke) - 1], g = sdPeriksa(dari);
     sdGalat(dari, g); if (g) return;
     if (dari !== 1) { sdLangkah(ke); return; }
     var d = sdData(), kunci = d.nim + '|' + d.nama.toLowerCase() + '|' + d.kelas;
@@ -1681,7 +1778,11 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       if (!c.pwi.cocok) { sdGalat(1, ['sdNim', 'Namamu belum terdata di database PWI prodi, jadi pengajuan sidang belum bisa dilanjutkan. Periksa lagi NIM-mu. Bila sudah mengikuti PWI, hubungi pengelola prodi agar namamu dimasukkan ke database.']); return; }
       if (c.lkmm.wajib && c.lkmm.tersedia && !c.lkmm.cocok) { sdGalat(1, ['sdNim', 'Namamu belum terdata di database LKMM prodi, jadi pengajuan sidang belum bisa dilanjutkan. Bila sudah mengikuti LKMM, hubungi pengelola prodi agar namamu dimasukkan ke database.']); return; }
       if (SD.kunciCek && SD.kunciCek.split('|')[2] !== d.kelas) { delete SD.berkas.btq; delete SD.berkas.lkmm; }
-      SD.cek = c; SD.kunciCek = kunci; sdLangkah(2);
+      SD.cek = c; SD.kunciCek = kunci;
+      var rs = c.resmi, isiBila = function (id, v) { if (v && !$(id).value) $(id).value = v; };
+      if (rs) { isiBila('sdJudul', rs.judul); isiBila('sdPembimbing', rs.dosen); isiBila('sdWali', rs.dosenWali); isiBila('sdKek', rs.kekhususan); isiBila('sdMulai', rs.tglMulai); }
+      $('sdResmi').innerHTML = rs ? '<div class="catat baik">Judul dan dosen pembimbingmu sudah diisi dari data prodi. Perbaiki judulnya bila sudah berubah.</div>' : '';
+      sdLangkah(5);
     }).catch(function (x) { sdGalat(1, ['', x.message]); }).then(function () { sibuk(tombol, false); });
   }
   /* --- pembuat PDF: satu halaman A4 per lembar, gambar JPEG ditanam apa adanya supaya ukuran berkas tetap kecil --- */
@@ -1744,10 +1845,10 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   function kirimSidang() {
     if (!S.init || !S.init.sidang) { toast('Sebentar, aplikasi masih memuat data.'); return; }
     var kotak = document.querySelector('[data-sl="4"] [data-galat]'), d = sdData(), tombol = $('bSidangKirim');
-    for (var n = 1; n <= 3; n++) { var g = sdPeriksa(n); if (g) { sdLangkah(n); sdGalat(n, g); return; } }
+    for (var iu = 0; iu < 4; iu++) { var n = SD_URUT[iu], g = sdPeriksa(n); if (g) { sdLangkah(n); sdGalat(n, g); return; } }
     if (!$('sdSetuju').checked) { galat(kotak, 'Centang pernyataan terlebih dahulu.'); return; }
     galat(kotak, ''); sibuk(tombol, true);
-    var c = SD.cek || { pwi: {}, lkmm: {} }, daftar = sdDokumen(0).map(function (x) { return { kunci: x.kunci, nama: x.nama, berkas: SD.berkas[x.kunci] || [] }; }), dok = {};
+    var q = sdPeserta(), c = SD.cek || { pwi: {}, lkmm: {} }, daftar = sdDokumen(0).map(function (x) { return { kunci: x.kunci, nama: x.nama, berkas: SD.berkas[x.kunci] || [] }; }), dok = {};
     daftar.forEach(function (x) { dok[x.kunci] = x.berkas.length; });
     var sekarang = new Date(), dua = function (v) { return ('0' + v).slice(-2); }, pdf;
     $('sdProses').hidden = false; $('sdProses').textContent = 'Menggabungkan berkas menjadi satu PDF…';
@@ -1758,8 +1859,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       } catch (x) { galat(kotak, 'Berkas belum bisa digabung di perangkat ini: ' + x.message); sibuk(tombol, false); $('sdProses').hidden = true; return; }
       if (pdf.u8.length > 6 * 1024 * 1024) { galat(kotak, 'Berkas gabungan terlalu besar. Foto ulang dokumen dengan ukuran lebih kecil.'); sibuk(tombol, false); $('sdProses').hidden = true; return; }
       $('sdProses').textContent = 'Mengirim ' + pdf.halaman + ' halaman (' + koma(pdf.u8.length / 1048576, 1) + ' MB). Jangan tutup halaman ini; di jaringan lambat bisa sampai beberapa menit.';
-      apiLama('apiSidangKirim', { nama: d.nama, nim: d.nim, kelas: d.kelas, wa: d.wa, turnitin: d.turnitin, toga: d.toga, setuju: true, dok: dok, pdf: { b64: u8KeB64(pdf.u8), halaman: pdf.halaman } })
-        .then(function (h) { SD.berkas = {}; SD.cek = null; SD.turnitin = ''; $('sdSetuju').checked = false; sdLangkah(1); tampilSidang(h, true); })
+      apiLama('apiSidangKirim', { nama: d.nama, nim: d.nim, kelas: d.kelas, wa: d.wa, turnitin: d.turnitin, toga: d.toga, setuju: true, dok: dok, peserta: q, pdf: { b64: u8KeB64(pdf.u8), halaman: pdf.halaman } })
+        .then(function (h) { SD.berkas = {}; SD.cek = null; SD.turnitin = ''; SD.dknToken = ''; $('sdSetuju').checked = false; sdLangkah(1); tampilSidang(h, true); })
         .catch(function (x) { galat(kotak, x.message); }).then(function () { sibuk(tombol, false); $('sdProses').hidden = true; });
     }, 60);
   }
@@ -1770,19 +1871,34 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     $('sdTutup').hidden = buka || m !== 'ajukan'; $('pembukaSidang').hidden = m === 'status' && !!SD.status;
     if (m === 'status' && !SD.status) { var t = bacaLokal('pjs-sidang'); if (t && !$('sdNimLihat').value) { $('sdNimLihat').value = t.nim; $('sdKodeLihat').value = t.kode; } }
   }
+  var HARI_ID = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'], BULAN_ID = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+  function hariTanggal(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || '')); if (!m) return String(iso || '');
+    return HARI_ID[new Date(Date.UTC(+m[1], m[2] - 1, +m[3])).getUTCDay()] + ', ' + (+m[3]) + ' ' + BULAN_ID[m[2] - 1] + ' ' + m[1];
+  }
+  function jamTitik(j) { return String(j || '').replace(':', '.'); }
   function tampilSidang(h, baru) {
     var x = h.sidang[0];
     SD.status = { nim: x.nim, kode: x.kode }; simpanLokal('pjs-sidang', SD.status);
-    var st = x.status, tiket = st === 'Diterima' ? ['Berkas sidang diterima', 'Seluruh berkasmu sudah diperiksa dan diterima prodi. Tunggu informasi jadwal ujian dari prodi.']
-      : (st === 'Dikembalikan' ? ['Perlu diperbaiki', 'Pengajuanmu dikembalikan. Baca catatan di bawah, lalu ajukan ulang dengan berkas yang sudah diperbaiki.']
-        : [baru ? 'Terkirim. Tinggal tunggu.' : 'Sedang diperiksa', 'Berkasmu sudah masuk ke pengelola prodi. Simpan kode di samping untuk melihat hasilnya lewat menu Sidang, Lihat status.']);
-    $('sdIsi').innerHTML = '<div class="tiket"><div class="kiri">' + pilPil(st === 'Diterima' ? 'ACC' : (st === 'Dikembalikan' ? 'Revisi' : 'Menunggu')) + '<h2>' + tiket[0] + '</h2><p>' + tiket[1] + '</p></div>' +
+    var st = x.status, tiket = st === 'Terjadwal' ? ['Ujianmu sudah dijadwalkan', hariTanggal(x.tglUjian) + ', pukul ' + jamTitik(x.jamUjian) + ' WIB di ' + x.ruang + '. Datang lebih awal dan siapkan naskahmu.']
+      : (st === 'Disetujui' ? ['Dewan penguji ditetapkan', 'Kaprodi sudah menetapkan dewan pengujimu. Tinggal menunggu jadwal ujian dari admin ujian.']
+        : (st === 'Diterima' ? ['Berkas sidang diterima', 'Seluruh berkasmu sudah diperiksa dan dinyatakan lengkap. Berikutnya Kaprodi menetapkan dewan penguji, lalu ujianmu dijadwalkan.']
+          : (st === 'Dikembalikan' ? ['Perlu diperbaiki', 'Pengajuanmu dikembalikan. Baca catatan di bawah, lalu ajukan ulang dengan berkas yang sudah diperbaiki.']
+            : [baru ? 'Terkirim. Tinggal tunggu.' : 'Sedang diperiksa', 'Berkasmu sudah masuk ke pengelola prodi. Simpan kode di samping untuk melihat hasilnya lewat menu Sidang, Lihat status.'])));
+    var urut = ['Menunggu', 'Diterima', 'Disetujui', 'Terjadwal'], pos = urut.indexOf(st);
+    var alur = st === 'Dikembalikan' ? '' : '<ol class="alur">' + [['Berkas dikirim', x.waktu + ' WIB'], ['Berkas dinyatakan lengkap', 'Diperiksa admin sidang.'], ['Dewan penguji ditetapkan', 'Oleh Kaprodi; pembimbingmu otomatis menjadi anggota.'], ['Ujian dijadwalkan', st === 'Terjadwal' ? hariTanggal(x.tglUjian) + ', ' + jamTitik(x.jamUjian) + ' WIB' : 'Waktu dan ruang ditentukan admin ujian.']]
+      .map(function (a, i) { return '<li class="' + (i <= pos ? 'sudah' : (i === pos + 1 ? 'kini' : '')) + '"><div><b>' + a[0] + '</b><span>' + e(a[1]) + '</span></div></li>'; }).join('') + '</ol>';
+    $('sdIsi').innerHTML = '<div class="tiket"><div class="kiri">' + pilPil(st === 'Dikembalikan' ? 'Revisi' : (st === 'Menunggu' ? 'Menunggu' : 'ACC')) + '<h2>' + tiket[0] + '</h2><p>' + e(tiket[1]) + '</p>' + alur + '</div>' +
       '<div class="kanan"><small>Kode sidang</small><b>' + e(x.kode) + '</b><button type="button" data-salin="' + e(x.kode) + '">Salin kode</button></div></div>' +
-      '<section class="lembar"><dl class="rinci"><dt>Nama</dt><dd>' + e(x.nama) + '</dd><dt>NIM</dt><dd class="mono">' + e(x.nim) + '</dd><dt>Kelas</dt><dd>' + e(x.kelas) + '</dd><dt>Dikirim</dt><dd>' + e(x.waktu) + ' WIB</dd>' +
-      '<dt>Berkas</dt><dd>' + e(x.namaBerkas) + ' · ' + x.halaman + ' halaman · ' + (x.kb > 1000 ? koma(x.kb / 1024, 1) + ' MB' : x.kb + ' KB') + '</dd><dt>Hasil cek plagiasi</dt><dd>' + e(x.turnitin) + '%</dd><dt>Ukuran toga</dt><dd>' + e(x.toga) + '</dd>' +
+      '<section class="lembar"><dl class="rinci"><dt>Nama</dt><dd>' + e(x.nama) + '</dd><dt>NIM</dt><dd class="mono">' + e(x.nim) + '</dd><dt>Kelas</dt><dd>' + e(x.kelas) + '</dd><dt>Judul skripsi</dt><dd>' + e(x.judul || '-') + '</dd>' +
+      (st === 'Terjadwal' ? '<dt>Jadwal ujian</dt><dd><b>' + e(hariTanggal(x.tglUjian)) + '</b><br>Pukul ' + e(jamTitik(x.jamUjian)) + ' WIB · ' + e(x.ruang) + '</dd>' : '') +
+      (x.ketua ? '<dt>Dewan penguji</dt><dd>Ketua: ' + e(x.ketua) + '<br>Anggota: ' + e(x.anggota) + '<br>Anggota/Pembimbing: ' + e(x.pembimbing) + '</dd>' : '<dt>Dosen pembimbing</dt><dd>' + e(x.pembimbing || '-') + '</dd>') +
+      '<dt>Dikirim</dt><dd>' + e(x.waktu) + ' WIB</dd><dt>Berkas</dt><dd>' + e(x.namaBerkas) + ' · ' + x.halaman + ' halaman · ' + (x.kb > 1000 ? koma(x.kb / 1024, 1) + ' MB' : x.kb + ' KB') + '</dd><dt>Hasil cek plagiasi</dt><dd>' + e(x.turnitin) + '%</dd><dt>Ukuran toga</dt><dd>' + e(x.toga) + '</dd>' +
       (x.catatan ? '<dt>Catatan prodi</dt><dd><b>' + e(x.catatan) + '</b></dd>' : '') + '</dl>' +
       (h.sidang.length > 1 ? '<p class="bantu" style="font-size:13px;color:var(--muted)">Pengajuan sebelumnya: ' + h.sidang.slice(1).map(function (y) { return e(y.waktu + ' (' + y.status + ')'); }).join(', ') + '.</p>' : '') +
-      '<div class="aksi"><button type="button" class="tombol polos" data-sd-tutup>Tutup</button><div class="kanan">' + (st === 'Dikembalikan' ? '<button type="button" class="tombol utama" data-sd-ulang>Ajukan ulang</button>' : '') + '</div></div></section>';
+      '<div class="aksi"><button type="button" class="tombol polos" data-sd-tutup>Tutup</button><div class="kanan">' + (st === 'Dikembalikan' ? '<button type="button" class="tombol utama" data-sd-ulang>Ajukan ulang</button>' : '') + '</div></div></section>' +
+      (h.surat && st !== 'Dikembalikan' ? '<section class="lembar"><header><h2>Formulir Data Peserta Tahap Akhir</h2><p>Terisi otomatis dari pengajuanmu. Kolom penguji terisi setelah ditetapkan Kaprodi.</p></header><div id="sdForm" class="surat"></div></section>' : '');
+    if ($('sdForm')) pasangSurat($('sdForm'), { surat: h.surat, gayaSurat: h.gayaSurat, kertas: 'A4', pdf: function () { return api('apiSidangFormPdf', x.nim, x.kode); } }, x);
     sdMode('status'); window.scrollTo(0, 0);
   }
   function lihatSidang() {
@@ -1817,6 +1933,10 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         SD.berkas[x.kunci].push({ u8: u8, w: 900, h: 1270, kb: Math.max(1, Math.round(u8.length / 1024)), mini: m.toDataURL('image/jpeg', 0.6) });
       }
     });
+    var ic = { sdTempat: 'Semarang', sdTgl: '2005-03-14', sdEmail: 'nadia@contoh.id', sdAlamatAsal: 'Jl. Menoreh Raya 21, Sampangan, Semarang', sdAlamatSmg: 'Jl. Menoreh Raya 21, Sampangan, Semarang', sdKek: 'Hukum Pidana',
+      sdWali: S.init.dosen[2] || '', sdPembimbing: S.init.dosen[4] || '', sdMulai: '2026-03-09', sdIpk: '3,62', sdJudul: 'Pertanggungjawaban Pidana Pelaku Penipuan Berkedok Investasi Daring terhadap Korban Lintas Provinsi',
+      sdBapak: 'H. Kusumo Wardoyo, S.E.', sdIbu: 'Hj. Rina Kusumawati, S.Pd.', sdAlamatOrtu: 'Jl. Menoreh Raya 21, Sampangan, Semarang', sdKerjaOrtu: 'Wiraswasta', sdDidikOrtu: 'S1/D4' };
+    Object.keys(ic).forEach(function (k) { $(k).value = ic[k]; }); setRadio('sdjk', 'Perempuan');
     $('sdToga').value = 'L'; toast('Formulir sidang diisi data dan berkas contoh. Tekan "Cek database dan lanjut".');
   }
   function siapSidang(init) {
@@ -1825,6 +1945,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     $('sdMaks').textContent = koma(I.turnitinMaks, 2);
     $('sdTutup').textContent = 'Pengajuan sidang sedang ditutup oleh prodi. Pengajuan yang sudah dikirim tetap bisa dilihat lewat "Lihat status".';
     $('sdToga').innerHTML = '<option value="">Pilih ukuran</option>' + I.ukuranToga.map(function (u) { return '<option>' + e(u) + '</option>'; }).join('');
+    $('sdKek').innerHTML = '<option value="">Pilih</option>' + init.kekhususan.map(function (k) { return '<option>' + e(k) + '</option>'; }).join('');
     var R = I.rekening;
     $('sdRek').innerHTML = '<div><small>Pembayaran toga</small><b>' + rupiah(R.toga) + '</b><span>' + e(R.bank) + ' <span class="mono">' + e(R.nomor) + '</span></span><span>a.n. ' + e(R.atasNama) + '</span></div>' +
       '<div><small>Pembayaran sidang</small><b>' + rupiah(R.sidang) + '</b><span>' + e(R.bank) + ' <span class="mono">' + e(R.nomor) + '</span></span><span>a.n. ' + e(R.atasNama) + '</span></div>';
@@ -2045,40 +2166,202 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       (a.peran === 'prodi' ? '<p class="catat">Sekprodi dan Kaprodi masuk dengan <b>satu kode yang sama</b>, yaitu isi baris "PIN Admin" di tab PENGATURAN, dengan hak yang sama (termasuk menyetujui izin riset). Baris "Kode Kaprodi" boleh dikosongkan.</p>' : (a.kodeKaprodi ? '<p class="catat">Kode akses Kaprodi: <b class="mono">' + e(a.kodeKaprodi) + '</b>.</p>' : '')) +
       '<p class="catat">Pengaturan lain (kode akses pengelola pada baris "PIN Admin", nama pejabat, ambang kemiripan) ada di tab <b>PENGATURAN</b> pada spreadsheet.</p></div></details>';
     var atas = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang pengelola prodi</h2><span style="color:var(--muted);font-size:14.5px">' + (a.peran === 'prodi' ? 'Pengelola prodi (Sekprodi dan Kaprodi)' : 'Masuk sebagai ' + (kap ? 'Kaprodi' : 'Sekprodi')) + ' · S1 Ilmu Hukum</span></div><div class="kanan"><button type="button" class="tombol kecil" data-a="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-a="keluar">Keluar</button></div></div>' +
-      '<div class="tabs" role="tablist">' + [['antre', 'Persetujuan', (a.hitung.Menunggu || 0) + rs.menunggu.length], ['sidang', 'Sidang', a.sidang ? a.sidang.menunggu.length : 0], ['pantau', 'Pantauan bimbingan', S.pantau ? S.pantau.mahasiswa.filter(function (x) { return x.rekap.macet; }).length : 0], ['akun', 'Akun & kode akses', 0]].map(function (x) {
+      '<div class="tabs" role="tablist">' + [['antre', 'Persetujuan', (a.hitung.Menunggu || 0) + rs.menunggu.length], ['sidang', 'Sidang', a.sidang ? a.sidang.menunggu.length + (a.sidang.diterima || []).length + (a.sidang.disetujui || []).length : 0], ['pantau', 'Pantauan bimbingan', S.pantau ? S.pantau.mahasiswa.filter(function (x) { return x.rekap.macet; }).length : 0], ['akun', 'Akun & kode akses', 0]].map(function (x) {
         return '<button type="button" role="tab" data-atab="' + x[0] + '" aria-selected="' + (S.aTab === x[0]) + '">' + x[1] + (x[2] ? '<i>' + x[2] + '</i>' : '') + '</button>'; }).join('') + '</div>';
     $('aIsi').innerHTML = atas + (S.aTab === 'pantau' ? hPantau() : (S.aTab === 'akun' ? hAkun() : (S.aTab === 'sidang' ? hSidangAdmin() : h)));
   }
   /* ---------------- pengajuan sidang (pengelola) ---------------- */
   function ukuranBerkas(kb) { return kb > 1000 ? koma(kb / 1024, 1) + ' MB' : kb + ' KB'; }
   function hSidangAdmin() {
-    var sd = S.admin.sidang, h = '';
+    var sd = S.admin.sidang, h = '', prodi = S.admin.peran !== 'sidang';
     if (!sd) return '<div class="kosong"><b>Belum tersedia</b>Muat ulang halaman ini beberapa saat lagi.</div>';
-    h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Pengajuan sidang</h2></div><span class="pil ' + (sd.menunggu.length ? 'kuning' : 'netral') + '">' + sd.menunggu.length + ' menunggu</span></div>';
+    sd.diterima = sd.diterima || []; sd.disetujui = sd.disetujui || []; sd.terjadwal = sd.terjadwal || [];
+    if ($('dPenguji') && sd.penguji) $('dPenguji').innerHTML = sd.penguji.map(function (d) { return '<option value="' + e(d) + '">'; }).join('');
+    var ruang = {}; sd.terjadwal.forEach(function (x) { ruang[x.ruang] = 1; });
+    if ($('dRuang')) $('dRuang').innerHTML = Object.keys(ruang).concat(['Ruang Sidang 1', 'Ruang Sidang 2']).filter(function (r, i, a) { return a.indexOf(r) === i; }).map(function (r) { return '<option value="' + e(r) + '">'; }).join('');
+    h += '<div class="angka"><div' + (sd.menunggu.length ? ' class="sorot"' : '') + '><b>' + sd.menunggu.length + '</b><span>Berkas diperiksa</span></div><div' + (prodi && sd.diterima.length ? ' class="sorot"' : '') + '><b>' + sd.diterima.length + '</b><span>Menunggu penguji</span></div>' +
+      '<div' + (sd.disetujui.length ? ' class="sorot"' : '') + '><b>' + sd.disetujui.length + '</b><span>Siap dijadwalkan</span></div><div><b>' + sd.terjadwal.length + '</b><span>Terjadwal</span></div></div>';
     var toga = {}, urut = (S.init && S.init.sidang ? S.init.sidang.ukuranToga : []);
-    sd.riwayat.forEach(function (x) { if (x.status === 'Diterima') toga[x.toga] = (toga[x.toga] || 0) + 1; });
+    sd.riwayat.forEach(function (x) { if (x.status !== 'Dikembalikan') toga[x.toga] = (toga[x.toga] || 0) + 1; });
     if (Object.keys(toga).length) h += '<div class="togarekap"><b>Ukuran toga (berkas diterima):</b>' + urut.filter(function (u) { return toga[u]; }).map(function (u) { return '<span>' + e(u) + ' · ' + toga[u] + '</span>'; }).join('') + '</div>';
-    if (!sd.menunggu.length) h += '<div class="kosong"><b>Tidak ada pengajuan sidang yang menunggu</b>Pengajuan dari mahasiswa akan muncul di sini, lengkap dengan satu PDF berisi semua berkasnya.</div>';
+    function kepala(x, pil, warna) {
+      return '<div class="kepala"><h3>' + e(x.nama) + '</h3><span class="pil ' + warna + '">' + pil + '</span></div>' +
+        '<div class="meta"><span class="mono"><b>' + e(x.nim) + '</b></span><span>' + e(x.kelas) + '</span>' + (x.kekhususan ? '<span>' + e(x.kekhususan) + '</span>' : '') + '<span>IPK <b>' + e(x.ipk || '-') + '</b></span><span>Turnitin <b>' + e(x.turnitin) + '%</b></span><span>Toga <b>' + e(x.toga) + '</b></span></div>';
+    }
+    function berkas(x) {
+      return '<div class="aksi"><div>' + (x.wa ? '<a class="tombol wa kecil" href="https://wa.me/' + e(x.wa) + '" target="_blank" rel="noopener">WhatsApp mahasiswa</a>' : '') + '</div><div class="kanan">' +
+        '<button type="button" class="tombol kecil polos" data-sidang-form="' + e(x.id) + '">Formulir peserta</button>' + (x.adaBerkas ? '<button type="button" class="tombol kecil" data-sidang-pdf="' + e(x.id) + '">Unduh PDF berkas</button>' : '') + '</div></div><div class="formwadah surat" data-form-wadah hidden></div>';
+    }
+    /* 1. berkas masuk */
+    h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Berkas masuk</h2></div><span class="pil ' + (sd.menunggu.length ? 'kuning' : 'netral') + '">' + sd.menunggu.length + ' menunggu</span></div>';
+    if (!sd.menunggu.length) h += '<div class="kosong"><b>Tidak ada berkas yang menunggu diperiksa</b>Pengajuan dari mahasiswa akan muncul di sini, lengkap dengan satu PDF berisi semua berkasnya.</div>';
     sd.menunggu.forEach(function (x) {
-      h += '<article class="berkas" data-sidang-id="' + e(x.id) + '"><div class="kepala"><h3>' + e(x.nama) + '</h3><span class="pil kuning">Sidang</span></div>' +
-        '<div class="meta"><span class="mono"><b>' + e(x.nim) + '</b></span><span>' + e(x.kelas) + '</span><span>Turnitin <b>' + e(x.turnitin) + '%</b></span><span>Toga <b>' + e(x.toga) + '</b></span><span>' + e(x.waktu) + '</span></div>' +
-        '<dl class="rinci"><dt>Berkas gabungan</dt><dd><b>' + e(x.namaBerkas) + '</b><br>' + x.halaman + ' halaman · ' + ukuranBerkas(x.kb) + '</dd>' +
-        '<dt>Database PWI</dt><dd>' + e(x.pwi) + '</dd><dt>Database LKMM</dt><dd>' + e(x.lkmm) + '</dd>' +
-        (x.resmi && x.resmi.ada ? '<dt>Judul (data prodi)</dt><dd>' + e(x.resmi.judul) + '</dd><dt>Pembimbing</dt><dd>' + e(x.resmi.dosen) + '</dd>' : '<dt>Data judul prodi</dt><dd>NIM ini tidak ditemukan di data pengajuan judul.</dd>') + '</dl>' +
-        '<div class="aksi"><div>' + (x.wa ? '<a class="tombol wa kecil" href="https://wa.me/' + e(x.wa) + '" target="_blank" rel="noopener">WhatsApp mahasiswa</a>' : '') + '</div><div class="kanan">' +
-        (x.tautan ? '<a class="tombol kecil polos" href="' + e(x.tautan) + '" target="_blank" rel="noopener">Buka di Drive</a>' : '') + '<button type="button" class="tombol kecil" data-sidang-pdf="' + e(x.id) + '">Unduh PDF berkas</button></div></div>' +
+      h += '<article class="berkas" data-sidang-id="' + e(x.id) + '">' + kepala(x, 'Periksa berkas', 'kuning') +
+        '<dl class="rinci"><dt>Berkas gabungan</dt><dd><b>' + e(x.namaBerkas) + '</b><br>' + x.halaman + ' halaman · ' + ukuranBerkas(x.kb) + '</dd><dt>Judul skripsi</dt><dd>' + e(x.judul || '-') + '</dd><dt>Dosen pembimbing</dt><dd>' + e(x.pembimbing || '-') + '</dd>' +
+        '<dt>Database PWI</dt><dd>' + e(x.pwi) + '</dd><dt>Database LKMM</dt><dd>' + e(x.lkmm) + '</dd><dt>Lembar nilai</dt><dd>' + (x.nilaiOtomatis ? 'Terisi otomatis dari PDF DKN' : 'Nilai per mata kuliah belum terisi (mahasiswa tidak mengunggah PDF DKN)') + '</dd>' +
+        (x.resmi && x.resmi.ada ? '<dt>Judul (data prodi)</dt><dd>' + e(x.resmi.judul) + '</dd>' : '<dt>Data judul prodi</dt><dd>NIM ini tidak ditemukan di data pengajuan judul.</dd>') + '</dl>' + berkas(x) +
         '<div class="isian"><label for="sc-' + e(x.id) + '">Catatan untuk mahasiswa</label><textarea id="sc-' + e(x.id) + '" data-f="catatan" maxlength="500" style="min-height:56px" placeholder="Wajib diisi bila dikembalikan: berkas mana yang harus diperbaiki"></textarea></div>' +
         '<div class="catat galat" data-galat hidden></div><div class="aksi"><button type="button" class="tombol kecil bahaya" data-sidang-aksi="KEMBALI">Kembalikan</button><div class="kanan"><button type="button" class="tombol utama" data-sidang-aksi="TERIMA">Berkas lengkap, terima</button></div></div></article>';
     });
-    if (sd.riwayat.length) h += '<details class="lipat"><summary>Riwayat pengajuan sidang (' + sd.riwayat.length + ')</summary><div><ul class="riwayat">' + sd.riwayat.map(function (x) {
-      return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>' + e(x.kelas + ' · toga ' + x.toga + ' · Turnitin ' + x.turnitin + '%' + (x.catatan ? ' · ' + x.catatan : '')) + '</small></span><span class="aksi-b"><span class="pil ' + (x.status === 'Diterima' ? 'hijau' : 'merah') + '">' + e(x.status) + '</span>' +
+    /* 2. penetapan penguji oleh Kaprodi */
+    if (sd.diterima.length) {
+      h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Penetapan dewan penguji</h2></div><span class="pil kuning">' + sd.diterima.length + ' menunggu</span></div>';
+      if (!prodi) h += '<div class="catat">Menunggu Kaprodi menetapkan ketua dan anggota penguji. Setelah itu ujian muncul di bagian "Siap dijadwalkan".</div>';
+      sd.diterima.forEach(function (x) {
+        h += '<article class="berkas" data-sidang-id="' + e(x.id) + '">' + kepala(x, 'Menunggu penguji', 'kuning') +
+          '<dl class="rinci"><dt>Judul skripsi</dt><dd><b>' + e(x.judul || '-') + '</b></dd><dt>Anggota/Pembimbing</dt><dd>' + e(x.pembimbing || '-') + ' <span class="pil netral">otomatis</span></dd></dl>' +
+          (prodi ? '<div class="kisi"><div class="isian"><label for="pk-' + e(x.id) + '">Ketua penguji</label><input type="text" id="pk-' + e(x.id) + '" data-f="ketua" list="dPenguji" maxlength="90" placeholder="Ketik nama, lalu pilih"></div>' +
+            '<div class="isian"><label for="pa-' + e(x.id) + '">Anggota penguji</label><input type="text" id="pa-' + e(x.id) + '" data-f="anggota" list="dPenguji" maxlength="90" placeholder="Ketik nama, lalu pilih"></div></div>' : '') +
+          berkas(x) + (prodi ? '<div class="catat galat" data-galat hidden></div><div class="aksi"><span class="bantu" style="font-size:13px;color:var(--muted)">Menetapkan penguji berarti menyetujui ujian ini untuk dijadwalkan.</span><div class="kanan"><button type="button" class="tombol utama" data-sidang-penguji>Tetapkan penguji dan setujui</button></div></div>' : '') + '</article>';
+      });
+    }
+    /* 3. siap dijadwalkan */
+    if (sd.disetujui.length) {
+      h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Siap dijadwalkan</h2></div><span class="pil kuning">' + sd.disetujui.length + ' ujian</span></div>';
+      sd.disetujui.forEach(function (x) {
+        h += '<article class="berkas" data-sidang-id="' + e(x.id) + '">' + kepala(x, 'Atur jadwal', 'kuning') +
+          '<dl class="rinci"><dt>Judul skripsi</dt><dd>' + e(x.judul || '-') + '</dd><dt>Dewan penguji</dt><dd>Ketua: <b>' + e(x.ketua) + '</b><br>Anggota: <b>' + e(x.anggota) + '</b><br>Anggota/Pembimbing: <b>' + e(x.pembimbing) + '</b></dd></dl>' + hIsiJadwal(x) + berkas(x) + '</article>';
+      });
+    }
+    /* 4. jadwal */
+    h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Jadwal ujian</h2></div>' + (sd.terjadwal.length ? '<div class="kanan"><button type="button" class="tombol utama kecil" data-jadwal-pdf>Unduh jadwal PDF</button></div>' : '') + '</div>';
+    if (!sd.terjadwal.length) h += '<div class="kosong"><b>Belum ada ujian terjadwal</b>Ujian muncul di sini setelah dewan penguji ditetapkan Kaprodi dan waktunya diatur.</div>';
+    var hariKini = '';
+    sd.terjadwal.forEach(function (x) {
+      if (x.tglUjian !== hariKini) { hariKini = x.tglUjian; h += '<div class="jadwalhari"><span>' + e(hariTanggal(x.tglUjian)) + '</span><span class="pil netral">' + sd.terjadwal.filter(function (y) { return y.tglUjian === x.tglUjian; }).length + ' ujian</span></div>'; }
+      var wa = function (no, peran, nama) { return no ? '<a class="tombol mini wa" target="_blank" rel="noopener" href="https://wa.me/' + e(no) + '?text=' + encodeURIComponent(pesanUjian(x, peran, nama)) + '">WA ' + peran + '</a>' : '<button type="button" class="tombol mini" data-salin-teks="' + e(pesanUjian(x, peran, nama)) + '">Salin pesan ' + peran + '</button>'; };
+      h += '<div class="jadwalbaris" data-sidang-id="' + e(x.id) + '"><div class="jam">' + e(jamTitik(x.jamUjian)) + '<small>WIB · ' + e(x.ruang) + '</small></div><div class="isi"><b>' + e(x.nama) + ' <span class="mono" style="font-weight:500">' + e(x.nim) + '</span></b><p>' + e(x.judul) + '</p>' +
+        '<div class="dewan"><span>Ketua: <b>' + e(x.ketua) + '</b></span><span>Anggota: <b>' + e(x.anggota) + '</b></span><span>Anggota/Pembimbing: <b>' + e(x.pembimbing) + '</b></span></div>' +
+        '<div class="aksi-b">' + wa(x.waKetua, 'Ketua', x.ketua) + wa(x.waAnggota, 'Anggota', x.anggota) + wa(x.waPembimbing, 'Pembimbing', x.pembimbing) + wa(x.wa, 'Mahasiswa', x.nama) + '</div>' +
+        '<details class="kembalikan"><summary>Ubah jadwal</summary>' + hIsiJadwal(x) + '</details></div></div>';
+    });
+    var lama = sd.riwayat.filter(function (x) { return x.status === 'Dikembalikan'; });
+    if (lama.length) h += '<details class="lipat"><summary>Pengajuan yang dikembalikan (' + lama.length + ')</summary><div><ul class="riwayat">' + lama.map(function (x) {
+      return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>' + e(x.kelas + (x.catatan ? ' · ' + x.catatan : '')) + '</small></span><span class="aksi-b"><span class="pil merah">Dikembalikan</span>' +
         (x.adaBerkas ? '<button type="button" class="tombol mini" data-sidang-pdf="' + e(x.id) + '">Unduh PDF</button>' : '') + '</span></li>';
     }).join('') + '</ul></div></details>';
     return h;
   }
+  function hIsiJadwal(x) {
+    return '<div class="kisi"><div class="isian"><label for="jt-' + e(x.id) + '">Tanggal ujian</label><span class="tgl"><input type="date" id="jt-' + e(x.id) + '" data-f="tanggal" value="' + e(x.tglUjian || '') + '"></span></div>' +
+      '<div class="isian"><label for="jj-' + e(x.id) + '">Jam mulai (WIB)</label><input type="text" id="jj-' + e(x.id) + '" data-f="jam" inputmode="numeric" maxlength="5" placeholder="09.00" value="' + e(jamTitik(x.jamUjian || '')) + '"></div>' +
+      '<div class="isian"><label for="jr-' + e(x.id) + '">Ruang</label><input type="text" id="jr-' + e(x.id) + '" data-f="ruang" list="dRuang" maxlength="40" placeholder="Ruang Sidang 1" value="' + e(x.ruang || '') + '"></div></div>' +
+      '<div class="catat galat" data-galat hidden></div><div class="aksi"><div class="kanan"><button type="button" class="tombol ' + (x.tglUjian ? '' : 'utama') + '" data-sidang-jadwal>' + (x.tglUjian ? 'Simpan perubahan jadwal' : 'Jadwalkan ujian') + '</button></div></div>';
+  }
+  function pesanUjian(x, peran, nama) {
+    var tugas = peran === 'Ketua' ? 'Ketua Penguji' : (peran === 'Anggota' ? 'Anggota Penguji' : 'Anggota Penguji/Pembimbing');
+    var rinci = 'Hari/tanggal: ' + hariTanggal(x.tglUjian) + '\nWaktu: ' + jamTitik(x.jamUjian) + ' WIB\nRuang: ' + x.ruang + '\n\nMahasiswa: ' + x.nama + ' (NIM ' + x.nim + ')\nJudul: ' + x.judul + '\n\nDewan penguji:\n1. Ketua: ' + x.ketua + '\n2. Anggota: ' + x.anggota + '\n3. Anggota/Pembimbing: ' + x.pembimbing;
+    if (peran === 'Mahasiswa') return 'Assalamu\'alaikum Wr. Wb. Saudara/i ' + nama + '.\n\nBerikut jadwal Ujian Skripsi Anda:\n\n' + rinci + '\n\nHadir 30 menit sebelum ujian dimulai, berpakaian rapi sesuai ketentuan, dan siapkan naskah skripsi untuk dewan penguji.\n\nWassalamu\'alaikum Wr. Wb.\nPengelola Prodi S1 Ilmu Hukum FH UNISSULA';
+    return 'Assalamu\'alaikum Wr. Wb. Bapak/Ibu ' + nama + '.\n\nDengan hormat, kami sampaikan jadwal Ujian Skripsi berikut. Bapak/Ibu bertugas sebagai *' + tugas + '*.\n\n' + rinci +
+      '\n\nMohon kesediaan Bapak/Ibu untuk hadir menguji pada waktu tersebut. Atas perhatian dan kesediaan Bapak/Ibu, kami ucapkan terima kasih.\n\nWassalamu\'alaikum Wr. Wb.\nPengelola Prodi S1 Ilmu Hukum FH UNISSULA';
+  }
+  /* ---- jadwal ujian sebagai PDF (A4 mendatar), digambar langsung supaya tampilannya sama di semua perangkat ---- */
+  var PDF_LEBAR = { R: [278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584], B: [278,333,474,556,556,889,722,238,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,333,333,584,584,584,611,975,722,722,722,722,667,611,778,722,278,556,722,611,833,722,778,667,778,722,667,611,722,667,944,667,667,611,333,278,333,584,556,333,556,611,556,611,556,333,611,611,278,278,556,278,889,611,611,611,611,389,556,333,611,556,778,556,556,500,389,280,389,584] };
+  function lebarTeks(s, f, u) { var w = 0, L = PDF_LEBAR[f]; for (var i = 0; i < s.length; i++) { var k = s.charCodeAt(i); w += k >= 32 && k < 127 ? L[k - 32] : (k === 183 ? 278 : 556); } return w * u / 1000; }
+  function bungkusTeks(s, f, u, maks, batas) {
+    var kata = String(s || '').replace(/\s+/g, ' ').trim().split(' '), baris = [], kini = '';
+    kata.forEach(function (k) {
+      while (lebarTeks(k, f, u) > maks && k.length > 4) { var n = k.length - 1; while (n > 1 && lebarTeks(k.slice(0, n) + '-', f, u) > maks) n--; if (kini) { baris.push(kini); kini = ''; } baris.push(k.slice(0, n) + '-'); k = k.slice(n); }
+      var coba = kini ? kini + ' ' + k : k;
+      if (lebarTeks(coba, f, u) <= maks) kini = coba; else { if (kini) baris.push(kini); kini = k; }
+    });
+    if (kini) baris.push(kini);
+    if (batas && baris.length > batas) { baris = baris.slice(0, batas); var a = baris[batas - 1]; while (a.length > 3 && lebarTeks(a + '...', f, u) > maks) a = a.slice(0, -1); baris[batas - 1] = a.replace(/[ ,;:.-]+$/, '') + '...'; }
+    return baris;
+  }
+  function jadwalPdf(daftar, kaprodi) {
+    var L = 841.89, T = 595.28, M = 36, hal = [], c = '', y = 0;
+    var TINTA = '0.078 0.075 0.169', AKSEN = '0.263 0.188 0.961', POP = '1 0.886 0.29', REDUP = '0.349 0.345 0.467', RAMBUT = '0.812 0.82 0.91', SELANG = '0.957 0.961 0.992', PUTIH = '1 1 1';
+    var kotak = function (x, yb, w, h, warna) { c += warna + ' rg ' + x.toFixed(2) + ' ' + yb.toFixed(2) + ' ' + w.toFixed(2) + ' ' + h.toFixed(2) + ' re f\n'; };
+    var teks = function (x, yb, s, f, u, warna) { c += 'BT /F' + (f === 'B' ? 2 : 1) + ' ' + u + ' Tf ' + warna + ' rg ' + x.toFixed(2) + ' ' + yb.toFixed(2) + ' Td (' + pdfTeks(s) + ') Tj ET\n'; };
+    var kanan = function (xk, yb, s, f, u, warna) { teks(xk - lebarTeks(s, f, u), yb, s, f, u, warna); };
+    var kol = [{ x: M, w: 70, j: 'WAKTU' }, { x: M + 70, w: 92, j: 'RUANG' }, { x: M + 162, w: 150, j: 'MAHASISWA' }, { x: M + 312, w: 226, j: 'JUDUL SKRIPSI' }, { x: M + 538, w: L - 2 * M - 538, j: 'DEWAN PENGUJI' }];
+    var hari = [], peta = {};
+    daftar.forEach(function (x) { if (!peta[x.tglUjian]) { peta[x.tglUjian] = []; hari.push(x.tglUjian); } peta[x.tglUjian].push(x); });
+    var awal = hari[0], akhir = hari[hari.length - 1], bl = function (iso) { return BULAN_ID[+iso.slice(5, 7) - 1].toUpperCase() + ' ' + iso.slice(0, 4); };
+    var periode = bl(awal) === bl(akhir) ? bl(awal) : BULAN_ID[+awal.slice(5, 7) - 1].toUpperCase() + (awal.slice(0, 4) === akhir.slice(0, 4) ? '' : ' ' + awal.slice(0, 4)) + ' - ' + bl(akhir);
+    function kepalaHal(pertama) {
+      c = '';
+      var tb = pertama ? 96 : 54;
+      kotak(0, T - tb, L, tb, TINTA); kotak(0, T - tb - 5, L, 5, AKSEN);
+      if (pertama) {
+        teks(M, T - 50, 'JADWAL UJIAN SKRIPSI', 'B', 27, PUTIH);
+        teks(M, T - 72, 'Program Studi S1 Ilmu Hukum  ·  Fakultas Hukum Universitas Islam Sultan Agung', 'R', 11, '0.812 0.82 0.91');
+        var lp = lebarTeks(periode, 'B', 13) + 28; kotak(L - M - lp, T - 56, lp, 26, POP); teks(L - M - lp + 14, T - 47.5, periode, 'B', 13, TINTA);
+        kanan(L - M, T - 76, daftar.length + ' ujian  ·  ' + hari.length + ' hari', 'R', 10, '0.812 0.82 0.91');
+      } else {
+        teks(M, T - 34, 'JADWAL UJIAN SKRIPSI', 'B', 16, PUTIH); kanan(L - M, T - 33, periode, 'B', 11, POP);
+      }
+      y = T - tb - 5 - 22;
+    }
+    function tutupHal() { hal.push(c); }
+    function kepalaKolom() {
+      kotak(M, y - 6, L - 2 * M, 18, SELANG);
+      kol.forEach(function (k) { teks(k.x + 8, y, k.j, 'B', 7.5, REDUP); });
+      y -= 12;
+    }
+    kepalaHal(true);
+    hari.forEach(function (tgl) {
+      var D = peta[tgl];
+      if (y < M + 120) { tutupHal(); kepalaHal(false); }
+      y -= 6; kotak(M, y - 3, 11, 11, POP); teks(M + 18, y - 1, hariTanggal(tgl), 'B', 13.5, TINTA); kanan(L - M, y - 1, D.length + ' ujian', 'R', 9.5, REDUP);
+      y -= 20; kepalaKolom();
+      D.forEach(function (x, i) {
+        var nm = bungkusTeks(x.nama, 'B', 10, kol[2].w - 16, 2), jd = bungkusTeks(x.judul, 'R', 8.8, kol[3].w - 16, 6), rg = bungkusTeks(x.ruang, 'B', 9.5, kol[1].w - 16, 2);
+        var dw = [['KETUA', x.ketua], ['ANGGOTA', x.anggota], ['ANGGOTA / PEMBIMBING', x.pembimbing]].map(function (d) { return [d[0], bungkusTeks(d[1], 'B', 8.8, kol[4].w - 16, 2)]; });
+        var tDw = dw.reduce(function (n, d) { return n + 9 + d[1].length * 10.5 + 3; }, 0) - 3;
+        var tinggi = Math.max(34, nm.length * 12 + 22, jd.length * 11, tDw, rg.length * 12) + 18;
+        if (y - tinggi < M + 26) { tutupHal(); kepalaHal(false); teks(M, y, hariTanggal(tgl) + ' (lanjutan)', 'B', 11, TINTA); y -= 18; kepalaKolom(); }
+        var atas = y - 6, bawah = atas - tinggi;
+        if (i % 2 === 1) kotak(M, bawah, L - 2 * M, tinggi, '0.98 0.98 0.996');
+        kotak(M, bawah, 3, tinggi, AKSEN); kotak(M, bawah, L - 2 * M, 0.6, RAMBUT);
+        var ty = atas - 19;
+        teks(kol[0].x + 10, ty - 2, jamTitik(x.jamUjian), 'B', 16, AKSEN); teks(kol[0].x + 10, ty - 14, 'WIB', 'B', 7.5, REDUP);
+        rg.forEach(function (b, n) { teks(kol[1].x + 8, ty - n * 12, b, 'B', 9.5, TINTA); });
+        nm.forEach(function (b, n) { teks(kol[2].x + 8, ty - n * 12, b, 'B', 10, TINTA); });
+        teks(kol[2].x + 8, ty - nm.length * 12 - 1, 'NIM ' + x.nim, 'R', 8.5, REDUP); teks(kol[2].x + 8, ty - nm.length * 12 - 12, x.kelas + (x.kekhususan ? '  ·  ' + x.kekhususan.replace('Hukum ', 'H. ') : ''), 'R', 8, REDUP);
+        jd.forEach(function (b, n) { teks(kol[3].x + 8, ty + 1 - n * 11, b, 'R', 8.8, TINTA); });
+        var dy = ty + 2;
+        dw.forEach(function (d) { teks(kol[4].x + 8, dy, d[0], 'B', 6.5, AKSEN); dy -= 9.5; d[1].forEach(function (b) { teks(kol[4].x + 8, dy, b, 'B', 8.8, TINTA); dy -= 10.5; }); dy -= 2.5; });
+        y = bawah + 6;
+      });
+      y -= 14;
+    });
+    if (kaprodi) {
+      if (y < M + 96) { tutupHal(); kepalaHal(false); }
+      var xk = L - M - 230, hr = new Date();
+      teks(xk, y - 8, 'Semarang, ' + hr.getDate() + ' ' + BULAN_ID[hr.getMonth()] + ' ' + hr.getFullYear(), 'R', 9.5, TINTA); teks(xk, y - 20, 'Ketua Program Studi S1 Ilmu Hukum,', 'R', 9.5, TINTA);
+      teks(xk, y - 72, kaprodi, 'B', 10, TINTA); kotak(xk, y - 76, Math.min(230, lebarTeks(kaprodi, 'B', 10)), 0.7, TINTA);
+    }
+    tutupHal();
+    var d2 = function (v) { return ('0' + v).slice(-2); }, kini = new Date(), terbit = d2(kini.getDate()) + '-' + d2(kini.getMonth() + 1) + '-' + kini.getFullYear() + ' ' + d2(kini.getHours()) + '.' + d2(kini.getMinutes());
+    hal = hal.map(function (isi, i) {
+      c = isi; kotak(M, M - 6, L - 2 * M, 0.6, RAMBUT);
+      teks(M, M - 19, 'Diterbitkan ' + terbit + ' WIB melalui SKRIPSPACE (skripspace.com). Dewan penguji ditetapkan Ketua Program Studi; perubahan jadwal diumumkan pengelola prodi.', 'R', 7.5, REDUP);
+      kanan(L - M, M - 19, 'Halaman ' + (i + 1) + ' dari ' + hal.length, 'B', 7.5, REDUP);
+      return c;
+    });
+    /* susun berkas PDF */
+    var bagian = [], panjang = 0, letak = [], n = 5, anak = [];
+    var tulis = function (s) { var u = new Uint8Array(s.length); for (var i = 0; i < s.length; i++) u[i] = s.charCodeAt(i) & 255; bagian.push(u); panjang += u.length; };
+    var obj = function (no, isi) { letak[no] = panjang; tulis(no + ' 0 obj\n' + isi + '\nendobj\n'); };
+    tulis('%PDF-1.4\n%âãÏÓ\n');
+    hal.forEach(function (isi) {
+      obj(n, '<< /Length ' + isi.length + ' >>\nstream\n' + isi + '\nendstream');
+      obj(n + 1, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' + L + ' ' + T + '] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ' + n + ' 0 R >>'); anak.push(n + 1); n += 2;
+    });
+    obj(1, '<< /Type /Catalog /Pages 2 0 R >>'); obj(2, '<< /Type /Pages /Count ' + anak.length + ' /Kids [' + anak.map(function (a) { return a + ' 0 R'; }).join(' ') + '] >>');
+    obj(3, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>'); obj(4, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+    var awalX = panjang, xr = 'xref\n0 ' + n + '\n0000000000 65535 f \n';
+    for (var k = 1; k < n; k++) xr += ('0000000000' + letak[k]).slice(-10) + ' 00000 n \n';
+    tulis(xr + 'trailer\n<< /Size ' + n + ' /Root 1 0 R /Info << /Title (Jadwal Ujian Skripsi ' + pdfTeks(periode) + ') /Producer (SKRIPSPACE) >> >>\nstartxref\n' + awalX + '\n%%EOF\n');
+    var semuaByte = new Uint8Array(panjang), p = 0;
+    bagian.forEach(function (b) { semuaByte.set(b, p); p += b.length; });
+    return { u8: semuaByte, nama: 'JADWAL UJIAN SKRIPSI - ' + periode + '.pdf', halaman: hal.length };
+  }
   function turunkanPdf(p) {
-    var biner = atob(p.b64), u8 = new Uint8Array(biner.length);
-    for (var i = 0; i < biner.length; i++) u8[i] = biner.charCodeAt(i);
+    var u8 = p.u8;
+    if (!u8) { var biner = atob(p.b64); u8 = new Uint8Array(biner.length); for (var i = 0; i < biner.length; i++) u8[i] = biner.charCodeAt(i); }
     var url = URL.createObjectURL(new Blob([u8], { type: 'application/pdf' })), a = document.createElement('a');
     a.href = url; a.download = p.nama; document.body.appendChild(a); a.click(); a.remove();
     if (IOS) { pdfSiap(u8, p.nama, url); return; }
@@ -2086,18 +2369,45 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     toast('PDF diunduh: ' + p.nama);
   }
   function klikSidangAdmin(t) {
+    var k = t.closest('[data-sidang-id]'), g = k ? k.querySelector('[data-galat]') : null, isi = function (f) { var el = (t.closest('details') || k).querySelector('[data-f="' + f + '"]'); return el ? el.value.trim() : ''; };
+    var kirim = function (fn, arg, pesan) { galat(g, ''); sibuk(t, true); api(fn, S.pin, k.getAttribute('data-sidang-id'), arg).then(function (d) { segarAdmin(d); toast(pesan); }).catch(function (x) { galat(g, x.message); sibuk(t, false); }); };
+    if (t.hasAttribute('data-jadwal-pdf')) {
+      try { window.__jadwalPdf = jadwalPdf(S.admin.sidang.terjadwal, (S.admin.sidang.kaprodi || '')); turunkanPdf(window.__jadwalPdf); } catch (x) { toast('Jadwal belum bisa dibuat: ' + x.message); }
+      return true;
+    }
+    if (t.hasAttribute('data-sidang-form')) {
+      var w = k.querySelector('[data-form-wadah]'), id = t.getAttribute('data-sidang-form');
+      if (!w.hidden) { w.hidden = true; w.innerHTML = ''; return true; }
+      sibuk(t, true);
+      api('apiAdminSidangForm', S.pin, id).then(function (h) { w.hidden = false; h.pdf = function () { return api('apiAdminSidangFormPdf', S.pin, id); }; pasangSurat(w, h, {}); })
+        .catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); });
+      return true;
+    }
+    if (t.hasAttribute('data-sidang-penguji')) {
+      var ketua = isi('ketua'), anggota = isi('anggota');
+      if (ketua.length < 3 || anggota.length < 3) { galat(g, 'Isi ketua dan anggota penguji, pilih dari daftar dosen.'); return true; }
+      if (!yakin(t)) return true;
+      kirim('apiAdminPenguji', { ketua: ketua, anggota: anggota }, 'Dewan penguji ditetapkan. Ujian siap dijadwalkan.'); return true;
+    }
+    if (t.hasAttribute('data-sidang-jadwal')) {
+      g = (t.closest('details') || k).querySelector('[data-galat]');
+      var tg = isi('tanggal'), jm = isi('jam'), rg = isi('ruang');
+      if (!tg) { galat(g, 'Isi tanggal ujian.'); return true; }
+      if (!/^\d{1,2}[.:]\d{2}$/.test(jm)) { galat(g, 'Isi jam mulai, misalnya 09.00.'); return true; }
+      if (rg.length < 2) { galat(g, 'Isi ruang ujian.'); return true; }
+      kirim('apiAdminJadwal', { tanggal: tg, jam: jm, ruang: rg }, 'Ujian terjadwal. Kirim pemberitahuan ke dewan penguji lewat tombol WA.'); return true;
+    }
+    if (t.hasAttribute('data-salin-teks')) { salin(t.getAttribute('data-salin-teks'), 'Pesan disalin. Tempel di WhatsApp.'); return true; }
     if (t.hasAttribute('data-sidang-pdf')) {
       sibuk(t, true);
       apiLama('apiAdminSidangPdf', S.pin, t.getAttribute('data-sidang-pdf')).then(turunkanPdf).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); });
       return true;
     }
     if (t.hasAttribute('data-sidang-aksi')) {
-      var k = t.closest('[data-sidang-id]'), aksi = t.getAttribute('data-sidang-aksi'), cat = k.querySelector('[data-f="catatan"]').value.trim(), g = k.querySelector('[data-galat]');
+      var aksi = t.getAttribute('data-sidang-aksi'), cat = k.querySelector('[data-f="catatan"]').value.trim();
       if (aksi === 'KEMBALI' && cat.length < 5) { galat(g, 'Tulis catatan untuk mahasiswa: berkas mana yang harus diperbaiki.'); return true; }
       if (!yakin(t)) return true;
-      galat(g, ''); sibuk(t, true);
-      api('apiAdminSidang', S.pin, k.getAttribute('data-sidang-id'), { aksi: aksi, catatan: cat }).then(function (d) { segarAdmin(d); toast(aksi === 'TERIMA' ? 'Berkas sidang diterima.' : 'Dikembalikan ke mahasiswa.'); })
-        .catch(function (x) { galat(g, x.message); sibuk(t, false); });
+      kirim('apiAdminSidang', { aksi: aksi, catatan: cat }, aksi === 'TERIMA' ? 'Berkas diterima. Berikutnya Kaprodi menetapkan dewan penguji.' : 'Dikembalikan ke mahasiswa.');
       return true;
     }
     return false;
@@ -2440,8 +2750,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       panggilRuang('buka').then(function (R) { if (S.ruang && S.ruang.id === id && R.id === id) terimaRuang(R, true); }).catch(function () { /* coba lagi di putaran berikut */ }).then(function () { S.sedangSegar = false; });
     } else if (S.sesi.peran === 'adm' && S.admin && S.admin.peran === 'sidang') {
       if (nSegar % 3 === 0) { S.sedangSegar = true; api('apiAdminData', S.pin).then(function (a) {
-        var el = document.activeElement, id = function (x) { return JSON.stringify(x.sidang.menunggu.map(function (r) { return r.id; })); };
-        if (!S.admin || id(a) === id(S.admin) || (el && el.tagName === 'TEXTAREA' && el.value) || document.querySelector('#aIsi [data-yakin]')) return;
+        var el = document.activeElement, id = function (x) { return JSON.stringify([x.sidang.menunggu, x.sidang.diterima || [], x.sidang.disetujui || [], x.sidang.terjadwal || []].map(function (L) { return L.map(function (r) { return r.id; }); })); };
+        if (!S.admin || id(a) === id(S.admin) || (el && /^(TEXTAREA|INPUT)$/.test(el.tagName) && $('aIsi').contains(el)) || document.querySelector('#aIsi [data-form-wadah]:not([hidden])') || document.querySelector('#aIsi [data-yakin]')) return;
         S.admin = a; renderAdmin(); toast('Daftar pengajuan sidang diperbarui.'); }).catch(function () {}).then(function () { S.sedangSegar = false; }); }
     } else if (S.sesi.peran === 'adm') {
       var mengetik = function () { var el = document.activeElement; return !!(el && $('aIsi').contains(el) && /^(TEXTAREA|INPUT|SELECT)$/.test(el.tagName)); };
@@ -2742,7 +3052,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     semua('input[name="rmode"]').forEach(function (r) { r.addEventListener('change', function () { rMode(r.value); }); });
     $('rNimBaru').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); }); $('rNim').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); });
     rLangkah(1);
-    $('sdContoh').addEventListener('click', sdContoh);
+    $('sdContoh').addEventListener('click', sdContoh); $('sdDknPdf').addEventListener('change', function () { sdBacaDkn(this.files && this.files[0]); });
     $('vSidang').addEventListener('click', klikSidang); $('bSidangKirim').addEventListener('click', kirimSidang); $('bSidangLihat').addEventListener('click', lihatSidang);
     semua('input[name="sdmode"]').forEach(function (r) { r.addEventListener('change', function () {
       sdMode(r.value);
