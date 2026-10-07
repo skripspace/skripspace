@@ -16,14 +16,14 @@
 <meta property="og:url" content="https://skripspace.github.io/skripspace/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=24">
-<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=24">
+<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=25">
+<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=25">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=24">
+<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=25">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -245,6 +245,20 @@ textarea { resize: vertical; min-height: 92px; line-height: 1.45; }
 .syarat li:first-child { border-top: 0; }
 .syarat small { display: block; color: var(--muted); font-size: 12.5px; font-weight: 500; }
 .krs input[type="file"] { padding: 10px; background: var(--sunk); border: 2px dashed var(--hair); border-radius: var(--r-sm); width: 100%; }
+.dkn { display: flex; flex-direction: column; gap: 12px; }
+.dknlist { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.dknlist li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; border: 2px solid var(--hair); border-radius: var(--r-sm); font-size: 14px; }
+.dknlist li span { min-width: 0; overflow-wrap: anywhere; }
+.dknhasil { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border: 2px solid var(--ink); border-radius: var(--r-sm); }
+.dknhasil.oto { background: var(--ok-bg); } .dknhasil.cek { background: var(--sunk); }
+.dknhasil .atas { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; }
+.dknhasil .atas b { font-family: var(--f-display); font-size: 18px; }
+.dknhasil .bantu { font-size: 13px; color: var(--muted); margin: 0; }
+.dknhasil .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13.5px; color: var(--muted); } .dknhasil .meta b { color: var(--ink); font-weight: 600; }
+.dkncatat { margin: 0; padding-left: 18px; font-size: 14px; display: flex; flex-direction: column; gap: 4px; }
+.dknbaris { margin-top: 10px; font-size: 13.5px; overflow-x: auto; max-width: 100%; } .dknbaris td.mono { font-size: 11.5px; } .dknbaris pre { margin: 8px 0 0; padding: 10px; background: var(--surface); border: 1px solid var(--hair); border-radius: 8px; font: 11.5px/1.45 var(--f-mono); white-space: pre-wrap; overflow-wrap: anywhere; max-height: 340px; overflow: auto; } .dknbaris summary { cursor: pointer; font-weight: 700; }
+.dknbaris table { width: 100%; border-collapse: collapse; margin-top: 8px; } .dknbaris th, .dknbaris td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+.dknbaris tr.buruk td { color: var(--bad); font-weight: 700; } .dknbaris tr.kosong td { color: var(--muted); font-style: italic; }
 .krs img, .lihatkrs img { display: block; max-width: 100%; margin-top: 8px; border: 2px solid var(--hair); border-radius: 8px; }
 .krs img { max-width: 170px; }
 .ipkbar b { font-family: var(--f-mono); font-size: 17px; font-weight: 600; color: var(--pop); }
@@ -621,6 +635,13 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <label><input type="radio" name="mode" value="transkrip" id="mTranskrip" checked><span><b>Isi nilai per mata kuliah</b><small>Semua semester dan mata kuliah kekhususan. IPK dan SKS dihitung otomatis.</small></span></label>
           <label><input type="radio" name="mode" value="manual" id="mManual"><span><b>Isi IPK dan SKS saja</b><small>Untuk kurikulum lama atau nilai konversi RPL.</small></span></label>
         </div>
+        <div id="wDkn" class="dkn" hidden>
+          <div class="isian krs"><label for="fDkn">Daftar Kumpulan Nilai (DKN) dari SIM UNISSULA</label><input type="file" id="fDkn" accept="image/*,application/pdf" multiple>
+            <span class="bantu">Buka <b>sim.unissula.ac.id</b>, menu Daftar Kumpulan Nilai. Paling akurat: simpan sebagai PDF lalu unggah PDF-nya. Bisa juga foto atau scan tiap halaman (maksimal 4 berkas): tegak lurus, terang, dan seluruh tabel terlihat sampai tulisan JUMLAH SKS dan INDEX PRESTASI.</span>
+            <div id="dknBerkas"></div></div>
+          <div class="aksi"><div class="kanan"><button type="button" class="tombol utama" id="bDkn" disabled>Baca DKN</button></div></div>
+          <div id="dknHasil"></div>
+        </div>
         <div id="wTranskrip"><div id="daftarSmt"></div></div>
         <div id="wManual" class="kisi" hidden>
           <div class="isian"><label for="fIpk">IPK</label><input type="text" id="fIpk" class="mono" inputmode="decimal" maxlength="4" placeholder="3,50"></div>
@@ -786,7 +807,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 24</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 25</span></p>
 </div>
 <div id="cetak"></div>
 <div id="toast" role="status" hidden></div>
@@ -838,7 +859,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
 
   var S = {
-    init: null, langkah: 1, mode: 'transkrip', nilai: {},
+    init: null, langkah: 1, mode: 'transkrip', nilai: {}, dknBerkas: [], dkn: null,
     judul: [{ teks: '', cek: null }, { teks: '', cek: null }, { teks: '', cek: null }],
     pin: '', admin: null, krs: null, riset: null,
     sesi: null, ruang: null, ruangId: '', rTab: 'bimbingan', muat: {}, dosen: null, pantau: null, aTab: 'antre', saring: { dosen: '', keadaan: '', cari: '' }
@@ -916,6 +937,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     return null;
   }
   function periksa2() {
+    if (S.mode === 'dkn' && !S.dkn) return ['fDkn', S.dknBerkas.length ? 'Tekan tombol Baca DKN dulu, tunggu sampai hasilnya muncul.' : 'Unggah dulu Daftar Kumpulan Nilai (DKN) dari SIM UNISSULA, lalu tekan Baca DKN.'];
+    if (dknOto() || dknKaki()) { var kur = syarat().filter(function (s) { return !s.ok; })[0]; return kur ? [kur.ke === 'fIpk' || kur.ke === 'fSks' ? 'fDkn' : kur.ke, kur.galat] : null; }
     if (S.mode === 'transkrip') {
       if (hitung().terisi < 1) return ['daftarSmt', 'Isi dulu nilai mata kuliah yang sudah kamu tempuh.'];
     } else {
@@ -968,11 +991,33 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     return { sks: sks, lulus: lulus, nilaiD: nilaiD, mph: !!m && m !== 'D' && m !== 'E', terisi: terisi, total: total, ipk: sks ? Math.round(mutu / sks * 100) / 100 : 0 };
   }
   /** Lima syarat buku pedoman beserta statusnya saat ini. */
+  /** Hasil baca DKN yang lolos uji hitung (dipakai apa adanya), atau null. */
+  function dknOto() { return S.mode === 'dkn' && S.dkn && S.dkn.status === 'cocok' ? S.dkn : null; }
+  /** Foto DKN: hanya JUMLAH SKS dan INDEX PRESTASI yang terbaca; angka itu dikunci, nilai D dan MPH lewat pernyataan. */
+  function dknKaki() { return S.mode === 'dkn' && S.dkn && S.dkn.status === 'kaki' ? S.dkn : null; }
   function syarat() {
-    var tr = S.mode === 'transkrip', t = tr ? hitung() : null, min = S.init.sksMin;
-    var ipk = tr ? t.ipk : (Number($('fIpk').value.replace(',', '.')) || 0), sks = tr ? t.lulus : (parseInt($('fSks').value, 10) || 0);
+    var H = dknOto();
+    if (H) {
+      var min0 = S.init.sksMin, d0 = H.nilaiD.length, mph0 = H.mph.ada;
+      return [
+        { ke: 'fDkn', nama: 'DKN dari SIM UNISSULA terbaca', ket: 'Terbaca otomatis \u00b7 ' + H.jumlahMk + ' mata kuliah', ok: true, galat: '' },
+        { ke: 'fDkn', nama: 'Menyelesaikan minimal ' + min0 + ' SKS', ket: H.sks + ' SKS', ok: H.sks >= min0,
+          galat: 'Menurut DKN baru ' + H.sks + ' SKS yang diselesaikan, kurang ' + (min0 - H.sks) + ' SKS. Syarat mengajukan skripsi minimal ' + min0 + ' SKS, jadi kamu belum bisa lanjut.' },
+        { ke: 'fDkn', nama: 'IPK minimal ' + koma(S.init.ipkMin, 2), ket: 'IPK ' + koma(H.ipk, 2), ok: H.ipk >= S.init.ipkMin,
+          galat: 'IPK pada DKN ' + koma(H.ipk, 2) + ', belum mencapai syarat minimal ' + koma(S.init.ipkMin, 2) + '. Kamu belum bisa lanjut.' },
+        { ke: 'fDkn', nama: 'Tanpa nilai D', ket: d0 ? d0 + ' mata kuliah bernilai D/E' : 'Tidak ada nilai D', ok: !d0,
+          galat: 'DKN-mu memuat ' + d0 + ' mata kuliah bernilai D atau E. Syarat mengajukan skripsi tanpa nilai D, jadi kamu belum bisa lanjut sampai nilainya diperbaiki.' },
+        { ke: 'fDkn', nama: 'Lulus Metode Penelitian Hukum', ket: mph0 ? 'Nilai ' + H.mph.nilai : 'Tidak ada di DKN', ok: mph0 && H.mph.nilai !== 'D' && H.mph.nilai !== 'E',
+          galat: 'Mata kuliah Metode Penelitian Hukum (MPH dan Statistik) belum lulus menurut DKN-mu, jadi kamu belum bisa mengajukan skripsi.' },
+        { ke: S.krs ? 'fKrsSkripsi' : 'fKrs', nama: 'Scan KRS memuat mata kuliah Skripsi', ket: S.krs ? S.krs.nama : 'Belum diunggah', ok: !!S.krs && $('fKrsSkripsi').checked,
+          galat: S.krs ? 'Centang pernyataan bahwa mata kuliah Skripsi tercantum pada KRS yang kamu unggah.' : 'Unggah dulu scan KRS terakhir yang memuat mata kuliah Skripsi.' }
+      ];
+    }
+    var tr = S.mode === 'transkrip', t = tr ? hitung() : null, min = S.init.sksMin, K = dknKaki();
+    var ipk = K ? K.ipk : (tr ? t.ipk : (Number($('fIpk').value.replace(',', '.')) || 0)), sks = K ? K.sks : (tr ? t.lulus : (parseInt($('fSks').value, 10) || 0));
     var tanpaD = tr ? t.nilaiD === 0 : $('fTanpaD').checked, mph = tr ? t.mph : $('fLulusMph').checked;
-    return [
+    return (S.mode === 'dkn' ? [{ ke: 'fDkn', nama: 'DKN dari SIM UNISSULA terbaca', ket: K ? 'SKS dan IPK diambil dari DKN' : (S.dkn ? 'Perlu diperiksa pengelola' : 'Belum dibaca'), ok: !!S.dkn,
+      galat: S.dknBerkas.length ? 'Tekan tombol Baca DKN dulu.' : 'Unggah dulu Daftar Kumpulan Nilai (DKN) dari SIM UNISSULA, lalu tekan Baca DKN.' }] : []).concat([
       { ke: tr ? 'daftarSmt' : 'fSks', nama: 'Menyelesaikan minimal ' + min + ' SKS', ket: sks + ' SKS', ok: sks >= min,
         galat: 'Baru ' + sks + ' SKS yang diselesaikan, kurang ' + (min - sks) + ' SKS. Syarat mengajukan skripsi minimal ' + min + ' SKS, jadi kamu belum bisa lanjut.' },
       { ke: tr ? 'daftarSmt' : 'fIpk', nama: 'IPK minimal ' + koma(S.init.ipkMin, 2), ket: 'IPK ' + koma(ipk, 2), ok: ipk >= S.init.ipkMin && ipk <= 4,
@@ -983,7 +1028,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         galat: tr ? 'Mata kuliah Metode Penelitian Hukum (MPH dan Statistik, Semester V) belum lulus. Isi nilainya; bila belum lulus, kamu belum bisa mengajukan skripsi.' : 'Syaratnya sudah lulus Metode Penelitian Hukum. Centang pernyataannya bila sudah lulus.' },
       { ke: S.krs ? 'fKrsSkripsi' : 'fKrs', nama: 'Scan KRS memuat mata kuliah Skripsi', ket: S.krs ? S.krs.nama : 'Belum diunggah', ok: !!S.krs && $('fKrsSkripsi').checked,
         galat: S.krs ? 'Centang pernyataan bahwa mata kuliah Skripsi tercantum pada KRS yang kamu unggah.' : 'Unggah dulu scan KRS terakhir yang memuat mata kuliah Skripsi.' }
-    ];
+    ]);
   }
   function renderSyarat() {
     $('syarat').innerHTML = syarat().map(function (s) {
@@ -1024,6 +1069,74 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     baca.onerror = function () { gagal('Berkas tidak bisa dibaca.'); };
     baca.readAsDataURL(berkas);
   }
+  /* ---------------- DKN ---------------- */
+  function renderDkn() {
+    var B = S.dknBerkas, H = S.dkn, h = '';
+    $('dknBerkas').innerHTML = B.length ? '<ul class="dknlist">' + B.map(function (b, i) {
+      return '<li><span><b>Halaman/berkas ' + (i + 1) + '</b> ' + e(b.nama) + ' \u00b7 ' + Math.round(b.b64.length * 0.75 / 1024) + ' KB</span><button type="button" class="tombol kecil polos" data-dkn-buang="' + i + '">Buang</button></li>';
+    }).join('') + '</ul>' : '';
+    $('bDkn').disabled = !B.length; $('bDkn').textContent = H ? 'Baca ulang DKN' : 'Baca DKN';
+    if (H) {
+      var oto = H.status === 'cocok', kk = H.status === 'kaki';
+      h = '<div class="dknhasil ' + (oto ? 'oto' : 'cek') + '"><div class="atas"><b>' + (oto ? 'DKN terbaca otomatis' : (kk ? 'SKS dan IPK terbaca dari DKN' : 'DKN belum terbaca penuh')) + '</b><span class="pil ' + (oto ? 'hijau' : 'kuning') + '">' + (oto ? 'Cocok' : 'Diperiksa pengelola') + '</span></div>' +
+        (kk ? '<dl class="rinci"><dt>Nama pada DKN</dt><dd>' + e(H.nama || '-') + '</dd><dt>NIM pada DKN</dt><dd class="mono">' + e(H.nim) + '</dd><dt>JUMLAH SKS</dt><dd><b>' + H.sks + ' SKS</b></dd><dt>INDEX PRESTASI</dt><dd><b>' + koma(H.ipk, 2) + '</b></dd></dl>' +
+          '<p class="bantu">Dari foto atau scan, server hanya bisa mengambil JUMLAH SKS dan INDEX PRESTASI; angka itu tidak bisa diubah. Nilai per mata kuliah tidak terbaca, jadi centang dua pernyataan di bawah. Pengelola prodi akan mencocokkannya dengan berkasmu. Supaya terbaca penuh dan langsung lolos, unggah DKN berbentuk PDF yang disimpan dari SIM.</p>' : '') +
+        (oto ? '<dl class="rinci"><dt>Nama pada DKN</dt><dd>' + e(H.nama || '-') + '</dd><dt>NIM pada DKN</dt><dd class="mono">' + e(H.nim) + '</dd><dt>Mata kuliah</dt><dd>' + H.jumlahMk + ' terbaca</dd>' +
+          '<dt>SKS diselesaikan</dt><dd><b>' + H.sks + ' SKS</b></dd><dt>IPK</dt><dd><b>' + koma(H.ipk, 2) + '</b></dd><dt>Nilai D/E</dt><dd>' + (H.nilaiD.length ? e(H.nilaiD.map(function (x) { return x.nama + ' (' + x.nilai + ')'; }).join('; ')) : 'Tidak ada') + '</dd>' +
+          '<dt>Metode Penelitian Hukum</dt><dd>' + (H.mph.ada ? 'Nilai ' + e(H.mph.nilai) : 'Tidak ada di DKN') + '</dd></dl><p class="bantu">Angka di atas diambil langsung dari DKN dan tidak bisa diubah. Jumlah SKS dan IPK sudah dicocokkan dengan JUMLAH SKS dan INDEX PRESTASI pada DKN.</p>'
+          : kk ? '' : '<ul class="dkncatat">' + H.catatan.map(function (c) { return '<li>' + e(c) + '</li>'; }).join('') + '</ul>' +
+            '<p class="bantu">Kamu bisa mengunggah ulang berkas yang lebih jelas (PDF dari SIM paling baik) lalu menekan Baca ulang DKN. Bila tetap tidak terbaca, isi IPK dan SKS di bawah persis seperti di DKN. Pengelola prodi akan mencocokkannya dengan berkas yang kamu unggah; isian yang berbeda dari DKN membuat pengajuan ditolak.</p>') + '</div>';
+    }
+    $('dknHasil').innerHTML = h;
+  }
+  function tambahDkn(daftar) {
+    var antre = [].slice.call(daftar || []);
+    function gagal(pesan) { toast(pesan); }
+    function lanjut() {
+      var berkas = antre.shift();
+      if (!berkas) { $('fDkn').value = ''; S.dkn = null; gantiMode(); return; }
+      if (S.dknBerkas.length >= 4) { gagal('Paling banyak 4 berkas DKN.'); antre = []; return lanjut(); }
+      var baca = new FileReader();
+      baca.onerror = function () { gagal('Berkas tidak bisa dibaca.'); lanjut(); };
+      if (berkas.type === 'application/pdf') {
+        if (berkas.size > 1300 * 1024) { gagal('PDF terlalu besar (maksimal 1,3 MB). Simpan ulang dari SIM, atau unggah foto tiap halaman.'); return lanjut(); }
+        baca.onload = function () { S.dknBerkas.push({ nama: berkas.name, mime: 'application/pdf', b64: String(baca.result).split(',')[1] }); lanjut(); };
+      } else if (/^image\//.test(berkas.type)) {
+        baca.onload = function () {
+          var img = new Image();
+          img.onload = function () {
+            var hasil = '', sisi = 2300, mutu = 0.84;
+            for (var k = 0; k < 5; k++) {
+              var s = Math.min(1, sisi / Math.max(img.width, img.height)), c = document.createElement('canvas');
+              c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+              var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+              hasil = c.toDataURL('image/jpeg', mutu).split(',')[1];
+              if (hasil.length < 1000000) break;
+              sisi = Math.round(sisi * 0.85); mutu -= 0.06;
+            }
+            if (hasil.length > 1800000) gagal('Gambar terlalu besar. Coba foto ulang.');
+            else S.dknBerkas.push({ nama: berkas.name.replace(/\.[^.]+$/, '') + '.jpg', mime: 'image/jpeg', b64: hasil });
+            lanjut();
+          };
+          img.onerror = function () { gagal('Gambar tidak bisa dibaca. Pakai JPG, PNG, atau PDF.'); lanjut(); };
+          img.src = baca.result;
+        };
+      } else { gagal('Berkas DKN harus berupa PDF atau gambar (JPG/PNG).'); return lanjut(); }
+      baca.readAsDataURL(berkas);
+    }
+    lanjut();
+  }
+  function bacaDkn() {
+    var kotak = $('wDkn').closest('.lembar').querySelector('[data-galat]'), nim = $('fNim').value.trim();
+    galat(kotak, '');
+    if (!S.dknBerkas.length) return;
+    sibuk($('bDkn'), true); $('dknHasil').innerHTML = '<p class="catat">Membaca DKN di server. Biasanya 10 sampai 40 detik, jangan tutup halaman ini.</p>';
+    api('apiDkn', { nim: nim, nama: $('fNama').value.trim(), berkas: S.dknBerkas }).then(function (h) {
+      h.nimForm = nim; S.dkn = h;
+      if (h.status === 'periksa') { if (h.ip && !$('fIpk').value) $('fIpk').value = koma(h.ip, 2); if (h.jumlahSks && !$('fSks').value) $('fSks').value = h.jumlahSks; }
+      gantiMode();
+    }).catch(function (x) { S.dkn = null; gantiMode(); galat(kotak, x.message); }).then(function () { sibuk($('bDkn'), false); $('bDkn').disabled = !S.dknBerkas.length; });
+  }
   function opsiNilai(pilih) {
     return '<option value="">–</option>' + Object.keys(S.init.bobotNilai).map(function (n) { return '<option' + (n === pilih ? ' selected' : '') + '>' + n + '</option>'; }).join('');
   }
@@ -1042,6 +1155,9 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     segarIpk();
   }
   function segarIpk() {
+    var H = dknOto();
+    H = H || dknKaki();
+    if (H) { $('ipkAngka').textContent = koma(H.ipk, 2); $('ipkKet').textContent = H.sks + ' / ' + S.init.sksMin + ' SKS'; renderSyarat(); return; }
     if (S.mode === 'transkrip') {
       var t = hitung();
       $('ipkAngka').textContent = koma(t.ipk, 2);
@@ -1054,8 +1170,13 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     renderSyarat();
   }
   function gantiMode() {
-    S.mode = nilaiRadio('mode') || 'transkrip';
-    $('wTranskrip').hidden = S.mode !== 'transkrip'; $('wManual').hidden = S.mode !== 'manual';
+    var pakai = !!S.init.dkn;
+    S.mode = pakai ? 'dkn' : (nilaiRadio('mode') || 'transkrip');
+    document.querySelector('.mode[aria-label="Cara mengisi nilai"]').hidden = pakai; $('wDkn').hidden = !pakai;
+    if (pakai && S.dkn && S.dkn.nimForm !== $('fNim').value.trim()) { S.dkn = null; }
+    if (pakai) renderDkn();
+    $('wTranskrip').hidden = S.mode !== 'transkrip'; $('wManual').hidden = !(S.mode === 'manual' || (pakai && S.dkn && S.dkn.status !== 'cocok'));
+    $('fIpk').closest('.isian').hidden = !!dknKaki(); $('fSks').closest('.isian').hidden = !!dknKaki();
     segarIpk();
   }
 
@@ -1107,6 +1228,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
 
   /* ---------------- tinjau & kirim ---------------- */
   function ipkSks() {
+    var H = dknOto() || dknKaki(); if (H) return { ipk: H.ipk, sks: H.sks };
     if (S.mode === 'transkrip') { var t = hitung(); return { ipk: t.ipk, sks: t.lulus }; }
     return { ipk: Number($('fIpk').value.replace(',', '.')) || 0, sks: parseInt($('fSks').value, 10) || 0 };
   }
@@ -1114,6 +1236,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var d = dataDiri(), n = ipkSks();
     var baris = [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['Kekhususan', d.kekhususan], ['Tempat, tgl lahir', d.tempatLahir + ', ' + d.tglLahir.split('-').reverse().join('-')],
       ['No. HP / WA', d.wa], ['Dosen wali', d.dosenWali], ['IPK', koma(n.ipk, 2)], ['Kredit kumulatif', n.sks + ' SKS'], ['Scan KRS', S.krs ? S.krs.nama : '-']];
+    if (S.mode === 'dkn' && S.dkn) baris.splice(7, 0, ['DKN', S.dkn.status === 'cocok' ? 'Terbaca otomatis dari ' + S.dkn.berkas.length + ' berkas' : (S.dkn.status === 'kaki' ? 'SKS dan IPK diambil dari DKN; nilai dicocokkan pengelola' : 'Diunggah, akan dicocokkan pengelola')]);
     $('tinjau').innerHTML = baris.map(function (b) { return '<dt>' + b[0] + '</dt><dd>' + e(b[1]) + '</dd>'; }).join('');
     var tk = bacaLokal('pjs-terakhir'); if (tk && tk.nim === d.nim && !$('fKodeLama').value) $('fKodeLama').value = tk.kode;
     $('tinjauJudul').innerHTML = S.judul.map(function (j) { return '<li><span>' + e(j.teks.trim()) + '</span>' + pilPil(j.cek && j.cek.status) + '</li>'; }).join('');
@@ -1124,6 +1247,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     galat(kotak, '');
     var d = dataDiri();
     d.modeNilai = S.mode; d.nilai = S.nilai; d.ipk = $('fIpk').value; d.sks = $('fSks').value;
+    if (S.mode === 'dkn') { d.dknToken = S.dkn ? S.dkn.token : ''; d.nilai = {}; }
     d.tanpaD = $('fTanpaD').checked; d.lulusMph = $('fLulusMph').checked; d.krsSkripsi = $('fKrsSkripsi').checked;
     d.krs = S.krs ? { nama: S.krs.nama, mime: S.krs.mime, b64: S.krs.b64 } : null;
     d.judul = S.judul.map(function (j) { return j.teks.trim(); }); d.setuju = true; d.kodeLama = $('fKodeLama').value.trim().toUpperCase();
@@ -1134,6 +1258,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       $('langkah').hidden = true; $('pembuka').hidden = true;
       $('wSelesai').hidden = false; renderStatus(h, $('wSelesai'), true);
       S.krs = null; $('fKrs').value = ''; $('fKrsSkripsi').checked = false; infoKrs();
+      S.dkn = null; S.dknBerkas = []; $('fDkn').value = ''; renderDkn();
       $('fSetuju').checked = false; $('fKodeLama').value = ''; S.judul.forEach(function (j) { j.teks = ''; j.cek = null; });
       window.scrollTo(0, 0);
     }).catch(function (x) { galat(kotak, x.message); }).then(function () { sibuk($('bKirim'), false); });
@@ -1386,6 +1511,11 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         '<div class="meta"><span class="mono"><b>' + e(r.nim) + '</b></span><span>' + e(r.kekhususan) + '</span><span>IPK <b class="mono">' + koma(r.ipk, 2) + '</b></span><span><b class="mono">' + r.sks + '</b> SKS</span><span>Wali: <b>' + e(r.dosenWali) + '</b></span><span>WA <b class="mono">' + e(r.wa) + '</b></span><span>' + e(r.waktu) + '</span></div>' +
         '<div class="aksi"><span class="bantu" style="font-size:13.5px;color:var(--muted)">' + (r.manual ? 'IPK dan SKS diisi manual; tanpa nilai D dan lulus MPH berdasarkan pernyataan mahasiswa. ' : 'Syarat SKS, IPK, nilai D, dan MPH sudah diperiksa dari isian nilai. ') + (r.krs ? 'Scan KRS: <b>' + e(r.krs.nama) + '</b> (' + r.krs.kb + ' KB)' : 'Scan KRS tidak ada (pengajuan lama).') + '</span>' +
         (r.krs ? '<div class="kanan"><button type="button" class="tombol kecil" data-krs="' + e(r.id) + '">Lihat KRS</button></div>' : '') + '</div><div class="lihatkrs" data-krs-wadah></div>' +
+        (r.dkn ? '<div class="dknhasil ' + (r.dkn.status === 'cocok' ? 'oto' : 'cek') + '"><div class="atas"><b>DKN: ' + (r.dkn.status === 'cocok' ? 'terbaca otomatis dan cocok' : (r.dkn.status === 'kaki' ? 'SKS dan IPK dari DKN, nilai per mata kuliah belum dicek' : 'belum terbaca penuh, cocokkan dengan berkasnya')) + '</b><button type="button" class="tombol kecil" data-dkn="' + e(r.id) + '">Lihat DKN</button></div>' +
+          '<div class="meta"><span>Terbaca: <b>' + (r.dkn.terbacaMk || 0) + ' dari ' + (r.dkn.jumlahMk || 0) + ' mata kuliah</b></span><span>JUMLAH SKS pada DKN: <b>' + (r.dkn.jumlahSks == null ? 'tidak terbaca' : r.dkn.jumlahSks) + '</b></span><span>INDEX PRESTASI pada DKN: <b>' + (r.dkn.ip == null ? 'tidak terbaca' : koma(r.dkn.ip, 2)) + '</b></span>' +
+          '<span>Nilai D/E: <b>' + (r.dkn.nilaiD && r.dkn.nilaiD.length ? e(r.dkn.nilaiD.map(function (x) { return x.nama + ' (' + x.nilai + ')'; }).join('; ')) : (r.dkn.status === 'cocok' ? 'tidak ada' : 'tidak ada yang terbaca')) + '</b></span><span>MPH: <b>' + (r.dkn.mph && r.dkn.mph.ada ? e(r.dkn.mph.nilai) : 'tidak terbaca') + '</b></span></div>' +
+          (r.dkn.status !== 'cocok' ? '<ul class="dkncatat">' + (r.dkn.catatan || []).map(function (c) { return '<li>' + e(c) + '</li>'; }).join('') + '</ul><p class="bantu">' + (r.dkn.status === 'kaki' ? 'IPK ' + koma(r.ipk, 2) + ' dan ' + r.sks + ' SKS diambil server dari kaki DKN. Tidak adanya nilai D dan kelulusan Metode Penelitian Hukum baru berupa pernyataan mahasiswa; lihat berkas DKN sebelum menyetujui.' : 'IPK ' + koma(r.ipk, 2) + ' dan ' + r.sks + ' SKS pada pengajuan ini diisi mahasiswa sendiri. Cocokkan dengan berkas DKN sebelum menyetujui.') + '</p>' : '') +
+          '<div class="lihatkrs" data-dkn-wadah></div></div>' : '') +
         '<div role="radiogroup" aria-label="Judul yang disetujui">' + r.judul.map(function (j, i) {
           var c = r.cek[i] || {}, m = (c.mirip || [])[0];
           return '<label class="opsi"><input type="radio" name="j-' + e(r.id) + '" value="' + i + '"' + (i === r.saranJudul ? ' checked' : '') + '><span>' + e(j) +
@@ -1448,6 +1578,22 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       api('apiAdminUji', S.pin).then(function (u) {
         $('aUji').innerHTML = '<div class="catat"><b>Hasil uji</b><br>' + u.sumber.map(function (s) { return e(s.nama) + ': ' + (s.ok ? 'terjangkau (' + s.jumlah + ' hasil)' : 'TIDAK terjangkau' + (s.kode ? ' (kode ' + s.kode + ')' : '')); }).join('<br>') +
           '<br>Pembuat PDF: ' + (u.pdf ? 'berfungsi' : 'tidak tersedia, mahasiswa memakai tombol Cetak') + '<br>Judul di database: ' + u.jumlahJudul + '</div>';
+      }).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); }); return;
+    }
+    if (t.hasAttribute('data-dkn')) {
+      var wd = t.closest('.dknhasil').querySelector('[data-dkn-wadah]');
+      sibuk(t, true);
+      api('apiAdminDkn', S.pin, t.getAttribute('data-dkn')).then(function (k) {
+        var h = k.berkas.map(function (b, i) {
+          if (b.mime !== 'application/pdf') return '<img alt="DKN halaman ' + (i + 1) + '" src="data:' + e(b.mime) + ';base64,' + b.b64 + '">';
+          var biner = atob(b.b64), u8 = new Uint8Array(biner.length);
+          for (var j = 0; j < biner.length; j++) u8[j] = biner.charCodeAt(j);
+          return '<p class="catat">DKN berupa PDF. <a href="' + URL.createObjectURL(new Blob([u8], { type: 'application/pdf' })) + '" target="_blank" rel="noopener" download="' + e(b.nama) + '">Buka ' + e(b.nama) + '</a></p>';
+        }).join('');
+        if (k.baris && k.baris.length) h += '<details class="dknbaris"><summary>Nilai yang terbaca (' + k.baris.length + ' baris)</summary><table><thead><tr><th>Kode</th><th>Mata kuliah</th><th>SKS</th><th>Nilai</th></tr></thead><tbody>' +
+          k.baris.map(function (b) { return '<tr' + (b[3] ? (b[3] === 'D' || b[3] === 'E' ? ' class="buruk"' : '') : ' class="kosong"') + '><td class="mono">' + e(b[0]) + '</td><td>' + e(b[1]) + '</td><td>' + (b[2] || '') + '</td><td>' + e(b[3] || 'tidak terbaca') + '</td></tr>'; }).join('') + '</tbody></table></details>';
+        if (k.teks) h += '<details class="dknbaris"><summary>Teks mentah hasil baca server</summary><pre>' + e(k.teks) + '</pre></details>';
+        wd.innerHTML = h;
       }).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); }); return;
     }
     if (t.hasAttribute('data-krs')) {
@@ -2019,6 +2165,9 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     $('fIpk').addEventListener('input', segarIpk); $('fSks').addEventListener('input', segarIpk);
     ['fTanpaD', 'fLulusMph', 'fKrsSkripsi'].forEach(function (id) { $(id).addEventListener('change', renderSyarat); });
     $('fKrs').addEventListener('change', function () { pilihKrs(this.files && this.files[0]); });
+    $('fDkn').addEventListener('change', function () { tambahDkn(this.files); });
+    $('bDkn').addEventListener('click', bacaDkn);
+    $('dknBerkas').addEventListener('click', function (ev) { var t = ev.target.closest('[data-dkn-buang]'); if (!t) return; S.dknBerkas.splice(Number(t.getAttribute('data-dkn-buang')), 1); S.dkn = null; gantiMode(); });
     $('daftarSmt').addEventListener('change', function (ev) {
       var t = ev.target;
       if (t.hasAttribute('data-kode')) { if (t.value) S.nilai[t.getAttribute('data-kode')] = t.value; else delete S.nilai[t.getAttribute('data-kode')]; renderSmt(); simpanDraf(); }
