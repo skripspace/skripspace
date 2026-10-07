@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=42">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=42">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=43">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=43">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=42">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=43">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -373,6 +373,11 @@ table.beban tr.mati td { color: var(--muted); text-decoration: line-through; }
 .riwayat { margin: 0; padding: 0; list-style: none; }
 .riwayat li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 10px 0; border-bottom: 1px solid var(--hair); font-size: 14px; }
 .riwayat li small { color: var(--muted); display: block; }
+.riwayat li > .pil, .riwayat li > span > .pil { align-self: start; justify-self: end; height: auto; }
+.riwayat li > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.riwayat li .idm { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 3px 0 2px; }
+.riwayat li .idm .kls { margin-left: 0; }
+@media (max-width: 560px) { .riwayat li.tumpuk { grid-template-columns: minmax(0, 1fr); } .riwayat li.tumpuk > .pil { justify-self: start; margin-top: 4px; } .lembar .aksi .kanan .tombol.mini { white-space: normal; text-align: center; } }
 .kosong { padding: 26px 18px; border: 2px dashed var(--hair); border-radius: var(--r); text-align: center; color: var(--muted); }
 .kosong b { display: block; color: var(--ink); font-family: var(--f-display); font-size: 20px; margin-bottom: 4px; }
 
@@ -983,7 +988,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 42</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 43</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -2216,10 +2221,10 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       var psnW = 'Assalamu\'alaikum Warahmatullahi Wabarakatuh.\n\nYth. ' + (a.namaWd1 || 'Ibu/Bapak Wakil Dekan I') + '\nWakil Dekan I Fakultas Hukum UNISSULA\n\nDengan hormat, kami dari Pengelola Prodi S1 Ilmu Hukum menyampaikan bahwa terdapat ' + W1.menunggu.length + ' pengajuan judul skripsi yang menunggu pemeriksaan dan persetujuan Ibu/Bapak di SKRIPSPACE.\n\nMohon kesediaannya membuka https://skripspace.com , memilih Log in, lalu Wakil Dekan I, dan memasukkan kode akses Wakil Dekan I' + (a.kodeWd1 ? ':\n\n' + a.kodeWd1 + '\n\n(kode ini pribadi, mohon tidak dibagikan)' : '.') + '\n\nAtas perhatian dan kesediaannya, kami mengucapkan terima kasih.\n\nWassalamu\'alaikum Warahmatullahi Wabarakatuh.\nPengelola Prodi S1 Ilmu Hukum FH UNISSULA';
       h += '<section class="lembar"><header><h2 style="font-size:20px">Wakil Dekan I' + (W1.menunggu.length ? ' \u00b7 ' + W1.menunggu.length + ' menunggu' : '') + '</h2><p>Setelah dosen wali, pengajuan diperiksa dan disetujui <b>Wakil Dekan I</b> lebih dulu. Begitu beliau menekan setuju, tanda tangannya tercetak otomatis di lembar nilai dan pengajuan masuk ke antrean di atas. Persetujuan ini hanya bisa diberikan dengan kode akses Wakil Dekan I.</p></header>';
       if (!W1.menunggu.length) h += '<div class="catat baik">Tidak ada pengajuan yang tertahan di Wakil Dekan I.</div>';
-      else h += '<ul class="riwayat">' + W1.menunggu.map(function (x) { return '<li><span><b>' + e(x.nama) + '</b>' + kls(x.kelas) + ' <span class="mono">' + e(x.nim) + '</span><small>IPK ' + koma(x.ipk, 2) + ' \u00b7 ' + x.sks + ' SKS \u00b7 diajukan ' + e(x.waktu) + '</small></span><span class="pil kuning">Menunggu WD I</span></li>'; }).join('') + '</ul>' +
+      else h += '<ul class="riwayat">' + W1.menunggu.map(function (x) { return '<li class="tumpuk"><span><b>' + e(x.nama) + '</b><span class="idm">' + kls(x.kelas) + '<span class="mono">' + e(x.nim) + '</span></span><small>IPK ' + koma(x.ipk, 2) + ' \u00b7 ' + x.sks + ' SKS</small><small>Diajukan ' + e(x.waktu) + ' WIB' + (x.wali && x.wali.status === 'setuju' ? ' \u00b7 dosen wali sudah mengetahui' : '') + '</small></span><span class="pil kuning">Menunggu WD I</span></li>'; }).join('') + '</ul>' +
         '<div class="aksi"><div class="kanan"><button type="button" class="tombol mini" data-salin-teks="' + e(psnW) + '">Salin pesan pengingat untuk Wakil Dekan I</button></div></div>';
       if (W1.riwayat.length) h += '<details class="kembalikan"><summary>Riwayat Wakil Dekan I (' + W1.riwayat.length + ')</summary><ul class="riwayat">' + W1.riwayat.map(function (x) {
-        return '<li><span><b>' + e(x.nama) + '</b>' + kls(x.kelas) + ' <span class="mono">' + e(x.nim) + '</span><small>' + e(x.wd1.waktu ? x.wd1.waktu + ' WIB' : '') + ' \u00b7 status pengajuan: ' + e(x.status) + '</small></span><span class="pil ' + (x.wd1.status === 'setuju' ? 'hijau' : 'netral') + '">' + (x.wd1.status === 'setuju' ? 'Disetujui' : 'Dikembalikan') + '</span></li>'; }).join('') + '</ul></details>';
+        return '<li class="tumpuk"><span><b>' + e(x.nama) + '</b><span class="idm">' + kls(x.kelas) + '<span class="mono">' + e(x.nim) + '</span></span><small>' + e(x.wd1.waktu ? x.wd1.waktu + ' WIB' : '') + ' \u00b7 status pengajuan: ' + e(x.status) + '</small></span><span class="pil ' + (x.wd1.status === 'setuju' ? 'hijau' : 'netral') + '">' + (x.wd1.status === 'setuju' ? 'Disetujui' : 'Dikembalikan') + '</span></li>'; }).join('') + '</ul></details>';
       h += '</section>';
     }
     var tw = a.tungguWali || [], rw = a.riwayatWali || [];
