@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=32">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=32">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=33">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=33">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=32">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=33">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -923,7 +923,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 32</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 33</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1670,6 +1670,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     if (n !== 1) window.scrollTo(0, $('sdLangkah').getBoundingClientRect().top + window.scrollY - 12);
   }
   function sdLanjut(ke, tombol) {
+    if (!S.init || !S.init.sidang) { toast('Sebentar, aplikasi masih memuat data. Coba lagi beberapa detik lagi.'); return; }
     var dari = ke - 1, g = sdPeriksa(dari);
     sdGalat(dari, g); if (g) return;
     if (dari !== 1) { sdLangkah(ke); return; }
@@ -1741,6 +1742,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
   function u8KeB64(u8) { var s = '', P = 0x8000; for (var i = 0; i < u8.length; i += P) s += String.fromCharCode.apply(null, u8.subarray(i, i + P)); return btoa(s); }
   function kirimSidang() {
+    if (!S.init || !S.init.sidang) { toast('Sebentar, aplikasi masih memuat data.'); return; }
     var kotak = document.querySelector('[data-sl="4"] [data-galat]'), d = sdData(), tombol = $('bSidangKirim');
     for (var n = 1; n <= 3; n++) { var g = sdPeriksa(n); if (g) { sdLangkah(n); sdGalat(n, g); return; } }
     if (!$('sdSetuju').checked) { galat(kotak, 'Centang pernyataan terlebih dahulu.'); return; }
@@ -1799,6 +1801,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
   /* hanya untuk pratinjau: mengisi formulir sidang dengan data dan lembar contoh buatan */
   function sdContoh() {
+    if (!S.init || !S.init.sidang) return;
     $('sdNama').value = CONTOH.nama; $('sdNim').value = CONTOH.nim; $('sdWa').value = CONTOH.wa; setRadio('sdkelas', 'Reguler'); SD.turnitin = '18,5'; SD.berkas = {};
     sdDokumen(0).forEach(function (x) {
       SD.berkas[x.kunci] = [];
