@@ -13,17 +13,17 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="id_ID">
 <meta property="og:site_name" content="Prodi S1 Ilmu Hukum · Fakultas Hukum UNISSULA">
-<meta property="og:url" content="https://skripspace.github.io/skripspace/">
+<meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.github.io/skripspace/og.jpg?v=25">
-<meta property="og:image:secure_url" content="https://skripspace.github.io/skripspace/og.jpg?v=25">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=26">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=26">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.github.io/skripspace/og.jpg?v=25">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=26">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -807,7 +807,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 25</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 26</span></p>
 </div>
 <div id="cetak"></div>
 <div id="toast" role="status" hidden></div>
@@ -1080,7 +1080,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       var oto = H.status === 'cocok', kk = H.status === 'kaki';
       h = '<div class="dknhasil ' + (oto ? 'oto' : 'cek') + '"><div class="atas"><b>' + (oto ? 'DKN terbaca otomatis' : (kk ? 'SKS dan IPK terbaca dari DKN' : 'DKN belum terbaca penuh')) + '</b><span class="pil ' + (oto ? 'hijau' : 'kuning') + '">' + (oto ? 'Cocok' : 'Diperiksa pengelola') + '</span></div>' +
         (kk ? '<dl class="rinci"><dt>Nama pada DKN</dt><dd>' + e(H.nama || '-') + '</dd><dt>NIM pada DKN</dt><dd class="mono">' + e(H.nim) + '</dd><dt>JUMLAH SKS</dt><dd><b>' + H.sks + ' SKS</b></dd><dt>INDEX PRESTASI</dt><dd><b>' + koma(H.ipk, 2) + '</b></dd></dl>' +
-          '<p class="bantu">Dari foto atau scan, server hanya bisa mengambil JUMLAH SKS dan INDEX PRESTASI; angka itu tidak bisa diubah. Nilai per mata kuliah tidak terbaca, jadi centang dua pernyataan di bawah. Pengelola prodi akan mencocokkannya dengan berkasmu. Supaya terbaca penuh dan langsung lolos, unggah DKN berbentuk PDF yang disimpan dari SIM.</p>' : '') +
+          '<p class="bantu">Dari foto atau scan, server hanya bisa mengambil JUMLAH SKS dan INDEX PRESTASI; angka itu tidak bisa diubah. JUMLAH SKS pada DKN ikut menghitung mata kuliah bernilai D atau E, padahal yang dihitung untuk syarat hanya yang lulus. Nilai per mata kuliah tidak terbaca, jadi centang dua pernyataan di bawah. Pengelola prodi akan mencocokkannya dengan berkasmu. Supaya terbaca penuh dan langsung lolos, unggah DKN berbentuk PDF yang disimpan dari SIM.</p>' : '') +
         (oto ? '<dl class="rinci"><dt>Nama pada DKN</dt><dd>' + e(H.nama || '-') + '</dd><dt>NIM pada DKN</dt><dd class="mono">' + e(H.nim) + '</dd><dt>Mata kuliah</dt><dd>' + H.jumlahMk + ' terbaca</dd>' +
           '<dt>SKS diselesaikan</dt><dd><b>' + H.sks + ' SKS</b></dd><dt>IPK</dt><dd><b>' + koma(H.ipk, 2) + '</b></dd><dt>Nilai D/E</dt><dd>' + (H.nilaiD.length ? e(H.nilaiD.map(function (x) { return x.nama + ' (' + x.nilai + ')'; }).join('; ')) : 'Tidak ada') + '</dd>' +
           '<dt>Metode Penelitian Hukum</dt><dd>' + (H.mph.ada ? 'Nilai ' + e(H.mph.nilai) : 'Tidak ada di DKN') + '</dd></dl><p class="bantu">Angka di atas diambil langsung dari DKN dan tidak bisa diubah. Jumlah SKS dan IPK sudah dicocokkan dengan JUMLAH SKS dan INDEX PRESTASI pada DKN.</p>'
@@ -1514,7 +1514,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         (r.dkn ? '<div class="dknhasil ' + (r.dkn.status === 'cocok' ? 'oto' : 'cek') + '"><div class="atas"><b>DKN: ' + (r.dkn.status === 'cocok' ? 'terbaca otomatis dan cocok' : (r.dkn.status === 'kaki' ? 'SKS dan IPK dari DKN, nilai per mata kuliah belum dicek' : 'belum terbaca penuh, cocokkan dengan berkasnya')) + '</b><button type="button" class="tombol kecil" data-dkn="' + e(r.id) + '">Lihat DKN</button></div>' +
           '<div class="meta"><span>Terbaca: <b>' + (r.dkn.terbacaMk || 0) + ' dari ' + (r.dkn.jumlahMk || 0) + ' mata kuliah</b></span><span>JUMLAH SKS pada DKN: <b>' + (r.dkn.jumlahSks == null ? 'tidak terbaca' : r.dkn.jumlahSks) + '</b></span><span>INDEX PRESTASI pada DKN: <b>' + (r.dkn.ip == null ? 'tidak terbaca' : koma(r.dkn.ip, 2)) + '</b></span>' +
           '<span>Nilai D/E: <b>' + (r.dkn.nilaiD && r.dkn.nilaiD.length ? e(r.dkn.nilaiD.map(function (x) { return x.nama + ' (' + x.nilai + ')'; }).join('; ')) : (r.dkn.status === 'cocok' ? 'tidak ada' : 'tidak ada yang terbaca')) + '</b></span><span>MPH: <b>' + (r.dkn.mph && r.dkn.mph.ada ? e(r.dkn.mph.nilai) : 'tidak terbaca') + '</b></span></div>' +
-          (r.dkn.status !== 'cocok' ? '<ul class="dkncatat">' + (r.dkn.catatan || []).map(function (c) { return '<li>' + e(c) + '</li>'; }).join('') + '</ul><p class="bantu">' + (r.dkn.status === 'kaki' ? 'IPK ' + koma(r.ipk, 2) + ' dan ' + r.sks + ' SKS diambil server dari kaki DKN. Tidak adanya nilai D dan kelulusan Metode Penelitian Hukum baru berupa pernyataan mahasiswa; lihat berkas DKN sebelum menyetujui.' : 'IPK ' + koma(r.ipk, 2) + ' dan ' + r.sks + ' SKS pada pengajuan ini diisi mahasiswa sendiri. Cocokkan dengan berkas DKN sebelum menyetujui.') + '</p>' : '') +
+          (r.dkn.status !== 'cocok' ? '<ul class="dkncatat">' + (r.dkn.catatan || []).map(function (c) { return '<li>' + e(c) + '</li>'; }).join('') + '</ul><p class="bantu">' + (r.dkn.status === 'kaki' ? 'IPK ' + koma(r.ipk, 2) + ' dan ' + r.sks + ' SKS diambil server dari kaki DKN; JUMLAH SKS itu ikut menghitung mata kuliah bernilai D/E bila ada. Tidak adanya nilai D dan kelulusan Metode Penelitian Hukum baru berupa pernyataan mahasiswa; lihat berkas DKN sebelum menyetujui.' : 'IPK ' + koma(r.ipk, 2) + ' dan ' + r.sks + ' SKS pada pengajuan ini diisi mahasiswa sendiri. Cocokkan dengan berkas DKN sebelum menyetujui.') + '</p>' : '') +
           '<div class="lihatkrs" data-dkn-wadah></div></div>' : '') +
         '<div role="radiogroup" aria-label="Judul yang disetujui">' + r.judul.map(function (j, i) {
           var c = r.cek[i] || {}, m = (c.mirip || [])[0];
@@ -1734,7 +1734,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     else { S.pantau = null; renderAdmin(); }
     window.scrollTo(0, 0);
   }
-  var PEDOMAN = 'https://skripspace.github.io/skripspace/buku-pedoman-penulisan-skripsi.pdf';
+  var PEDOMAN = 'https://skripspace.com/buku-pedoman-penulisan-skripsi.pdf';
   function renderKepala() {
     var R = S.ruang, p = S.sesi.peran, k = R.rekap, acc = R.status === 'ACC', h = '';
     h += '<div class="aksi"><div>' + (p === 'mhs' ? '' : '<button type="button" class="tombol kecil" data-u="kembali">&larr; Kembali ke daftar</button>') + '</div><div class="kanan"><button type="button" class="tombol kecil" data-u="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-u="keluar">Keluar</button></div></div>';
