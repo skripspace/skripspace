@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=30">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=30">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=31">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=31">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=30">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=31">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -91,7 +91,8 @@ a { color: var(--accent); }
 .nav button[aria-current="true"] { background: var(--ink); color: var(--bg); }
 .nav button { white-space: nowrap; }
 @media (max-width: 480px) { .bar { justify-content: center; } .nav { max-width: 100%; overflow-x: auto; } .nav button { padding: 7px 9px; font-size: 12.5px; } }
-@media (max-width: 380px) { .nav button { padding: 6px 6px; font-size: 12px; } }
+@media (max-width: 380px) { .nav button { padding: 6px 5px; font-size: 11.5px; } }
+@media (max-width: 520px) { .nav .pjg { display: none; } }
 
 .spanduk { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; padding: 10px 14px; border-radius: var(--r-sm); background: var(--pop); color: var(--pop-ink); font-size: 14px; font-weight: 500; }
 .spanduk b { font-weight: 800; }
@@ -488,6 +489,28 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
   #cetak .hal:last-child { page-break-after: auto; }
   #cetak p { margin: 0 0 7pt; } #cetak table { border-collapse: collapse; } #cetak td { padding: 0; vertical-align: top; } #cetak .data td { padding: 1.5pt 0; }
 }
+
+/* ---------- ajukan sidang ---------- */
+.sdaftar { display: flex; flex-direction: column; gap: 12px; }
+.sdok { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border: 2px solid var(--hair); border-radius: var(--r-sm); background: var(--surface); }
+.sdok.lengkap { border-color: var(--ink); }
+.sdok .atas { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.sdok .atas b { font-size: 15.5px; line-height: 1.3; min-width: 0; overflow-wrap: anywhere; }
+.sdok .atas .pil { flex: none; }
+.sdok .bantu { font-size: 13px; color: var(--muted); margin: 0; }
+.sdok ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.sdok li { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border: 1px solid var(--hair); border-radius: 10px; font-size: 13.5px; }
+.sdok li img { width: 44px; height: 44px; object-fit: cover; border-radius: 6px; border: 1px solid var(--hair); flex: none; background: var(--sunk); }
+.sdok li span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.sdok .pilihberkas { position: relative; align-self: flex-start; overflow: hidden; }
+.sdok .pilihberkas input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; font-size: 0; }
+.sdok .isian { max-width: 260px; }
+.sdrek { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.sdrek div { padding: 12px 14px; border: 2px solid var(--ink); border-radius: var(--r-sm); background: var(--sunk); display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; min-width: 0; }
+.sdrek div b { font-family: var(--f-display); font-size: 19px; } .sdrek div .mono { font-size: 15px; font-weight: 600; overflow-wrap: anywhere; }
+@media (max-width: 520px) { .sdrek { grid-template-columns: minmax(0, 1fr); } }
+.sdcek { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-size: 13.5px; }
+.togarekap { display: flex; flex-wrap: wrap; gap: 6px; font-size: 13.5px; } .togarekap span { padding: 3px 10px; border: 1px solid var(--hair); border-radius: 999px; background: var(--surface); }
 </style>
 </head>
 <body>
@@ -504,8 +527,9 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     <div class="merek"><button type="button" data-ke-lompat="beranda">SKRIP<span>SPACE</span></button><small>FH UNISSULA</small></div>
     <nav class="nav" aria-label="Menu">
       <button type="button" data-ke="beranda" aria-current="true">Beranda</button>
-      <button type="button" data-ke="ajukan">Ajukan Judul</button>
+      <button type="button" data-ke="ajukan"><span class="pjg">Ajukan </span>Judul</button>
       <button type="button" data-ke="riset">Izin Riset</button>
+      <button type="button" data-ke="sidang"><span class="pjg">Ajukan </span>Sidang</button>
       <button type="button" data-ke="admin">Log in</button>
     </nav>
   </header>
@@ -559,7 +583,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <li><span class="no">03</span><div><small>Orbit pertama</small><h3>Bimbingan proposal</h3><p>Hubungi pembimbingmu dan mulai bimbingan. Tiap pertemuan kamu catat di sini, pembimbing memaraf dari akunnya. Tidak ada lagi buku bimbingan yang ketinggalan di kos.</p></div></li>
           <li><span class="no">04</span><div><small>Turun ke lapangan</small><h3>Riset dan pengumpulan data</h3><p>Butuh data dari instansi? Ajukan izin riset. Begitu disetujui Kaprodi, surat permohonan dan surat pengantar langsung bisa diunduh.</p></div></li>
           <li><span class="no">05</span><div><small>Mode menulis</small><h3>Bab I sampai Bab IV</h3><p>Susun naskah bab demi bab sambil terus bimbingan. Sebelum disetujui, naskah diuji Turnitin dengan batas kemiripan 24,99%.</p></div></li>
-          <li><span class="no">06</span><div><small>Siap mendarat</small><h3>Naskah disetujui dan ujian skripsi</h3><p>Pembimbing menyatakan naskahmu siap diuji. Buku catatan bimbingan tinggal dicetak dari sini sebagai syarat daftar ujian.</p></div></li>
+          <li><span class="no">06</span><div><small>Siap mendarat</small><h3>Naskah disetujui dan ujian skripsi</h3><p>Pembimbing menyatakan naskahmu siap diuji. Buku catatan bimbingan tinggal dicetak dari sini, lalu daftar ujian lewat menu Ajukan Sidang: semua syarat diunggah sekali dan digabung menjadi satu berkas.</p></div></li>
           <li><span class="no">07</span><div><small>Touchdown</small><h3>Revisi dan naskah akhir</h3><p>Perbaiki naskah sesuai masukan penguji, serahkan naskah akhir, lalu selesai. Misi skripsi tuntas, saatnya pakai toga.</p></div></li>
         </ol>
       </section>
@@ -779,6 +803,84 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
+  <!-- ================= AJUKAN SIDANG ================= -->
+  <main id="vSidang" hidden>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <section class="pembuka" id="pembukaSidang">
+        <div class="teks">
+          <h1>Siap mendarat, <span class="stabilo">daftar sidang di sini.</span></h1>
+          <p>Unggah semua syarat ujian skripsi sekali jalan. Berkasmu digabung otomatis menjadi satu PDF atas nama dan NIM-mu, lalu diperiksa pengelola prodi.</p>
+          <div class="fakta"><span>Foto atau scan JPG/PNG</span><span>Sertifikat PWI dicek ke database</span><span>Turnitin maksimal <b id="sdMaks">24,99</b>%</span></div>
+        </div>
+        <div class="pita" aria-hidden="true"><div><span>ajukan sidang ✦ semua syarat sekali unggah ✦ satu berkas pdf ✦ dari judul sampai toga ✦ </span><span>ajukan sidang ✦ semua syarat sekali unggah ✦ satu berkas pdf ✦ dari judul sampai toga ✦ </span></div></div>
+      </section>
+      <div class="catat galat" id="sdTutup" hidden></div>
+      <div class="mode" role="radiogroup" aria-label="Ajukan sidang" id="sdModeWadah">
+        <label><input type="radio" name="sdmode" value="ajukan" id="sdmAjukan" checked><span><b>Ajukan sidang</b><small>Isi data dan unggah semua syarat.</small></span></label>
+        <label><input type="radio" name="sdmode" value="status" id="sdmStatus"><span><b>Lihat status</b><small>Sudah mengajukan? Buka dengan NIM dan kode sidang.</small></span></label>
+      </div>
+
+      <div id="sdAjukan" style="display:flex;flex-direction:column;gap:22px">
+        <ol class="langkah" id="sdLangkah">
+          <li><span><b>1</b>Data diri</span></li>
+          <li><span><b>2</b>Berkas</span></li>
+          <li><span><b>3</b>Bayar &amp; toga</span></li>
+          <li><span><b>4</b>Kirim</span></li>
+        </ol>
+        <section class="lembar" data-sl="1">
+          <header><h2>Data diri</h2><p>Tulis nama dan NIM persis seperti di KTM. Keduanya dicocokkan dengan database sertifikat PWI prodi dan menjadi nama berkas PDF-mu.</p></header>
+          <div class="kisi">
+            <div class="isian penuh"><label for="sdNama">Nama lengkap</label><input type="text" id="sdNama" autocomplete="name" maxlength="80" placeholder="Sesuai KTM"></div>
+            <div class="isian"><label for="sdNim">NIM</label><input type="text" id="sdNim" class="mono" inputmode="numeric" maxlength="11" placeholder="11 digit"></div>
+            <div class="isian"><label for="sdWa">No. HP / WhatsApp</label><input type="tel" id="sdWa" inputmode="tel" maxlength="16" placeholder="08…"></div>
+            <div class="isian penuh"><span class="label" id="lSdKelas">Kelas</span>
+              <div class="pilih" role="radiogroup" aria-labelledby="lSdKelas">
+                <label><input type="radio" name="sdkelas" value="Reguler" id="sdkReguler"><span>Reguler</span></label>
+                <label><input type="radio" name="sdkelas" value="Eksekutif" id="sdkEksekutif"><span>Eksekutif</span></label>
+                <label><input type="radio" name="sdkelas" value="RPL" id="sdkRpl"><span>RPL</span></label>
+              </div></div>
+          </div>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="2">Cek database dan lanjut</button></div></div>
+        </section>
+        <section class="lembar" data-sl="2" hidden>
+          <header><h2>Berkas akademik dan sertifikat</h2><p>Tiap berkas berupa foto atau scan <b>JPG/PNG</b>: tegak, terang, dan seluruh tulisan terbaca. Ukurannya diperkecil otomatis.</p></header>
+          <div id="sdCek"></div>
+          <div class="sdaftar" id="sdDok2"></div>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><button type="button" class="tombol polos" data-sdkembali="1">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="3">Lanjut</button></div></div>
+        </section>
+        <section class="lembar" data-sl="3" hidden>
+          <header><h2>Pembayaran dan toga</h2><p>Transfer ke rekening fakultas, lalu unggah bukti transfernya.</p></header>
+          <div class="sdrek" id="sdRek"></div>
+          <div class="sdaftar" id="sdDok3"></div>
+          <div class="isian" style="max-width:260px"><label for="sdToga">Ukuran toga</label><select id="sdToga"><option value="">Pilih ukuran</option></select></div>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><button type="button" class="tombol polos" data-sdkembali="2">Kembali</button><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="4">Tinjau pengajuan</button></div></div>
+        </section>
+        <section class="lembar" data-sl="4" hidden>
+          <header><h2>Cek sekali lagi</h2><p>Setelah dikirim, berkas diperiksa pengelola prodi. Bila ada yang kurang, pengajuan dikembalikan dengan catatan dan kamu bisa mengajukan ulang.</p></header>
+          <dl class="rinci" id="sdTinjau"></dl>
+          <label class="centang"><input type="checkbox" id="sdSetuju"><span>Data dan seluruh berkas yang saya unggah benar dan milik saya sendiri.</span></label>
+          <div class="catat" id="sdProses" hidden></div>
+          <div class="catat galat" data-galat hidden></div>
+          <div class="aksi"><button type="button" class="tombol polos" data-sdkembali="3">Kembali</button><div class="kanan"><button type="button" class="tombol utama" id="bSidangKirim">Gabungkan dan kirim</button></div></div>
+        </section>
+      </div>
+
+      <section class="lembar" id="sdMasuk" hidden>
+        <header><h2>Sudah sampai mana?</h2><p>Masukkan NIM dan kode sidang yang kamu dapat saat mengirim pengajuan.</p></header>
+        <div class="kisi">
+          <div class="isian"><label for="sdNimLihat">NIM</label><input type="text" id="sdNimLihat" class="mono" inputmode="numeric" maxlength="11"></div>
+          <div class="isian"><label for="sdKodeLihat">Kode sidang</label><input type="text" id="sdKodeLihat" class="mono" maxlength="6" autocapitalize="characters" placeholder="6 karakter"></div>
+        </div>
+        <div class="catat galat" id="sdGalat" hidden></div>
+        <div class="aksi"><div class="kanan"><button type="button" class="tombol utama" id="bSidangLihat">Lihat status</button></div></div>
+      </section>
+      <div id="sdIsi" hidden style="display:flex;flex-direction:column;gap:22px"></div>
+    </div>
+  </main>
+
   <!-- ================= SEKPRODI ================= -->
   <main id="vAdmin" hidden>
     <div style="display:flex;flex-direction:column;gap:22px">
@@ -821,7 +923,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 30</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 31</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -834,7 +936,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   'use strict';
   var GAS = !!(window.google && google.script && google.script.run);
   var API = GAS ? '' : String(window.SKRIPSPACE_API || '');   // alamat API bila aplikasi dipasang di luar Apps Script
-  var HIDUP = GAS || !!API;
+  var HIDUP = GAS || !!API, BATAS_API = 90000;
+  function apiLama() { BATAS_API = 300000; try { return api.apply(null, arguments); } finally { BATAS_API = 90000; } }
   var $ = function (id) { return document.getElementById(id); };
   var semua = function (sel, akar) { return [].slice.call((akar || document).querySelectorAll(sel)); };
   function e(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
@@ -850,7 +953,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         r[nama].apply(r, args);
       } else if (API) {
         var pemutus = window.AbortController ? new AbortController() : null, lewat = false;
-        var tBatas = setTimeout(function () { lewat = true; if (pemutus) pemutus.abort(); }, 90000);
+        var tBatas = setTimeout(function () { lewat = true; if (pemutus) pemutus.abort(); }, BATAS_API);
         fetch(API, { method: 'POST', credentials: 'omit', redirect: 'follow', cache: 'no-store', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ fn: nama, args: args }), signal: pemutus ? pemutus.signal : undefined })
           .then(function (r) { if (!r.ok) throw new Error('Server sedang tidak bisa dihubungi (' + r.status + '). Coba lagi sebentar lagi.'); return r.text(); })
           .then(function (teks) { clearTimeout(tBatas); try { return JSON.parse(teks); } catch (x) { throw new Error('Server sedang sibuk atau jawabannya tidak terbaca. Coba lagi sebentar lagi.'); } })
@@ -898,7 +1001,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
 
   function tampil(v) {
-    ['Beranda', 'Ajukan', 'Admin', 'Riset'].forEach(function (n) { $('v' + n).hidden = v !== n.toLowerCase(); });
+    ['Beranda', 'Ajukan', 'Admin', 'Riset', 'Sidang'].forEach(function (n) { $('v' + n).hidden = v !== n.toLowerCase(); });
     $('app').classList.toggle('lebar', v === 'admin' || v === 'beranda');
     semua('.nav button').forEach(function (b) { b.setAttribute('aria-current', b.getAttribute('data-ke') === v ? 'true' : 'false'); });
     window.scrollTo(0, 0);
@@ -1444,6 +1547,268 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       .then(function () { sibuk(tombol, false); });
   }
 
+  /* ---------------- ajukan sidang (mahasiswa) ---------------- */
+  var SD = { cek: null, berkas: {}, kunciCek: '', status: null };
+  var SD_BANTU = {
+    dkn: 'Unduh dari sim.unissula.ac.id. Unggah semua halaman sampai tulisan JUMLAH SKS terlihat (144 SKS) dan Skripsi tercantum.',
+    skripsi: 'Halaman Pengesahan/Persetujuan skripsi yang sudah ditandatangani dosen pembimbing.',
+    lunas: 'Surat keterangan lunas dari bagian keuangan.',
+    turnitin: 'Halaman hasil yang memperlihatkan persentase kemiripan.',
+    ijazah: 'Ijazah SMA/SMK/MA atau sederajat.', ktp: 'Seluruh sisi depan KTP terlihat.',
+    btq: 'Khusus kelas Reguler.', pwi: 'Namamu sudah dicocokkan dengan database PWI prodi.', lkmm: 'Khusus kelas Reguler.',
+    semnas: 'Dua sertifikat dari dua kegiatan seminar nasional yang berbeda.', semint: 'Satu sertifikat seminar internasional.',
+    foto: 'Pakaian formal, latar polos.'
+  };
+  function rupiah(n) { return 'Rp' + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function sdData() {
+    var k = document.querySelector('input[name="sdkelas"]:checked');
+    return { nama: $('sdNama').value.replace(/\s+/g, ' ').trim(), nim: $('sdNim').value.trim(), wa: $('sdWa').value.trim(), kelas: k ? k.value : '',
+      turnitin: ($('sdTurnitin') ? $('sdTurnitin').value : (SD.turnitin || '')).trim(), toga: $('sdToga').value };
+  }
+  function sdDokumen(langkah) {
+    var I = S.init && S.init.sidang, kelas = sdData().kelas;
+    if (!I) return [];
+    return I.dokumen.filter(function (x) { return (!x.kelas || x.kelas === kelas) && ((/^bayar/.test(x.kunci) ? 3 : 2) === langkah || !langkah); });
+  }
+  function sdRender(langkah) {
+    var w = $('sdDok' + langkah), I = S.init.sidang, awal = langkah === 3 ? sdDokumen(2).length : 0;
+    if (langkah === 2 && $('sdTurnitin')) SD.turnitin = $('sdTurnitin').value;
+    w.innerHTML = sdDokumen(langkah).map(function (x, i) {
+      var B = SD.berkas[x.kunci] || [], cukup = B.length >= x.min, bantu = SD_BANTU[x.kunci] || '';
+      if (x.kunci === 'bayarToga') bantu = 'Bukti transfer ' + rupiah(I.rekening.toga) + '.';
+      if (x.kunci === 'bayarSidang') bantu = 'Bukti transfer ' + rupiah(I.rekening.sidang) + '.';
+      return '<div class="sdok' + (cukup ? ' lengkap' : '') + '" data-dok="' + e(x.kunci) + '"><div class="atas"><b>' + (awal + i + 1) + '. ' + e(x.nama) + '</b><span class="pil ' + (cukup ? 'hijau' : 'netral') + '">' + (cukup ? 'Terunggah' : (B.length ? B.length + ' dari ' + x.min : 'Belum')) + '</span></div>' +
+        (bantu ? '<p class="bantu">' + e(bantu) + (x.maks > 1 ? ' ' + (x.min === x.maks ? 'Tepat ' + x.maks : 'Maksimal ' + x.maks) + ' lembar.' : '') + '</p>' : '') +
+        (x.kunci === 'turnitin' ? '<div class="isian"><label for="sdTurnitin">Hasil cek plagiasi (%)</label><input type="text" id="sdTurnitin" inputmode="decimal" maxlength="6" placeholder="Contoh: 18,5" value="' + e(SD.turnitin || '') + '"><span class="bantu">Batas ' + koma(I.turnitinMaks, 2) + '%. Angka ini dicocokkan pengelola dengan bukti yang kamu unggah.</span></div>' : '') +
+        (B.length ? '<ul>' + B.map(function (b, j) { return '<li><img alt="" src="' + b.mini + '"><span>Lembar ' + (j + 1) + ' · ' + b.kb + ' KB</span><button type="button" class="tombol mini polos" data-sd-buang="' + j + '">Buang</button></li>'; }).join('') + '</ul>' : '') +
+        (B.length < x.maks ? '<label class="tombol kecil pilihberkas">' + (B.length ? 'Tambah lembar' : 'Pilih foto atau scan') + '<input type="file" accept="image/jpeg,image/png"' + (x.maks - B.length > 1 ? ' multiple' : '') + ' aria-label="' + e(x.nama) + '"></label>' : '') + '</div>';
+    }).join('');
+  }
+  /* Memperkecil satu gambar menjadi JPEG hemat ukuran (sisi terpanjang maks. 1400 px, sekitar 170 KB). */
+  function sdOlah(berkas) {
+    return new Promise(function (ok, gagal) {
+      if (!/^image\/(jpeg|png)$/.test(berkas.type)) { gagal(new Error('Berkas harus berupa gambar JPG atau PNG. Kalau berkasmu PDF, foto atau tangkap layar halamannya dulu.')); return; }
+      var baca = new FileReader();
+      baca.onerror = function () { gagal(new Error('Berkas tidak bisa dibaca.')); };
+      baca.onload = function () {
+        var img = new Image();
+        img.onerror = function () { gagal(new Error('Gambar tidak bisa dibaca. Pakai JPG atau PNG.')); };
+        img.onload = function () {
+          if (Math.min(img.width, img.height) < 200) { gagal(new Error('Gambar terlalu kecil sehingga tidak akan terbaca. Unggah foto yang lebih jelas.')); return; }
+          var sisi = 1400, mutu = 0.6, hasil = '', c = null;
+          for (var k = 0; k < 6; k++) {
+            var s = Math.min(1, sisi / Math.max(img.width, img.height));
+            c = document.createElement('canvas'); c.width = Math.max(1, Math.round(img.width * s)); c.height = Math.max(1, Math.round(img.height * s));
+            var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+            hasil = c.toDataURL('image/jpeg', mutu).split(',')[1] || '';
+            if (hasil.length < 230000) break;
+            sisi = Math.round(sisi * 0.84); mutu = Math.max(0.42, mutu - 0.05);
+          }
+          if (!hasil) { gagal(new Error('Gambar tidak bisa diolah di perangkat ini.')); return; }
+          var biner = atob(hasil), u8 = new Uint8Array(biner.length);
+          for (var i = 0; i < biner.length; i++) u8[i] = biner.charCodeAt(i);
+          var m = document.createElement('canvas'), sm = 96 / Math.max(c.width, c.height); m.width = Math.max(1, Math.round(c.width * sm)); m.height = Math.max(1, Math.round(c.height * sm));
+          m.getContext('2d').drawImage(c, 0, 0, m.width, m.height);
+          ok({ u8: u8, w: c.width, h: c.height, kb: Math.max(1, Math.round(u8.length / 1024)), mini: m.toDataURL('image/jpeg', 0.6) });
+        };
+        img.src = baca.result;
+      };
+      baca.readAsDataURL(berkas);
+    });
+  }
+  function sdTambah(kunci, daftar, langkah) {
+    var x = S.init.sidang.dokumen.filter(function (d) { return d.kunci === kunci; })[0], antre = [].slice.call(daftar || []);
+    if (!x || !antre.length) return;
+    var B = SD.berkas[kunci] = SD.berkas[kunci] || [];
+    if (B.length + antre.length > x.maks) { toast('Paling banyak ' + x.maks + ' lembar untuk berkas ini.'); antre = antre.slice(0, Math.max(0, x.maks - B.length)); }
+    var rantai = Promise.resolve();
+    antre.forEach(function (f) { rantai = rantai.then(function () { return sdOlah(f).then(function (h) { B.push(h); }, function (g) { toast(g.message); }); }); });
+    rantai.then(function () { sdRender(langkah); });
+  }
+  function sdPeriksa(n) {
+    var d = sdData(), I = S.init.sidang, kurang = null;
+    if (n === 1) {
+      if (d.nama.length < 3) return ['sdNama', 'Nama lengkap belum diisi.'];
+      if (!/^\d{11}$/.test(d.nim)) return ['sdNim', 'NIM harus 11 digit angka.'];
+      if (d.wa.replace(/\D/g, '').length < 9) return ['sdWa', 'Nomor HP/WhatsApp belum benar.'];
+      if (!d.kelas) return ['sdkReguler', 'Pilih kelasmu: Reguler, Eksekutif, atau RPL.'];
+    }
+    if (n === 2 || n === 3) {
+      sdDokumen(n).forEach(function (x) { if (!kurang && (SD.berkas[x.kunci] || []).length < x.min) kurang = x; });
+      if (kurang) return ['', (kurang.min > 1 ? 'Unggah ' + kurang.min + ' lembar untuk: ' : 'Belum diunggah: ') + kurang.nama + '.', kurang.kunci];
+    }
+    if (n === 2) {
+      var tn = parseFloat(d.turnitin.replace(',', '.').replace('%', ''));
+      if (isNaN(tn) || tn < 0 || tn > 100) return ['sdTurnitin', 'Isi persentase hasil cek plagiasi (Turnitin), misalnya 18,5.'];
+      if (tn > I.turnitinMaks) return ['sdTurnitin', 'Hasil cek plagiasi ' + d.turnitin + '% melebihi batas ' + koma(I.turnitinMaks, 2) + '%. Perbaiki naskah dan cek ulang sebelum mengajukan sidang.'];
+    }
+    if (n === 3 && !d.toga) return ['sdToga', 'Pilih ukuran toga.'];
+    return null;
+  }
+  function sdGalat(n, g) {
+    galat(document.querySelector('[data-sl="' + n + '"] [data-galat]'), g ? g[1] : '');
+    if (!g) return;
+    var el = g[0] ? $(g[0]) : document.querySelector('[data-sl="' + n + '"] [data-dok="' + g[2] + '"]');
+    if (el) { try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); if (g[0]) el.focus({ preventScroll: true }); } catch (x) { /* abaikan */ } }
+  }
+  function sdLangkah(n) {
+    semua('[data-sl]').forEach(function (s) { s.hidden = Number(s.getAttribute('data-sl')) !== n; });
+    semua('#sdLangkah li').forEach(function (li, i) { li.className = i + 1 < n ? 'lewat' : (i + 1 === n ? 'kini' : ''); });
+    if (n === 2 || n === 3) sdRender(n);
+    if (n === 2 && SD.cek) {
+      var c = SD.cek;
+      $('sdCek').innerHTML = '<div class="catat baik sdcek"><span class="pil hijau">Database PWI: terdata</span>' + (c.lkmm.wajib ? '<span class="pil ' + (c.lkmm.cocok ? 'hijau' : 'kuning') + '">Database LKMM: ' + (c.lkmm.cocok ? 'terdata' : 'diperiksa pengelola') + '</span>' : '') +
+        '<span>Nama dan NIM-mu cocok dengan database sertifikat prodi.</span></div>';
+    }
+    if (n === 4) {
+      var d = sdData(), lembar = 0, kb = 0;
+      var isi = sdDokumen(0).map(function (x) { var B = SD.berkas[x.kunci] || []; lembar += B.length; B.forEach(function (b) { kb += b.kb; }); return x.nama + ' (' + B.length + ')'; });
+      $('sdTinjau').innerHTML = [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['No. HP / WA', d.wa], ['Hasil cek plagiasi', d.turnitin + '%'], ['Ukuran toga', d.toga],
+        ['Berkas', isi.join('; ')], ['Hasil gabungan', 'Satu PDF, ' + (lembar + 1) + ' halaman, kira-kira ' + (kb > 1000 ? koma(kb / 1024, 1) + ' MB' : kb + ' KB')],
+        ['Nama berkas', 'SIDANG - ' + d.nama + ' - ' + d.nim + '.pdf']].map(function (b) { return '<dt>' + e(b[0]) + '</dt><dd>' + e(b[1]) + '</dd>'; }).join('');
+    }
+    if (n !== 1) window.scrollTo(0, $('sdLangkah').getBoundingClientRect().top + window.scrollY - 12);
+  }
+  function sdLanjut(ke, tombol) {
+    var dari = ke - 1, g = sdPeriksa(dari);
+    sdGalat(dari, g); if (g) return;
+    if (dari !== 1) { sdLangkah(ke); return; }
+    var d = sdData(), kunci = d.nim + '|' + d.nama.toLowerCase() + '|' + d.kelas;
+    sibuk(tombol, true);
+    api('apiSidangCek', { nama: d.nama, nim: d.nim, kelas: d.kelas }).then(function (c) {
+      if (c.aktif) { sdGalat(1, ['sdNim', c.aktif === 'Diterima' ? 'Berkas sidang atas NIM ini sudah diterima prodi.' : 'NIM ini masih punya pengajuan sidang yang menunggu diperiksa. Buka "Lihat status" dengan kode sidangmu.']); return; }
+      if (!c.pwi.cocok) { sdGalat(1, ['sdNim', 'Namamu belum terdata di database PWI prodi, jadi pengajuan sidang belum bisa dilanjutkan. Periksa lagi NIM-mu. Bila sudah mengikuti PWI, hubungi pengelola prodi agar namamu dimasukkan ke database.']); return; }
+      if (c.lkmm.wajib && c.lkmm.tersedia && !c.lkmm.cocok) { sdGalat(1, ['sdNim', 'Namamu belum terdata di database LKMM prodi, jadi pengajuan sidang belum bisa dilanjutkan. Bila sudah mengikuti LKMM, hubungi pengelola prodi agar namamu dimasukkan ke database.']); return; }
+      if (SD.kunciCek && SD.kunciCek.split('|')[2] !== d.kelas) { delete SD.berkas.btq; delete SD.berkas.lkmm; }
+      SD.cek = c; SD.kunciCek = kunci; sdLangkah(2);
+    }).catch(function (x) { sdGalat(1, ['', x.message]); }).then(function () { sibuk(tombol, false); });
+  }
+  /* --- pembuat PDF: satu halaman A4 per lembar, gambar JPEG ditanam apa adanya supaya ukuran berkas tetap kecil --- */
+  function pdfTeks(s) {
+    var o = '';
+    String(s == null ? '' : s).replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, '-').split('').forEach(function (ch) {
+      var k = ch.charCodeAt(0); if (k < 32 || k > 255) ch = k > 255 ? '?' : ' ';
+      o += (ch === '(' || ch === ')' || ch === '\\') ? '\\' + ch : ch;
+    });
+    return o;
+  }
+  function sdPdf(d, daftar) {
+    var bagian = [], panjang = 0, letak = [], halaman = [];
+    function tulis(x) {
+      if (typeof x === 'string') { var u = new Uint8Array(x.length); for (var i = 0; i < x.length; i++) u[i] = x.charCodeAt(i) & 255; x = u; }
+      bagian.push(x); panjang += x.length;
+    }
+    function obj(n, isi, biner) { letak[n] = panjang; tulis(n + ' 0 obj\n' + isi); if (biner) { tulis(biner); tulis('\nendstream'); } tulis('\nendobj\n'); }
+    var L = 595.28, T = 841.89, n = 5, jejak = pdfTeks(d.nama + ' · NIM ' + d.nim + ' · ' + d.kelas);
+    tulis('%PDF-1.4\n%âãÏÓ\n');
+    /* sampul */
+    var y = 770, s = 'BT /F2 16 Tf 56 ' + y + ' Td (BERKAS PENGAJUAN SIDANG SKRIPSI) Tj ET\n';
+    y -= 20; s += 'BT /F1 10.5 Tf 56 ' + y + ' Td (Program Studi S1 Ilmu Hukum - Fakultas Hukum UNISSULA) Tj ET\n0.8 w 56 ' + (y - 12) + ' m 539 ' + (y - 12) + ' l S\n'; y -= 44;
+    [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['No. HP / WA', d.wa], ['Hasil cek plagiasi', d.turnitin + '%'], ['Ukuran toga', d.toga], ['Diunggah', d.waktu],
+      ['Database PWI', d.pwi], ['Database LKMM', d.lkmm]].forEach(function (b) {
+      s += 'BT /F1 11 Tf 56 ' + y + ' Td (' + pdfTeks(b[0]) + ') Tj ET\nBT /F2 11 Tf 190 ' + y + ' Td (' + pdfTeks(String(b[1]).slice(0, 62)) + ') Tj ET\n'; y -= 20;
+    });
+    y -= 14; s += 'BT /F2 12 Tf 56 ' + y + ' Td (Isi berkas) Tj ET\n'; y -= 22;
+    var hal = 2;
+    daftar.forEach(function (x, i) {
+      var jml = x.berkas.length;
+      s += 'BT /F1 10.5 Tf 56 ' + y + ' Td (' + pdfTeks((i + 1) + '. ' + x.nama.slice(0, 78)) + ') Tj ET\nBT /F1 10.5 Tf 480 ' + y + ' Td (hal. ' + hal + (jml > 1 ? '-' + (hal + jml - 1) : '') + ') Tj ET\n';
+      y -= 18; hal += jml;
+    });
+    s += 'BT /F1 8.5 Tf 56 44 Td (Digabung otomatis oleh SKRIPSPACE - skripspace.com) Tj ET\n';
+    obj(n, '<< /Length ' + s.length + ' >>\nstream\n', s); obj(n + 1, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' + L + ' ' + T + '] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ' + n + ' 0 R >>'); halaman.push(n + 1); n += 2;
+    daftar.forEach(function (x, i) {
+      x.berkas.forEach(function (b, j) {
+        var mx = 28, atas = 792, lebar = L - 2 * mx, tinggi = atas - 28, sk = Math.min(lebar / b.w, tinggi / b.h), w = b.w * sk, h = b.h * sk, px = mx + (lebar - w) / 2, py = atas - h;
+        var c = 'BT /F2 10 Tf ' + mx + ' 816 Td (' + pdfTeks(((i + 1) + '. ' + x.nama + (x.berkas.length > 1 ? ' - lembar ' + (j + 1) : '')).slice(0, 96)) + ') Tj ET\nBT /F1 8.5 Tf ' + mx + ' 804 Td (' + jejak.slice(0, 110) + ') Tj ET\n' +
+          '0.5 w ' + mx + ' 798 m ' + (L - mx) + ' 798 l S\nq ' + w.toFixed(2) + ' 0 0 ' + h.toFixed(2) + ' ' + px.toFixed(2) + ' ' + py.toFixed(2) + ' cm /Im0 Do Q\n';
+        obj(n, '<< /Type /XObject /Subtype /Image /Width ' + b.w + ' /Height ' + b.h + ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' + b.u8.length + ' >>\nstream\n', b.u8);
+        obj(n + 1, '<< /Length ' + c.length + ' >>\nstream\n', c);
+        obj(n + 2, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' + L + ' ' + T + '] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> /XObject << /Im0 ' + n + ' 0 R >> >> /Contents ' + (n + 1) + ' 0 R >>');
+        halaman.push(n + 2); n += 3;
+      });
+    });
+    obj(1, '<< /Type /Catalog /Pages 2 0 R >>');
+    obj(2, '<< /Type /Pages /Count ' + halaman.length + ' /Kids [' + halaman.map(function (h) { return h + ' 0 R'; }).join(' ') + '] >>');
+    obj(3, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
+    obj(4, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+    var awalXref = panjang, x = 'xref\n0 ' + n + '\n0000000000 65535 f \n';
+    for (var k = 1; k < n; k++) x += ('0000000000' + letak[k]).slice(-10) + ' 00000 n \n';
+    tulis(x + 'trailer\n<< /Size ' + n + ' /Root 1 0 R /Info << /Title (' + pdfTeks('Berkas sidang ' + d.nama + ' ' + d.nim) + ') /Producer (SKRIPSPACE) >> >>\nstartxref\n' + awalXref + '\n%%EOF\n');
+    var semuaByte = new Uint8Array(panjang), p = 0;
+    bagian.forEach(function (b) { semuaByte.set(b, p); p += b.length; });
+    return { u8: semuaByte, halaman: halaman.length };
+  }
+  function u8KeB64(u8) { var s = '', P = 0x8000; for (var i = 0; i < u8.length; i += P) s += String.fromCharCode.apply(null, u8.subarray(i, i + P)); return btoa(s); }
+  function kirimSidang() {
+    var kotak = document.querySelector('[data-sl="4"] [data-galat]'), d = sdData(), tombol = $('bSidangKirim');
+    for (var n = 1; n <= 3; n++) { var g = sdPeriksa(n); if (g) { sdLangkah(n); sdGalat(n, g); return; } }
+    if (!$('sdSetuju').checked) { galat(kotak, 'Centang pernyataan terlebih dahulu.'); return; }
+    galat(kotak, ''); sibuk(tombol, true);
+    var c = SD.cek || { pwi: {}, lkmm: {} }, daftar = sdDokumen(0).map(function (x) { return { kunci: x.kunci, nama: x.nama, berkas: SD.berkas[x.kunci] || [] }; }), dok = {};
+    daftar.forEach(function (x) { dok[x.kunci] = x.berkas.length; });
+    var sekarang = new Date(), dua = function (v) { return ('0' + v).slice(-2); }, pdf;
+    $('sdProses').hidden = false; $('sdProses').textContent = 'Menggabungkan berkas menjadi satu PDF…';
+    setTimeout(function () {
+      try {
+        pdf = sdPdf({ nama: d.nama, nim: d.nim, kelas: d.kelas, wa: d.wa, turnitin: d.turnitin, toga: d.toga, pwi: c.pwi.cocok ? 'Terdata' : '-', lkmm: !c.lkmm.wajib ? 'Tidak wajib' : (c.lkmm.cocok ? 'Terdata' : 'Diperiksa pengelola'),
+          waktu: dua(sekarang.getDate()) + '-' + dua(sekarang.getMonth() + 1) + '-' + sekarang.getFullYear() + ' ' + dua(sekarang.getHours()) + '.' + dua(sekarang.getMinutes()) }, daftar);
+      } catch (x) { galat(kotak, 'Berkas belum bisa digabung di perangkat ini: ' + x.message); sibuk(tombol, false); $('sdProses').hidden = true; return; }
+      if (pdf.u8.length > 6 * 1024 * 1024) { galat(kotak, 'Berkas gabungan terlalu besar. Foto ulang dokumen dengan ukuran lebih kecil.'); sibuk(tombol, false); $('sdProses').hidden = true; return; }
+      $('sdProses').textContent = 'Mengirim ' + pdf.halaman + ' halaman (' + koma(pdf.u8.length / 1048576, 1) + ' MB). Jangan tutup halaman ini; di jaringan lambat bisa sampai beberapa menit.';
+      apiLama('apiSidangKirim', { nama: d.nama, nim: d.nim, kelas: d.kelas, wa: d.wa, turnitin: d.turnitin, toga: d.toga, setuju: true, dok: dok, pdf: { b64: u8KeB64(pdf.u8), halaman: pdf.halaman } })
+        .then(function (h) { SD.berkas = {}; SD.cek = null; SD.turnitin = ''; $('sdSetuju').checked = false; sdLangkah(1); tampilSidang(h, true); })
+        .catch(function (x) { galat(kotak, x.message); }).then(function () { sibuk(tombol, false); $('sdProses').hidden = true; });
+    }, 60);
+  }
+  function sdMode(m) {
+    var I = S.init && S.init.sidang, buka = !!(I && I.dibuka);
+    $('sdmAjukan').checked = m === 'ajukan'; $('sdmStatus').checked = m === 'status';
+    $('sdAjukan').hidden = m !== 'ajukan' || !buka; $('sdMasuk').hidden = m !== 'status' || !!SD.status; $('sdIsi').hidden = m !== 'status' || !SD.status;
+    $('sdTutup').hidden = buka || m !== 'ajukan'; $('pembukaSidang').hidden = m === 'status' && !!SD.status;
+    if (m === 'status' && !SD.status) { var t = bacaLokal('pjs-sidang'); if (t && !$('sdNimLihat').value) { $('sdNimLihat').value = t.nim; $('sdKodeLihat').value = t.kode; } }
+  }
+  function tampilSidang(h, baru) {
+    var x = h.sidang[0];
+    SD.status = { nim: x.nim, kode: x.kode }; simpanLokal('pjs-sidang', SD.status);
+    var st = x.status, tiket = st === 'Diterima' ? ['Berkas sidang diterima', 'Seluruh berkasmu sudah diperiksa dan diterima prodi. Tunggu informasi jadwal ujian dari prodi.']
+      : (st === 'Dikembalikan' ? ['Perlu diperbaiki', 'Pengajuanmu dikembalikan. Baca catatan di bawah, lalu ajukan ulang dengan berkas yang sudah diperbaiki.']
+        : [baru ? 'Terkirim. Tinggal tunggu.' : 'Sedang diperiksa', 'Berkasmu sudah masuk ke pengelola prodi. Simpan kode di samping untuk melihat hasilnya lewat menu Ajukan Sidang, Lihat status.']);
+    $('sdIsi').innerHTML = '<div class="tiket"><div class="kiri">' + pilPil(st === 'Diterima' ? 'ACC' : (st === 'Dikembalikan' ? 'Revisi' : 'Menunggu')) + '<h2>' + tiket[0] + '</h2><p>' + tiket[1] + '</p></div>' +
+      '<div class="kanan"><small>Kode sidang</small><b>' + e(x.kode) + '</b><button type="button" data-salin="' + e(x.kode) + '">Salin kode</button></div></div>' +
+      '<section class="lembar"><dl class="rinci"><dt>Nama</dt><dd>' + e(x.nama) + '</dd><dt>NIM</dt><dd class="mono">' + e(x.nim) + '</dd><dt>Kelas</dt><dd>' + e(x.kelas) + '</dd><dt>Dikirim</dt><dd>' + e(x.waktu) + ' WIB</dd>' +
+      '<dt>Berkas</dt><dd>' + e(x.namaBerkas) + ' · ' + x.halaman + ' halaman · ' + (x.kb > 1000 ? koma(x.kb / 1024, 1) + ' MB' : x.kb + ' KB') + '</dd><dt>Hasil cek plagiasi</dt><dd>' + e(x.turnitin) + '%</dd><dt>Ukuran toga</dt><dd>' + e(x.toga) + '</dd>' +
+      (x.catatan ? '<dt>Catatan prodi</dt><dd><b>' + e(x.catatan) + '</b></dd>' : '') + '</dl>' +
+      (h.sidang.length > 1 ? '<p class="bantu" style="font-size:13px;color:var(--muted)">Pengajuan sebelumnya: ' + h.sidang.slice(1).map(function (y) { return e(y.waktu + ' (' + y.status + ')'); }).join(', ') + '.</p>' : '') +
+      '<div class="aksi"><button type="button" class="tombol polos" data-sd-tutup>Tutup</button><div class="kanan">' + (st === 'Dikembalikan' ? '<button type="button" class="tombol utama" data-sd-ulang>Ajukan ulang</button>' : '') + '</div></div></section>';
+    sdMode('status'); window.scrollTo(0, 0);
+  }
+  function lihatSidang() {
+    var nim = $('sdNimLihat').value.trim(), kode = $('sdKodeLihat').value.trim().toUpperCase(), g = $('sdGalat');
+    if (!/^\d{11}$/.test(nim) || kode.length < 6) { galat(g, 'Isi NIM (11 digit) dan kode sidang (6 karakter).'); return; }
+    galat(g, ''); sibuk($('bSidangLihat'), true);
+    api('apiSidangStatus', nim, kode).then(function (h) { tampilSidang(h, false); }).catch(function (x) { galat(g, x.message); }).then(function () { sibuk($('bSidangLihat'), false); });
+  }
+  function klikSidang(ev) {
+    var t = ev.target.closest('button'); if (!t) return;
+    if (t.hasAttribute('data-sdlanjut')) sdLanjut(Number(t.getAttribute('data-sdlanjut')), t);
+    if (t.hasAttribute('data-sdkembali')) sdLangkah(Number(t.getAttribute('data-sdkembali')));
+    if (t.hasAttribute('data-sd-buang')) { var k = t.closest('[data-dok]'), l = Number(t.closest('[data-sl]').getAttribute('data-sl')); SD.berkas[k.getAttribute('data-dok')].splice(Number(t.getAttribute('data-sd-buang')), 1); sdRender(l); }
+    if (t.hasAttribute('data-sd-tutup')) { SD.status = null; sdMode('ajukan'); }
+    if (t.hasAttribute('data-sd-ulang')) { var s = SD.status; SD.status = null; if (s && !$('sdNim').value) $('sdNim').value = s.nim; sdMode('ajukan'); sdLangkah(1); }
+  }
+  function siapSidang(init) {
+    var I = init.sidang;
+    if (!I) { $('sdTutup').textContent = 'Menu Ajukan Sidang sedang disiapkan. Coba lagi beberapa saat lagi.'; $('sdModeWadah').hidden = true; sdMode('ajukan'); return; }
+    $('sdMaks').textContent = koma(I.turnitinMaks, 2);
+    $('sdTutup').textContent = 'Pengajuan sidang sedang ditutup oleh prodi. Pengajuan yang sudah dikirim tetap bisa dilihat lewat "Lihat status".';
+    $('sdToga').innerHTML = '<option value="">Pilih ukuran</option>' + I.ukuranToga.map(function (u) { return '<option>' + e(u) + '</option>'; }).join('');
+    var R = I.rekening;
+    $('sdRek').innerHTML = '<div><small>Pembayaran toga</small><b>' + rupiah(R.toga) + '</b><span>' + e(R.bank) + ' <span class="mono">' + e(R.nomor) + '</span></span><span>a.n. ' + e(R.atasNama) + '</span></div>' +
+      '<div><small>Pembayaran sidang</small><b>' + rupiah(R.sidang) + '</b><span>' + e(R.bank) + ' <span class="mono">' + e(R.nomor) + '</span></span><span>a.n. ' + e(R.atasNama) + '</span></div>';
+    sdMode('ajukan'); sdLangkah(1);
+  }
+
   /* ---------------- izin riset (mahasiswa) ---------------- */
   function rData() {
     var k = document.querySelector('input[name="rkelas"]:checked');
@@ -1653,15 +2018,69 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       (a.peran === 'prodi' ? '<p class="catat">Sekprodi dan Kaprodi masuk dengan <b>satu kode yang sama</b>, yaitu isi baris "PIN Admin" di tab PENGATURAN, dengan hak yang sama (termasuk menyetujui izin riset). Baris "Kode Kaprodi" boleh dikosongkan.</p>' : (a.kodeKaprodi ? '<p class="catat">Kode akses Kaprodi: <b class="mono">' + e(a.kodeKaprodi) + '</b>.</p>' : '')) +
       '<p class="catat">Pengaturan lain (kode akses pengelola pada baris "PIN Admin", nama pejabat, ambang kemiripan) ada di tab <b>PENGATURAN</b> pada spreadsheet.</p></div></details>';
     var atas = '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Ruang pengelola prodi</h2><span style="color:var(--muted);font-size:14.5px">' + (a.peran === 'prodi' ? 'Pengelola prodi (Sekprodi dan Kaprodi)' : 'Masuk sebagai ' + (kap ? 'Kaprodi' : 'Sekprodi')) + ' · S1 Ilmu Hukum</span></div><div class="kanan"><button type="button" class="tombol kecil" data-a="muat">Muat ulang</button><button type="button" class="tombol kecil polos" data-a="keluar">Keluar</button></div></div>' +
-      '<div class="tabs" role="tablist">' + [['antre', 'Persetujuan', (a.hitung.Menunggu || 0) + rs.menunggu.length], ['pantau', 'Pantauan bimbingan', S.pantau ? S.pantau.mahasiswa.filter(function (x) { return x.rekap.macet; }).length : 0], ['akun', 'Akun & kode akses', 0]].map(function (x) {
+      '<div class="tabs" role="tablist">' + [['antre', 'Persetujuan', (a.hitung.Menunggu || 0) + rs.menunggu.length], ['sidang', 'Sidang', a.sidang ? a.sidang.menunggu.length : 0], ['pantau', 'Pantauan bimbingan', S.pantau ? S.pantau.mahasiswa.filter(function (x) { return x.rekap.macet; }).length : 0], ['akun', 'Akun & kode akses', 0]].map(function (x) {
         return '<button type="button" role="tab" data-atab="' + x[0] + '" aria-selected="' + (S.aTab === x[0]) + '">' + x[1] + (x[2] ? '<i>' + x[2] + '</i>' : '') + '</button>'; }).join('') + '</div>';
-    $('aIsi').innerHTML = atas + (S.aTab === 'pantau' ? hPantau() : (S.aTab === 'akun' ? hAkun() : h));
+    $('aIsi').innerHTML = atas + (S.aTab === 'pantau' ? hPantau() : (S.aTab === 'akun' ? hAkun() : (S.aTab === 'sidang' ? hSidangAdmin() : h)));
+  }
+  /* ---------------- pengajuan sidang (pengelola) ---------------- */
+  function ukuranBerkas(kb) { return kb > 1000 ? koma(kb / 1024, 1) + ' MB' : kb + ' KB'; }
+  function hSidangAdmin() {
+    var sd = S.admin.sidang, h = '';
+    if (!sd) return '<div class="kosong"><b>Belum tersedia</b>Muat ulang halaman ini beberapa saat lagi.</div>';
+    h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Pengajuan sidang</h2></div><span class="pil ' + (sd.menunggu.length ? 'kuning' : 'netral') + '">' + sd.menunggu.length + ' menunggu</span></div>';
+    var toga = {}, urut = (S.init && S.init.sidang ? S.init.sidang.ukuranToga : []);
+    sd.riwayat.forEach(function (x) { if (x.status === 'Diterima') toga[x.toga] = (toga[x.toga] || 0) + 1; });
+    if (Object.keys(toga).length) h += '<div class="togarekap"><b>Ukuran toga (berkas diterima):</b>' + urut.filter(function (u) { return toga[u]; }).map(function (u) { return '<span>' + e(u) + ' · ' + toga[u] + '</span>'; }).join('') + '</div>';
+    if (!sd.menunggu.length) h += '<div class="kosong"><b>Tidak ada pengajuan sidang yang menunggu</b>Pengajuan dari mahasiswa akan muncul di sini, lengkap dengan satu PDF berisi semua berkasnya.</div>';
+    sd.menunggu.forEach(function (x) {
+      h += '<article class="berkas" data-sidang-id="' + e(x.id) + '"><div class="kepala"><h3>' + e(x.nama) + '</h3><span class="pil kuning">Sidang</span></div>' +
+        '<div class="meta"><span class="mono"><b>' + e(x.nim) + '</b></span><span>' + e(x.kelas) + '</span><span>Turnitin <b>' + e(x.turnitin) + '%</b></span><span>Toga <b>' + e(x.toga) + '</b></span><span>' + e(x.waktu) + '</span></div>' +
+        '<dl class="rinci"><dt>Berkas gabungan</dt><dd><b>' + e(x.namaBerkas) + '</b><br>' + x.halaman + ' halaman · ' + ukuranBerkas(x.kb) + '</dd>' +
+        '<dt>Database PWI</dt><dd>' + e(x.pwi) + '</dd><dt>Database LKMM</dt><dd>' + e(x.lkmm) + '</dd>' +
+        (x.resmi && x.resmi.ada ? '<dt>Judul (data prodi)</dt><dd>' + e(x.resmi.judul) + '</dd><dt>Pembimbing</dt><dd>' + e(x.resmi.dosen) + '</dd>' : '<dt>Data judul prodi</dt><dd>NIM ini tidak ditemukan di data pengajuan judul.</dd>') + '</dl>' +
+        '<div class="aksi"><div>' + (x.wa ? '<a class="tombol wa kecil" href="https://wa.me/' + e(x.wa) + '" target="_blank" rel="noopener">WhatsApp mahasiswa</a>' : '') + '</div><div class="kanan">' +
+        (x.tautan ? '<a class="tombol kecil polos" href="' + e(x.tautan) + '" target="_blank" rel="noopener">Buka di Drive</a>' : '') + '<button type="button" class="tombol kecil" data-sidang-pdf="' + e(x.id) + '">Unduh PDF berkas</button></div></div>' +
+        '<div class="isian"><label for="sc-' + e(x.id) + '">Catatan untuk mahasiswa</label><textarea id="sc-' + e(x.id) + '" data-f="catatan" maxlength="500" style="min-height:56px" placeholder="Wajib diisi bila dikembalikan: berkas mana yang harus diperbaiki"></textarea></div>' +
+        '<div class="catat galat" data-galat hidden></div><div class="aksi"><button type="button" class="tombol kecil bahaya" data-sidang-aksi="KEMBALI">Kembalikan</button><div class="kanan"><button type="button" class="tombol utama" data-sidang-aksi="TERIMA">Berkas lengkap, terima</button></div></div></article>';
+    });
+    if (sd.riwayat.length) h += '<details class="lipat"><summary>Riwayat pengajuan sidang (' + sd.riwayat.length + ')</summary><div><ul class="riwayat">' + sd.riwayat.map(function (x) {
+      return '<li><span><b>' + e(x.nama) + '</b> <span class="mono">' + e(x.nim) + '</span><small>' + e(x.kelas + ' · toga ' + x.toga + ' · Turnitin ' + x.turnitin + '%' + (x.catatan ? ' · ' + x.catatan : '')) + '</small></span><span class="aksi-b"><span class="pil ' + (x.status === 'Diterima' ? 'hijau' : 'merah') + '">' + e(x.status) + '</span>' +
+        (x.adaBerkas ? '<button type="button" class="tombol mini" data-sidang-pdf="' + e(x.id) + '">Unduh PDF</button>' : '') + '</span></li>';
+    }).join('') + '</ul></div></details>';
+    return h;
+  }
+  function turunkanPdf(p) {
+    var biner = atob(p.b64), u8 = new Uint8Array(biner.length);
+    for (var i = 0; i < biner.length; i++) u8[i] = biner.charCodeAt(i);
+    var url = URL.createObjectURL(new Blob([u8], { type: 'application/pdf' })), a = document.createElement('a');
+    a.href = url; a.download = p.nama; document.body.appendChild(a); a.click(); a.remove();
+    if (IOS) { pdfSiap(u8, p.nama, url); return; }
+    setTimeout(function () { URL.revokeObjectURL(url); }, 20000);
+    toast('PDF diunduh: ' + p.nama);
+  }
+  function klikSidangAdmin(t) {
+    if (t.hasAttribute('data-sidang-pdf')) {
+      sibuk(t, true);
+      apiLama('apiAdminSidangPdf', S.pin, t.getAttribute('data-sidang-pdf')).then(turunkanPdf).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); });
+      return true;
+    }
+    if (t.hasAttribute('data-sidang-aksi')) {
+      var k = t.closest('[data-sidang-id]'), aksi = t.getAttribute('data-sidang-aksi'), cat = k.querySelector('[data-f="catatan"]').value.trim(), g = k.querySelector('[data-galat]');
+      if (aksi === 'KEMBALI' && cat.length < 5) { galat(g, 'Tulis catatan untuk mahasiswa: berkas mana yang harus diperbaiki.'); return true; }
+      if (!yakin(t)) return true;
+      galat(g, ''); sibuk(t, true);
+      api('apiAdminSidang', S.pin, k.getAttribute('data-sidang-id'), { aksi: aksi, catatan: cat }).then(function (d) { segarAdmin(d); toast(aksi === 'TERIMA' ? 'Berkas sidang diterima.' : 'Dikembalikan ke mahasiswa.'); })
+        .catch(function (x) { galat(g, x.message); sibuk(t, false); });
+      return true;
+    }
+    return false;
   }
   function segarAdmin(a) { S.admin = a; S.adaBaru = false; renderAdmin(); }
   function klikAdmin(ev) {
     var t = ev.target.closest('button'); if (!t) return;
     var a = t.getAttribute('data-a'), aksi = t.getAttribute('data-aksi');
     if (a === 'keluar') { keluar(); return; }
+    if (klikSidangAdmin(t)) return;
     if (a === 'muat') { sibuk(t, true); S.pantau = null; api('apiAdminData', S.pin).then(segarAdmin).catch(function (x) { toast(x.message); sibuk(t, false); }); return; }
     if (a === 'simpanAtur') {
       var p = { nomorTerakhir: $('atNomor').value.trim(), tahunAkademik: $('atTa').value.trim(), tidakAktif: $('atMati').value.trim() };
@@ -2212,7 +2631,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var p = t.getAttribute('data-p');
     if (t.hasAttribute('data-atab')) {
       S.aTab = t.getAttribute('data-atab'); renderAdmin();
-      if (S.aTab === 'antre') api('apiAdminData', S.pin).then(function (d) { if (S.admin && !S.ruang && S.aTab === 'antre' && !document.querySelector('#aIsi [data-yakin]')) segarAdmin(d); }).catch(function () {});
+      var tabKini = S.aTab;
+      if (tabKini === 'antre' || tabKini === 'sidang') api('apiAdminData', S.pin).then(function (d) { var el = document.activeElement; if (S.admin && !S.ruang && S.aTab === tabKini && !document.querySelector('#aIsi [data-yakin]') && !(el && el.tagName === 'TEXTAREA' && el.value)) segarAdmin(d); }).catch(function () {});
       return;
     }
     if (p === 'ingat') {
@@ -2290,6 +2710,13 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     semua('input[name="rmode"]').forEach(function (r) { r.addEventListener('change', function () { rMode(r.value); }); });
     $('rNimBaru').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); }); $('rNim').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); });
     rLangkah(1);
+    $('vSidang').addEventListener('click', klikSidang); $('bSidangKirim').addEventListener('click', kirimSidang); $('bSidangLihat').addEventListener('click', lihatSidang);
+    semua('input[name="sdmode"]').forEach(function (r) { r.addEventListener('change', function () {
+      sdMode(r.value);
+      if (r.value === 'status' && SD.status) api('apiSidangStatus', SD.status.nim, SD.status.kode).then(function (h) { if (SD.status && $('sdmStatus').checked) tampilSidang(h, false); }).catch(function () {});
+    }); });
+    ['sdNim', 'sdNimLihat'].forEach(function (id) { $(id).addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); }); });
+    $('vSidang').addEventListener('change', function (ev) { var t = ev.target; if (t.type !== 'file') return; var k = t.closest('[data-dok]'), l = t.closest('[data-sl]'); if (k && l) sdTambah(k.getAttribute('data-dok'), t.files, Number(l.getAttribute('data-sl'))); });
     document.addEventListener('click', function (ev) {
       var t = ev.target.closest('button'); if (!t) return;
       if (t.hasAttribute('data-lanjut')) lanjut(Number(t.getAttribute('data-lanjut')), t);
@@ -2342,7 +2769,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       $('fJumlah').textContent = init.jumlahJudul.toLocaleString('id-ID'); $('fTa').textContent = init.tahunAkademik || '-';
       $('gKek').innerHTML = init.kekhususan.map(function (k, i) { return '<label><input type="radio" name="kek" value="' + e(k) + '" id="kek' + i + '"><span>' + e(k.replace('Hukum ', '')) + '</span></label>'; }).join('');
       $('dDosen').innerHTML = init.dosen.map(function (d) { return '<option value="' + e(d) + '">'; }).join('');
-      $('wTtd').hidden = !init.wali; $('waliBantu').hidden = !init.wali;
+      $('wTtd').hidden = !init.wali; $('waliBantu').hidden = !init.wali; siapSidang(init);
       semua('input[name="kek"]').forEach(function (r) { r.addEventListener('change', simpanDraf); });
       var draf = bacaLokal('pjs-draf');
       if (draf) isiForm(draf); else if (!HIDUP) isiContoh();
