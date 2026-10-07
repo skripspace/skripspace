@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=41">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=41">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=42">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=42">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=41">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=42">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -300,6 +300,8 @@ textarea { resize: vertical; min-height: 92px; line-height: 1.45; }
 .pil { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; background: var(--st-bg); color: var(--st); border: 1.5px solid var(--st); }
 .pil.hijau { --st: var(--ok); --st-bg: var(--ok-bg); } .pil.kuning { --st: var(--warn); --st-bg: var(--warn-bg); } .pil.merah { --st: var(--bad); --st-bg: var(--bad-bg); }
 .kls { display: inline-block; vertical-align: middle; margin-left: 4px; padding: 1px 8px; border: 1.5px solid #14132b; border-radius: 6px; background: #ffe24a; color: #14132b; font-family: var(--f-body, inherit); font-size: 11.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; line-height: 1.5; }
+.kls.eks { background: #2f6bff; color: #fff; }
+.kls.rpl { background: #e5202e; color: #fff; border-width: 2px; padding: 1px 10px; font-size: 12.5px; letter-spacing: .08em; box-shadow: 2px 2px 0 #14132b; }
 h2 .kls, h3 .kls { font-size: 12px; position: relative; top: -2px; }
 .pil.netral { --st: var(--muted); --st-bg: var(--sunk); }
 .centang { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; padding: 13px 14px; border-radius: var(--r-sm); background: var(--sunk); font-size: 14.5px; cursor: pointer; }
@@ -981,7 +983,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 41</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 42</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1238,7 +1240,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     ]);
   }
   /* Penanda kelas (Reguler / Eksekutif / RPL): stabilo kuning di samping setiap nama mahasiswa pada ruang pengelola. */
-  function kls(k) { k = String(k || '').trim(); return k ? ' <span class="kls">' + e(k) + '</span>' : ''; }
+  function kls(k) { k = String(k || '').trim(); return k ? ' <span class="kls ' + (/^rpl/i.test(k) ? 'rpl' : (/^eks/i.test(k) ? 'eks' : 'reg')) + '">' + e(k) + '</span>' : ''; }
   function ketWali(x) { return e(x.dosenWali) + (x.waliAsal ? ' <small style="display:inline;font-weight:500">(Kaprodi, ' + (/^belum ada/i.test(x.waliAsal) ? 'mahasiswa belum punya dosen wali' : 'menggantikan dosen wali ' + e(x.waliAsal)) + ')</small>' : ''); }
   var KET_MPH = 'Metode Penelitian Hukum <b>sedang ditempuh</b> (belum lulus); cocokkan dengan KRS.';
   function mphKrs() { return !!S.krs && $('fMphKrs').checked; }
