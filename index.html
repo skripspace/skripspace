@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=45">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=45">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=46">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=46">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=45">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=46">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -301,6 +301,9 @@ textarea { resize: vertical; min-height: 92px; line-height: 1.45; }
 .pil.hijau { --st: var(--ok); --st-bg: var(--ok-bg); } .pil.kuning { --st: var(--warn); --st-bg: var(--warn-bg); } .pil.merah { --st: var(--bad); --st-bg: var(--bad-bg); }
 .kls { display: inline-block; vertical-align: middle; margin-left: 4px; padding: 1px 8px; border: 1.5px solid #14132b; border-radius: 6px; background: #ffe24a; color: #14132b; font-family: var(--f-body, inherit); font-size: 11.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; line-height: 1.5; }
 .nomoroto { padding: 10px 14px; border: 2px dashed var(--ink); border-radius: var(--r-sm); background: var(--sunk); font-size: 16px; overflow-wrap: anywhere; }
+.verif .kartu.lebar { max-width: 760px; } .verif .kartu.lebar .jadwalbaris p { color: var(--ink); font-size: 14px; }
+.jadwalbaris .tempat { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0; }
+.jadwalhari .aksi-b { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; justify-content: flex-end; }
 .kls.eks { background: #2f6bff; color: #fff; }
 .kls.rpl { background: #e5202e; color: #fff; border-width: 2px; padding: 1px 10px; font-size: 12.5px; letter-spacing: .08em; box-shadow: 2px 2px 0 #14132b; }
 h2 .kls, h3 .kls { font-size: 12px; position: relative; top: -2px; }
@@ -989,7 +992,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 45</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 46</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1980,7 +1983,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   function tampilSidang(h, baru) {
     var x = h.sidang[0];
     SD.status = { nim: x.nim, kode: x.kode }; simpanLokal('pjs-sidang', SD.status);
-    var st = x.status, tiket = st === 'Terjadwal' ? ['Ujianmu sudah dijadwalkan', hariTanggal(x.tglUjian) + ', pukul ' + jamTitik(x.jamUjian) + ' WIB di ' + x.ruang + '. Datang lebih awal dan siapkan naskahmu.']
+    var st = x.status, tiket = st === 'Terjadwal' ? ['Ujianmu sudah dijadwalkan', hariTanggal(x.tglUjian) + ', pukul ' + jamTitik(x.jamUjian) + ' WIB, ' + (x.zoom ? 'daring lewat Zoom Meeting. Masuk 15 menit lebih awal dan pastikan kamera serta jaringanmu siap.' : 'di ' + x.ruang + '. Datang lebih awal dan siapkan naskahmu.')]
       : (st === 'Disetujui' ? ['Dewan penguji ditetapkan', 'Kaprodi sudah menetapkan dewan pengujimu. Tinggal menunggu jadwal ujian dari admin ujian.']
         : (st === 'Diterima' ? ['Berkas sidang diterima', 'Seluruh berkasmu sudah diperiksa dan dinyatakan lengkap. Berikutnya Kaprodi menetapkan dewan penguji, lalu ujianmu dijadwalkan.']
           : (st === 'Dikembalikan' ? ['Perlu diperbaiki', 'Pengajuanmu dikembalikan. Baca catatan di bawah, lalu ajukan ulang dengan berkas yang sudah diperbaiki.']
@@ -1991,7 +1994,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     $('sdIsi').innerHTML = '<div class="tiket"><div class="kiri">' + '<span class="pil ' + (st === 'Dikembalikan' ? 'merah' : (st === 'Menunggu' ? 'kuning' : 'hijau')) + '">' + e(st === 'Menunggu' ? 'Diperiksa' : st) + '</span>' + '<h2>' + tiket[0] + '</h2><p>' + e(tiket[1]) + '</p>' + alur + '</div>' +
       '<div class="kanan"><small>Kode sidang</small><b>' + e(x.kode) + '</b><button type="button" data-salin="' + e(x.kode) + '">Salin kode</button></div></div>' +
       '<section class="lembar"><dl class="rinci"><dt>Nama</dt><dd>' + e(x.nama) + '</dd><dt>NIM</dt><dd class="mono">' + e(x.nim) + '</dd><dt>Kelas</dt><dd>' + e(x.kelas) + '</dd><dt>Judul skripsi</dt><dd>' + e(x.judul || '-') + '</dd>' +
-      (st === 'Terjadwal' ? '<dt>Jadwal ujian</dt><dd><b>' + e(hariTanggal(x.tglUjian)) + '</b><br>Pukul ' + e(jamTitik(x.jamUjian)) + ' WIB · ' + e(x.ruang) + '</dd>' : '') +
+      (st === 'Terjadwal' ? '<dt>Jadwal ujian</dt><dd><b>' + e(hariTanggal(x.tglUjian)) + '</b><br>Pukul ' + e(jamTitik(x.jamUjian)) + ' WIB · ' + e(x.ruang) + (x.zoom ? '<br><a class="tombol mini" href="' + e(x.zoom) + '" target="_blank" rel="noopener">Buka Zoom Meeting</a> <button type="button" class="tombol mini" data-salin="' + e(x.zoom) + '">Salin tautan</button>' : '') + '</dd>' : '') +
       (x.ketua ? '<dt>Dewan penguji</dt><dd>Ketua: ' + e(x.ketua) + '<br>Anggota: ' + e(x.anggota) + '<br>Anggota/Pembimbing: ' + e(x.pembimbing) + '</dd>' : '<dt>Dosen pembimbing</dt><dd>' + e(x.pembimbing || '-') + '</dd>') +
       '<dt>Dikirim</dt><dd>' + e(x.waktu) + ' WIB</dd><dt>Berkas</dt><dd>' + e(x.namaBerkas) + ' · ' + x.halaman + ' halaman · ' + (x.kb > 1000 ? koma(x.kb / 1024, 1) + ' MB' : x.kb + ' KB') + '</dd><dt>Hasil cek plagiasi</dt><dd>' + e(x.turnitin) + '%</dd><dt>Ukuran toga</dt><dd>' + e(x.toga) + '</dd>' +
       (x.catatan ? '<dt>Catatan prodi</dt><dd><b>' + e(x.catatan) + '</b></dd>' : '') + '</dl>' +
@@ -2346,7 +2349,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     /* 2. penetapan penguji oleh Kaprodi */
     if (sd.diterima.length) {
       h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Penetapan dewan penguji</h2></div><span class="pil kuning">' + sd.diterima.length + ' menunggu</span></div>';
-      if (!prodi) h += '<div class="catat">Menunggu Kaprodi menetapkan ketua dan anggota penguji. Setelah itu ujian muncul di bagian "Siap dijadwalkan".</div>';
+      if (!prodi) h += '<div class="catat">Menunggu Kaprodi menetapkan ketua dan anggota penguji. Setelah itu ujian muncul di bagian "Siap dijadwalkan" dan Anda yang mengisi jadwalnya.</div>';
       sd.diterima.forEach(function (x) {
         h += '<article class="berkas" data-sidang-id="' + e(x.id) + '">' + kepala(x, 'Menunggu penguji', 'kuning') +
           '<dl class="rinci"><dt>Judul skripsi</dt><dd><b>' + e(x.judul || (x.resmi && x.resmi.ada ? x.resmi.judul : '-')) + '</b></dd><dt>Anggota/Pembimbing</dt><dd>' + (x.pembimbing ? e(x.pembimbing) + ' <span class="pil netral">otomatis</span>' : 'Belum tercatat pada pengajuan ini') + '</dd></dl>' +
@@ -2362,7 +2365,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       h += '<div class="aksi"><div><h2 style="font-size:24px;font-weight:800">Siap dijadwalkan</h2></div><span class="pil kuning">' + sd.disetujui.length + ' ujian</span></div>';
       sd.disetujui.forEach(function (x) {
         h += '<article class="berkas" data-sidang-id="' + e(x.id) + '">' + kepala(x, 'Atur jadwal', 'kuning') +
-          '<dl class="rinci"><dt>Judul skripsi</dt><dd>' + e(x.judul || '-') + '</dd><dt>Dewan penguji</dt><dd>Ketua: <b>' + e(x.ketua) + '</b><br>Anggota: <b>' + e(x.anggota) + '</b><br>Anggota/Pembimbing: <b>' + e(x.pembimbing) + '</b></dd></dl>' + hIsiJadwal(x) + berkas(x) + '</article>';
+          '<dl class="rinci"><dt>Judul skripsi</dt><dd>' + e(x.judul || '-') + '</dd><dt>Dewan penguji</dt><dd>Ketua: <b>' + e(x.ketua) + '</b><br>Anggota: <b>' + e(x.anggota) + '</b><br>Anggota/Pembimbing: <b>' + e(x.pembimbing) + '</b></dd><dt>Pelaksanaan</dt><dd>' + (daring(x) ? 'Daring lewat <b>Zoom Meeting</b> (kelas ' + e(x.kelas) + ')' : 'Tatap muka di <b>ruang kelas</b> (kelas Reguler)') + '</dd></dl>' +
+          (prodi ? '<div class="catat">Dewan penguji sudah ditetapkan. Tanggal, jam, dan ' + (daring(x) ? 'tautan Zoom' : 'ruang') + ' diisi oleh <b>admin pengajuan sidang</b> dari ruangnya.</div><details class="kembalikan"><summary>Admin sidang berhalangan? Jadwalkan dari sini</summary>' + hIsiJadwal(x) + '</details>' : hIsiJadwal(x)) + berkas(x) + '</article>';
       });
     }
     /* 4. jadwal */
@@ -2370,9 +2374,10 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     if (!ujianMendatang(sd.terjadwal).length) h += '<div class="kosong"><b>Belum ada ujian terjadwal</b>Ujian muncul di sini setelah dewan penguji ditetapkan Kaprodi dan waktunya diatur.</div>';
     var hariKini = '', mendatang = ujianMendatang(sd.terjadwal), lewat = sd.terjadwal.filter(function (x) { return mendatang.indexOf(x) < 0; });
     mendatang.forEach(function (x) {
-      if (x.tglUjian !== hariKini) { hariKini = x.tglUjian; h += '<div class="jadwalhari"><span>' + e(hariTanggal(x.tglUjian)) + '</span><span class="pil netral">' + mendatang.filter(function (y) { return y.tglUjian === x.tglUjian; }).length + ' ujian</span></div>'; }
+      if (x.tglUjian !== hariKini) { hariKini = x.tglUjian; h += '<div class="jadwalhari"><span>' + e(hariTanggal(x.tglUjian)) + '</span><span class="aksi-b"><span class="pil netral">' + mendatang.filter(function (y) { return y.tglUjian === x.tglUjian; }).length + ' ujian</span><button type="button" class="tombol mini" data-jadwal-pdf-hari="' + e(x.tglUjian) + '">PDF hari ini</button>' + (tautanJadwal(x) ? '<button type="button" class="tombol mini" data-salin-teks="' + e(tautanJadwal(x)) + '">Salin tautan jadwal</button>' : '') + '</span></div>'; }
       var wa = function (no, peran, nama) { return no ? '<a class="tombol mini wa" target="_blank" rel="noopener" href="https://wa.me/' + e(no) + '?text=' + encodeURIComponent(pesanUjian(x, peran, nama)) + '">WA ' + peran + '</a>' : '<button type="button" class="tombol mini" data-salin-teks="' + e(pesanUjian(x, peran, nama)) + '">Salin pesan ' + peran + '</button>'; };
-      h += '<div class="jadwalbaris" data-sidang-id="' + e(x.id) + '"><div class="jam">' + e(jamTitik(x.jamUjian)) + '<small>WIB · ' + e(x.ruang) + '</small></div><div class="isi"><b>' + e(x.nama) + kls(x.kelas) + ' <span class="mono" style="font-weight:500">' + e(x.nim) + '</span></b><p>' + e(x.judul) + '</p>' +
+      h += '<div class="jadwalbaris" data-sidang-id="' + e(x.id) + '"><div class="jam">' + e(jamTitik(x.jamUjian)) + '<small>WIB · ' + e(daring(x) ? 'Zoom' : x.ruang) + '</small></div><div class="isi"><b>' + e(x.nama) + kls(x.kelas) + ' <span class="mono" style="font-weight:500">' + e(x.nim) + '</span></b><p>' + e(x.judul) + '</p>' +
+        '<div class="tempat">' + (daring(x) ? '<span class="pil netral">Daring · Zoom Meeting</span>' + (x.zoom ? '<a class="tombol mini" href="' + e(x.zoom) + '" target="_blank" rel="noopener">Buka Zoom</a><button type="button" class="tombol mini" data-salin-teks="' + e(x.zoom) + '">Salin tautan Zoom</button>' : '<span style="color:var(--bad);font-weight:700">Tautan Zoom belum diisi</span>') : '<span class="pil netral">Tatap muka · ' + e(x.ruang) + '</span>') + '</div>' +
         '<div class="dewan"><span>Ketua: <b>' + e(x.ketua) + '</b></span><span>Anggota: <b>' + e(x.anggota) + '</b></span><span>Anggota/Pembimbing: <b>' + e(x.pembimbing) + '</b></span></div>' +
         '<div class="aksi-b">' + wa(x.waKetua, 'Ketua', x.ketua) + wa(x.waAnggota, 'Anggota', x.anggota) + wa(x.waPembimbing, 'Pembimbing', x.pembimbing) + wa(x.wa, 'Mahasiswa', x.nama) + '</div>' +
         '<details class="kembalikan"><summary>Ubah jadwal</summary>' + hIsiJadwal(x) + '</details></div></div>';
@@ -2388,18 +2393,28 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     return h;
   }
   function ujianMendatang(L) { var kini = hariIniLokal(); return (L || []).filter(function (x) { return /^\d{4}-\d{2}-\d{2}$/.test(x.tglUjian || '') && x.tglUjian >= kini; }); }
+  function daring(x) { return x.daring != null ? !!x.daring : (x.kelas === 'Eksekutif' || x.kelas === 'RPL'); }
+  function tautanJadwal(x) { return x.tandaHari ? 'https://skripspace.com/?jadwal=' + x.tglUjian + '&t=' + x.tandaHari : ''; }
   function hIsiJadwal(x) {
-    return '<div class="kisi"><div class="isian"><label for="jt-' + e(x.id) + '">Tanggal ujian</label><span class="tgl"><input type="date" id="jt-' + e(x.id) + '" data-f="tanggal" value="' + e(x.tglUjian || '') + '"></span></div>' +
+    var d = daring(x);
+    return '<div class="catat" style="margin:0 0 4px">' + (d ? 'Kelas <b>' + e(x.kelas) + '</b>: ujian <b>daring lewat Zoom Meeting</b>. Tempel tautan Zoom-nya; tautan itu otomatis masuk ke jadwal, PDF, dan pesan WhatsApp untuk dewan penguji dan mahasiswa.' : 'Kelas <b>Reguler</b>: ujian <b>tatap muka</b>. Isi ruang kelas tempat ujian.') + '</div>' +
+      '<div class="kisi"><div class="isian"><label for="jt-' + e(x.id) + '">Tanggal ujian</label><span class="tgl"><input type="date" id="jt-' + e(x.id) + '" data-f="tanggal" value="' + e(x.tglUjian || '') + '"></span></div>' +
       '<div class="isian"><label for="jj-' + e(x.id) + '">Jam mulai (WIB)</label><input type="text" id="jj-' + e(x.id) + '" data-f="jam" inputmode="numeric" maxlength="5" placeholder="09.00" value="' + e(jamTitik(x.jamUjian || '')) + '"></div>' +
-      '<div class="isian"><label for="jr-' + e(x.id) + '">Ruang</label><input type="text" id="jr-' + e(x.id) + '" data-f="ruang" list="dRuang" maxlength="40" placeholder="Ruang Sidang 1" value="' + e(x.ruang || '') + '"></div></div>' +
+      (d ? '<div class="isian penuh"><label for="jz-' + e(x.id) + '">Tautan Zoom Meeting</label><input type="url" id="jz-' + e(x.id) + '" data-f="zoom" inputmode="url" maxlength="400" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="https://zoom.us/j/..." value="' + e(x.zoom || '') + '"><span class="bantu">Salin dari Zoom (Copy invitation link), lalu tempel di sini.</span></div>'
+        : '<div class="isian"><label for="jr-' + e(x.id) + '">Ruang kelas</label><input type="text" id="jr-' + e(x.id) + '" data-f="ruang" list="dRuang" maxlength="40" placeholder="Ruang Kuliah 3.2" value="' + e(x.ruang || '') + '"></div>') + '</div>' +
       '<div class="catat galat" data-galat hidden></div><div class="aksi"><div class="kanan"><button type="button" class="tombol ' + (x.tglUjian ? '' : 'utama') + '" data-sidang-jadwal>' + (x.tglUjian ? 'Simpan perubahan jadwal' : 'Jadwalkan ujian') + '</button></div></div>';
   }
+  function tempatUjian(x) { return daring(x) ? 'Daring melalui Zoom Meeting' : 'Tatap muka di ' + x.ruang; }
   function pesanUjian(x, peran, nama) {
-    var tugas = peran === 'Ketua' ? 'Ketua Penguji' : (peran === 'Anggota' ? 'Anggota Penguji' : 'Anggota Penguji/Pembimbing');
-    var rinci = 'Hari/tanggal: ' + hariTanggal(x.tglUjian) + '\nWaktu: ' + jamTitik(x.jamUjian) + ' WIB\nRuang: ' + x.ruang + '\n\nMahasiswa: ' + x.nama + ' (NIM ' + x.nim + ')\nJudul: ' + x.judul + '\n\nDewan penguji:\n1. Ketua: ' + x.ketua + '\n2. Anggota: ' + x.anggota + '\n3. Anggota/Pembimbing: ' + x.pembimbing;
-    if (peran === 'Mahasiswa') return 'Assalamu\'alaikum Wr. Wb. Saudara/i ' + nama + '.\n\nBerikut jadwal Ujian Skripsi Anda:\n\n' + rinci + '\n\nHadir 30 menit sebelum ujian dimulai, berpakaian rapi sesuai ketentuan, dan siapkan naskah skripsi untuk dewan penguji.\n\nWassalamu\'alaikum Wr. Wb.\nPengelola Prodi S1 Ilmu Hukum FH UNISSULA';
-    return 'Assalamu\'alaikum Wr. Wb. Bapak/Ibu ' + nama + '.\n\nDengan hormat, kami sampaikan jadwal Ujian Skripsi berikut. Bapak/Ibu bertugas sebagai *' + tugas + '*.\n\n' + rinci +
-      '\n\nMohon kesediaan Bapak/Ibu untuk hadir menguji pada waktu tersebut. Atas perhatian dan kesediaan Bapak/Ibu, kami ucapkan terima kasih.\n\nWassalamu\'alaikum Wr. Wb.\nPengelola Prodi S1 Ilmu Hukum FH UNISSULA';
+    var tugas = peran === 'Ketua' ? 'Ketua Penguji' : (peran === 'Anggota' ? 'Anggota Penguji' : 'Anggota Penguji/Pembimbing'), d = daring(x), tj = tautanJadwal(x);
+    var rinci = 'Hari/tanggal : ' + hariTanggal(x.tglUjian) + '\nWaktu : ' + jamTitik(x.jamUjian) + ' WIB\nPelaksanaan : ' + tempatUjian(x) + (d && x.zoom ? '\nTautan Zoom : ' + x.zoom : '') +
+      '\n\nMahasiswa : ' + x.nama + ' (NIM ' + x.nim + ')\nKelas : ' + x.kelas + '\nJudul : ' + x.judul + '\n\nDewan penguji:\n1. Ketua: ' + x.ketua + '\n2. Anggota: ' + x.anggota + '\n3. Anggota/Pembimbing: ' + x.pembimbing;
+    var lampiran = tj ? '\n\nJadwal lengkap ujian skripsi pada hari tersebut (dapat dibuka dan diunduh sebagai PDF):\n' + tj : '';
+    var tutup = '\n\nWassalamu\'alaikum Warahmatullahi Wabarakatuh.\n\nHormat kami,\nAdmin Ujian Skripsi\nProdi S1 Ilmu Hukum FH UNISSULA';
+    if (peran === 'Mahasiswa') return 'Assalamu\'alaikum Warahmatullahi Wabarakatuh.\n\nSaudara/i ' + nama + ',\n\nBerikut kami sampaikan jadwal Ujian Skripsi Anda:\n\n' + rinci + lampiran +
+      (d ? '\n\nMohon masuk ke ruang Zoom 15 menit sebelum ujian dimulai, memakai nama lengkap, berpakaian rapi sesuai ketentuan, dan memastikan kamera, mikrofon, serta jaringan internet berfungsi baik.' : '\n\nMohon hadir 30 menit sebelum ujian dimulai, berpakaian rapi sesuai ketentuan, dan menyiapkan naskah skripsi untuk dewan penguji.') + tutup;
+    return 'Assalamu\'alaikum Warahmatullahi Wabarakatuh.\n\nYth. Bapak/Ibu ' + nama + '\n\nDengan hormat, bersama pesan ini kami sampaikan bahwa Bapak/Ibu dijadwalkan menguji pada Ujian Skripsi berikut sebagai *' + tugas + '*:\n\n' + rinci + lampiran +
+      '\n\nKami memohon kesediaan Bapak/Ibu untuk ' + (d ? 'bergabung melalui tautan Zoom di atas' : 'hadir di ruang ujian') + ' pada waktu tersebut. Apabila Bapak/Ibu berhalangan, mohon berkenan mengabari kami. Atas perhatian dan kesediaan Bapak/Ibu, kami mengucapkan terima kasih.' + tutup;
   }
   /* ---- jadwal ujian sebagai PDF (A4 mendatar), digambar langsung supaya tampilannya sama di semua perangkat ---- */
   var PDF_LEBAR = { R: [278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584], B: [278,333,474,556,556,889,722,238,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,333,333,584,584,584,611,975,722,722,722,722,667,611,778,722,278,556,722,611,833,722,778,667,778,722,667,611,722,667,944,667,667,611,333,278,333,584,556,333,556,611,556,611,556,333,611,611,278,278,556,278,889,611,611,611,611,389,556,333,611,556,778,556,556,500,389,280,389,584] };
@@ -2415,19 +2430,27 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     if (batas && baris.length > batas) { baris = baris.slice(0, batas); var a = baris[batas - 1]; while (a.length > 3 && lebarTeks(a + '...', f, u) > maks) a = a.slice(0, -1); baris[batas - 1] = a.replace(/[ ,;:.-]+$/, '') + '...'; }
     return baris;
   }
+  /* tautan panjang dipotong per huruf (tanpa tanda hubung) supaya tetap bisa dibaca dan disalin dari PDF */
+  function potongUrl(s, u, maks, batas) {
+    var baris = [], kini = '';
+    for (var i = 0; i < s.length; i++) { if (lebarTeks(kini + s.charAt(i), 'R', u) > maks) { baris.push(kini); kini = ''; } kini += s.charAt(i); }
+    if (kini) baris.push(kini);
+    if (baris.length > batas) { baris = baris.slice(0, batas); baris[batas - 1] = baris[batas - 1].slice(0, -3) + '...'; }
+    return baris;
+  }
   function jadwalPdf(daftar, kaprodi) {
-    var L = 841.89, T = 595.28, M = 36, hal = [], c = '', y = 0;
+    var L = 841.89, T = 595.28, M = 36, hal = [], halAn = [], an = [], c = '', y = 0;
     var TINTA = '0.078 0.075 0.169', AKSEN = '0.263 0.188 0.961', POP = '1 0.886 0.29', REDUP = '0.349 0.345 0.467', RAMBUT = '0.812 0.82 0.91', SELANG = '0.957 0.961 0.992', PUTIH = '1 1 1';
     var kotak = function (x, yb, w, h, warna) { c += warna + ' rg ' + x.toFixed(2) + ' ' + yb.toFixed(2) + ' ' + w.toFixed(2) + ' ' + h.toFixed(2) + ' re f\n'; };
     var teks = function (x, yb, s, f, u, warna) { c += 'BT /F' + (f === 'B' ? 2 : 1) + ' ' + u + ' Tf ' + warna + ' rg ' + x.toFixed(2) + ' ' + yb.toFixed(2) + ' Td (' + pdfTeks(s) + ') Tj ET\n'; };
     var kanan = function (xk, yb, s, f, u, warna) { teks(xk - lebarTeks(s, f, u), yb, s, f, u, warna); };
-    var kol = [{ x: M, w: 70, j: 'WAKTU' }, { x: M + 70, w: 92, j: 'RUANG' }, { x: M + 162, w: 150, j: 'MAHASISWA' }, { x: M + 312, w: 226, j: 'JUDUL SKRIPSI' }, { x: M + 538, w: L - 2 * M - 538, j: 'DEWAN PENGUJI' }];
+    var kol = [{ x: M, w: 70, j: 'WAKTU' }, { x: M + 70, w: 92, j: 'TEMPAT' }, { x: M + 162, w: 150, j: 'MAHASISWA' }, { x: M + 312, w: 226, j: 'JUDUL SKRIPSI' }, { x: M + 538, w: L - 2 * M - 538, j: 'DEWAN PENGUJI' }];
     var hari = [], peta = {};
     daftar.forEach(function (x) { if (!peta[x.tglUjian]) { peta[x.tglUjian] = []; hari.push(x.tglUjian); } peta[x.tglUjian].push(x); });
     var awal = hari[0], akhir = hari[hari.length - 1], bl = function (iso) { return BULAN_ID[+iso.slice(5, 7) - 1].toUpperCase() + ' ' + iso.slice(0, 4); };
     var periode = bl(awal) === bl(akhir) ? bl(awal) : BULAN_ID[+awal.slice(5, 7) - 1].toUpperCase() + (awal.slice(0, 4) === akhir.slice(0, 4) ? '' : ' ' + awal.slice(0, 4)) + ' - ' + bl(akhir);
     function kepalaHal(pertama) {
-      c = '';
+      c = ''; an = [];
       var tb = pertama ? 96 : 54;
       kotak(0, T - tb, L, tb, TINTA); kotak(0, T - tb - 5, L, 5, AKSEN);
       if (pertama) {
@@ -2440,7 +2463,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       }
       y = T - tb - 5 - 22;
     }
-    function tutupHal() { hal.push(c); }
+    function tutupHal() { hal.push(c); halAn.push(an); }
     function kepalaKolom() {
       kotak(M, y - 6, L - 2 * M, 18, SELANG);
       kol.forEach(function (k) { teks(k.x + 8, y, k.j, 'B', 7.5, REDUP); });
@@ -2453,10 +2476,10 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       y -= 6; kotak(M, y - 3, 11, 11, POP); teks(M + 18, y - 1, hariTanggal(tgl), 'B', 13.5, TINTA); kanan(L - M, y - 1, D.length + ' ujian', 'R', 9.5, REDUP);
       y -= 20; kepalaKolom();
       D.forEach(function (x, i) {
-        var nm = bungkusTeks(x.nama, 'B', 10, kol[2].w - 16, 2), jd = bungkusTeks(x.judul, 'R', 8.8, kol[3].w - 16, 6), rg = bungkusTeks(x.ruang, 'B', 9.5, kol[1].w - 16, 2);
+        var nm = bungkusTeks(x.nama, 'B', 10, kol[2].w - 16, 2), jd = bungkusTeks(x.judul, 'R', 8.8, kol[3].w - 16, 6), rg = bungkusTeks(x.zoom ? 'Zoom Meeting' : x.ruang, 'B', 9.5, kol[1].w - 16, 2), zl = x.zoom ? potongUrl(x.zoom, 6.3, kol[1].w - 16, 7) : [];
         var dw = [['KETUA', x.ketua], ['ANGGOTA', x.anggota], ['ANGGOTA / PEMBIMBING', x.pembimbing]].map(function (d) { return [d[0], bungkusTeks(d[1], 'B', 8.8, kol[4].w - 16, 2)]; });
         var tDw = dw.reduce(function (n, d) { return n + 9 + d[1].length * 10.5 + 3; }, 0) - 3;
-        var tinggi = Math.max(34, nm.length * 12 + 22, jd.length * 11, tDw, rg.length * 12) + 18;
+        var tinggi = Math.max(34, nm.length * 12 + 27, jd.length * 11, tDw, rg.length * 12 + (zl.length ? zl.length * 7.6 + 16 : 0)) + 18;
         if (y - tinggi < M + 26) { tutupHal(); kepalaHal(false); teks(M, y, hariTanggal(tgl) + ' (lanjutan)', 'B', 11, TINTA); y -= 18; kepalaKolom(); }
         var atas = y - 6, bawah = atas - tinggi;
         if (i % 2 === 1) kotak(M, bawah, L - 2 * M, tinggi, '0.98 0.98 0.996');
@@ -2464,8 +2487,16 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         var ty = atas - 19;
         teks(kol[0].x + 10, ty - 2, jamTitik(x.jamUjian), 'B', 16, AKSEN); teks(kol[0].x + 10, ty - 14, 'WIB', 'B', 7.5, REDUP);
         rg.forEach(function (b, n) { teks(kol[1].x + 8, ty - n * 12, b, 'B', 9.5, TINTA); });
+        if (zl.length) {
+          var zy = ty - rg.length * 12 + 2;
+          teks(kol[1].x + 8, zy, 'DARING  \u00b7  KETUK TAUTAN', 'B', 5.8, REDUP);
+          zl.forEach(function (b, n) { teks(kol[1].x + 8, zy - 8.5 - n * 7.6, b, 'R', 6.3, AKSEN); });
+          an.push([kol[1].x + 4, zy - 10 - zl.length * 7.6, kol[1].x + kol[1].w - 4, ty + 10, x.zoom]);
+        }
         nm.forEach(function (b, n) { teks(kol[2].x + 8, ty - n * 12, b, 'B', 10, TINTA); });
-        teks(kol[2].x + 8, ty - nm.length * 12 - 1, 'NIM ' + x.nim, 'R', 8.5, REDUP); teks(kol[2].x + 8, ty - nm.length * 12 - 12, x.kelas + (x.kekhususan ? '  ·  ' + x.kekhususan.replace('Hukum ', 'H. ') : ''), 'R', 8, REDUP);
+        teks(kol[2].x + 8, ty - nm.length * 12 - 1, 'NIM ' + x.nim, 'R', 8.5, REDUP); var kTeks = String(x.kelas || '').toUpperCase(), ky = ty - nm.length * 12 - 14, kw = lebarTeks(kTeks, 'B', 6.8) + 10, kc = x.kelas === 'RPL' ? ['0.898 0.125 0.18', PUTIH] : (x.kelas === 'Eksekutif' ? ['0.184 0.42 1', PUTIH] : [POP, TINTA]);
+        if (kTeks) { kotak(kol[2].x + 8, ky - 3, kw, 10.5, kc[0]); teks(kol[2].x + 13, ky - 0.4, kTeks, 'B', 6.8, kc[1]); }
+        if (x.kekhususan) teks(kol[2].x + 8 + (kTeks ? kw + 6 : 0), ky, x.kekhususan.replace('Hukum ', 'H. '), 'R', 8, REDUP);
         jd.forEach(function (b, n) { teks(kol[3].x + 8, ty + 1 - n * 11, b, 'R', 8.8, TINTA); });
         var dy = ty + 2;
         dw.forEach(function (d) { teks(kol[4].x + 8, dy, d[0], 'B', 6.5, AKSEN); dy -= 9.5; d[1].forEach(function (b) { teks(kol[4].x + 8, dy, b, 'B', 8.8, TINTA); dy -= 10.5; }); dy -= 2.5; });
@@ -2483,7 +2514,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var d2 = function (v) { return ('0' + v).slice(-2); }, kini = new Date(), terbit = d2(kini.getDate()) + '-' + d2(kini.getMonth() + 1) + '-' + kini.getFullYear() + ' ' + d2(kini.getHours()) + '.' + d2(kini.getMinutes());
     hal = hal.map(function (isi, i) {
       c = isi; kotak(M, M - 6, L - 2 * M, 0.6, RAMBUT);
-      teks(M, M - 19, 'Diterbitkan ' + terbit + ' WIB melalui SKRIPSPACE (skripspace.com). Dewan penguji ditetapkan Ketua Program Studi; perubahan jadwal diumumkan pengelola prodi.', 'R', 7.5, REDUP);
+      teks(M, M - 19, 'Diterbitkan ' + terbit + ' WIB melalui SKRIPSPACE (skripspace.com). Reguler: tatap muka di ruang kelas; Eksekutif dan RPL: daring lewat Zoom Meeting.', 'R', 7.5, REDUP);
       kanan(L - M, M - 19, 'Halaman ' + (i + 1) + ' dari ' + hal.length, 'B', 7.5, REDUP);
       return c;
     });
@@ -2492,9 +2523,10 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var tulis = function (s) { var u = new Uint8Array(s.length); for (var i = 0; i < s.length; i++) u[i] = s.charCodeAt(i) & 255; bagian.push(u); panjang += u.length; };
     var obj = function (no, isi) { letak[no] = panjang; tulis(no + ' 0 obj\n' + isi + '\nendobj\n'); };
     tulis('%PDF-1.4\n%âãÏÓ\n');
-    hal.forEach(function (isi) {
+    hal.forEach(function (isi, ih) {
+      var ant = (halAn[ih] || []).map(function (q) { return '<< /Type /Annot /Subtype /Link /Rect [' + q.slice(0, 4).map(function (v) { return v.toFixed(2); }).join(' ') + '] /Border [0 0 0] /A << /S /URI /URI (' + pdfTeks(q[4]) + ') >> >>'; }).join(' ');
       obj(n, '<< /Length ' + isi.length + ' >>\nstream\n' + isi + '\nendstream');
-      obj(n + 1, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' + L + ' ' + T + '] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ' + n + ' 0 R >>'); anak.push(n + 1); n += 2;
+      obj(n + 1, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ' + L + ' ' + T + '] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ' + n + ' 0 R' + (ant ? ' /Annots [' + ant + ']' : '') + ' >>'); anak.push(n + 1); n += 2;
     });
     obj(1, '<< /Type /Catalog /Pages 2 0 R >>'); obj(2, '<< /Type /Pages /Count ' + anak.length + ' /Kids [' + anak.map(function (a) { return a + ' 0 R'; }).join(' ') + '] >>');
     obj(3, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>'); obj(4, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
@@ -2503,7 +2535,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     tulis(xr + 'trailer\n<< /Size ' + n + ' /Root 1 0 R /Info << /Title (Jadwal Ujian Skripsi ' + pdfTeks(periode) + ') /Producer (SKRIPSPACE) >> >>\nstartxref\n' + awalX + '\n%%EOF\n');
     var semuaByte = new Uint8Array(panjang), p = 0;
     bagian.forEach(function (b) { semuaByte.set(b, p); p += b.length; });
-    return { u8: semuaByte, nama: 'JADWAL UJIAN SKRIPSI - ' + periode + '.pdf', halaman: hal.length };
+    return { u8: semuaByte, nama: 'JADWAL UJIAN SKRIPSI - ' + (hari.length === 1 ? hariTanggal(hari[0]).replace(/,/g, '').toUpperCase() : periode) + '.pdf', halaman: hal.length };
   }
   function turunkanPdf(p) {
     var u8 = p.u8;
@@ -2524,6 +2556,11 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   function klikSidangAdmin(t) {
     var k = t.closest('[data-sidang-id]'), g = k ? k.querySelector('[data-galat]') : null, isi = function (f) { var el = (t.closest('details') || k).querySelector('[data-f="' + f + '"]'); return el ? el.value.trim() : ''; };
     var kirim = function (fn, arg, pesan) { galat(g, ''); sibuk(t, true); api(fn, S.pin, k.getAttribute('data-sidang-id'), arg).then(function (d) { segarAdmin(d); toast(pesan); }).catch(function (x) { galat(g, x.message); sibuk(t, false); }); };
+    if (t.hasAttribute('data-jadwal-pdf-hari')) {
+      var tglH = t.getAttribute('data-jadwal-pdf-hari');
+      try { turunkanPdf(jadwalPdf(S.admin.sidang.terjadwal.filter(function (y) { return y.tglUjian === tglH; }), (S.admin.sidang.kaprodi || ''))); } catch (x) { toast('Jadwal belum bisa dibuat: ' + x.message); }
+      return true;
+    }
     if (t.hasAttribute('data-jadwal-pdf')) {
       try { turunkanPdf(jadwalPdf(ujianMendatang(S.admin.sidang.terjadwal), (S.admin.sidang.kaprodi || ''))); } catch (x) { toast('Jadwal belum bisa dibuat: ' + x.message); }
       return true;
@@ -2544,11 +2581,12 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     }
     if (t.hasAttribute('data-sidang-jadwal')) {
       g = (t.closest('details') || k).querySelector('[data-galat]');
-      var tg = isi('tanggal'), jm = isi('jam'), rg = isi('ruang');
+      var tg = isi('tanggal'), jm = isi('jam'), rg = isi('ruang'), zm = isi('zoom').replace(/\s+/g, ''), pakaiZoom = !!(t.closest('details') || k).querySelector('[data-f="zoom"]');
       if (!tg) { galat(g, 'Isi tanggal ujian.'); return true; }
       if (!/^\d{1,2}[.:]\d{2}$/.test(jm)) { galat(g, 'Isi jam mulai, misalnya 09.00.'); return true; }
-      if (rg.length < 2) { galat(g, 'Isi ruang ujian.'); return true; }
-      kirim('apiAdminJadwal', { tanggal: tg, jam: jm, ruang: rg }, 'Ujian terjadwal. Kirim pemberitahuan ke dewan penguji lewat tombol WA.'); return true;
+      if (pakaiZoom && !/^https:\/\/\S+\.\S+/.test(zm)) { galat(g, 'Tempel tautan Zoom Meeting yang lengkap, diawali https://'); return true; }
+      if (!pakaiZoom && rg.length < 2) { galat(g, 'Isi ruang kelas tempat ujian.'); return true; }
+      kirim('apiAdminJadwal', { tanggal: tg, jam: jm, ruang: rg, zoom: zm }, 'Ujian terjadwal. Kirim pemberitahuan ke dewan penguji lewat tombol WA.'); return true;
     }
     if (t.hasAttribute('data-salin-teks')) { salin(t.getAttribute('data-salin-teks'), 'Pesan disalin. Tempel di WhatsApp.'); return true; }
     if (t.hasAttribute('data-sidang-pdf')) {
@@ -3102,6 +3140,29 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       '<div class="tabel-wadah"><table class="pantau"><thead><tr><th>Mahasiswa</th><th>Pembimbing</th><th>Tahap</th><th>Bimbingan</th><th>Diam</th><th>Tindakan</th></tr></thead><tbody id="ptBadan">' + hBarisPantau() + '</tbody></table></div>' +
       '<p class="catat">Batas macet diatur di tab <b>PENGATURAN</b> spreadsheet, baris "Batas Macet (hari)". Catatan bimbingan tersimpan di tab <b>BIMBINGAN</b> dan pesan di tab <b>PESAN</b>.</p></section>';
   }
+  /* ---------------- jadwal ujian satu hari (skripspace.com/?jadwal=TANGGAL&t=...) ---------------- */
+  function bukaJadwalHari(tgl, tanda) {
+    var w = $('verif'), data = null;
+    function isi(h) { w.innerHTML = '<div class="kartu lebar">' + h + '<div class="aksi"><div class="kanan"><button type="button" class="tombol polos" data-tutup-verif>Buka SKRIPSPACE</button></div></div></div>'; }
+    w.hidden = false; isi('<span class="pil netral">Memuat</span><h2>Jadwal Ujian Skripsi</h2><p>Mengambil jadwal dari Program Studi S1 Ilmu Hukum FH UNISSULA.</p>');
+    w.addEventListener('click', function (ev) {
+      var t = ev.target.closest('button'); if (!t) return;
+      if (t.hasAttribute('data-tutup-verif')) { w.hidden = true; try { history.replaceState(null, '', location.pathname); } catch (x) {} return; }
+      if (t.hasAttribute('data-unduh-jadwal') && data) { try { turunkanPdf(jadwalPdf(data.ujian, data.kaprodi || '')); } catch (x) { toast('PDF belum bisa dibuat: ' + x.message); } return; }
+      if (t.hasAttribute('data-salin-teks')) salin(t.getAttribute('data-salin-teks'), 'Tautan disalin.');
+    });
+    api('apiJadwalHari', tgl, tanda).then(function (d) {
+      data = d;
+      if (!d.ujian.length) return isi('<span class="pil kuning">Belum ada</span><h2>' + e(hariTanggal(d.tanggal)) + '</h2><p>Tidak ada ujian skripsi yang terjadwal pada hari ini, atau jadwalnya sudah dipindahkan. Hubungi admin ujian skripsi untuk jadwal terbaru.</p>');
+      isi('<span class="pil hijau">Jadwal resmi</span><h2>Jadwal Ujian Skripsi</h2><p><b style="color:var(--ink)">' + e(hariTanggal(d.tanggal)) + '</b> \u00b7 ' + d.ujian.length + ' ujian \u00b7 Prodi S1 Ilmu Hukum FH UNISSULA. Halaman ini selalu menampilkan jadwal terbaru.</p>' +
+        '<div class="aksi"><div><button type="button" class="tombol utama" data-unduh-jadwal>Unduh jadwal PDF</button></div></div>' +
+        d.ujian.map(function (x) {
+          return '<div class="jadwalbaris"><div class="jam">' + e(jamTitik(x.jamUjian)) + '<small>WIB \u00b7 ' + e(daring(x) ? 'Zoom' : x.ruang) + '</small></div><div class="isi"><b>' + e(x.nama) + kls(x.kelas) + ' <span class="mono" style="font-weight:500">' + e(x.nim) + '</span></b><p>' + e(x.judul) + '</p>' +
+            '<div class="tempat">' + (daring(x) ? '<span class="pil netral">Daring \u00b7 Zoom Meeting</span>' + (x.zoom ? '<a class="tombol mini wa" href="' + e(x.zoom) + '" target="_blank" rel="noopener">Buka Zoom</a><button type="button" class="tombol mini" data-salin-teks="' + e(x.zoom) + '">Salin tautan Zoom</button>' : '') : '<span class="pil netral">Tatap muka \u00b7 ' + e(x.ruang) + '</span>') + '</div>' +
+            '<div class="dewan"><span>Ketua: <b>' + e(x.ketua) + '</b></span><span>Anggota: <b>' + e(x.anggota) + '</b></span><span>Anggota/Pembimbing: <b>' + e(x.pembimbing) + '</b></span></div></div></div>';
+        }).join(''));
+    }).catch(function (x) { isi('<span class="pil merah">Tidak bisa dibuka</span><h2>Jadwal Ujian Skripsi</h2><p>' + e(x.message) + '</p>'); });
+  }
   /* ---------------- verifikasi barcode (skripspace.com/?v=...) ---------------- */
   function bukaVerif(tanda) {
     var w = $('verif');
@@ -3305,6 +3366,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     pasang(); tampil('beranda');
     $('spandukDemo').hidden = HIDUP; $('bContoh').hidden = HIDUP; $('sdContoh').hidden = HIDUP; siapPasang();
     var mv = /[?&]v=([A-Za-z0-9.\-]{8,60})/.exec(location.search); if (mv) bukaVerif(mv[1]);
+    var mj = /[?&]jadwal=(\d{4}-\d{2}-\d{2})(?:&|$)/.exec(location.search), mt = /[?&]t=([0-9a-f]{6,20})(?:&|$)/.exec(location.search); if (mj && mt) bukaJadwalHari(mj[1], mt[1]);
     api('apiInit').then(function (init) {
       S.init = init;
       $('fJumlah').textContent = init.jumlahJudul.toLocaleString('id-ID'); $('fTa').textContent = init.tahunAkademik || '-';
