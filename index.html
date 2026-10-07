@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=44">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=44">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=45">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=45">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=44">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=45">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -989,7 +989,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 44</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 45</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1248,9 +1248,12 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   /* Penanda kelas (Reguler / Eksekutif / RPL): stabilo kuning di samping setiap nama mahasiswa pada ruang pengelola. */
   function kls(k) { k = String(k || '').trim(); return k ? ' <span class="kls ' + (/^rpl/i.test(k) ? 'rpl' : (/^eks/i.test(k) ? 'eks' : 'reg')) + '">' + e(k) + '</span>' : ''; }
   /* Nomor surat: otomatis dari buku nomor surat fakultas; kolom isian hanya muncul bila buku itu tidak bisa dibuka. */
-  function hNomor(id, label, a) {
+  function hNomor(id, label, a, urut) {
     var b = a.bukuNomor || {};
-    if (b.aktif && b.ok) return '<div class="isian"><label>' + label + ' <span class="pil hijau">Otomatis</span></label><div class="nomoroto"><b class="mono">' + e(b.berikut) + '</b></div><input type="hidden" data-f="nomor" data-oto="1" value=""><span class="bantu">Diambil dari <a href="' + e(b.url) + '" target="_blank" rel="noopener">buku nomor surat fakultas</a> dan langsung dicatat di sana saat Anda menyetujui. Bila ada surat lain yang lebih dulu memakai nomor ini, sistem otomatis mengambil nomor berikutnya.</span></div>';
+    urut = urut || 0;
+    /* tiap kartu di antrean mendapat nomor urutnya sendiri: kartu pertama = nomor kosong berikutnya di buku, kartu kedua = sesudahnya, dst. */
+    var nomorKartu = b.angka ? String(b.berikut).replace(new RegExp('(^|\\D)' + b.angka + '(?=\\D|$)'), '$1' + (b.angka + urut)) : b.berikut;
+    if (b.aktif && b.ok) return '<div class="isian"><label>' + label + ' <span class="pil hijau">Otomatis</span></label><div class="nomoroto"><b class="mono">' + e(nomorKartu) + '</b></div><input type="hidden" data-f="nomor" data-oto="1" value=""><span class="bantu">' + (urut ? 'Nomor urut ke-' + (urut + 1) + ' di antrean. ' : 'Nomor kosong berikutnya di buku. ') + 'Diambil dari <a href="' + e(b.url) + '" target="_blank" rel="noopener">buku nomor surat fakultas</a> dan langsung dicatat di sana saat Anda menyetujui. Tiap surat mendapat nomor berbeda; bila Anda menyetujui tidak sesuai urutan antrean, yang disetujui lebih dulu memakai nomor yang lebih kecil dan nomor pada kartu lain menyesuaikan.</span></div>';
     return '<div class="isian"><label for="' + e(id) + '">' + label + '</label><input type="text" id="' + e(id) + '" class="mono" data-f="nomor" value="' + e(a.nomorBerikut) + '" maxlength="40">' + (b.aktif ? '<span class="bantu" style="color:var(--bad)">Buku nomor surat belum bisa dibuka (' + e(b.pesan || '') + '). Sementara isi manual.</span>' : '') + '</div>';
   }
   function ketWali(x) { return e(x.dosenWali) + (x.waliAsal ? ' <small style="display:inline;font-weight:500">(Kaprodi, ' + (/^belum ada/i.test(x.waliAsal) ? 'mahasiswa belum punya dosen wali' : 'menggantikan dosen wali ' + e(x.waliAsal)) + ')</small>' : ''); }
@@ -2204,7 +2207,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var kap = a.peran !== 'sekprodi', kapSaja = a.peran === 'kaprodi', rs = a.riset || { menunggu: [], riwayat: [] }, hr = '';
     hr += '<div class="aksi"><div><h2 style="font-size:28px;font-weight:800">Izin riset</h2></div><span class="pil ' + (rs.menunggu.length ? 'kuning' : 'netral') + '">' + rs.menunggu.length + ' menunggu</span></div>';
     if (!rs.menunggu.length) hr += '<div class="kosong"><b>Tidak ada permohonan izin riset</b>Permohonan dari mahasiswa akan muncul di sini.</div>';
-    rs.menunggu.forEach(function (x) {
+    rs.menunggu.forEach(function (x, iR) {
       hr += '<article class="berkas" data-riset-id="' + e(x.id) + '"><div class="kepala"><h3>' + e(x.nama) + kls(x.kelas) + '</h3><span class="pil kuning">Izin riset</span></div>' +
         '<div class="meta"><span class="mono"><b>' + e(x.nim) + '</b></span><span>' + e(x.kelas) + '</span><span>WA <b class="mono">' + e(x.wa) + '</b></span><span>' + e(x.waktu) + '</span></div>' +
         '<dl class="rinci"><dt>Instansi tujuan</dt><dd><b>' + e(x.instansi) + '</b></dd><dt>Ditujukan kepada</dt><dd>' + e(x.pimpinan) + '</dd><dt>Judul penelitian</dt><dd>' + e(x.judul) + '</dd><dt>Dosen pembimbing</dt><dd>' + e(x.dosenPembimbing) + '</dd></dl>' +
@@ -2214,7 +2217,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
           if (c.judulSama && c.dosenSama) return '<div class="catat baik"><b>Cocok dengan data prodi.</b> Judul dan dosen pembimbing sama dengan yang tercatat.</div>';
           return '<div class="catat"><b>Berbeda dengan data prodi.</b>' + (c.judulSama ? '' : ' Judul tercatat: ' + e(c.judul) + '.') + (c.dosenSama ? '' : ' Pembimbing tercatat: ' + e(c.dosen) + '.') + '</div>';
         })(x.resmi) +
-        (kap ? '<div class="kisi">' + hNomor('rn-' + x.id, 'Nomor surat pengantar', a) +
+        (kap ? '<div class="kisi">' + hNomor('rn-' + x.id, 'Nomor surat pengantar', a, (a.antrean || []).length + iR) +
           '<div class="isian penuh"><label for="rc-' + e(x.id) + '">Catatan untuk mahasiswa</label><textarea id="rc-' + e(x.id) + '" data-f="catatan" maxlength="300" style="min-height:56px" placeholder="Wajib diisi bila menolak"></textarea></div></div>' +
           '<div class="catat galat" data-galat hidden></div><div class="aksi"><button type="button" class="tombol kecil bahaya" data-riset-aksi="TOLAK">Tolak</button><div class="kanan"><button type="button" class="tombol utama" data-riset-aksi="SETUJU">Setujui dan terbitkan surat</button></div></div>'
           : '<div class="catat">Persetujuan izin riset belum tersedia dari akses ini. Muat ulang halaman.</div>') + '</article>';
@@ -2250,7 +2253,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       h += '</section>';
     }
     if (!a.antrean.length) h += '<div class="kosong"><b>Antrean kosong</b>Pengajuan baru dari mahasiswa akan muncul di sini.</div>';
-    a.antrean.forEach(function (r) {
+    a.antrean.forEach(function (r, iA) {
       h += '<article class="berkas" data-id="' + e(r.id) + '"><div class="kepala"><h3>' + e(r.nama) + '</h3><span>' + (r.ulang ? '<span class="pil kuning">Pengajuan ulang</span> ' : '') + '' + kls(r.kelas) + '</span></div>' +
         '<div class="meta"><span class="mono"><b>' + e(r.nim) + '</b></span><span>' + e(r.kekhususan) + '</span><span>IPK <b class="mono">' + koma(r.ipk, 2) + '</b></span><span><b class="mono">' + r.sks + '</b> SKS</span><span>Wali: <b>' + ketWali(r) + '</b></span>' + (r.mphKrs ? '<span class="pil kuning">MPH sedang ditempuh</span>' : '') + '<span>WA <b class="mono">' + e(r.wa) + '</b></span><span>' + e(r.waktu) + '</span></div>' +
         '<div class="aksi"><span class="bantu" style="font-size:13.5px;color:var(--muted)">' + (r.manual ? 'IPK dan SKS diisi manual; aturan nilai (minimal C, mata kuliah dasar minimal BC, tanpa ganda) dan lulus MPH berdasarkan pernyataan mahasiswa. ' : 'Syarat SKS, IPK, aturan nilai, dan MPH sudah diperiksa dari isian nilai. ') + (r.wd1 && r.wd1.status === 'setuju' ? '<b>Disetujui Wakil Dekan I ' + e(r.wd1.waktu) + ' WIB.</b> ' : '') + (r.krs ? 'Scan KRS: <b>' + e(r.krs.nama) + '</b> (' + r.krs.kb + ' KB)' : 'Scan KRS tidak ada (pengajuan lama).') + '</span>' +
@@ -2268,7 +2271,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         '<div class="isian"><label for="jd-' + e(r.id) + '">Judul yang disetujui</label><textarea id="jd-' + e(r.id) + '" data-f="judul" maxlength="400">' + e(r.judul[r.saranJudul]) + '</textarea><span class="bantu">Boleh disunting sebelum disetujui.</span></div>' +
         '<div class="kisi"><div class="isian"><label for="ds-' + e(r.id) + '">Dosen pembimbing</label><select id="ds-' + e(r.id) + '" data-f="dosen">' + opsiDosen(r) + '</select>' +
         '<input type="text" id="dl-' + e(r.id) + '" data-f="dosenLain" placeholder="Nama dan gelar lengkap" hidden><span class="bantu">Usulan otomatis: perolehan paling sedikit di bidangnya, bukan dosen wali. Semua dosen lain ada di bagian bawah daftar.</span></div>' +
-        hNomor('ns-' + r.id, 'Nomor surat', a) +
+        hNomor('ns-' + r.id, 'Nomor surat', a, iA) +
         '<div class="isian penuh"><label for="ct-' + e(r.id) + '">Catatan untuk mahasiswa</label><textarea id="ct-' + e(r.id) + '" data-f="catatan" maxlength="400" style="min-height:64px" placeholder="Wajib diisi bila meminta revisi atau menolak"></textarea></div></div>' +
         '<div class="catat galat" data-galat hidden></div>' +
         '<div class="aksi"><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="tombol kecil bahaya" data-aksi="TOLAK">Tolak</button><button type="button" class="tombol kecil" data-aksi="REVISI">Minta revisi</button></div>' +
