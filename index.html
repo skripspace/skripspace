@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=43">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=43">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=44">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=44">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=43">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=44">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -300,6 +300,7 @@ textarea { resize: vertical; min-height: 92px; line-height: 1.45; }
 .pil { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11.5px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; background: var(--st-bg); color: var(--st); border: 1.5px solid var(--st); }
 .pil.hijau { --st: var(--ok); --st-bg: var(--ok-bg); } .pil.kuning { --st: var(--warn); --st-bg: var(--warn-bg); } .pil.merah { --st: var(--bad); --st-bg: var(--bad-bg); }
 .kls { display: inline-block; vertical-align: middle; margin-left: 4px; padding: 1px 8px; border: 1.5px solid #14132b; border-radius: 6px; background: #ffe24a; color: #14132b; font-family: var(--f-body, inherit); font-size: 11.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; line-height: 1.5; }
+.nomoroto { padding: 10px 14px; border: 2px dashed var(--ink); border-radius: var(--r-sm); background: var(--sunk); font-size: 16px; overflow-wrap: anywhere; }
 .kls.eks { background: #2f6bff; color: #fff; }
 .kls.rpl { background: #e5202e; color: #fff; border-width: 2px; padding: 1px 10px; font-size: 12.5px; letter-spacing: .08em; box-shadow: 2px 2px 0 #14132b; }
 h2 .kls, h3 .kls { font-size: 12px; position: relative; top: -2px; }
@@ -988,7 +989,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 43</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 44</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1246,6 +1247,12 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
   /* Penanda kelas (Reguler / Eksekutif / RPL): stabilo kuning di samping setiap nama mahasiswa pada ruang pengelola. */
   function kls(k) { k = String(k || '').trim(); return k ? ' <span class="kls ' + (/^rpl/i.test(k) ? 'rpl' : (/^eks/i.test(k) ? 'eks' : 'reg')) + '">' + e(k) + '</span>' : ''; }
+  /* Nomor surat: otomatis dari buku nomor surat fakultas; kolom isian hanya muncul bila buku itu tidak bisa dibuka. */
+  function hNomor(id, label, a) {
+    var b = a.bukuNomor || {};
+    if (b.aktif && b.ok) return '<div class="isian"><label>' + label + ' <span class="pil hijau">Otomatis</span></label><div class="nomoroto"><b class="mono">' + e(b.berikut) + '</b></div><input type="hidden" data-f="nomor" data-oto="1" value=""><span class="bantu">Diambil dari <a href="' + e(b.url) + '" target="_blank" rel="noopener">buku nomor surat fakultas</a> dan langsung dicatat di sana saat Anda menyetujui. Bila ada surat lain yang lebih dulu memakai nomor ini, sistem otomatis mengambil nomor berikutnya.</span></div>';
+    return '<div class="isian"><label for="' + e(id) + '">' + label + '</label><input type="text" id="' + e(id) + '" class="mono" data-f="nomor" value="' + e(a.nomorBerikut) + '" maxlength="40">' + (b.aktif ? '<span class="bantu" style="color:var(--bad)">Buku nomor surat belum bisa dibuka (' + e(b.pesan || '') + '). Sementara isi manual.</span>' : '') + '</div>';
+  }
   function ketWali(x) { return e(x.dosenWali) + (x.waliAsal ? ' <small style="display:inline;font-weight:500">(Kaprodi, ' + (/^belum ada/i.test(x.waliAsal) ? 'mahasiswa belum punya dosen wali' : 'menggantikan dosen wali ' + e(x.waliAsal)) + ')</small>' : ''); }
   var KET_MPH = 'Metode Penelitian Hukum <b>sedang ditempuh</b> (belum lulus); cocokkan dengan KRS.';
   function mphKrs() { return !!S.krs && $('fMphKrs').checked; }
@@ -2207,7 +2214,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
           if (c.judulSama && c.dosenSama) return '<div class="catat baik"><b>Cocok dengan data prodi.</b> Judul dan dosen pembimbing sama dengan yang tercatat.</div>';
           return '<div class="catat"><b>Berbeda dengan data prodi.</b>' + (c.judulSama ? '' : ' Judul tercatat: ' + e(c.judul) + '.') + (c.dosenSama ? '' : ' Pembimbing tercatat: ' + e(c.dosen) + '.') + '</div>';
         })(x.resmi) +
-        (kap ? '<div class="kisi"><div class="isian"><label for="rn-' + e(x.id) + '">Nomor surat pengantar</label><input type="text" id="rn-' + e(x.id) + '" class="mono" data-f="nomor" value="' + e(a.nomorBerikut) + '" maxlength="40"></div>' +
+        (kap ? '<div class="kisi">' + hNomor('rn-' + x.id, 'Nomor surat pengantar', a) +
           '<div class="isian penuh"><label for="rc-' + e(x.id) + '">Catatan untuk mahasiswa</label><textarea id="rc-' + e(x.id) + '" data-f="catatan" maxlength="300" style="min-height:56px" placeholder="Wajib diisi bila menolak"></textarea></div></div>' +
           '<div class="catat galat" data-galat hidden></div><div class="aksi"><button type="button" class="tombol kecil bahaya" data-riset-aksi="TOLAK">Tolak</button><div class="kanan"><button type="button" class="tombol utama" data-riset-aksi="SETUJU">Setujui dan terbitkan surat</button></div></div>'
           : '<div class="catat">Persetujuan izin riset belum tersedia dari akses ini. Muat ulang halaman.</div>') + '</article>';
@@ -2261,7 +2268,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         '<div class="isian"><label for="jd-' + e(r.id) + '">Judul yang disetujui</label><textarea id="jd-' + e(r.id) + '" data-f="judul" maxlength="400">' + e(r.judul[r.saranJudul]) + '</textarea><span class="bantu">Boleh disunting sebelum disetujui.</span></div>' +
         '<div class="kisi"><div class="isian"><label for="ds-' + e(r.id) + '">Dosen pembimbing</label><select id="ds-' + e(r.id) + '" data-f="dosen">' + opsiDosen(r) + '</select>' +
         '<input type="text" id="dl-' + e(r.id) + '" data-f="dosenLain" placeholder="Nama dan gelar lengkap" hidden><span class="bantu">Usulan otomatis: perolehan paling sedikit di bidangnya, bukan dosen wali. Semua dosen lain ada di bagian bawah daftar.</span></div>' +
-        '<div class="isian"><label for="ns-' + e(r.id) + '">Nomor surat</label><input type="text" id="ns-' + e(r.id) + '" class="mono" data-f="nomor" value="' + e(a.nomorBerikut) + '" maxlength="40"></div>' +
+        hNomor('ns-' + r.id, 'Nomor surat', a) +
         '<div class="isian penuh"><label for="ct-' + e(r.id) + '">Catatan untuk mahasiswa</label><textarea id="ct-' + e(r.id) + '" data-f="catatan" maxlength="400" style="min-height:64px" placeholder="Wajib diisi bila meminta revisi atau menolak"></textarea></div></div>' +
         '<div class="catat galat" data-galat hidden></div>' +
         '<div class="aksi"><div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="tombol kecil bahaya" data-aksi="TOLAK">Tolak</button><button type="button" class="tombol kecil" data-aksi="REVISI">Minta revisi</button></div>' +
@@ -2284,7 +2291,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       '<div><label class="sakelar"><span><b>Pengajuan dibuka</b><br><span class="bantu" style="color:var(--muted);font-size:13px">Matikan untuk menutup formulir mahasiswa.</span></span><input type="checkbox" data-atur="dibuka"' + (t.dibuka ? ' checked' : '') + '></label>' +
       '<label class="sakelar"><span><b>Cek sumber luar</b><br><span style="color:var(--muted);font-size:13px">OpenAlex, Crossref, Repository UNISSULA.</span></span><input type="checkbox" data-atur="cekLuar"' + (t.cekLuar ? ' checked' : '') + '></label>' +
       '<label class="sakelar"><span><b>Tulis ke tab resmi saat disetujui</b><br><span style="color:var(--muted);font-size:13px">Menambah baris di tab REGULER atau EKS &amp; RPL.</span></span><input type="checkbox" data-atur="tulisResmi"' + (t.tulisResmi ? ' checked' : '') + '></label></div>' +
-      '<div class="kisi"><div class="isian"><label for="atNomor">Nomor surat terakhir</label><input type="text" id="atNomor" class="mono" value="' + e(t.nomorTerakhir) + '" inputmode="numeric" maxlength="6"><span class="bantu">Kosongkan bila nomor ditulis tangan.</span></div>' +
+      '<div class="kisi"><div class="isian"><label for="atNomor">Nomor surat terakhir</label><input type="text" id="atNomor" class="mono" value="' + e(t.nomorTerakhir) + '" inputmode="numeric" maxlength="6"><span class="bantu">' + (a.bukuNomor && a.bukuNomor.aktif ? (a.bukuNomor.ok ? 'Nomor surat kini diambil otomatis dari <a href="' + e(a.bukuNomor.url) + '" target="_blank" rel="noopener">buku nomor surat fakultas</a>; nomor berikutnya <b class="mono">' + e(a.bukuNomor.berikut) + '</b>. Angka di kolom ini hanya cadangan.' : '<b style="color:var(--bad)">Buku nomor surat belum bisa dibuka: ' + e(a.bukuNomor.pesan || '') + '.</b> Sementara nomor diisi manual.') : 'Kosongkan bila nomor ditulis tangan.') + '</span></div>' +
       '<div class="isian"><label for="atTa">Tahun akademik</label><input type="text" id="atTa" class="mono" value="' + e(t.tahunAkademik) + '" maxlength="9"></div>' +
       '<div class="isian penuh"><label for="atMati">Dosen yang tidak lagi membimbing</label><input type="text" id="atMati" value="' + e(t.tidakAktif) + '" maxlength="300"><span class="bantu">Pisahkan dengan titik koma (;).</span></div></div>' +
       '<div class="aksi"><div class="kanan"><button type="button" class="tombol kecil" data-a="simpanAtur">Simpan pengaturan</button></div></div>' +
@@ -2632,7 +2639,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       var rb = t.closest('.berkas'), rk = rb.querySelector('[data-galat]');
       var kr = { aksi: ra, nomor: rb.querySelector('[data-f="nomor"]').value.trim(), catatan: rb.querySelector('[data-f="catatan"]').value.trim() };
       if (ra === 'TOLAK' && kr.catatan.length < 5) { galat(rk, 'Tulis alasan penolakan untuk mahasiswa dulu.'); return; }
-      if (ra === 'SETUJU' && kr.nomor.length < 3) { galat(rk, 'Isi nomor surat pengantar.'); return; }
+      if (ra === 'SETUJU' && kr.nomor.length < 3 && !rb.querySelector('[data-f="nomor"][data-oto]')) { galat(rk, 'Isi nomor surat pengantar.'); return; }
       if (t.getAttribute('data-yakin') !== '1') {
         var asalR = t.textContent; t.setAttribute('data-yakin', '1'); t.textContent = 'Yakin? Tekan sekali lagi';
         setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-yakin'); t.textContent = asalR; } }, 4000); return;
@@ -2654,7 +2661,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         setTimeout(function () { if (t.isConnected) { t.removeAttribute('data-yakin'); t.textContent = asal; } }, 4000); return;
       }
       galat(kotak, ''); sibuk(t, true);
-      api('apiAdminPutus', S.pin, id, k).then(function (d) { segarAdmin(d); toast(aksi === 'ACC' ? 'Disetujui. Surat sudah terbit untuk mahasiswa.' : 'Keputusan disimpan.'); })
+      api('apiAdminPutus', S.pin, id, k).then(function (d) { segarAdmin(d); var rAcc = aksi === 'ACC' ? (d.riwayat || []).filter(function (y) { return y.id === id; })[0] : null; toast(aksi === 'ACC' ? 'Disetujui' + (rAcc && rAcc.nomorSurat ? ' dengan nomor ' + rAcc.nomorSurat : '') + '. Surat sudah terbit untuk mahasiswa.' : 'Keputusan disimpan.'); })
         .catch(function (x) { galat(kotak, x.message); sibuk(t, false); t.removeAttribute('data-yakin'); });
     }
   }
