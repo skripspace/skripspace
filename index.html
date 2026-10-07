@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=31">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=31">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=32">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=32">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=31">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=32">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -841,7 +841,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
               </div></div>
           </div>
           <div class="catat galat" data-galat hidden></div>
-          <div class="aksi"><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="2">Cek database dan lanjut</button></div></div>
+          <div class="aksi"><button type="button" class="tombol polos" id="sdContoh" hidden>Isi dengan data dan berkas contoh</button><div class="kanan"><button type="button" class="tombol utama" data-sdlanjut="2">Cek database dan lanjut</button></div></div>
         </section>
         <section class="lembar" data-sl="2" hidden>
           <header><h2>Berkas akademik dan sertifikat</h2><p>Tiap berkas berupa foto atau scan <b>JPG/PNG</b>: tegak, terang, dan seluruh tulisan terbaca. Ukurannya diperkecil otomatis.</p></header>
@@ -923,7 +923,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 31</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 32</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1796,6 +1796,25 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     if (t.hasAttribute('data-sd-buang')) { var k = t.closest('[data-dok]'), l = Number(t.closest('[data-sl]').getAttribute('data-sl')); SD.berkas[k.getAttribute('data-dok')].splice(Number(t.getAttribute('data-sd-buang')), 1); sdRender(l); }
     if (t.hasAttribute('data-sd-tutup')) { SD.status = null; sdMode('ajukan'); }
     if (t.hasAttribute('data-sd-ulang')) { var s = SD.status; SD.status = null; if (s && !$('sdNim').value) $('sdNim').value = s.nim; sdMode('ajukan'); sdLangkah(1); }
+  }
+  /* hanya untuk pratinjau: mengisi formulir sidang dengan data dan lembar contoh buatan */
+  function sdContoh() {
+    $('sdNama').value = CONTOH.nama; $('sdNim').value = CONTOH.nim; $('sdWa').value = CONTOH.wa; setRadio('sdkelas', 'Reguler'); SD.turnitin = '18,5'; SD.berkas = {};
+    sdDokumen(0).forEach(function (x) {
+      SD.berkas[x.kunci] = [];
+      for (var j = 0; j < x.min; j++) {
+        var c = document.createElement('canvas'); c.width = 900; c.height = 1270; var g = c.getContext('2d');
+        g.fillStyle = '#fbfaf5'; g.fillRect(0, 0, 900, 1270); g.strokeStyle = '#14132b'; g.lineWidth = 4; g.strokeRect(40, 40, 820, 1190);
+        g.fillStyle = '#14132b'; g.font = 'bold 34px sans-serif'; g.fillText('CONTOH BERKAS', 80, 130); g.font = '24px sans-serif';
+        x.nama.match(/.{1,52}(\s|$)/g).forEach(function (t, i) { g.fillText(t.trim(), 80, 190 + i * 36); });
+        g.fillStyle = '#9aa'; for (var k = 0; k < 18; k++) g.fillRect(80, 330 + k * 46, 520 + ((k * 97) % 220), 8);
+        var b64 = c.toDataURL('image/jpeg', 0.6).split(',')[1], biner = atob(b64), u8 = new Uint8Array(biner.length);
+        for (var i2 = 0; i2 < biner.length; i2++) u8[i2] = biner.charCodeAt(i2);
+        var m = document.createElement('canvas'); m.width = 68; m.height = 96; m.getContext('2d').drawImage(c, 0, 0, 68, 96);
+        SD.berkas[x.kunci].push({ u8: u8, w: 900, h: 1270, kb: Math.max(1, Math.round(u8.length / 1024)), mini: m.toDataURL('image/jpeg', 0.6) });
+      }
+    });
+    $('sdToga').value = 'L'; toast('Formulir sidang diisi data dan berkas contoh. Tekan "Cek database dan lanjut".');
   }
   function siapSidang(init) {
     var I = init.sidang;
@@ -2710,6 +2729,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     semua('input[name="rmode"]').forEach(function (r) { r.addEventListener('change', function () { rMode(r.value); }); });
     $('rNimBaru').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); }); $('rNim').addEventListener('input', function () { this.value = this.value.replace(/\D/g, ''); });
     rLangkah(1);
+    $('sdContoh').addEventListener('click', sdContoh);
     $('vSidang').addEventListener('click', klikSidang); $('bSidangKirim').addEventListener('click', kirimSidang); $('bSidangLihat').addEventListener('click', lihatSidang);
     semua('input[name="sdmode"]').forEach(function (r) { r.addEventListener('change', function () {
       sdMode(r.value);
@@ -2762,7 +2782,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
 
   function mulai() {
     pasang(); tampil('beranda');
-    $('spandukDemo').hidden = HIDUP; $('bContoh').hidden = HIDUP; siapPasang();
+    $('spandukDemo').hidden = HIDUP; $('bContoh').hidden = HIDUP; $('sdContoh').hidden = HIDUP; siapPasang();
     var mv = /[?&]v=([A-Za-z0-9.\-]{8,60})/.exec(location.search); if (mv) bukaVerif(mv[1]);
     api('apiInit').then(function (init) {
       S.init = init;
