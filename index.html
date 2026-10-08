@@ -20,23 +20,23 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=51">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=51">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=52">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=52">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=51">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=52">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="favicon.ico?v=51" sizes="16x16 32x32 48x48 64x64">
-<link rel="icon" type="image/png" sizes="32x32" href="skripspace-32.png?v=51">
-<link rel="icon" type="image/png" sizes="16x16" href="skripspace-16.png?v=51">
-<link rel="icon" type="image/png" sizes="192x192" href="skripspace-192.png?v=51">
-<link rel="apple-touch-icon" href="skripspace-touch-180.png?v=51">
-<link rel="apple-touch-icon" sizes="180x180" href="skripspace-touch-180.png?v=51">
-<link rel="apple-touch-icon" sizes="167x167" href="skripspace-touch-167.png?v=51">
-<link rel="apple-touch-icon" sizes="152x152" href="skripspace-touch-152.png?v=51">
+<link rel="icon" href="favicon.ico?v=52" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="32x32" href="skripspace-32.png?v=52">
+<link rel="icon" type="image/png" sizes="16x16" href="skripspace-16.png?v=52">
+<link rel="icon" type="image/png" sizes="192x192" href="skripspace-192.png?v=52">
+<link rel="apple-touch-icon" href="skripspace-touch-180.png?v=52">
+<link rel="apple-touch-icon" sizes="180x180" href="skripspace-touch-180.png?v=52">
+<link rel="apple-touch-icon" sizes="167x167" href="skripspace-touch-167.png?v=52">
+<link rel="apple-touch-icon" sizes="152x152" href="skripspace-touch-152.png?v=52">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 [hidden]{display:none!important}img{max-width:100%}
@@ -639,6 +639,52 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
   .pasang-aksi .tombol { width: 100%; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) { .pasang.sorot { animation: none; } .rute2 .titik { transition: none; } }
+
+/* ---------- beranda: mini antariksa (globe berputar, roket & pesawat mengorbit, Dewi Keadilan berputar) ---------- */
+.angkasa { grid-template-columns: minmax(0, 1fr) 380px; }
+.antariksa.mini .ma-orbit { fill: none; stroke: rgba(242, 241, 255, .38); stroke-width: 1.4; stroke-dasharray: 2 7; stroke-linecap: round; }
+.antariksa.mini .ma-putih { fill: #fff; stroke: #14132b; stroke-width: 1.2; }
+.antariksa.mini .ma-sayap { fill: #6d5cff; stroke: #14132b; stroke-width: 1; stroke-linejoin: round; }
+.antariksa.mini .ma-kaca { fill: #8fd3ff; stroke: #14132b; stroke-width: .8; }
+.antariksa.mini .ma-garis { fill: none; stroke: #14132b; stroke-width: 1; opacity: .5; }
+.antariksa.mini .ma-api { fill: #ffe24a; stroke: #ff9f3d; stroke-width: 1; transform-box: fill-box; transform-origin: 100% 50%; animation: maApi .35s ease-in-out infinite alternate; }
+@keyframes maApi { to { transform: scaleX(.6); } }
+.antariksa.mini .ma-roket, .antariksa.mini .ma-pesawat { filter: drop-shadow(0 0 4px rgba(143, 211, 255, .55)); }
+.antariksa.mini .ma-tepi { fill: none; stroke: #f2f1ff; stroke-width: 2.4; }
+.antariksa.mini .ma-darat { fill: #7df0b8; stroke: #0f6b4a; stroke-width: 1; }
+.antariksa.mini .ma-awan { fill: #fff; opacity: .55; }
+.antariksa.mini .ma-lintang { fill: none; stroke: rgba(255, 255, 255, .25); stroke-width: 1; stroke-dasharray: 3 5; }
+.antariksa.mini .ma-peta { animation: maPutarBumi 26s linear infinite; }
+.antariksa.mini .ma-awanj { animation: maPutarBumi 17s linear infinite; }
+@keyframes maPutarBumi { to { transform: translateX(-352px); } }
+.antariksa.mini .ma-buku rect { stroke: #f2f1ff; stroke-width: 1.6; }
+.antariksa.mini .ma-buku .b1 { fill: #6d5cff; } .antariksa.mini .ma-buku .b2 { fill: #ffe24a; } .antariksa.mini .ma-buku .b3 { fill: #ff9fd6; }
+.antariksa.mini .ma-punggung { fill: none; stroke: #14132b; stroke-width: 1.6; stroke-linecap: round; opacity: .7; }
+.antariksa.mini .ma-dewi { transform-box: view-box; transform-origin: 200px 138px; animation: maDewi 10s ease-in-out infinite; }
+@keyframes maDewi { 0%, 28% { transform: scaleX(1); } 40%, 62% { transform: scaleX(-1); } 74%, 100% { transform: scaleX(1); } }
+.antariksa.mini .ma-emas { fill: url(#maEmas); stroke: #8a5a12; stroke-width: 1.4; }
+.antariksa.mini .ma-rambut { fill: #c98b26; stroke: #8a5a12; stroke-width: 1.2; }
+.antariksa.mini .ma-penutup { fill: #14132b; }
+.antariksa.mini .ma-lengan { fill: none; stroke: url(#maEmas); stroke-width: 9; stroke-linecap: round; }
+.antariksa.mini .ma-tali { fill: none; stroke: #ffd86a; stroke-width: 3; stroke-linecap: round; }
+.antariksa.mini .ma-tali.tipis { stroke-width: 1.6; }
+.antariksa.mini .ma-lipat { fill: none; stroke: #a8691a; stroke-width: 2; stroke-linecap: round; opacity: .55; }
+.antariksa.mini .ma-pedang { fill: url(#maPerak); stroke: #14132b; stroke-width: 1; }
+.antariksa.mini .ma-halo { fill: url(#maHaloG); }
+.antariksa.mini .ma-sinar { transform-box: fill-box; transform-origin: center; animation: maSinar 4s ease-in-out infinite; }
+@keyframes maSinar { 50% { transform: scale(1.18); opacity: .6; } }
+.antariksa.mini .ma-planet { fill: #ffe24a; stroke: #f2f1ff; stroke-width: 2; }
+.antariksa.mini .ma-garis-p { fill: none; stroke: #f2f1ff; stroke-width: 1.4; opacity: .8; }
+.antariksa.mini .ma-cincin { fill: none; stroke: #ff9fd6; stroke-width: 5; }
+.antariksa.mini .ma-bulan { fill: #7df0b8; stroke: #f2f1ff; stroke-width: 2; }
+.antariksa.mini .ma-kawah { fill: none; stroke: #0f6b4a; stroke-width: 1.4; opacity: .6; }
+.antariksa.mini .ma-planet2 { fill: #ff9fd6; stroke: #f2f1ff; stroke-width: 1.6; }
+.antariksa.mini .ma-bintang { fill: #ffe24a; } .antariksa.mini .ma-bintang.pink { fill: #ff9fd6; } .antariksa.mini .ma-bintang.mint { fill: #7df0b8; }
+.antariksa.mini .ma-titik { fill: #fff; }
+.antariksa.mini .ma-jatuh { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 18 60; opacity: 0; animation: maJatuh 7s ease-in infinite; }
+@keyframes maJatuh { 0%, 70% { opacity: 0; transform: translate(40px, 10px); stroke-dashoffset: 0; } 72% { opacity: .9; } 84% { opacity: 0; transform: translate(150px, 50px); stroke-dashoffset: -60; } 100% { opacity: 0; } }
+@media (max-width: 680px) { .angkasa { grid-template-columns: minmax(0, 1fr); } .antariksa.mini { width: min(100%, 330px); margin: -10px auto -6px; } }
+@media (prefers-reduced-motion: reduce) { .antariksa.mini * { animation: none !important; } }
 </style>
 </head>
 <body>
@@ -684,28 +730,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <p>Satu ruang untuk seluruh perjalanan skripsimu, dari judul pertama sampai toga. Ajukan judul, urus izin riset, catat bimbingan, dan kirim pesan ke pembimbing, semuanya dari sini.</p>
           <div class="ajak"><button type="button" class="tombol utama" data-ke-lompat="ajukan">Ajukan Judul</button><button type="button" class="tombol" data-ke-lompat="admin">Log in</button><button type="button" class="tombol" id="bPasang" hidden>Pasang aplikasi</button></div>
         </div>
-        <svg class="antariksa" viewBox="0 0 360 340" role="img" aria-label="Dewi Keadilan berdiri di atas tumpukan buku hukum di tengah antariksa"><g class="st">
-            <path class="f-no tipis orbitgaris" stroke-dasharray="2 9" d="M10 196c40-130 250-170 340-70"/>
-            <g class="ayun a2"><circle class="f-pop" cx="62" cy="262" r="38"/><path class="f-no tipis" d="M32 250c18-7 42-7 60 2M28 270c22-5 48-3 68 5"/><ellipse class="f-no cincin" cx="62" cy="262" rx="64" ry="15" transform="rotate(-16 62 262)"/></g>
-            <g class="ayun a3"><circle class="f-mint" cx="326" cy="64" r="18"/><circle class="f-no tipis" cx="320" cy="59" r="4"/><circle class="f-no tipis" cx="332" cy="71" r="3"/></g>
-            <g class="ayun a1" transform="translate(-100 4) rotate(34 176 110)"><path class="f-pop api" d="M164 150c2 20 6 32 12 42 6-10 10-22 12-42z"/><path class="f-acc" d="M156 118l-24 32 26-6zM196 118l24 32-26-6z"/><path class="f-kertas" d="M176 34c24 24 32 66 22 112h-44c-10-46-2-88 22-112z"/><circle class="f-sky" cx="176" cy="90" r="12"/><path class="f-no tipis" d="M158 128h36"/></g>
-            <g class="ayun a2">
-              <rect class="f-acc" x="170" y="298" width="164" height="26" rx="5"/><path class="f-no tipis" d="M182 306h18M182 316h18"/><text class="punggung" x="262" y="315" text-anchor="middle">UUD NRI 1945</text>
-              <rect class="f-pop" x="184" y="272" width="136" height="26" rx="5"/><path class="f-no tipis gelap" d="M196 280h14M196 290h14"/><text class="punggung gelap" x="262" y="289" text-anchor="middle">KUH PERDATA</text>
-              <rect class="f-pink" x="198" y="248" width="108" height="24" rx="5"/><path class="f-no tipis gelap" d="M208 256h12M208 264h12"/><text class="punggung gelap" x="260" y="264" text-anchor="middle">KUHP</text>
-              <g transform="translate(252 248) scale(1.3) translate(-252 -248)">
-              <path class="f-kertas" d="M231 248l9-80q12-11 24 0l9 80z"/><path class="f-no tipis gelap" d="M246 192l-3 54M258 192l3 54M239 198h26"/>
-              <path class="f-no tebal" d="M262 176l20 26"/><path class="f-sky" d="M279 200l7-1 6 50-5 7-4-6z"/><path class="f-no" d="M272 204h22M284 190v12"/>
-              <circle class="f-kertas" cx="252" cy="146" r="14"/><path class="f-acc" d="M238 146a14 14 0 0 1 28 0q-14-9-28 0z"/><rect class="f-ink" x="237" y="143" width="30" height="8" rx="3"/><path class="f-no tipis" d="M267 146l10 7"/>
-              <path class="f-no tebal" d="M242 176l-44-56"/><path class="f-no" d="M198 122v-24"/>
-              <g class="timbang"><path class="f-no" d="M168 98h60"/><path class="f-no tipis" d="M170 98l-10 26M170 98l10 26M226 98l-10 26M226 98l10 26"/><path class="f-pop" d="M157 124h26a13 8 0 0 1-26 0z"/><path class="f-pop" d="M213 124h26a13 8 0 0 1-26 0z"/><circle class="f-pop" cx="198" cy="96" r="5"/></g>
-              </g>
-            </g>
-            <path class="f-pop kelip" d="M150 28c3 12 6 15 18 18-12 3-15 6-18 18-3-12-6-15-18-18 12-3 15-6 18-18z"/>
-            <path class="f-pink kelip k2" d="M300 150c2 9 5 12 14 14-9 2-12 5-14 14-2-9-5-12-14-14 9-2 12-5 14-14z"/>
-            <path class="f-mint kelip k3" d="M130 200c2 6 3 8 9 9-6 2-7 3-9 9-2-6-3-7-9-9 6-1 7-3 9-9z"/>
-            <circle class="f-kertas titik kelip k2" cx="20" cy="30" r="2.5"/><circle class="f-kertas titik kelip" cx="344" cy="218" r="2.5"/><circle class="f-kertas titik kelip k3" cx="18" cy="150" r="2.5"/><circle class="f-kertas titik kelip k2" cx="236" cy="36" r="2.5"/><circle class="f-kertas titik kelip" cx="120" cy="322" r="2.5"/>
-          </g></svg>
+        <svg class="antariksa mini" viewBox="0 0 400 380" role="img" aria-label="Mini antariksa: globe berputar dikelilingi roket dan pesawat, dengan Dewi Keadilan emas di atas buku hukum"><defs><radialGradient id="maLaut" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="#9fe0ff"/><stop offset=".45" stop-color="#5b8cff"/><stop offset="1" stop-color="#3322b0"/></radialGradient><radialGradient id="maBayang" cx="38%" cy="32%" r="70%"><stop offset=".55" stop-color="#0b0a24" stop-opacity="0"/><stop offset="1" stop-color="#0b0a24" stop-opacity=".62"/></radialGradient><radialGradient id="maKilau" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><radialGradient id="maCahaya" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#8fd3ff" stop-opacity=".38"/><stop offset="1" stop-color="#8fd3ff" stop-opacity="0"/></radialGradient><radialGradient id="maHaloG" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".55"/><stop offset="1" stop-color="#ffd25e" stop-opacity="0"/></radialGradient><linearGradient id="maEmas" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="#fff4c8"/><stop offset=".35" stop-color="#ffd86a"/><stop offset=".75" stop-color="#e9a93a"/><stop offset="1" stop-color="#b9781f"/></linearGradient><linearGradient id="maPerak" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#a9b4ff"/></linearGradient><clipPath id="maGlobe"><circle cx="200" cy="254" r="80"/></clipPath><clipPath id="maAtas" clipPathUnits="userSpaceOnUse"><rect x="-200" y="-400" width="800" height="654"/></clipPath><clipPath id="maBawah" clipPathUnits="userSpaceOnUse"><rect x="-200" y="254" width="800" height="600"/></clipPath></defs><g class="ayun a2"><circle class="ma-planet" cx="58" cy="78" r="22"/><path class="ma-garis-p" d="M40 72c10-4 26-4 36 1M38 84c12-3 28-2 40 3"/><ellipse class="ma-cincin" cx="58" cy="78" rx="38" ry="9" transform="rotate(-16 58 78)"/></g><g class="ayun a3"><circle class="ma-bulan" cx="346" cy="64" r="15"/><circle class="ma-kawah" cx="341" cy="59" r="3.5"/><circle class="ma-kawah" cx="352" cy="70" r="2.5"/></g><g class="ayun"><circle class="ma-planet2" cx="352" cy="338" r="9"/></g><path class="ma-bintang kelip " d="M126 29c1.53 6.03 2.97 7.47 9 9-6.03 1.53-7.47 2.97-9 9-1.53-6.03-2.97-7.47-9-9 6.03-1.53 7.47-2.97 9-9z"/><path class="ma-bintang pink kelip k2" d="M300 125c1.19 4.69 2.31 5.81 7 7-4.69 1.19-5.81 2.31-7 7-1.19-4.69-2.31-5.81-7-7 4.69-1.19 5.81-2.31 7-7z"/><path class="ma-bintang mint kelip k3" d="M36 180c1.02 4.02 1.98 4.98 6 6-4.02 1.02-4.98 1.98-6 6-1.02-4.02-1.98-4.98-6-6 4.02-1.02 4.98-1.98 6-6z"/><path class="ma-bintang kelip " d="M330 209c0.85 3.35 1.65 4.15 5 5-3.35 0.85-4.15 1.65-5 5-0.85-3.35-1.65-4.15-5-5 3.35-0.85 4.15-1.65 5-5z"/><circle class="ma-titik kelip k2" cx="22" cy="30" r="2"/><circle class="ma-titik kelip" cx="378" cy="150" r="2"/><circle class="ma-titik kelip k3" cx="16" cy="320" r="2"/><circle class="ma-titik kelip k2" cx="250" cy="22" r="1.8"/><circle class="ma-titik kelip" cx="96" cy="352" r="2"/><circle class="ma-titik kelip k3" cx="282" cy="350" r="1.6"/><path class="ma-jatuh" d="M0 0 L46 16"/><circle cx="200" cy="254" r="114" fill="url(#maCahaya)"/><g transform="rotate(20 200 254)"><g clip-path="url(#maAtas)"><ellipse class="ma-orbit" cx="200" cy="254" rx="156" ry="40"/><g class="ma-pesawat"><animateMotion dur="13s" repeatCount="indefinite" rotate="auto" path="M356 254 A156 40 0 1 0 44 254 A156 40 0 1 0 356 254"/><g transform="scale(1.15)"><g class="badan"><path class="ma-sayap" d="M2 -3 L-8 -19 L-4 -19 L10 -3 Z M2 3 L-8 19 L-4 19 L10 3 Z"/><path class="ma-sayap" d="M-15 -1.6 L-21 -8 L-18 -8 L-11 -1.6 Z M-15 1.6 L-21 8 L-18 8 L-11 1.6 Z"/><path class="ma-putih" d="M-20 0 C-20 -2.4 -16 -3.2 -10 -3.2 L13 -3.2 C18 -3.2 22 -1.4 23 0 C22 1.4 18 3.2 13 3.2 L-10 3.2 C-16 3.2 -20 2.4 -20 0 Z"/><path class="ma-kaca" d="M15 -1.6 C18 -1.4 20 -0.6 20.6 0 C20 0.6 18 1.4 15 1.6 Z"/></g></g></g></g></g><g transform="rotate(-14 200 254)"><g clip-path="url(#maAtas)"><ellipse class="ma-orbit" cx="200" cy="254" rx="184" ry="54"/><g class="ma-roket"><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M384 254 A184 54 0 1 1 16 254 A184 54 0 1 1 384 254"/><g transform="scale(1.15)"><path class="ma-api" d="M-17 -4.5 Q-36 0 -17 4.5 Z"/><path class="ma-sayap" d="M-9 -7 L-20 -16 L-17 -6 Z M-9 7 L-20 16 L-17 6 Z"/><path class="ma-putih" d="M24 0 C16 -10 2 -11 -14 -8 L-18 0 L-14 8 C2 11 16 10 24 0 Z"/><circle class="ma-kaca" cx="6" cy="0" r="4.2"/><path class="ma-garis" d="M-6 -7.5 L-6 7.5"/></g></g></g></g><g class="ma-globe"><circle cx="200" cy="254" r="80" fill="url(#maLaut)"/><g clip-path="url(#maGlobe)"><g class="ma-peta"><g id="maPeta"><path class="ma-darat" d="M181.9 212.0C181.9 217.2 189.9 223.5 188.5 227.7C187.1 231.9 178.8 236.5 173.5 237.3C168.2 238.1 161.9 233.5 156.6 232.3C151.3 231.1 145.5 232.4 141.7 230.1C137.9 227.8 135.8 222.8 133.9 218.6C132.1 214.3 129.9 209.3 130.7 204.6C131.4 200.0 134.1 192.5 138.5 190.7C142.9 189.0 152.0 193.1 157.0 194.0C162.0 195.0 163.1 196.0 168.3 196.3C173.6 196.7 186.0 193.8 188.3 196.4C190.6 199.0 181.8 206.8 181.9 212.0Z"/><path class="ma-darat" d="M197.1 256.0C197.5 263.0 195.4 275.5 192.6 278.8C189.7 282.2 183.3 277.0 179.9 276.2C176.5 275.5 175.5 275.7 172.4 274.2C169.2 272.8 162.8 272.4 161.1 267.5C159.3 262.6 160.5 251.4 161.9 245.1C163.4 238.7 166.7 231.5 169.7 229.3C172.8 227.0 176.9 230.3 180.3 231.6C183.7 232.9 187.4 232.8 190.2 236.9C193.0 240.9 196.7 249.0 197.1 256.0Z"/><path class="ma-darat" d="M270.0 208.0C270.4 211.0 271.1 215.6 268.9 217.9C266.8 220.2 261.2 221.0 257.0 221.6C252.9 222.3 247.6 223.2 243.9 221.8C240.2 220.4 235.3 216.4 234.8 213.5C234.3 210.6 238.7 206.7 240.8 204.2C242.9 201.8 244.4 201.1 247.3 198.8C250.1 196.5 254.8 190.1 258.0 190.2C261.2 190.4 264.4 196.8 266.5 199.8C268.5 202.7 269.6 205.0 270.0 208.0Z"/><path class="ma-darat" d="M280.2 254.0C280.1 259.0 277.6 263.9 275.6 268.6C273.6 273.3 271.3 280.3 268.2 282.0C265.0 283.6 259.9 280.7 256.6 278.4C253.4 276.1 251.1 272.3 248.7 268.3C246.3 264.2 243.2 260.1 242.0 254.0C240.8 247.9 239.4 237.6 241.5 232.0C243.5 226.3 249.9 222.0 254.5 220.1C259.2 218.2 265.7 217.6 269.3 220.6C273.0 223.6 274.8 232.7 276.6 238.3C278.4 243.9 280.4 249.0 280.2 254.0Z"/><path class="ma-darat" d="M380.7 216.0C382.7 219.9 380.3 225.5 376.7 229.5C373.1 233.4 366.4 237.2 359.2 239.9C352.1 242.5 342.3 245.4 334.0 245.3C325.7 245.2 317.1 241.7 309.4 239.3C301.7 236.8 289.3 234.4 287.8 230.5C286.3 226.7 298.9 220.4 300.4 216.0C301.8 211.6 295.4 208.4 296.5 204.2C297.7 200.0 300.9 192.9 307.1 190.6C313.4 188.3 325.1 190.1 334.0 190.2C342.9 190.3 355.3 188.4 360.4 191.0C365.5 193.7 361.4 202.2 364.7 206.3C368.1 210.5 378.7 212.1 380.7 216.0Z"/><path class="ma-darat" d="M412.1 290.0C412.7 292.9 410.1 297.6 406.7 299.7C403.3 301.8 396.3 302.7 391.6 302.7C387.0 302.7 381.8 301.5 378.8 299.9C375.7 298.4 375.2 295.8 373.2 293.3C371.2 290.9 365.9 287.6 366.7 285.2C367.4 282.8 373.4 280.5 377.7 278.9C381.9 277.3 387.9 275.0 392.1 275.5C396.4 276.1 399.7 279.8 403.1 282.2C406.4 284.6 411.5 287.1 412.1 290.0Z"/><ellipse class="ma-darat" cx="342" cy="262" rx="9" ry="3.2"/><ellipse class="ma-darat" cx="356" cy="266" rx="7" ry="2.6"/><ellipse class="ma-darat" cx="370" cy="260" rx="8" ry="3"/><ellipse class="ma-darat" cx="348" cy="252" rx="5" ry="3.5"/><ellipse class="ma-darat" cx="382" cy="268" rx="4" ry="2.4"/><ellipse class="ma-darat" cx="330" cy="268" rx="6" ry="2.4"/></g><use href="#maPeta" x="352"/></g><g class="ma-awanj"><g id="maAwan"><ellipse class="ma-awan" cx="150" cy="232" rx="26" ry="5"/><ellipse class="ma-awan" cx="240" cy="282" rx="30" ry="5"/><ellipse class="ma-awan" cx="320" cy="240" rx="22" ry="4"/><ellipse class="ma-awan" cx="410" cy="206" rx="28" ry="5"/></g><use href="#maAwan" x="352"/></g><path class="ma-lintang" d="M120 210 h160 M120 254 h160 M120 298 h160"/><circle cx="200" cy="254" r="80" fill="url(#maBayang)"/></g><ellipse cx="166" cy="214" rx="30" ry="20" fill="url(#maKilau)" transform="rotate(-30 166 214)"/><circle class="ma-tepi" cx="200" cy="254" r="80"/></g><circle cx="200" cy="68" r="58" fill="url(#maHaloG)" class="ma-sinar"/><g class="ma-buku"><rect class="b1" x="158" y="163" width="84" height="15" rx="4"/><path class="ma-punggung" d="M168 168h12M168 173h12"/><rect class="b2" x="166" y="150" width="68" height="14" rx="4"/><path class="ma-punggung" d="M175 155h10M175 159h10"/><rect class="b3" x="174" y="138" width="52" height="13" rx="4"/><path class="ma-punggung" d="M182 142h9M182 146h9"/></g><g class="ma-dewi"><g transform="translate(200 138) scale(0.74) translate(-252 -248)"><circle class="ma-halo" cx="252" cy="150" r="58"/><path class="ma-lengan" d="M242 176l-44-56"/><path class="ma-tali" d="M198 122v-24"/><g class="timbang"><path class="ma-tali" d="M168 98h60"/><path class="ma-tali tipis" d="M170 98l-10 26M170 98l10 26M226 98l-10 26M226 98l10 26"/><path class="ma-emas" d="M157 124h26a13 8 0 0 1-26 0z"/><path class="ma-emas" d="M213 124h26a13 8 0 0 1-26 0z"/><circle class="ma-emas" cx="198" cy="96" r="5"/></g><path class="ma-emas" d="M231 248l9-80q12-11 24 0l9 80z"/><path class="ma-lipat" d="M246 192l-3 54M258 192l3 54M239 198h26"/><path class="ma-lengan" d="M262 176l20 26"/><path class="ma-pedang" d="M279 200l7-1 6 50-5 7-4-6z"/><path class="ma-tali" d="M272 204h22M284 190v12"/><circle class="ma-emas" cx="252" cy="146" r="14"/><path class="ma-rambut" d="M238 146a14 14 0 0 1 28 0q-14-9-28 0z"/><circle class="ma-rambut" cx="252" cy="129" r="6"/><rect class="ma-penutup" x="237" y="143" width="30" height="8" rx="3"/><path class="ma-tali" d="M267 146l10 7"/></g></g><g transform="rotate(20 200 254)"><g clip-path="url(#maBawah)"><ellipse class="ma-orbit" cx="200" cy="254" rx="156" ry="40"/><g class="ma-pesawat"><animateMotion dur="13s" repeatCount="indefinite" rotate="auto" path="M356 254 A156 40 0 1 0 44 254 A156 40 0 1 0 356 254"/><g transform="scale(1.15)"><g class="badan"><path class="ma-sayap" d="M2 -3 L-8 -19 L-4 -19 L10 -3 Z M2 3 L-8 19 L-4 19 L10 3 Z"/><path class="ma-sayap" d="M-15 -1.6 L-21 -8 L-18 -8 L-11 -1.6 Z M-15 1.6 L-21 8 L-18 8 L-11 1.6 Z"/><path class="ma-putih" d="M-20 0 C-20 -2.4 -16 -3.2 -10 -3.2 L13 -3.2 C18 -3.2 22 -1.4 23 0 C22 1.4 18 3.2 13 3.2 L-10 3.2 C-16 3.2 -20 2.4 -20 0 Z"/><path class="ma-kaca" d="M15 -1.6 C18 -1.4 20 -0.6 20.6 0 C20 0.6 18 1.4 15 1.6 Z"/></g></g></g></g></g><g transform="rotate(-14 200 254)"><g clip-path="url(#maBawah)"><ellipse class="ma-orbit" cx="200" cy="254" rx="184" ry="54"/><g class="ma-roket"><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M384 254 A184 54 0 1 1 16 254 A184 54 0 1 1 384 254"/><g transform="scale(1.15)"><path class="ma-api" d="M-17 -4.5 Q-36 0 -17 4.5 Z"/><path class="ma-sayap" d="M-9 -7 L-20 -16 L-17 -6 Z M-9 7 L-20 16 L-17 6 Z"/><path class="ma-putih" d="M24 0 C16 -10 2 -11 -14 -8 L-18 0 L-14 8 C2 11 16 10 24 0 Z"/><circle class="ma-kaca" cx="6" cy="0" r="4.2"/><path class="ma-garis" d="M-6 -7.5 L-6 7.5"/></g></g></g></g></svg>
       </section>
       <div class="pita" aria-hidden="true"><div><span>skripspace ✦ your academic workspace ✦ dari judul sampai toga ✦ bimbingan tercatat ✦ surat langsung jadi ✦ </span><span>skripspace ✦ your academic workspace ✦ dari judul sampai toga ✦ bimbingan tercatat ✦ surat langsung jadi ✦ </span></div></div>
       <section class="lembar rute-lembar">
@@ -1119,7 +1144,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 51</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 52</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -3678,7 +3703,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
 
   function mulai() {
     pasang(); tampil('beranda');
-    $('spandukDemo').hidden = HIDUP; $('bContoh').hidden = HIDUP; $('sdContoh').hidden = HIDUP; siapPasang(); siapRute();
+    $('spandukDemo').hidden = HIDUP; $('bContoh').hidden = HIDUP; $('sdContoh').hidden = HIDUP; siapPasang(); siapRute(); (function () { var ma = document.querySelector('.antariksa.mini'); if (ma && ma.pauseAnimations && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) ma.pauseAnimations(); })();
     var mv = /[?&]v=([A-Za-z0-9.\-]{8,60})/.exec(location.search); if (mv) bukaVerif(mv[1]);
     var mj = /[?&]jadwal=(\d{4}-\d{2}-\d{2})(?:&|$)/.exec(location.search), mt = /[?&]t=([0-9a-f]{6,20})(?:&|$)/.exec(location.search); if (mj && mt) bukaJadwalHari(mj[1], mt[1]);
     api('apiInit').then(function (init) {
