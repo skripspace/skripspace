@@ -1,6 +1,6 @@
 /* SKRIPSPACE: service worker kecil. Halaman selalu diambil dari jaringan lebih dulu supaya pembaruan langsung terlihat; salinan tersimpan hanya dipakai saat tanpa sinyal. */
-var NAMA = 'skripspace-v47';
-var BERKAS = ['./', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+var NAMA = 'skripspace-v48';
+var BERKAS = ['./', 'manifest.webmanifest', 'skripspace-192.png', 'skripspace-512.png', 'skripspace-maskable-512.png', 'skripspace-touch-180.png', 'skripspace.svg', 'favicon.ico'];
 self.addEventListener('install', function (ev) {
   self.skipWaiting();
   ev.waitUntil(caches.open(NAMA).then(function (c) { return c.addAll(BERKAS); }).catch(function () {}));
