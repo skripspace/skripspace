@@ -20,23 +20,23 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=50">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=50">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=51">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=51">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=50">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=51">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="favicon.ico?v=50" sizes="16x16 32x32 48x48 64x64">
-<link rel="icon" type="image/png" sizes="32x32" href="skripspace-32.png?v=50">
-<link rel="icon" type="image/png" sizes="16x16" href="skripspace-16.png?v=50">
-<link rel="icon" type="image/png" sizes="192x192" href="skripspace-192.png?v=50">
-<link rel="apple-touch-icon" href="skripspace-touch-180.png?v=50">
-<link rel="apple-touch-icon" sizes="180x180" href="skripspace-touch-180.png?v=50">
-<link rel="apple-touch-icon" sizes="167x167" href="skripspace-touch-167.png?v=50">
-<link rel="apple-touch-icon" sizes="152x152" href="skripspace-touch-152.png?v=50">
+<link rel="icon" href="favicon.ico?v=51" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="32x32" href="skripspace-32.png?v=51">
+<link rel="icon" type="image/png" sizes="16x16" href="skripspace-16.png?v=51">
+<link rel="icon" type="image/png" sizes="192x192" href="skripspace-192.png?v=51">
+<link rel="apple-touch-icon" href="skripspace-touch-180.png?v=51">
+<link rel="apple-touch-icon" sizes="180x180" href="skripspace-touch-180.png?v=51">
+<link rel="apple-touch-icon" sizes="167x167" href="skripspace-touch-167.png?v=51">
+<link rel="apple-touch-icon" sizes="152x152" href="skripspace-touch-152.png?v=51">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 [hidden]{display:none!important}img{max-width:100%}
@@ -581,6 +581,64 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
   .pasfoto-kartu.besar { width: 150px; height: 200px; }
   .berkas .identitas { gap: 10px; }
 }
+
+/* rute penerbangan: enam titik, pesawat terbang menyusuri jalur (digerakkan JS, berhenti saat beranda tidak tampil) */
+.rute2 { position: relative; padding: 6px 2px 2px; }
+.rute2 > svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.rute2 .rute-langit { z-index: 0; }
+.rute2 .rute-depan { z-index: 2; filter: drop-shadow(2px 5px 3px rgba(20, 19, 43, .35)); }
+.rute-jalur { fill: none; stroke: var(--hair); stroke-width: 2.5; stroke-dasharray: 1 9; stroke-linecap: round; }
+.rute-asap { fill: none; stroke: var(--accent-soft); stroke-width: 12; stroke-linecap: round; }
+.rute-jejak { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
+.rute-pesawat { opacity: 0; }
+.rute-pesawat .pw-badan { fill: #ffffff; stroke: #14132b; stroke-width: 1.1; }
+.rute-pesawat .pw-sayap, .rute-pesawat .pw-ekor { fill: var(--accent); stroke: #14132b; stroke-width: 1; stroke-linejoin: round; }
+.rute-pesawat .pw-kaca { fill: #8fd3ff; }
+.rute2 ol { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.rute2 li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; }
+.rute2 .titik { width: 46px; height: 46px; flex: 0 0 auto; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--ink); background: var(--surface); color: var(--ink); font-family: var(--f-mono); font-weight: 700; font-size: 14px; margin-bottom: 44px; transition: background-color .45s ease, color .45s ease, transform .35s ease, box-shadow .35s ease; }
+.rute2 li:nth-child(even) .titik { margin: 44px 0 0; }
+.rute2 li:nth-child(even) small { margin-top: 8px; }
+.rute2 li.lewat .titik { background: var(--pop); color: #14132b; }
+.rute2 li.singgah .titik { transform: scale(1.16); box-shadow: 0 0 0 6px var(--accent-soft), 0 0 22px var(--accent); }
+.rute2 small { font-family: var(--f-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.rute2 li b { font-family: var(--f-display); font-size: 16px; font-weight: 800; line-height: 1.25; }
+.rute2 .ket { color: var(--muted); font-size: 13.5px; line-height: 1.4; }
+@media (max-width: 760px) {
+  .rute2 ol { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .rute2 li { display: grid; grid-template-columns: 46px minmax(0, 1fr); column-gap: 16px; align-items: start; text-align: left; padding-bottom: 18px; }
+  .rute2 li:last-child { padding-bottom: 0; }
+  .rute2 li .titik, .rute2 li:nth-child(even) .titik { grid-row: 1 / span 3; margin: 0; }
+  .rute2 li:nth-child(even) small { margin-top: 0; }
+  .rute2 li small, .rute2 li b, .rute2 li .ket { grid-column: 2; }
+}
+
+/* tutorial pasang aplikasi di beranda */
+.pasang { scroll-margin-top: 16px; }
+.pasang.sorot { animation: sorotPasang 1.6s ease; }
+@keyframes sorotPasang { 0%, 60% { box-shadow: 0 0 0 5px var(--accent-soft), 5px 5px 0 var(--shadow); border-color: var(--accent); } 100% { box-shadow: 5px 5px 0 var(--shadow); } }
+.pasang-kepala { display: flex !important; flex-direction: row !important; align-items: center; gap: 16px !important; }
+.pasang-kepala .pasang-ikon { width: 64px; height: 64px; flex: 0 0 auto; border-radius: 16px; box-shadow: 0 6px 18px rgba(20, 19, 43, .25); }
+.pasang-kepala h2 { font-size: 26px; font-weight: 800; }
+.pasang-kepala p { color: var(--muted); font-size: 15px; max-width: 60ch; }
+.pasang-aksi { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.pasang-aksi .tombol svg { vertical-align: -3px; margin-right: 2px; }
+.pasang-status { margin: 0; font-size: 14.5px; color: var(--ink); flex: 1 1 260px; }
+.pasang.terpasang .pasang-status { color: var(--ok); }
+.pasang-pilih { display: inline-flex; align-self: flex-start; border: 2px solid var(--ink); border-radius: 999px; padding: 3px; gap: 3px; background: var(--sunk); }
+.pasang-pilih button { border: 0; background: transparent; padding: 7px 16px; border-radius: 999px; font-weight: 700; font-size: 14.5px; cursor: pointer; color: var(--muted); }
+.pasang-pilih button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+.pasang-langkah { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.pasang-langkah li { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border: 2px solid var(--hair); border-radius: var(--r-sm); background: var(--sunk); font-size: 14.5px; line-height: 1.5; }
+.pasang-langkah li i { font-style: normal; flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--pop); color: #14132b; font-family: var(--f-mono); font-weight: 700; font-size: 13.5px; border: 2px solid var(--ink); }
+.pasang-langkah .ikon-ui { vertical-align: -3px; }
+.pasang-catatan { margin: 0; font-size: 13.5px; color: var(--muted); }
+@media (max-width: 520px) {
+  .pasang-kepala .pasang-ikon { width: 54px; height: 54px; border-radius: 13px; }
+  .pasang-kepala h2 { font-size: 22px; }
+  .pasang-aksi .tombol { width: 100%; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .pasang.sorot { animation: none; } .rute2 .titik { transition: none; } }
 </style>
 </head>
 <body>
@@ -625,7 +683,6 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <p class="slogan">Your Academic Workspace</p>
           <p>Satu ruang untuk seluruh perjalanan skripsimu, dari judul pertama sampai toga. Ajukan judul, urus izin riset, catat bimbingan, dan kirim pesan ke pembimbing, semuanya dari sini.</p>
           <div class="ajak"><button type="button" class="tombol utama" data-ke-lompat="ajukan">Ajukan Judul</button><button type="button" class="tombol" data-ke-lompat="admin">Log in</button><button type="button" class="tombol" id="bPasang" hidden>Pasang aplikasi</button></div>
-          <div class="tip-pasang" id="tipPasang" hidden></div>
         </div>
         <svg class="antariksa" viewBox="0 0 360 340" role="img" aria-label="Dewi Keadilan berdiri di atas tumpukan buku hukum di tengah antariksa"><g class="st">
             <path class="f-no tipis orbitgaris" stroke-dasharray="2 9" d="M10 196c40-130 250-170 340-70"/>
@@ -651,27 +708,41 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           </g></svg>
       </section>
       <div class="pita" aria-hidden="true"><div><span>skripspace ✦ your academic workspace ✦ dari judul sampai toga ✦ bimbingan tercatat ✦ surat langsung jadi ✦ </span><span>skripspace ✦ your academic workspace ✦ dari judul sampai toga ✦ bimbingan tercatat ✦ surat langsung jadi ✦ </span></div></div>
-      <section class="lembar">
-        <header><h2>Rute penerbanganmu</h2><p>Skripsi itu perjalanan panjang, tapi rutenya jelas. Tujuh titik ini yang kamu lewati dari lepas landas sampai mendarat.</p></header>
-        <ol class="rute">
-          <li><span class="no">01</span><div><small>Lepas landas</small><h3>Ajukan judul</h3><p>Tulis tiga judul terbaikmu. Sistem mengecek kemiripannya ke database prodi dan sumber luar. Yang lolos langsung dapat surat permohonan, tanpa antre di loket.</p></div></li>
-          <li><span class="no">02</span><div><small>Dapat kopilot</small><h3>Judul disetujui, pembimbing ditetapkan</h3><p>Prodi memilih satu judul dan menunjuk dosen pembimbing. Surat persetujuan terbit, kontak pembimbing muncul, dan kode pengajuanmu jadi kunci Log in untuk seterusnya.</p></div></li>
-          <li><span class="no">03</span><div><small>Orbit pertama</small><h3>Bimbingan proposal</h3><p>Hubungi pembimbingmu dan mulai bimbingan. Tiap pertemuan kamu catat di sini, pembimbing memaraf dari akunnya. Tidak ada lagi buku bimbingan yang ketinggalan di kos.</p></div></li>
-          <li><span class="no">04</span><div><small>Turun ke lapangan</small><h3>Riset dan pengumpulan data</h3><p>Butuh data dari instansi? Ajukan izin riset. Begitu disetujui Kaprodi, surat permohonan dan surat pengantar langsung bisa diunduh.</p></div></li>
-          <li><span class="no">05</span><div><small>Mode menulis</small><h3>Bab I sampai Bab IV</h3><p>Susun naskah bab demi bab sambil terus bimbingan. Sebelum disetujui, naskah diuji Turnitin dengan batas kemiripan 24,99%.</p></div></li>
-          <li><span class="no">06</span><div><small>Siap mendarat</small><h3>Naskah disetujui dan ujian skripsi</h3><p>Pembimbing menyatakan naskahmu siap diuji. Buku catatan bimbingan tinggal dicetak dari sini, lalu daftar ujian lewat menu Sidang: semua syarat diunggah sekali dan digabung menjadi satu berkas.</p></div></li>
-          <li><span class="no">07</span><div><small>Touchdown</small><h3>Revisi dan naskah akhir</h3><p>Perbaiki naskah sesuai masukan penguji, serahkan naskah akhir, lalu selesai. Misi skripsi tuntas, saatnya pakai toga.</p></div></li>
-        </ol>
-      </section>
-      <section class="lembar">
-        <header><h2>Empat pintu masuk</h2><p>Mahasiswa, dosen wali, dosen pembimbing, dan pengelola prodi bekerja di ruang yang sama, dengan hak yang berbeda.</p></header>
-        <div class="pintu">
-          <button type="button" data-pintu="mhs"><b>Mahasiswa</b><span>Riwayat judul, izin riset, catatan bimbingan, dan pesan ke pembimbing. Masuk dengan NIM dan kode pengajuan.</span></button>
-          <button type="button" data-pintu="wali"><b>Dosen wali</b><span>Menyetujui (Mengetahui) pengajuan judul mahasiswa perwalian dengan satu klik. Masuk dengan kode akses pribadi.</span></button>
-          <button type="button" data-pintu="dsn"><b>Dosen pembimbing</b><span>Daftar mahasiswa bimbingan, paraf catatan, tandai tahapan, dan balas pesan. Masuk dengan kode akses pribadi.</span></button>
-          <button type="button" data-pintu="wd1"><b>Wakil Dekan I</b><span>Memeriksa data akademik pengajuan judul dan menyetujuinya; tanda tangan tercetak otomatis. Masuk dengan kode akses Wakil Dekan I.</span></button>
-          <button type="button" data-pintu="adm"><b>Pengelola prodi</b><span>Persetujuan judul dan izin riset, pantauan seluruh bimbingan, dan pengingat untuk yang macet.</span></button>
+      <section class="lembar rute-lembar">
+        <header><h2>Rute penerbanganmu</h2><p>Enam titik dari lepas landas sampai toga.</p></header>
+        <div class="rute2" id="rute2">
+          <svg class="rute-langit" aria-hidden="true" focusable="false"><path class="rute-asap" d=""/><path class="rute-jalur" d=""/><path class="rute-jejak" d=""/></svg>
+          <svg class="rute-depan" aria-hidden="true" focusable="false">
+            <g class="rute-pesawat" transform="translate(-99 -99)"><g class="badan"><path class="pw-sayap" d="M2 -3 L-8 -19 L-4 -19 L10 -3 Z M2 3 L-8 19 L-4 19 L10 3 Z"/><path class="pw-ekor" d="M-15 -1.6 L-21 -8 L-18 -8 L-11 -1.6 Z M-15 1.6 L-21 8 L-18 8 L-11 1.6 Z"/><path class="pw-badan" d="M-20 0 C-20 -2.4 -16 -3.2 -10 -3.2 L13 -3.2 C18 -3.2 22 -1.4 23 0 C22 1.4 18 3.2 13 3.2 L-10 3.2 C-16 3.2 -20 2.4 -20 0 Z"/><path class="pw-kaca" d="M15 -1.6 C18 -1.4 20 -0.6 20.6 0 C20 0.6 18 1.4 15 1.6 Z"/></g></g></svg>
+          <ol>
+            <li><span class="titik">01</span><small>Lepas landas</small><b>Ajukan judul</b><span class="ket">Tiga judul, kemiripan dicek otomatis.</span></li>
+            <li><span class="titik">02</span><small>Dapat kopilot</small><b>Pembimbing ditetapkan</b><span class="ket">Surat persetujuan langsung terbit.</span></li>
+            <li><span class="titik">03</span><small>Orbit</small><b>Bimbingan</b><span class="ket">Tiap pertemuan dicatat dan diparaf dosen.</span></li>
+            <li><span class="titik">04</span><small>Turun ke lapangan</small><b>Izin riset</b><span class="ket">Surat permohonan dan pengantar siap unduh.</span></li>
+            <li><span class="titik">05</span><small>Siap mendarat</small><b>Ujian skripsi</b><span class="ket">Daftar sidang, semua berkas jadi satu.</span></li>
+            <li><span class="titik">06</span><small>Touchdown</small><b>Naskah akhir</b><span class="ket">Revisi selesai, saatnya pakai toga.</span></li>
+          </ol>
         </div>
+      </section>
+      <section class="lembar pasang" id="sPasang">
+        <header class="pasang-kepala"><img src="skripspace-192.png" alt="" width="64" height="64" class="pasang-ikon"><div><h2>Pasang SKRIPSPACE di HP</h2><p>Gratis, tanpa Play Store atau App Store. Ikonnya muncul di layar utama dan terbuka seperti aplikasi.</p></div></header>
+        <div class="pasang-aksi"><button type="button" class="tombol utama" id="bPasangSek" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pasang sekarang</button><p class="pasang-status" id="pasangStatus">Pilih jenis HP-mu, lalu ikuti langkahnya.</p></div>
+        <div class="pasang-pilih" role="tablist" aria-label="Jenis HP">
+          <button type="button" role="tab" data-os="android" aria-selected="true">Android</button>
+          <button type="button" role="tab" data-os="ios" aria-selected="false">iPhone / iPad</button>
+        </div>
+        <ol class="pasang-langkah" data-langkah-os="android">
+          <li><i>1</i><span>Buka <b>skripspace.com</b> di <b>Chrome</b>.</span></li>
+          <li><i>2</i><span>Ketuk <b>Pasang sekarang</b> di atas. Bila tidak muncul, ketuk menu <b class="ikon-ui">&#8942;</b> di pojok kanan atas, lalu pilih <b>Instal aplikasi</b> atau <b>Tambahkan ke layar utama</b>.</span></li>
+          <li><i>3</i><span>Ketuk <b>Instal</b>. Ikon SKRIPSPACE muncul di layar utama dan daftar aplikasi.</span></li>
+        </ol>
+        <ol class="pasang-langkah" data-langkah-os="ios" hidden>
+          <li><i>1</i><span>Buka <b>skripspace.com</b> di <b>Safari</b>.</span></li>
+          <li><i>2</i><span>Ketuk tombol <b>Bagikan</b> <svg class="ikon-ui" viewBox="0 0 24 24" width="18" height="18" aria-label="ikon Bagikan"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5M6 11H5v9h14v-9h-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> di bilah bawah (atau <b>&middot;&middot;&middot;</b> lalu <b>Bagikan</b>).</span></li>
+          <li><i>3</i><span>Gulir ke bawah, pilih <b>Tambahkan ke Layar Utama</b> <svg class="ikon-ui" viewBox="0 0 24 24" width="18" height="18" aria-label="ikon tambah"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 8.5v7M8.5 12h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>.</span></li>
+          <li><i>4</i><span>Ketuk <b>Tambah</b> di pojok kanan atas. SKRIPSPACE siap dibuka dari layar utama.</span></li>
+        </ol>
+        <p class="pasang-catatan">Membuka tautan dari WhatsApp atau Instagram? Buka dulu di Chrome atau Safari lewat menu <b>&#8942;</b> / <b>&middot;&middot;&middot;</b> → <b>Buka di browser</b>.</p>
       </section>
     </div>
   </main>
@@ -733,7 +804,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
           <div class="isian"><label for="fTempat">Tempat lahir</label><input type="text" id="fTempat" maxlength="40" placeholder="Kota / kabupaten"></div>
           <div class="isian"><label for="fTgl">Tanggal lahir</label><span class="tgl"><input type="date" id="fTgl"></span></div>
           <div class="isian penuh krs pasfoto-isian" id="wFoto" hidden><label for="fFoto">Pas foto 3×4 <span class="wajib">wajib</span></label><input type="file" id="fFoto" accept="image/jpeg,image/png,.jpg,.jpeg,.png">
-            <span class="bantu">Foto formal berwarna, tegak, wajah terlihat jelas, berbentuk JPG atau PNG. Foto dipotong otomatis ke ukuran 3×4 dan <b>hanya dilihat Sekprodi</b> saat menetapkan dosen pembimbing.</span><div id="fotoInfo"></div></div>
+            <span class="bantu">Foto formal berwarna, tegak, wajah terlihat jelas, berbentuk JPG atau PNG. Foto dipotong otomatis ke ukuran 3×4.</span><div id="fotoInfo"></div></div>
           <div class="isian penuh"><label for="fWali">Dosen wali</label><input type="text" id="fWali" list="dWali" maxlength="90" placeholder="Ketik nama, lalu pilih"><datalist id="dWali"></datalist><datalist id="dDosen"></datalist><datalist id="dPenguji"></datalist><datalist id="dRuang"></datalist>
             <span class="bantu" id="waliBantu" hidden>Pilih nama dari daftar. Setelah pengajuan dikirim, dosen wali menekan <b>Mengetahui</b> di SKRIPSPACE; baru sesudah itu pengajuanmu diteruskan ke prodi. Belum punya dosen wali? Pilih <b>Belum ada dosen wali</b>.</span><span class="bantu" id="waliAlihInfo" hidden></span></div>
           <div class="isian penuh krs" id="wTtd" hidden><label for="fTtd">Tanda tanganmu</label><input type="file" id="fTtd" accept="image/*">
@@ -1048,7 +1119,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 50</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 51</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1398,7 +1469,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   /* ---------------- pas foto 3×4 (hanya untuk Sekprodi) ---------------- */
   function infoFoto() {
     $('fotoInfo').innerHTML = S.foto ? '<div class="pasfoto-pilih"><img alt="Pratinjau pas foto 3×4" class="pasfoto" src="' + S.foto + '"><span class="bantu"><b>Terpasang.</b>' +
-      (S.fotoPotong ? ' Fotomu sudah dipotong otomatis ke ukuran 3×4. Pastikan wajah terlihat utuh; bila terpotong, unggah foto yang sudah berukuran 3×4.' : ' Begini pas fotomu akan dilihat Sekprodi.') + '</span></div>' : '';
+      (S.fotoPotong ? ' Fotomu sudah dipotong otomatis ke ukuran 3×4. Pastikan wajah terlihat utuh; bila terpotong, unggah foto yang sudah berukuran 3×4.' : ' Begini pas fotomu akan tampil.') + '</span></div>' : '';
   }
   function pilihFoto(berkas) {
     function gagal(pesan) { S.foto = ''; S.fotoPotong = false; $('fFoto').value = ''; infoFoto(); toast(pesan); }
@@ -1626,7 +1697,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var d = dataDiri(), n = ipkSks();
     var baris = [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['Kekhususan', d.kekhususan], ['Tempat, tgl lahir', d.tempatLahir + ', ' + d.tglLahir.split('-').reverse().join('-')],
       ['No. HP / WA', d.wa], ['Dosen wali', d.dosenWali], ['IPK', koma(n.ipk, 2)], ['Kredit kumulatif', n.sks + ' SKS'], ['Scan KRS', S.krs ? S.krs.nama : '-']];
-    if (S.init.foto) baris.push(['Pas foto 3×4', S.foto ? 'Sudah diunggah (hanya dilihat Sekprodi)' : '-']);
+    if (S.init.foto) baris.push(['Pas foto 3×4', S.foto ? 'Sudah diunggah' : '-']);
     if (S.init.wali) baris.push(['Tanda tangan', S.ttd ? 'Sudah diunggah' : '-']);
     if (S.mode === 'dkn' && S.dkn) baris.splice(7, 0, ['DKN', S.dkn.status === 'cocok' ? 'Terbaca otomatis dari ' + S.dkn.berkas.length + ' berkas' : (S.dkn.status === 'kaki' ? 'SKS dan IPK diambil dari DKN; nilai dicocokkan pengelola' : 'Diunggah, akan dicocokkan pengelola')]);
     $('tinjau').innerHTML = baris.map(function (b) { return '<dt>' + b[0] + '</dt><dd>' + e(b[1]) + '</dd>'; }).join('');
@@ -2270,7 +2341,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   function slotPasFoto(r) {
     if (!r.foto) return '<div class="pasfoto-kartu kosong" title="Pengajuan ini dikirim sebelum pas foto diwajibkan"><span>Tanpa<br>pas foto</span></div>';
     var ada = S.fotoAdmin && S.fotoAdmin[r.id];
-    return '<button type="button" class="pasfoto-kartu" data-pasfoto="' + e(r.id) + '" title="Pas foto 3×4 · hanya terlihat oleh Sekprodi. Ketuk untuk memperbesar." aria-label="Pas foto ' + e(r.nama) + '">' +
+    return '<button type="button" class="pasfoto-kartu" data-pasfoto="' + e(r.id) + '" title="Pas foto 3×4 · ketuk untuk memperbesar" aria-label="Pas foto ' + e(r.nama) + '">' +
       (ada ? '<img alt="Pas foto ' + e(r.nama) + '" src="' + ada + '">' : '<span>Memuat<br>foto…</span>') + '</button>';
   }
   function muatPasFoto() {
@@ -3419,25 +3490,127 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   /* ---------------- pasang sebagai aplikasi (PWA) ---------------- */
   var tundaPasang = null;
   function siapPasang() {
-    if (!API) return;
-    var mandiri = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
-    if (mandiri) return;
     var ua = navigator.userAgent || '', ios = /iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1),
-      dalamApp = /FBAN|FBAV|Instagram|Line\/|; wv\)|WhatsApp|TikTok/i.test(ua), android = /android/i.test(ua);
-    window.addEventListener('beforeinstallprompt', function (ev) { ev.preventDefault(); tundaPasang = ev; $('bPasang').hidden = false; });
-    window.addEventListener('appinstalled', function () { $('bPasang').hidden = true; $('tipPasang').hidden = true; toast('SKRIPSPACE terpasang di layar utama.'); });
+      dalamApp = /FBAN|FBAV|Instagram|Line\/|; wv\)|WhatsApp|TikTok/i.test(ua), android = /android/i.test(ua),
+      mandiri = window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+    function pilihOs(os) {
+      semua('.pasang-pilih [data-os]').forEach(function (b) { b.setAttribute('aria-selected', String(b.getAttribute('data-os') === os)); });
+      semua('[data-langkah-os]').forEach(function (o) { o.hidden = o.getAttribute('data-langkah-os') !== os; });
+    }
+    function status(t) { $('pasangStatus').innerHTML = t; }
+    pilihOs(ios ? 'ios' : 'android');
+    $('sPasang').addEventListener('click', function (ev) { var b = ev.target.closest('.pasang-pilih [data-os]'); if (b) pilihOs(b.getAttribute('data-os')); });
+    if (mandiri) { status('<b>SKRIPSPACE sudah terpasang</b> dan sedang kamu buka sebagai aplikasi.'); $('sPasang').classList.add('terpasang'); return; }
+    if (dalamApp) status('Halaman ini terbuka di dalam aplikasi lain. Buka dulu di <b>Chrome</b> atau <b>Safari</b>, lalu ikuti langkahnya.');
+    else if (ios) status('Di iPhone dan iPad, pemasangan lewat tombol <b>Bagikan</b> di Safari. Ikuti empat langkah di bawah.');
+    else if (android) status('Ketuk <b>Pasang sekarang</b>, lalu <b>Instal</b>. Selesai dalam hitungan detik.');
+    else status('Di laptop (Chrome atau Edge) juga bisa: klik ikon pasang di bilah alamat. Untuk HP, pilih jenisnya di bawah.');
+    if (!API) return;
+    if (android && !dalamApp) $('bPasangSek').hidden = false;
     if (ios || android || dalamApp) $('bPasang').hidden = false;
-    var ikonBagikan = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:-3px"><path d="M12 3v12M7.5 7.5L12 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 11H5v9h14v-9h-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    $('bPasang').addEventListener('click', function () {
-      if (tundaPasang) { var p = tundaPasang; tundaPasang = null; p.prompt(); p.userChoice.then(function (h) { if (h && h.outcome === 'accepted') $('bPasang').hidden = true; }).catch(function () {}); return; }
-      var t = $('tipPasang'), langkah;
-      if (dalamApp) langkah = ['Halaman ini terbuka di dalam aplikasi lain (WhatsApp, Instagram, dsb.), yang tidak bisa memasang aplikasi.', 'Ketuk menu di pojok, pilih <b>Buka di browser</b> (Safari di iPhone, Chrome di Android).', 'Setelah terbuka di browser, ketuk lagi tombol <b>Pasang aplikasi</b>.'];
-      else if (ios) langkah = ['Buka skripspace.com di <b>Safari</b> (atau Chrome di iOS 16.4 ke atas).', 'Ketuk tombol <b>Bagikan</b> ' + ikonBagikan + ' di bawah atau di bilah alamat.', 'Gulir, lalu pilih <b>Tambahkan ke Layar Utama</b>.', 'Ketuk <b>Tambah</b>. Ikon SKRIPSPACE muncul di layar utama dan terbuka seperti aplikasi.'];
-      else langkah = ['Ketuk menu browser <b>&#8942;</b> (titik tiga) di pojok kanan atas.', 'Pilih <b>Instal aplikasi</b> atau <b>Tambahkan ke layar utama</b>.', 'Ketuk <b>Instal</b>. Ikon SKRIPSPACE muncul di layar utama dan daftar aplikasi.'];
-      t.innerHTML = '<b class="judul-pasang"><img src="skripspace-64.png" alt="" width="28" height="28"> Pasang SKRIPSPACE di ' + (ios ? 'iPhone/iPad' : (android ? 'Android' : 'perangkat ini')) + '</b><ol>' + langkah.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ol><button type="button" class="tombol mini" data-tutup-pasang>Mengerti</button>';
-      t.hidden = !t.hidden;
+    window.addEventListener('beforeinstallprompt', function (ev) {
+      ev.preventDefault(); tundaPasang = ev; $('bPasang').hidden = false; $('bPasangSek').hidden = false;
+      status('HP-mu siap. Ketuk <b>Pasang sekarang</b>, lalu <b>Instal</b>.');
     });
-    $('tipPasang').addEventListener('click', function (ev) { if (ev.target.closest('[data-tutup-pasang]')) $('tipPasang').hidden = true; });
+    window.addEventListener('appinstalled', function () {
+      tundaPasang = null; $('bPasang').hidden = true; $('bPasangSek').hidden = true; $('sPasang').classList.add('terpasang');
+      status('<b>Terpasang.</b> Buka SKRIPSPACE dari layar utama HP-mu.'); toast('SKRIPSPACE terpasang di layar utama.');
+    });
+    function pasangSekarang(dariAtas) {
+      if (tundaPasang) {
+        var p = tundaPasang; tundaPasang = null; p.prompt();
+        p.userChoice.then(function (h) { if (!h || h.outcome !== 'accepted') status('Pemasangan dibatalkan. Muat ulang halaman ini untuk memunculkan tombol pasang lagi, atau pakai menu <b>&#8942;</b> → <b>Instal aplikasi</b>.'); }).catch(function () {});
+        return;
+      }
+      pilihOs(ios ? 'ios' : 'android');
+      var sek = $('sPasang'); sek.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      sek.classList.remove('sorot'); void sek.offsetWidth; sek.classList.add('sorot');
+      if (!dariAtas && android) status('Jendela pasang belum tersedia di browser ini. Ketuk menu <b>&#8942;</b> di pojok kanan atas, lalu <b>Instal aplikasi</b> atau <b>Tambahkan ke layar utama</b>.');
+    }
+    $('bPasang').addEventListener('click', function () { pasangSekarang(true); });
+    $('bPasangSek').addEventListener('click', function () { pasangSekarang(false); });
+  }
+
+  /* ---------------- rute penerbangan: pesawat terbang menyusuri enam titik ---------------- */
+  function siapRute() {
+    var w = $('rute2'); if (!w) return;
+    var jalur = w.querySelector('.rute-jalur'), jejak = w.querySelector('.rute-jejak'), asap = w.querySelector('.rute-asap'), pesawat = w.querySelector('.rute-pesawat'),
+      lapis = semua('svg', w), titik = semua('.titik', w), li = semua('li', w);
+    var panjang = 0, henti = [], skala = 1.3, T = 12500, mulai = 0, lebarLalu = 0, tinggiLalu = 0, jalan = false,
+      diam = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    function halus(pts) {   // Catmull-Rom menjadi kurva Bezier
+      var d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+      for (var i = 0; i < pts.length - 1; i++) {
+        var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+        d += ' C' + (p1[0] + (p2[0] - p0[0]) / 6).toFixed(1) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6).toFixed(1) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6).toFixed(1) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6).toFixed(1) + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+      }
+      return d;
+    }
+    function bangun() {
+      var r = w.getBoundingClientRect();
+      if (!r.width || !r.height) return false;
+      if (Math.abs(r.width - lebarLalu) < 1 && Math.abs(r.height - tinggiLalu) < 1 && panjang) return true;
+      lebarLalu = r.width; tinggiLalu = r.height;
+      lapis.forEach(function (s) { s.setAttribute('viewBox', '0 0 ' + r.width.toFixed(1) + ' ' + r.height.toFixed(1)); });
+      var p = titik.map(function (t) { var b = t.getBoundingClientRect(); return [b.left - r.left + b.width / 2, b.top - r.top + b.height / 2]; });
+      var tegak = Math.abs(p[1][0] - p[0][0]) < 8, pts = [];
+      skala = tegak ? 1.25 : 1.65;
+      if (tegak) {   // ponsel: titik bersusun ke bawah, pesawat meliuk di antaranya
+        pts.push([p[0][0] + 30, p[0][1] - 34]);
+        p.forEach(function (q, i) { pts.push(q); if (i < p.length - 1) pts.push([q[0] + (i % 2 ? -12 : 22), (q[1] + p[i + 1][1]) / 2]); });
+      } else {       // layar lebar: lepas landas dari kiri bawah, naik-turun melewati titik
+        pts.push([p[0][0] - 46, p[0][1] + 40]);
+        p.forEach(function (q) { pts.push(q); });
+      }
+      var d = halus(pts);
+      [jalur, jejak, asap].forEach(function (x) { x.setAttribute('d', d); });
+      panjang = jalur.getTotalLength();
+      jejak.style.strokeDasharray = asap.style.strokeDasharray = panjang + ' ' + panjang;
+      var contoh = [], n = 260;
+      for (var k = 0; k <= n; k++) { var c = jalur.getPointAtLength(panjang * k / n); contoh.push([c.x, c.y, panjang * k / n]); }
+      henti = p.map(function (q) { var best = 0, jb = 1e9; contoh.forEach(function (c) { var j = (c[0] - q[0]) * (c[0] - q[0]) + (c[1] - q[1]) * (c[1] - q[1]); if (j < jb) { jb = j; best = c[2]; } }); return best; });
+      return true;
+    }
+    function letak(len, terang) {
+      var a = jalur.getPointAtLength(len), b = jalur.getPointAtLength(Math.min(panjang, len + 2)), c = len + 2 > panjang ? jalur.getPointAtLength(Math.max(0, len - 2)) : null;
+      var sudut = c ? Math.atan2(a.y - c.y, a.x - c.x) : Math.atan2(b.y - a.y, b.x - a.x);
+      pesawat.setAttribute('transform', 'translate(' + a.x.toFixed(1) + ' ' + a.y.toFixed(1) + ') rotate(' + (sudut * 180 / Math.PI).toFixed(1) + ') scale(' + skala + ')');
+      pesawat.style.opacity = terang;
+    }
+    function bingkai(now) {
+      if (!jalan) return;
+      if (document.hidden || !w.offsetParent) { jalan = false; return; }
+      if (!bangun()) { jalan = false; return; }
+      if (!mulai) mulai = now;
+      var k = ((now - mulai) % T) / T, terbang = 0.86, a0 = 0.06, q;
+      if (k < a0) q = 0.035 * (k / a0) * (k / a0);                      // percepatan lepas landas
+      else if (k < terbang) q = 0.035 + (k - a0) / (terbang - a0) * 0.965;
+      else q = 1;                                                         // mendarat, lalu memudar
+      var len = panjang * q;
+      var terang = k < 0.04 ? k / 0.04 : (k < terbang ? 1 : Math.max(0, 1 - (k - terbang) / 0.06));
+      letak(len, terang);
+      var sisa = Math.max(0, panjang - len);
+      jejak.style.strokeDashoffset = sisa; asap.style.strokeDashoffset = sisa;
+      var pudar = k < terbang ? 1 : Math.max(0, 1 - (k - terbang) / 0.12);
+      jejak.style.opacity = pudar; asap.style.opacity = pudar * 0.5;
+      li.forEach(function (x, i) {
+        x.classList.toggle('lewat', k < terbang + 0.1 && len >= henti[i] - 3);
+        x.classList.toggle('singgah', Math.abs(len - henti[i]) < panjang * 0.045);
+      });
+      requestAnimationFrame(bingkai);
+    }
+    function nyalakan() {
+      if (diam) { if (bangun()) { letak(henti[0] || 0, 1); jejak.style.opacity = 0; asap.style.opacity = 0; } return; }
+      if (jalan) return;
+      jalan = true; requestAnimationFrame(bingkai);
+    }
+    var tunda = 0;
+    window.addEventListener('resize', function () { clearTimeout(tunda); tunda = setTimeout(function () { lebarLalu = 0; nyalakan(); }, 150); });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) nyalakan(); });
+    semua('.nav button, [data-ke-lompat]').forEach(function (b) { b.addEventListener('click', function () { setTimeout(nyalakan, 60); }); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { lebarLalu = 0; nyalakan(); });
+    setTimeout(function () { lebarLalu = 0; nyalakan(); }, 700);
+    nyalakan();
   }
 
   function pasang() {
@@ -3505,7 +3678,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
 
   function mulai() {
     pasang(); tampil('beranda');
-    $('spandukDemo').hidden = HIDUP; $('bContoh').hidden = HIDUP; $('sdContoh').hidden = HIDUP; siapPasang();
+    $('spandukDemo').hidden = HIDUP; $('bContoh').hidden = HIDUP; $('sdContoh').hidden = HIDUP; siapPasang(); siapRute();
     var mv = /[?&]v=([A-Za-z0-9.\-]{8,60})/.exec(location.search); if (mv) bukaVerif(mv[1]);
     var mj = /[?&]jadwal=(\d{4}-\d{2}-\d{2})(?:&|$)/.exec(location.search), mt = /[?&]t=([0-9a-f]{6,20})(?:&|$)/.exec(location.search); if (mj && mt) bukaJadwalHari(mj[1], mt[1]);
     api('apiInit').then(function (init) {
