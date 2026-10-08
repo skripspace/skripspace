@@ -17,14 +17,14 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=46">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=46">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=47">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=47">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=46">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=47">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -114,6 +114,26 @@ a { color: var(--accent); }
 @keyframes lintas5 { 0% { transform: translate(-20vw, 72vh) rotate(14deg); } 50% { transform: translate(52vw, 84vh) rotate(-10deg); } 100% { transform: translate(116vw, 66vh) rotate(14deg); } }
 @keyframes lintas6 { from { transform: translate(104vw, 52vh) rotate(0); } to { transform: translate(-12vw, 70vh) rotate(-360deg); } }
 @media (max-width: 680px) { .langit .l1 { width: 76px; } .langit .l2 { width: 68px; } .langit .l3 { width: 80px; } .langit .l4 { width: 72px; } .langit .l5 { width: 50px; } .langit svg { opacity: .42; } }
+/* planet, astronot, dan pesawat melintas; matahari saat tema terang, bulan saat tema gelap; bintang berkelip */
+.langit .l7 { width: 118px; animation-name: lintas7; animation-duration: 84s; animation-delay: -40s; }
+.langit .l8 { width: 92px; animation-name: lintas8; animation-duration: 66s; animation-delay: -14s; }
+.langit .l9 { width: 132px; animation-name: lintas9; animation-duration: 34s; animation-delay: -4s; }
+@keyframes lintas7 { 0% { transform: translate(112vw, 58vh) rotate(8deg); } 50% { transform: translate(46vw, 46vh) rotate(-6deg); } 100% { transform: translate(-26vw, 62vh) rotate(8deg); } }
+@keyframes lintas8 { 0% { transform: translate(-22vw, 14vh) rotate(-24deg); } 35% { transform: translate(28vw, 36vh) rotate(8deg); } 70% { transform: translate(72vw, 22vh) rotate(-14deg); } 100% { transform: translate(116vw, 40vh) rotate(26deg); } }
+@keyframes lintas9 { from { transform: translate(-32vw, 30vh) rotate(-7deg); } to { transform: translate(118vw, 8vh) rotate(-7deg); } }
+.langit svg.tetap { left: auto; right: max(8px, calc(50vw - 615px)); top: calc(92px + env(safe-area-inset-top, 0px)); width: 118px; opacity: .7; animation: ayun 8s ease-in-out infinite; }
+.langit .sinar { transform-box: fill-box; transform-origin: center; animation: putar 48s linear infinite; }
+.langit .bulan { display: none; }
+:root[data-theme="dark"] .langit .surya { display: none; } :root[data-theme="dark"] .langit .bulan { display: block; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .langit .surya { display: none; } :root:not([data-theme="light"]) .langit .bulan { display: block; } }
+.bintang2 { position: absolute; inset: 0; }
+.bt { position: absolute; width: var(--s); height: var(--s); background: var(--accent); opacity: .55; clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); animation: gemerlip var(--t) ease-in-out infinite; animation-delay: var(--d); }
+.bt.em { background: #f0b400; }
+:root[data-theme="dark"] .bt { background: #ffffff; opacity: .8; } :root[data-theme="dark"] .bt.em { background: var(--pop); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bt { background: #ffffff; opacity: .8; } :root:not([data-theme="light"]) .bt.em { background: var(--pop); } }
+@keyframes gemerlip { 0%, 100% { transform: scale(1) rotate(0); opacity: .6; } 50% { transform: scale(.35) rotate(45deg); opacity: .12; } }
+@media (max-width: 680px) { .langit .l7 { width: 86px; } .langit .l8 { width: 70px; } .langit .l9 { width: 98px; } .langit .l4, .langit .l5 { display: none; } .langit svg.tetap { width: 84px; right: -14px; top: calc(58px + env(safe-area-inset-top, 0px)); opacity: .5; } .bt:nth-child(3n) { display: none; } }
+@media (prefers-reduced-motion: reduce) { .langit svg:not(.tetap) { display: none; } .langit svg.tetap, .langit .sinar, .bt { animation: none; } }
 @media print { .langit { display: none; } }
 
 /* ---------- pembuka ---------- */
@@ -543,6 +563,12 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
   <svg class="l4" viewBox="0 0 124 44"><g class="st"><rect class="f-mint" x="4" y="6" width="116" height="32" rx="6"/><path class="f-no tipis" d="M16 16h14M16 28h14M44 22h62"/></g></svg>
   <svg class="l5" viewBox="176 18 124 76"><g class="st"><path class="f-pink" d="M208 60v22c0 9 56 9 56 0V60l-28 12z"/><path class="f-pink" d="M236 26l54 23-54 23-54-23z"/><path class="f-no" d="M290 49v26"/><circle class="f-pop" cx="290" cy="81" r="6"/></g></svg>
   <svg class="l6" viewBox="0 0 40 40"><g class="st"><path class="f-pop" d="M20 2c3 12 6 15 18 18-12 3-15 6-18 18-3-12-6-15-18-18 12-3 15-6 18-18z"/></g></svg>
+  <div class="bintang2"><i class="bt em" style="left:8.6%;top:9.5%;--s:18px;--d:-4.0s;--t:3.8s"></i><i class="bt" style="left:34.2%;top:2.1%;--s:18px;--d:-1.4s;--t:4.3s"></i><i class="bt" style="left:55.9%;top:8.7%;--s:14px;--d:-4.2s;--t:2.4s"></i><i class="bt" style="left:65.2%;top:7.9%;--s:7px;--d:-2.1s;--t:4.0s"></i><i class="bt" style="left:87.7%;top:7.6%;--s:14px;--d:-1.2s;--t:2.5s"></i><i class="bt" style="left:35.2%;top:20.8%;--s:9px;--d:-1.6s;--t:4.2s"></i><i class="bt em" style="left:56.9%;top:27.9%;--s:14px;--d:-3.0s;--t:2.4s"></i><i class="bt" style="left:88.1%;top:28.3%;--s:12px;--d:-2.9s;--t:4.4s"></i><i class="bt" style="left:8.5%;top:44.9%;--s:9px;--d:-0.8s;--t:2.2s"></i><i class="bt em" style="left:27.2%;top:42.7%;--s:7px;--d:-2.3s;--t:4.1s"></i><i class="bt" style="left:56.1%;top:36.0%;--s:10px;--d:-2.9s;--t:2.6s"></i><i class="bt" style="left:74.5%;top:44.7%;--s:10px;--d:-1.7s;--t:4.8s"></i><i class="bt" style="left:88.3%;top:40.1%;--s:7px;--d:-0.2s;--t:4.7s"></i><i class="bt em" style="left:12.2%;top:61.3%;--s:12px;--d:-4.1s;--t:2.3s"></i><i class="bt" style="left:27.3%;top:59.1%;--s:8px;--d:-0.0s;--t:3.8s"></i><i class="bt" style="left:55.0%;top:56.9%;--s:14px;--d:-0.3s;--t:4.8s"></i><i class="bt" style="left:63.9%;top:61.8%;--s:9px;--d:-2.9s;--t:3.6s"></i><i class="bt" style="left:5.0%;top:79.2%;--s:12px;--d:-3.2s;--t:2.2s"></i><i class="bt" style="left:23.0%;top:77.1%;--s:14px;--d:-2.8s;--t:3.2s"></i><i class="bt em" style="left:44.7%;top:73.2%;--s:14px;--d:-0.1s;--t:3.9s"></i><i class="bt" style="left:65.2%;top:75.0%;--s:9px;--d:-1.8s;--t:2.6s"></i><i class="bt" style="left:86.3%;top:78.5%;--s:9px;--d:-4.5s;--t:3.7s"></i><i class="bt" style="left:16.8%;top:91.5%;--s:10px;--d:-2.5s;--t:3.7s"></i><i class="bt" style="left:34.0%;top:90.7%;--s:12px;--d:-1.9s;--t:4.5s"></i><i class="bt" style="left:65.2%;top:95.5%;--s:7px;--d:-3.5s;--t:2.3s"></i><i class="bt" style="left:84.0%;top:93.2%;--s:7px;--d:-3.9s;--t:2.3s"></i></div>
+  <svg class="tetap surya" viewBox="0 0 140 140"><g class="st"><g class="sinar"><path class="f-no luar" d="M70 6v18M70 116v18M6 70h18M116 70h18M25 25l13 13M102 102l13 13M115 25l-13 13M38 102l-13 13"/></g><circle class="f-pop" cx="70" cy="70" r="32"/><path class="f-no tipis" d="M57 66q3-5 6 0M77 66q3-5 6 0M58 80q12 10 24 0"/></g></svg>
+  <svg class="tetap bulan" viewBox="0 0 140 140"><g class="st"><path class="f-pop" d="M88 16a56 56 0 1 0 38 86 46 46 0 0 1-38-86z"/><circle class="f-no tipis" cx="52" cy="62" r="7"/><circle class="f-no tipis" cx="74" cy="96" r="5"/><circle class="f-no tipis" cx="44" cy="92" r="3.5"/><path class="f-kertas kelip" d="M112 30c1.5 6 3 7.5 9 9-6 1.5-7.5 3-9 9-1.5-6-3-7.5-9-9 6-1.5 7.5-3 9-9z"/><path class="f-kertas kelip k2" d="M126 62c1 4 2 5 6 6-4 1-5 2-6 6-1-4-2-5-6-6 4-1 5-2 6-6z"/></g></svg>
+  <svg class="l7" viewBox="0 0 150 110"><g class="st"><g transform="rotate(-18 75 55)"><ellipse class="f-no luar" cx="75" cy="55" rx="66" ry="15"/><circle class="f-acc" cx="75" cy="55" r="32"/><path class="f-no tipis" d="M47 42q28 10 56 0M45 62q30 11 60 0"/><circle class="f-pink" cx="62" cy="50" r="5"/><path class="f-no luar" style="stroke-width:4.5" d="M9 55a66 15 0 0 0 132 0"/></g><circle class="f-pop" cx="132" cy="18" r="7"/></g></svg>
+  <svg class="l8" viewBox="0 0 130 150"><g class="st"><path class="f-no tipis luar" d="M24 96q-22 6-16 30t-6 22"/><rect class="f-acc" x="30" y="56" width="70" height="52" rx="12"/><rect class="f-kertas" x="42" y="62" width="46" height="50" rx="12"/><rect class="f-kertas" x="20" y="70" width="24" height="15" rx="7.5" transform="rotate(28 32 77)"/><rect class="f-kertas" x="86" y="60" width="24" height="15" rx="7.5" transform="rotate(-42 98 67)"/><rect class="f-kertas" x="44" y="106" width="16" height="30" rx="8" transform="rotate(14 52 121)"/><rect class="f-kertas" x="70" y="106" width="16" height="30" rx="8" transform="rotate(-18 78 121)"/><rect class="f-pop" x="52" y="78" width="26" height="14" rx="4"/><path class="f-no tipis" d="M58 85h6M70 85h3"/><circle class="f-kertas" cx="65" cy="38" r="27"/><rect class="f-ink" x="46" y="26" width="38" height="26" rx="12"/><path class="f-no tipis" style="stroke:#8fd3ff" d="M54 34q5-4 11-3"/><circle class="f-pink" cx="92" cy="38" r="4"/></g></svg>
+  <svg class="l9" viewBox="0 0 190 80"><g class="st"><path class="f-no tipis luar" stroke-dasharray="3 10" d="M2 44h34"/><path class="f-acc" d="M58 30L44 6h18l24 24z"/><path class="f-kertas" d="M44 44q4-14 30-14h74q28 2 36 14-8 12-36 12H66q-18 0-22-12z"/><path class="f-acc" d="M96 48L74 76h20l34-28z"/><path class="f-sky" d="M150 34q14 2 22 8h-22z"/><circle class="f-sky" cx="84" cy="40" r="3.5"/><circle class="f-sky" cx="100" cy="40" r="3.5"/><circle class="f-sky" cx="116" cy="40" r="3.5"/><circle class="f-sky" cx="132" cy="40" r="3.5"/><path class="f-pop" d="M44 44l-10-8v16z"/></g></svg>
 </div>
 <div class="app" id="app">
   <header class="bar">
@@ -992,7 +1018,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 46</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 47</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
