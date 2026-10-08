@@ -20,23 +20,23 @@
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=49">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=49">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=50">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=50">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="SKRIPSPACE, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA: Dewi Keadilan berdiri di atas tumpukan buku hukum di antariksa">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=49">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=50">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="favicon.ico?v=49" sizes="16x16 32x32 48x48 64x64">
-<link rel="icon" type="image/png" sizes="32x32" href="skripspace-32.png?v=49">
-<link rel="icon" type="image/png" sizes="16x16" href="skripspace-16.png?v=49">
-<link rel="icon" type="image/png" sizes="192x192" href="skripspace-192.png?v=49">
-<link rel="apple-touch-icon" href="skripspace-touch-180.png?v=49">
-<link rel="apple-touch-icon" sizes="180x180" href="skripspace-touch-180.png?v=49">
-<link rel="apple-touch-icon" sizes="167x167" href="skripspace-touch-167.png?v=49">
-<link rel="apple-touch-icon" sizes="152x152" href="skripspace-touch-152.png?v=49">
+<link rel="icon" href="favicon.ico?v=50" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="32x32" href="skripspace-32.png?v=50">
+<link rel="icon" type="image/png" sizes="16x16" href="skripspace-16.png?v=50">
+<link rel="icon" type="image/png" sizes="192x192" href="skripspace-192.png?v=50">
+<link rel="apple-touch-icon" href="skripspace-touch-180.png?v=50">
+<link rel="apple-touch-icon" sizes="180x180" href="skripspace-touch-180.png?v=50">
+<link rel="apple-touch-icon" sizes="167x167" href="skripspace-touch-167.png?v=50">
+<link rel="apple-touch-icon" sizes="152x152" href="skripspace-touch-152.png?v=50">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 [hidden]{display:none!important}img{max-width:100%}
@@ -564,6 +564,23 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
 .jadwalbaris .dewan { font-size: 13.5px; display: flex; flex-direction: column; gap: 2px; } .jadwalbaris .dewan span { overflow-wrap: anywhere; }
 .jadwalbaris .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
 .formwadah { margin-top: 6px; }
+
+/* pas foto 3×4: pratinjau di form mahasiswa dan di kartu penetapan pembimbing (Sekprodi) */
+.isian label .wajib { font-size: 11.5px; font-weight: 700; color: var(--bad); text-transform: uppercase; letter-spacing: .04em; margin-left: 4px; }
+.pasfoto-pilih { display: flex; gap: 14px; align-items: flex-start; margin-top: 8px; }
+.krs .pasfoto-pilih img.pasfoto, img.pasfoto { width: 96px; height: 128px; max-width: none; object-fit: cover; margin: 0; flex: 0 0 auto; border: 2px solid var(--hair); border-radius: 8px; background: #fff; }
+.pasfoto-pilih .bantu { margin-top: 2px; }
+.berkas .identitas { display: flex; gap: 14px; align-items: flex-start; }
+.berkas .identitas-isi { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.pasfoto-kartu { flex: 0 0 auto; width: 84px; height: 112px; padding: 0; border: 2px solid var(--hair); border-radius: 8px; background: var(--surface-2, rgba(127,127,127,.08)); overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; font: inherit; font-size: 11.5px; line-height: 1.3; color: var(--muted); cursor: zoom-in; transition: width .18s ease, height .18s ease; }
+.pasfoto-kartu img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pasfoto-kartu.besar { width: 180px; height: 240px; cursor: zoom-out; }
+.pasfoto-kartu.kosong { cursor: default; border-style: dashed; }
+@media (max-width: 520px) {
+  .pasfoto-kartu { width: 66px; height: 88px; }
+  .pasfoto-kartu.besar { width: 150px; height: 200px; }
+  .berkas .identitas { gap: 10px; }
+}
 </style>
 </head>
 <body>
@@ -715,6 +732,8 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
             <div class="pilih" role="radiogroup" aria-labelledby="lKek" id="gKek"></div></div>
           <div class="isian"><label for="fTempat">Tempat lahir</label><input type="text" id="fTempat" maxlength="40" placeholder="Kota / kabupaten"></div>
           <div class="isian"><label for="fTgl">Tanggal lahir</label><span class="tgl"><input type="date" id="fTgl"></span></div>
+          <div class="isian penuh krs pasfoto-isian" id="wFoto" hidden><label for="fFoto">Pas foto 3×4 <span class="wajib">wajib</span></label><input type="file" id="fFoto" accept="image/jpeg,image/png,.jpg,.jpeg,.png">
+            <span class="bantu">Foto formal berwarna, tegak, wajah terlihat jelas, berbentuk JPG atau PNG. Foto dipotong otomatis ke ukuran 3×4 dan <b>hanya dilihat Sekprodi</b> saat menetapkan dosen pembimbing.</span><div id="fotoInfo"></div></div>
           <div class="isian penuh"><label for="fWali">Dosen wali</label><input type="text" id="fWali" list="dWali" maxlength="90" placeholder="Ketik nama, lalu pilih"><datalist id="dWali"></datalist><datalist id="dDosen"></datalist><datalist id="dPenguji"></datalist><datalist id="dRuang"></datalist>
             <span class="bantu" id="waliBantu" hidden>Pilih nama dari daftar. Setelah pengajuan dikirim, dosen wali menekan <b>Mengetahui</b> di SKRIPSPACE; baru sesudah itu pengajuanmu diteruskan ke prodi. Belum punya dosen wali? Pilih <b>Belum ada dosen wali</b>.</span><span class="bantu" id="waliAlihInfo" hidden></span></div>
           <div class="isian penuh krs" id="wTtd" hidden><label for="fTtd">Tanda tanganmu</label><input type="file" id="fTtd" accept="image/*">
@@ -1029,7 +1048,7 @@ table.pantau .aksi-b { display: flex; flex-wrap: wrap; gap: 4px; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 49</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 50</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -1083,7 +1102,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
 
   var S = {
-    init: null, langkah: 1, mode: 'transkrip', nilai: {}, dknBerkas: [], dkn: null, ttd: '',
+    init: null, langkah: 1, mode: 'transkrip', nilai: {}, dknBerkas: [], dkn: null, ttd: '', foto: '', fotoPotong: false, fotoAdmin: {}, fotoGagal: {}, fotoMuat: false,
     judul: [{ teks: '', cek: null }, { teks: '', cek: null }, { teks: '', cek: null }],
     pin: '', admin: null, krs: null, riset: null,
     sesi: null, ruang: null, ruangId: '', rTab: 'bimbingan', muat: {}, dosen: null, pantau: null, aTab: 'antre', saring: { dosen: '', keadaan: '', cari: '' }
@@ -1163,6 +1182,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     if (!d.kekhususan) return ['gKek', 'Pilih program kekhususan.'];
     if (!d.tempatLahir) return ['fTempat', 'Tempat lahir belum diisi.'];
     if (!d.tglLahir) return ['fTgl', 'Tanggal lahir belum diisi.'];
+    if (S.init && S.init.foto && !S.foto) return ['fFoto', 'Unggah dulu pas foto 3×4 (JPG atau PNG). Tanpa pas foto, pengajuan tidak bisa dilanjutkan.'];
     if (d.dosenWali.length < 3) return ['fWali', 'Dosen wali belum diisi. Bila belum punya dosen wali, pilih "Belum ada dosen wali".'];
     if (S.init && S.init.wali) {
       if (S.init.dosen.indexOf(d.dosenWali) < 0 && (S.init.waliAlih || []).indexOf(d.dosenWali) < 0) return ['fWali', 'Pilih nama dosen wali dari daftar yang muncul saat kamu mengetik. Bila namanya tidak ada di daftar, hubungi admin prodi.'];
@@ -1375,6 +1395,41 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     };
     baca.readAsDataURL(berkas);
   }
+  /* ---------------- pas foto 3×4 (hanya untuk Sekprodi) ---------------- */
+  function infoFoto() {
+    $('fotoInfo').innerHTML = S.foto ? '<div class="pasfoto-pilih"><img alt="Pratinjau pas foto 3×4" class="pasfoto" src="' + S.foto + '"><span class="bantu"><b>Terpasang.</b>' +
+      (S.fotoPotong ? ' Fotomu sudah dipotong otomatis ke ukuran 3×4. Pastikan wajah terlihat utuh; bila terpotong, unggah foto yang sudah berukuran 3×4.' : ' Begini pas fotomu akan dilihat Sekprodi.') + '</span></div>' : '';
+  }
+  function pilihFoto(berkas) {
+    function gagal(pesan) { S.foto = ''; S.fotoPotong = false; $('fFoto').value = ''; infoFoto(); toast(pesan); }
+    if (!berkas) return;
+    if (!/^image\/(jpeg|png)$/.test(berkas.type) && !/\.(jpe?g|png)$/i.test(berkas.name || '')) return gagal('Pas foto harus berbentuk JPG atau PNG.');
+    if (berkas.size > 15 * 1024 * 1024) return gagal('Berkas foto terlalu besar (lebih dari 15 MB). Pakai foto yang lebih kecil.');
+    var baca = new FileReader();
+    baca.onerror = function () { gagal('Berkas tidak bisa dibaca.'); };
+    baca.onload = function () {
+      var img = new Image();
+      img.onerror = function () { gagal('Gambar tidak bisa dibaca. Pakai JPG atau PNG.'); };
+      img.onload = function () {
+        var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+        if (!w || !h) return gagal('Gambar tidak bisa dibaca. Pakai JPG atau PNG.');
+        /* potong ke rasio 3:4 tegak: lebar dipotong di tengah, tinggi dipotong condong ke atas (kepala tetap utuh) */
+        var sw = w, sh = h, sx = 0, sy = 0;
+        if (w / h > 0.75) { sw = Math.round(h * 0.75); sx = Math.round((w - sw) / 2); } else { sh = Math.round(w / 0.75); sy = Math.round((h - sh) * 0.3); }
+        if (sw < 150) return gagal('Pas foto terlalu kecil atau buram. Unggah foto yang lebih jelas.');
+        var c = document.createElement('canvas'); c.width = 360; c.height = 480;
+        var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 360, 480);
+        g.imageSmoothingQuality = 'high'; g.drawImage(img, sx, sy, sw, sh, 0, 0, 360, 480);
+        var hasil = c.toDataURL('image/jpeg', 0.86);
+        if (hasil.length > 230000) hasil = c.toDataURL('image/jpeg', 0.7);
+        if (hasil.length > 300000) return gagal('Pas foto terlalu besar. Unggah foto lain.');
+        S.foto = hasil; S.fotoPotong = Math.abs(w / h - 0.75) > 0.04; infoFoto();
+        galat($('fFoto').closest('.lembar').querySelector('[data-galat]'), '');
+      };
+      img.src = baca.result;
+    };
+    baca.readAsDataURL(berkas);
+  }
   function pesanAdminWali(x) {
     return 'Assalamu\'alaikum Wr. Wb. Bapak/Ibu ' + x.dosenWali + '.\n\nMohon izin, kami dari pengelola Prodi S1 Ilmu Hukum FH UNISSULA. Mahasiswa perwalian Bapak/Ibu, ' + x.nama + ' (NIM ' + x.nim + '), mengajukan judul skripsi melalui SKRIPSPACE dan menunggu persetujuan Bapak/Ibu selaku dosen wali.\n\n' +
       'Mohon kesediaan Bapak/Ibu membuka tautan berikut, memilih Dosen wali, memasukkan kode akses, lalu menekan tombol Mengetahui:\n\nhttps://skripspace.com/?wali=' + x.id + '\n\n' +
@@ -1571,6 +1626,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var d = dataDiri(), n = ipkSks();
     var baris = [['Nama', d.nama], ['NIM', d.nim], ['Kelas', d.kelas], ['Kekhususan', d.kekhususan], ['Tempat, tgl lahir', d.tempatLahir + ', ' + d.tglLahir.split('-').reverse().join('-')],
       ['No. HP / WA', d.wa], ['Dosen wali', d.dosenWali], ['IPK', koma(n.ipk, 2)], ['Kredit kumulatif', n.sks + ' SKS'], ['Scan KRS', S.krs ? S.krs.nama : '-']];
+    if (S.init.foto) baris.push(['Pas foto 3×4', S.foto ? 'Sudah diunggah (hanya dilihat Sekprodi)' : '-']);
     if (S.init.wali) baris.push(['Tanda tangan', S.ttd ? 'Sudah diunggah' : '-']);
     if (S.mode === 'dkn' && S.dkn) baris.splice(7, 0, ['DKN', S.dkn.status === 'cocok' ? 'Terbaca otomatis dari ' + S.dkn.berkas.length + ' berkas' : (S.dkn.status === 'kaki' ? 'SKS dan IPK diambil dari DKN; nilai dicocokkan pengelola' : 'Diunggah, akan dicocokkan pengelola')]);
     $('tinjau').innerHTML = baris.map(function (b) { return '<dt>' + b[0] + '</dt><dd>' + e(b[1]) + '</dd>'; }).join('');
@@ -1585,6 +1641,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     d.modeNilai = S.mode; d.nilai = S.nilai; d.ipk = $('fIpk').value; d.sks = $('fSks').value;
     if (S.mode === 'dkn') { d.dknToken = S.dkn ? S.dkn.token : ''; d.nilai = {}; }
     if (S.init.wali) d.ttd = { dataUrl: S.ttd };
+    if (S.foto) d.foto = { dataUrl: S.foto };
     d.tanpaD = $('fTanpaD').checked; d.lulusMph = $('fLulusMph').checked; d.krsSkripsi = $('fKrsSkripsi').checked; d.mphKrs = mphKrs();
     d.krs = S.krs ? { nama: S.krs.nama, mime: S.krs.mime, b64: S.krs.b64 } : null;
     d.judul = S.judul.map(function (j) { return j.teks.trim(); }); d.setuju = true; d.kodeLama = $('fKodeLama').value.trim().toUpperCase();
@@ -1597,6 +1654,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       S.krs = null; $('fKrs').value = ''; $('fKrsSkripsi').checked = false; $('fMphKrs').checked = false; infoKrs();
       S.dkn = null; S.dknBerkas = []; $('fDkn').value = ''; renderDkn();
       S.ttd = ''; $('fTtd').value = ''; infoTtd();
+      S.foto = ''; S.fotoPotong = false; $('fFoto').value = ''; infoFoto();
       $('fSetuju').checked = false; $('fKodeLama').value = ''; S.judul.forEach(function (j) { j.teks = ''; j.cek = null; });
       window.scrollTo(0, 0);
     }).catch(function (x) { galat(kotak, x.message); }).then(function () { sibuk($('bKirim'), false); });
@@ -2208,6 +2266,29 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       (lain.length ? '<optgroup label="Semua dosen lain (termasuk dosen wali)">' + lain.map(o).join('') + '</optgroup>' : '') +
       '<optgroup label="Lainnya"><option value="__lain">Tulis nama lain…</option></optgroup>';
   }
+  /* pas foto 3×4 mahasiswa: hanya di kartu penetapan pembimbing (antrean Sekprodi), dimuat terpisah dari server */
+  function slotPasFoto(r) {
+    if (!r.foto) return '<div class="pasfoto-kartu kosong" title="Pengajuan ini dikirim sebelum pas foto diwajibkan"><span>Tanpa<br>pas foto</span></div>';
+    var ada = S.fotoAdmin && S.fotoAdmin[r.id];
+    return '<button type="button" class="pasfoto-kartu" data-pasfoto="' + e(r.id) + '" title="Pas foto 3×4 · hanya terlihat oleh Sekprodi. Ketuk untuk memperbesar." aria-label="Pas foto ' + e(r.nama) + '">' +
+      (ada ? '<img alt="Pas foto ' + e(r.nama) + '" src="' + ada + '">' : '<span>Memuat<br>foto…</span>') + '</button>';
+  }
+  function muatPasFoto() {
+    S.fotoAdmin = S.fotoAdmin || {};
+    var tunggu = semua('[data-pasfoto]').filter(function (b) { return !b.querySelector('img'); }).map(function (b) { return b.getAttribute('data-pasfoto'); });
+    tunggu = tunggu.filter(function (id, i) { return tunggu.indexOf(id) === i && !S.fotoGagal[id]; });
+    if (!tunggu.length || S.fotoMuat) return;
+    S.fotoMuat = true;
+    api('apiAdminFoto', S.pin, tunggu).then(function (peta) {
+      tunggu.forEach(function (id) { if (peta[id]) S.fotoAdmin[id] = peta[id]; else S.fotoGagal[id] = 1; });
+      semua('[data-pasfoto]').forEach(function (b) {
+        var id = b.getAttribute('data-pasfoto');
+        if (S.fotoAdmin[id] && !b.querySelector('img')) b.innerHTML = '<img alt="Pas foto" src="' + S.fotoAdmin[id] + '">';
+        else if (S.fotoGagal[id]) b.innerHTML = '<span>Foto tidak<br>ditemukan</span>';
+      });
+    }).catch(function () { tunggu.forEach(function (id) { S.fotoGagal[id] = 1; }); semua('[data-pasfoto]').forEach(function (b) { if (!b.querySelector('img')) b.innerHTML = '<span>Foto gagal<br>dimuat</span>'; }); })
+      .then(function () { S.fotoMuat = false; });
+  }
   function tampilWa(no) { var n = String(no || ''); return n ? '+' + n.slice(0, 2) + ' ' + n.slice(2, 5) + '-' + n.slice(5, 9) + '-' + n.slice(9) : ''; }
   function hWd1(a) {
     var W = a.wd1 || { menunggu: [], riwayat: [] }, h = '';
@@ -2294,8 +2375,8 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     }
     if (!a.antrean.length) h += '<div class="kosong"><b>Antrean kosong</b>Pengajuan baru dari mahasiswa akan muncul di sini.</div>';
     a.antrean.forEach(function (r, iA) {
-      h += '<article class="berkas" data-id="' + e(r.id) + '"><div class="kepala"><h3>' + e(r.nama) + '</h3><span>' + (r.ulang ? '<span class="pil kuning">Pengajuan ulang</span> ' : '') + '' + kls(r.kelas) + '</span></div>' +
-        '<div class="meta"><span class="mono"><b>' + e(r.nim) + '</b></span><span>' + e(r.kekhususan) + '</span><span>IPK <b class="mono">' + koma(r.ipk, 2) + '</b></span><span><b class="mono">' + r.sks + '</b> SKS</span><span>Wali: <b>' + ketWali(r) + '</b></span>' + (r.mphKrs ? '<span class="pil kuning">MPH sedang ditempuh</span>' : '') + '<span>WA <b class="mono">' + e(r.wa) + '</b></span><span>' + e(r.waktu) + '</span></div>' +
+      h += '<article class="berkas" data-id="' + e(r.id) + '"><div class="identitas">' + slotPasFoto(r) + '<div class="identitas-isi"><div class="kepala"><h3>' + e(r.nama) + '</h3><span>' + (r.ulang ? '<span class="pil kuning">Pengajuan ulang</span> ' : '') + '' + kls(r.kelas) + '</span></div>' +
+        '<div class="meta"><span class="mono"><b>' + e(r.nim) + '</b></span><span>' + e(r.kekhususan) + '</span><span>IPK <b class="mono">' + koma(r.ipk, 2) + '</b></span><span><b class="mono">' + r.sks + '</b> SKS</span><span>Wali: <b>' + ketWali(r) + '</b></span>' + (r.mphKrs ? '<span class="pil kuning">MPH sedang ditempuh</span>' : '') + '<span>WA <b class="mono">' + e(r.wa) + '</b></span><span>' + e(r.waktu) + '</span></div></div></div>' +
         '<div class="aksi"><span class="bantu" style="font-size:13.5px;color:var(--muted)">' + (r.manual ? 'IPK dan SKS diisi manual; aturan nilai (minimal C, mata kuliah dasar minimal BC, tanpa ganda) dan lulus MPH berdasarkan pernyataan mahasiswa. ' : 'Syarat SKS, IPK, aturan nilai, dan MPH sudah diperiksa dari isian nilai. ') + (r.wd1 && r.wd1.status === 'setuju' ? '<b>Disetujui Wakil Dekan I ' + e(r.wd1.waktu) + ' WIB.</b> ' : '') + (r.krs ? 'Scan KRS: <b>' + e(r.krs.nama) + '</b> (' + r.krs.kb + ' KB)' : 'Scan KRS tidak ada (pengajuan lama).') + '</span>' +
         (r.krs ? '<div class="kanan"><button type="button" class="tombol kecil" data-krs="' + e(r.id) + '">Lihat KRS</button></div>' : '') + '</div><div class="lihatkrs" data-krs-wadah></div>' +
         (r.dkn ? '<div class="dknhasil ' + (r.dkn.status === 'cocok' ? 'oto' : 'cek') + '"><div class="atas"><b>DKN: ' + (r.dkn.status === 'cocok' ? 'terbaca otomatis dan cocok' : (r.dkn.status === 'kaki' ? 'SKS dan IPK dari DKN, nilai per mata kuliah belum dicek' : 'belum terbaca penuh, cocokkan dengan berkasnya')) + '</b><button type="button" class="tombol kecil" data-dkn="' + e(r.id) + '">Lihat DKN</button></div>' +
@@ -2349,6 +2430,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       '<div class="tabs" role="tablist">' + [['antre', 'Persetujuan', (a.hitung.Menunggu || 0) + rs.menunggu.length], ['sidang', 'Sidang', a.sidang ? a.sidang.menunggu.length + (a.sidang.diterima || []).length + (a.sidang.disetujui || []).length : 0], ['pantau', 'Pantauan bimbingan', S.pantau ? S.pantau.mahasiswa.filter(function (x) { return x.rekap.macet; }).length : 0], ['akun', 'Akun & kode akses', 0]].map(function (x) {
         return '<button type="button" role="tab" data-atab="' + x[0] + '" aria-selected="' + (S.aTab === x[0]) + '">' + x[1] + (x[2] ? '<i>' + x[2] + '</i>' : '') + '</button>'; }).join('') + '</div>';
     $('aIsi').innerHTML = atas + (S.aTab === 'pantau' ? hPantau() : (S.aTab === 'akun' ? hAkun() : (S.aTab === 'sidang' ? hSidangAdmin() : h)));
+    if (S.aTab !== 'pantau' && S.aTab !== 'akun' && S.aTab !== 'sidang') muatPasFoto();
   }
   /* ---------------- pengajuan sidang (pengelola) ---------------- */
   function ukuranBerkas(kb) { return kb > 1000 ? koma(kb / 1024, 1) + ' MB' : kb + ' KB'; }
@@ -2694,6 +2776,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
         wd.innerHTML = h;
       }).catch(function (x) { toast(x.message); }).then(function () { sibuk(t, false); }); return;
     }
+    if (t.hasAttribute('data-pasfoto')) { if (t.querySelector('img')) t.classList.toggle('besar'); return; }
     if (t.hasAttribute('data-krs')) {
       var wk = t.closest('.berkas').querySelector('[data-krs-wadah]');
       sibuk(t, true);
@@ -2812,7 +2895,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
   }
   function keluar() {
     if (S.sesi && S.sesi.peran === 'mhs') { hapusLokal('pjs-terakhir'); hapusLokal('pjs-riset'); S.riset = null; ['mNim', 'mKode', 'rNim', 'rKode'].forEach(function (id) { if ($(id)) $(id).value = ''; }); }
-    hentiSegar(); S.sesi = null; S.ruang = null; S.dosen = null; S.admin = null; S.pantau = null; S.pin = ''; S.muat = {};
+    hentiSegar(); S.sesi = null; S.ruang = null; S.dosen = null; S.admin = null; S.pantau = null; S.pin = ''; S.muat = {}; S.fotoAdmin = {}; S.fotoGagal = {};
     ['aIsi', 'dIsi', 'mIsi'].forEach(function (id) { $(id).hidden = true; $(id).innerHTML = ''; });
     $('aPin').value = ''; $('dKode').value = ''; $('aMasuk').hidden = false; $('pembukaMasuk').hidden = false; window.scrollTo(0, 0);
   }
@@ -3318,6 +3401,19 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, 420, 260); g.fillStyle = '#14132b'; g.font = 'bold 22px sans-serif'; g.fillText('CONTOH KRS', 24, 48);
     g.font = '15px sans-serif'; g.fillText('Semester Gasal 2026/2027', 24, 80); g.fillText('1. Skripsi ............ 4 SKS', 24, 124); g.fillText('2. Kuliah Kerja Nyata .. 3 SKS', 24, 150);
     S.krs = { nama: 'contoh-krs.jpg', mime: 'image/jpeg', b64: c.toDataURL('image/jpeg', 0.6).split(',')[1] }; $('fKrsSkripsi').checked = true; infoKrs();
+    if (S.init.foto) { S.foto = fotoContoh(); S.fotoPotong = false; infoFoto(); }
+  }
+  /** Pas foto contoh (siluet, bukan foto orang sungguhan) untuk mode pratinjau. */
+  function fotoContoh() {
+    var c = document.createElement('canvas'); c.width = 360; c.height = 480;
+    var g = c.getContext('2d'), lg = g.createLinearGradient(0, 0, 0, 480);
+    lg.addColorStop(0, '#d2232a'); lg.addColorStop(1, '#a8151c'); g.fillStyle = lg; g.fillRect(0, 0, 360, 480);
+    g.fillStyle = '#1d1f33'; g.beginPath(); g.moveTo(40, 480); g.bezierCurveTo(48, 372, 110, 336, 180, 336); g.bezierCurveTo(250, 336, 312, 372, 320, 480); g.fill();
+    g.fillStyle = '#fff'; g.beginPath(); g.moveTo(150, 340); g.lineTo(180, 410); g.lineTo(210, 340); g.fill();
+    g.fillStyle = '#e9c4a4'; g.fillRect(160, 290, 40, 52); g.beginPath(); g.ellipse(180, 228, 64, 80, 0, 0, Math.PI * 2); g.fill();
+    g.fillStyle = '#26170f'; g.beginPath(); g.ellipse(180, 186, 68, 46, 0, Math.PI, 0); g.fill();
+    g.fillStyle = 'rgba(255,255,255,.85)'; g.font = 'bold 26px sans-serif'; g.textAlign = 'center'; g.fillText('CONTOH', 180, 462);
+    return c.toDataURL('image/jpeg', 0.85);
   }
 
   /* ---------------- pasang sebagai aplikasi (PWA) ---------------- */
@@ -3388,6 +3484,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
     ['fTanpaD', 'fLulusMph', 'fKrsSkripsi', 'fMphKrs'].forEach(function (id) { $(id).addEventListener('change', renderSyarat); });
     $('fKrs').addEventListener('change', function () { pilihKrs(this.files && this.files[0]); });
     $('fTtd').addEventListener('change', function () { pilihTtd(this.files && this.files[0]); });
+    $('fFoto').addEventListener('change', function () { pilihFoto(this.files && this.files[0]); });
     $('fDkn').addEventListener('change', function () { tambahDkn(this.files); });
     $('bDkn').addEventListener('click', bacaDkn);
     $('dknBerkas').addEventListener('click', function (ev) { var t = ev.target.closest('[data-dkn-buang]'); if (!t) return; S.dknBerkas.splice(Number(t.getAttribute('data-dkn-buang')), 1); S.dkn = null; gantiMode(); });
@@ -3418,7 +3515,7 @@ window.SKRIPSPACE_API = "https://script.google.com/macros/s/AKfycbygo_JWPzkBjjsh
       $('dDosen').innerHTML = init.dosen.map(function (d) { return '<option value="' + e(d) + '">'; }).join('');
       $('dWali').innerHTML = init.dosen.concat(init.waliAlih || []).map(function (d) { return '<option value="' + e(d) + '">'; }).join('');
       $('fWali').addEventListener('input', infoWaliAlih); infoWaliAlih();
-      $('wTtd').hidden = !init.wali; $('waliBantu').hidden = !init.wali; siapSidang(init);
+      $('wTtd').hidden = !init.wali; $('wFoto').hidden = !init.foto; $('waliBantu').hidden = !init.wali; siapSidang(init);
       semua('input[name="kek"]').forEach(function (r) { r.addEventListener('change', simpanDraf); });
       var draf = bacaLokal('pjs-draf');
       if (draf) isiForm(draf); else if (!HIDUP) isiContoh();
