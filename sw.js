@@ -1,5 +1,5 @@
 /* SKRIPSPACE: service worker kecil. Halaman selalu diambil dari jaringan lebih dulu supaya pembaruan langsung terlihat; salinan tersimpan hanya dipakai saat tanpa sinyal. */
-var NAMA = 'skripspace-v61';
+var NAMA = 'skripspace-v62';
 var BERKAS = ['./', 'manifest.webmanifest', 'skripspace-192.png', 'skripspace-512.png', 'skripspace-maskable-512.png', 'skripspace-touch-180.png', 'skripspace-64.png', 'favicon.ico'];
 self.addEventListener('install', function (ev) {
   self.skipWaiting();
