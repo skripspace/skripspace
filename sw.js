@@ -1,9 +1,9 @@
 /* SKRIPSPACE: service worker kecil. Halaman selalu diambil dari jaringan lebih dulu supaya pembaruan langsung terlihat; salinan tersimpan hanya dipakai saat tanpa sinyal. */
-var NAMA = 'skripspace-v55';
+var NAMA = 'skripspace-v56';
 var BERKAS = ['./', 'manifest.webmanifest', 'skripspace-192.png', 'skripspace-512.png', 'skripspace-maskable-512.png', 'skripspace-touch-180.png', 'skripspace-64.png', 'favicon.ico'];
 self.addEventListener('install', function (ev) {
   self.skipWaiting();
-  ev.waitUntil(caches.open(NAMA).then(function (c) { return c.addAll(BERKAS); }).catch(function () {}));
+  ev.waitUntil(caches.open(NAMA).then(function (c) { return c.addAll(BERKAS).then(function () { return c.add('klik.mp3').catch(function () {}); }).then(function () { return c.add('musik.mp3').catch(function () {}); }); }).catch(function () {}));
 });
 self.addEventListener('activate', function (ev) {
   ev.waitUntil(caches.keys().then(function (k) { return Promise.all(k.filter(function (n) { return n !== NAMA; }).map(function (n) { return caches.delete(n); })); }).then(function () { return self.clients.claim(); }));
