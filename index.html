@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-GmgU/ieRISO3caNX/G5oKU3x2lXPJz5xtVob6LcVorc=' 'sha256-XtHIFqPCFUyiCb1xVtmBkljAZoBjJ4R+mTIz6E66mKg=' 'sha256-Zh58Cso3CSy6CARo/+zqeKF0Ay0S6jWyt2yf3Qp42Vk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; worker-src 'self'; manifest-src 'self'; frame-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-GmgU/ieRISO3caNX/G5oKU3x2lXPJz5xtVob6LcVorc=' 'sha256-etCw5oV7keWMsj48BlhHwrrcz2O7r12lTfkXcy8ESmM=' 'sha256-Zh58Cso3CSy6CARo/+zqeKF0Ay0S6jWyt2yf3Qp42Vk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; worker-src 'self'; manifest-src 'self'; frame-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="skripspace-api" content="https://script.google.com/macros/s/AKfycbygo_JWPzkBjjshojmFPOxvD3hznZemPmj-hRh_7pEN2sCX7J0GKcCVzrJBQLp9Rtk9gw/exec">
 <script>if (location.protocol === 'http:' && /(^|\.)skripspace\.com$/.test(location.hostname)) location.replace('https://' + location.host + location.pathname + location.search + location.hash);
@@ -1512,6 +1512,43 @@ span.foto-mini { display: grid; place-items: center; }
 .ag-cepat { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .ag-cepat > span { font-size: 13px; color: #A8B3C7; font-weight: 700; margin-right: 4px; }
 #aIsi .lembar > .agenda-admin { margin: 0; }
+/* ================= web v93: tracer study sebagai pita berjalan (papan saham) ================= */
+.tracer-pita { position: relative; display: flex; align-items: stretch; height: 48px; border: 1px solid rgba(212, 175, 106, .24); border-radius: 12px; overflow: hidden;
+  background: linear-gradient(90deg, rgba(212, 175, 106, .05) 1px, transparent 1px) 0 0 / 24px 24px, linear-gradient(180deg, #0F1830, #0A1022); box-shadow: 0 10px 28px rgba(2, 4, 12, .35); }
+.tp-label { flex: none; display: flex; align-items: center; gap: 9px; padding: 0 16px; background: linear-gradient(90deg, #131F3A, #0F1830); border-right: 1px solid rgba(212, 175, 106, .28); z-index: 2; box-shadow: 10px 0 18px rgba(7, 11, 30, .85); }
+.tp-label > b { font: 800 11.5px/1 var(--f-mono); letter-spacing: .18em; color: #D4AF6A; white-space: nowrap; }
+.tp-total { font: 600 11.5px/1 var(--f-mono); color: #A8B3C7; white-space: nowrap; letter-spacing: .04em; }
+.tp-total b { color: #F4F6FB; font-weight: 800; }
+.tp-hidup { width: 7px; height: 7px; border-radius: 50%; background: #5FD3A4; box-shadow: 0 0 0 0 rgba(95, 211, 164, .7); animation: tpDenyut 1.8s infinite; flex: none; display: inline-block; }
+@keyframes tpDenyut { 0% { box-shadow: 0 0 0 0 rgba(95, 211, 164, .6); } 70% { box-shadow: 0 0 0 7px rgba(95, 211, 164, 0); } 100% { box-shadow: 0 0 0 0 rgba(95, 211, 164, 0); } }
+.tp-jendela { position: relative; flex: 1 1 auto; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 28px, #000 calc(100% - 40px), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 28px, #000 calc(100% - 40px), transparent 100%); }
+.tp-jalur { display: flex; width: max-content; height: 100%; animation: tpJalan var(--tp-durasi, 60s) linear infinite; will-change: transform; }
+.tracer-pita:hover .tp-jalur { animation-play-state: paused; }
+@keyframes tpJalan { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(-50%, 0, 0); } }
+.tp-isi { display: flex; align-items: center; flex: none; }
+.tp-item { display: inline-flex; align-items: baseline; gap: 8px; padding: 0 26px; white-space: nowrap; border-right: 1px solid rgba(40, 52, 74, .7); }
+.tp-item b { font: 800 12.5px/1 var(--f-mono); letter-spacing: .06em; color: #F4F6FB; }
+.tp-pct { font: 600 12.5px/1 var(--f-mono); color: #A8B3C7; }
+.tp-delta { font: 700 12px/1 var(--f-mono); }
+.tp-delta.naik { color: #5FD3A4; } .tp-delta.turun { color: #FF6B81; }
+.tp-sekat { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; margin: 0 14px; border: 1px solid rgba(212, 175, 106, .4); border-radius: 999px; font: 800 10.5px/1 var(--f-mono); letter-spacing: .14em; color: #D4AF6A; white-space: nowrap; }
+.tp-sekat.hidup { border-color: rgba(95, 211, 164, .45); color: #6FD8AE; }
+@media (max-width: 680px) { .tracer-pita { height: 44px; } .tp-label { padding: 0 12px; } .tp-total { display: none; } .tp-item { padding: 0 18px; } }
+@media (prefers-reduced-motion: reduce) { .tp-jalur { animation-duration: calc(var(--tp-durasi, 60s) * 2.5); } }
+/* pasang aplikasi: satu baris penuh, rapi dua kolom */
+.beranda-duo { grid-template-columns: minmax(0, 1fr) !important; }
+@media (min-width: 900px) {
+  .beranda-duo .pasang { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); grid-template-areas: "kepala langkah" "aksi langkah" "pilih langkah" "catatan langkah"; column-gap: 28px !important; row-gap: 12px !important; align-items: start; }
+  .beranda-duo .pasang-kepala { grid-area: kepala; } .beranda-duo .pasang-aksi { grid-area: aksi; } .beranda-duo .pasang-pilih { grid-area: pilih; }
+  .beranda-duo .pasang-langkah { grid-area: langkah; align-self: center; } .beranda-duo .pasang-catatan { grid-area: catatan; margin-top: 0; }
+}
+.tp-total .tracer-angka { font: 800 12px/1 var(--f-mono) !important; letter-spacing: .02em !important; color: #F4F6FB !important; text-shadow: none !important; background: none !important; -webkit-text-fill-color: currentColor !important; }
+@media (min-width: 900px) { .beranda-duo .pasang-pilih { justify-self: start; } }
+/* pengecualian aturan "tanpa animasi berulang": pita tracer memang bergerak terus */
+.tracer-pita .tp-jalur { animation: tpJalan var(--tp-durasi, 60s) linear infinite !important; }
+.tracer-pita:hover .tp-jalur { animation-play-state: paused !important; }
+.tracer-pita .tp-hidup { animation: tpDenyut 1.8s ease-out infinite !important; }
+@media (prefers-reduced-motion: reduce) { .tracer-pita .tp-jalur { animation-duration: calc(var(--tp-durasi, 60s) * 2.5) !important; } }
 </style>
 </head>
 <body>
@@ -1545,6 +1582,10 @@ span.foto-mini { display: grid; place-items: center; }
         </div>
         <div class="hero-gambar bumi"><picture><source media="(max-width: 680px)" srcset="hero-beranda-hp-960.webp?v=93 960w, hero-beranda-hp-1440.webp?v=93 1440w" sizes="100vw" width="1024" height="1536"><img src="hero-beranda-1100.webp?v=93" srcset="hero-beranda-1100.webp?v=93 1100w, hero-beranda-1600.webp?v=93 1600w" sizes="(max-width: 1100px) 52vw, 580px" width="1024" height="1536" alt="Bumi dengan Indonesia di tengah, cincin orbit emas, astronaut, Saturnus dan Bulan" fetchpriority="high" decoding="sync"></picture></div>
       </section>
+      <section class="tracer-pita" id="sTracer" aria-label="Tracer study alumni S1 Ilmu Hukum FH UNISSULA">
+        <div class="tp-label"><i class="tp-hidup" aria-hidden="true"></i><b>TRACER STUDY</b><span class="tp-total" id="tracerTotal"><b class="tracer-angka" data-angka="8666">0</b> lulusan</span></div>
+        <div class="tp-jendela"><div class="tp-jalur" id="tracerPita"></div></div>
+      </section>
       <section class="agenda" id="sAgenda" aria-labelledby="agJudul">
         <div class="agenda-kepala"><div><span class="bagian-tag">Agenda skripsi</span><h2 id="agJudul">Hitung mundur menuju toga</h2></div><p class="agenda-semangat" id="agSemangat"></p></div>
         <div class="agenda-atas">
@@ -1570,26 +1611,6 @@ span.foto-mini { display: grid; place-items: center; }
         </ol>
       </section>
       <div class="beranda-duo">
-      <section class="lembar tracer ringkas" id="sTracer" aria-labelledby="tracerJudul">
-        <div class="tracer-kepala">
-          <div class="tracer-judul">
-            <span class="bagian-tag">Tracer study FH UNISSULA</span>
-            <h2 id="tracerJudul">Ke mana lulusan berkarier</h2>
-          </div>
-          <div class="tracer-total" id="tracerTotal">
-            <b class="tracer-angka" data-angka="8666" aria-live="polite">0</b>
-            <span class="tracer-lulusan">lulusan</span>
-            <small class="tracer-periode"><span id="tracerPeriode">Sarjana Hukum sejak tahun 1961</span></small>
-          </div>
-        </div>
-        <div class="tracer-pilih" role="tablist" aria-label="Kelompok data">
-          <button type="button" role="tab" data-tracer="alumni" aria-selected="true">Alumni</button>
-          <button type="button" role="tab" data-tracer="aktif" aria-selected="false">Mahasiswa aktif</button>
-          <span class="tracer-status" id="tracerStatus"></span>
-        </div>
-        <ol class="tracer-batang" id="tracerBatang" aria-label="Lima profesi teratas"></ol>
-        <details class="tracer-semua"><summary>Lihat semua profesi</summary><div class="tracer-panel" id="tracerPanel"></div><p class="tracer-catatan" id="tracerCatatan"></p></details>
-      </section>
       <section class="lembar pasang" id="sPasang">
         <header class="pasang-kepala"><img src="skripspace-192.png" alt="" width="64" height="64" class="pasang-ikon"><div><h2>Pasang SKRIPSPACE di HP</h2><p>Gratis, tanpa Play Store atau App Store.</p></div></header>
         <div class="pasang-aksi"><button type="button" class="tombol utama" id="bPasangSek" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pasang sekarang</button><p class="pasang-status" id="pasangStatus">Pilih jenis HP-mu, lalu ikuti langkahnya.</p></div>
@@ -4935,30 +4956,30 @@ span.foto-mini { display: grid; place-items: center; }
   }
   function renderTracer(d) {
     if (!d || !d.profesi || !$('sTracer')) return;
-    var teks = JSON.stringify(d); var sama = teks === TR.teksTerakhir; TR.teksTerakhir = teks; TR.data = d;
-    $('tracerPeriode').textContent = 'Sarjana Hukum ' + (d.alumni.periode || '');
+    var teks = JSON.stringify(d), sama = teks === TR.teksTerakhir; TR.teksTerakhir = teks; TR.data = d;
     var tot = $('tracerTotal').querySelector('.tracer-angka'); tot.setAttribute('data-angka', String(d.alumni.total || 0));
     if (!TR.angkaJalan && TR.angkaTampil) tot.textContent = trAngka(d.alumni.total);
-    if (TR.pilih !== 'aktif') TR.pilih = 'alumni';
-    if (!sama || !$('tracerBatang').children.length) gambarTracer();
+    if (!sama || !$('tracerPita').children.length) gambarTracer();
   }
-  /* web v92: tracer ringkas — lima profesi teratas sebagai bilah, rincian lengkap di "Lihat semua profesi" */
+  /* web v93: tracer study sebagai pita berjalan (seperti papan saham) — persentase tiap profesi dan selisihnya dari
+     rata-rata (100% dibagi jumlah profesi): ▲ di atas rata-rata, ▼ di bawahnya. Alumni = data resmi prodi; Mahasiswa aktif
+     dihitung langsung dari kolom pekerjaan pengajuan judul dan ikut diperbarui tiap menit. */
   function gambarTracer() {
-    var d = TR.data, g = trKelompok(); if (!g || !$('tracerBatang')) return;
-    semua('[data-tracer]').forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-tracer') === TR.pilih ? 'true' : 'false'); });
-    var urut = d.profesi.map(function (p, i) { return { k: p.k, nama: p.nama, singkat: p.singkat, pct: Number(g.pct[p.k] || 0), jumlah: g.jumlah ? g.jumlah[p.k] : null, urutResmi: i }; });
-    urut.sort(function (a, b) { return b.pct - a.pct || a.urutResmi - b.urutResmi; });
-    var maks = urut.length ? urut[0].pct : 0, kosong = !maks;
-    $('tracerBatang').innerHTML = kosong ? '<li class="tb-kosong">Belum ada mahasiswa yang mengisi pekerjaan. Begitu ada pengajuan judul yang mencantumkan pekerjaan, data ini terisi otomatis.</li>' :
-      urut.slice(0, 5).map(function (x, i) {
-        return '<li style="--w:' + Math.max(3, Math.round(x.pct / maks * 100)) + '"' + (i === 0 ? ' class="puncak"' : '') + '><span class="tb-no">' + (i + 1) + '</span><span class="tb-nama" title="' + e(x.nama) + '">' + e(x.singkat || x.nama) + '</span><span class="tb-bar" aria-hidden="true"><i></i></span><b>' + trPersen(x.pct) + '</b></li>';
-      }).join('');
-    $('tracerPanel').innerHTML = kosong ? '' : '<ul class="tracer-daftar">' + urut.map(function (x) {
-      return '<li><span>' + e(x.nama) + '</span><b>' + trPersen(x.pct) + (x.jumlah != null ? ' <small>(' + trAngka(x.jumlah) + ')</small>' : '') + '</b></li>';
-    }).join('') + '</ul>';
-    $('tracerCatatan').textContent = TR.pilih === 'alumni' ? 'Data resmi Tracer Study Prodi S1 Ilmu Hukum FH UNISSULA; hanya berubah bila pengelola prodi memperbaruinya. Angka ' + trAngka(d.alumni.total) + ' adalah jumlah lulusan Sarjana Hukum FH UNISSULA ' + (d.alumni.periode || '') + ', bukan jumlah responden.' :
-      'Dihitung otomatis dari kolom pekerjaan yang diisi mahasiswa saat mengajukan judul (tanpa nama); satu mahasiswa dihitung sekali dengan data terbarunya.';
-    $('tracerStatus').textContent = TR.pilih === 'aktif' ? (g.responden ? trAngka(g.responden) + ' responden aktif' : '') : 'data resmi prodi';
+    var d = TR.data, w = $('tracerPita'); if (!d || !w) return;
+    var n = d.profesi.length || 1, rata = 100 / n;
+    function deret(pct, awalan) {
+      return d.profesi.map(function (p, i) { return { nama: (p.singkat || p.nama), pct: Number(pct[p.k] || 0), i: i }; })
+        .sort(function (a, b) { return b.pct - a.pct || a.i - b.i; })
+        .map(function (x) {
+          var dl = x.pct - rata, naik = dl >= 0;
+          return '<span class="tp-item" title="' + e(x.nama + ': ' + trPersen(x.pct) + (naik ? ', di atas' : ', di bawah') + ' rata-rata ' + trPersen(rata)) + '">' + (awalan || '') + '<b>' + e(String(x.nama).toUpperCase()) + '</b><span class="tp-pct">' + trPersen(x.pct) + '</span>' +
+            '<span class="tp-delta ' + (naik ? 'naik' : 'turun') + '">' + (naik ? '\u25B2' : '\u25BC') + ' ' + trPersen(Math.abs(dl)) + '</span></span>';
+        }).join('');
+    }
+    var isi = '<span class="tp-sekat">ALUMNI \u00b7 ' + trAngka(d.alumni.total) + ' LULUSAN</span>' + deret(d.alumni.pct);
+    if (d.aktif && d.aktif.responden) isi += '<span class="tp-sekat hidup"><i class="tp-hidup" aria-hidden="true"></i>MAHASISWA AKTIF \u00b7 ' + trAngka(d.aktif.responden) + ' responden</span>' + deret(d.aktif.pct);
+    w.innerHTML = '<div class="tp-isi">' + isi + '</div><div class="tp-isi" aria-hidden="true">' + isi + '</div>';
+    requestAnimationFrame(function () { var lebar = w.firstChild ? w.firstChild.offsetWidth : 0; if (lebar) w.style.setProperty('--tp-durasi', Math.max(30, Math.round(lebar / 55)) + 's'); });
   }
   function angkaTracer() {
     var tot = $('tracerTotal') && $('tracerTotal').querySelector('.tracer-angka'); if (!tot || TR.angkaJalan || TR.angkaTampil) return;
@@ -4979,9 +5000,6 @@ span.foto-mini { display: grid; place-items: center; }
   }
   function siapTracer() {
     var s = $('sTracer'); if (!s) return;
-    s.addEventListener('click', function (ev) {
-      var b = ev.target.closest('[data-tracer]'); if (b && !b.disabled) { TR.pilih = b.getAttribute('data-tracer'); gambarTracer(); }
-    });
     if (window.IntersectionObserver) new IntersectionObserver(function (en) { if (en[0].isIntersecting) { s.classList.add('tampil'); angkaTracer(); } }, { threshold: .25 }).observe(s);
     else { s.classList.add('tampil'); angkaTracer(); }
     TR.timer = setInterval(segarTracer, 60000);
