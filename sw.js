@@ -1,18 +1,30 @@
-/* SKRIPSPACE: service worker kecil. Halaman selalu diambil dari jaringan lebih dulu supaya pembaruan langsung terlihat; salinan tersimpan hanya dipakai saat tanpa sinyal. */
-var NAMA = 'skripspace-v89';
+/* SKRIPSPACE: service worker. Versi 90: halaman tampil seketika dari salinan di perangkat, sementara versi terbaru diambil
+   di belakang layar (berlaku saat dibuka berikutnya; halaman memberi tahu "Versi baru siap"). Berkas bertanda versi (?v=) diambil
+   dari salinan dulu karena isinya tidak pernah berubah. Tanpa sinyal, salinan tetap dipakai. */
+var NAMA = 'skripspace-v90';
 var BERKAS = ['./', 'manifest.webmanifest', 'skripspace-192.png', 'skripspace-512.png', 'skripspace-maskable-512.png', 'skripspace-touch-180.png', 'skripspace-64.png', 'favicon.ico'];
+function simpan(r, j) { if (j && j.status === 200 && j.type === 'basic') { var s = j.clone(); caches.open(NAMA).then(function (c) { c.put(r, s); }); } return j; }
 self.addEventListener('install', function (ev) {
   self.skipWaiting();
-  ev.waitUntil(caches.open(NAMA).then(function (c) { return c.addAll(BERKAS); }).catch(function () {}));
+  ev.waitUntil(caches.open(NAMA).then(function (c) { return c.addAll(BERKAS.map(function (u) { return new Request(u, { cache: 'reload' }); })); }).catch(function () {}));
 });
 self.addEventListener('activate', function (ev) {
   ev.waitUntil(caches.keys().then(function (k) { return Promise.all(k.filter(function (n) { return n !== NAMA; }).map(function (n) { return caches.delete(n); })); }).then(function () { return self.clients.claim(); }));
 });
 self.addEventListener('fetch', function (ev) {
-  var r = ev.request;
-  if (r.method !== 'GET' || new URL(r.url).origin !== self.location.origin) return;
-  ev.respondWith((r.mode === 'navigate' ? fetch(r.url, { cache: 'no-store', credentials: 'same-origin' }) : fetch(r)).then(function (jawab) {
-    if (jawab && jawab.status === 200) { var salin = jawab.clone(); caches.open(NAMA).then(function (c) { c.put(r, salin); }); }
-    return jawab;
-  }).catch(function () { return caches.match(r).then(function (x) { return x || (r.mode === 'navigate' ? caches.match('./') : Response.error()); }); }));
+  var r = ev.request, u = new URL(r.url);
+  if (r.method !== 'GET' || u.origin !== self.location.origin) return;
+  if (r.mode === 'navigate') {
+    var segar = fetch(r.url, { cache: 'no-store', credentials: 'same-origin' }).then(function (j) { return simpan('./', j); });
+    ev.respondWith(caches.open(NAMA).then(function (c) { return c.match('./'); }).then(function (x) {
+      if (x) { ev.waitUntil(segar.catch(function () {})); return x; }
+      return segar.catch(function () { return caches.match('./'); });
+    }));
+    return;
+  }
+  if (/[?&]v=/.test(u.search)) {
+    ev.respondWith(caches.match(r).then(function (x) { return x || fetch(r).then(function (j) { return simpan(r, j); }); }));
+    return;
+  }
+  ev.respondWith(fetch(r).then(function (j) { return simpan(r, j); }).catch(function () { return caches.match(r).then(function (x) { return x || Response.error(); }); }));
 });
