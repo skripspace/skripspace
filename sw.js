@@ -1,7 +1,7 @@
 /* SKRIPSPACE: service worker. Versi 90: halaman tampil seketika dari salinan di perangkat, sementara versi terbaru diambil
    di belakang layar (berlaku saat dibuka berikutnya; halaman memberi tahu "Versi baru siap"). Berkas bertanda versi (?v=) diambil
    dari salinan dulu karena isinya tidak pernah berubah. Tanpa sinyal, salinan tetap dipakai. */
-var NAMA = 'skripspace-v125';
+var NAMA = 'skripspace-v126';
 var BERKAS = ['./', 'manifest.webmanifest', 'skripspace-192.png', 'skripspace-512.png', 'skripspace-maskable-512.png', 'skripspace-touch-180.png', 'skripspace-64.png', 'favicon.ico'];
 function simpan(r, j) { if (j && j.status === 200 && j.type === 'basic') { var s = j.clone(); caches.open(NAMA).then(function (c) { c.put(r, s); }); } return j; }
 self.addEventListener('install', function (ev) {
