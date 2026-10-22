@@ -25,23 +25,23 @@ if (window.top !== window.self) { var bolehBingkai = false; try { bolehBingkai =
 <meta property="og:url" content="https://skripspace.com/">
 <meta property="og:title" content="SKRIPSPACE — Prodi S1 Ilmu Hukum, Fakultas Hukum UNISSULA">
 <meta property="og:description" content="Layanan skripsi Program Studi S1 Ilmu Hukum, Fakultas Hukum Universitas Islam Sultan Agung (UNISSULA): ajukan judul, izin riset, dan bimbingan skripsi.">
-<meta property="og:image" content="https://skripspace.com/og.jpg?v=119">
-<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=119">
+<meta property="og:image" content="https://skripspace.com/og.jpg?v=120">
+<meta property="og:image:secure_url" content="https://skripspace.com/og.jpg?v=120">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Logo SKRIPSPACE emas, Program Studi S1 Ilmu Hukum Fakultas Hukum UNISSULA, Your Academic Workspace">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=119">
+<meta name="twitter:image" content="https://skripspace.com/og.jpg?v=120">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="favicon.ico?v=119" sizes="16x16 32x32 48x48 64x64">
-<link rel="icon" type="image/png" sizes="32x32" href="skripspace-32.png?v=119">
-<link rel="icon" type="image/png" sizes="16x16" href="skripspace-16.png?v=119">
-<link rel="icon" type="image/png" sizes="192x192" href="skripspace-192.png?v=119">
-<link rel="apple-touch-icon" href="skripspace-touch-180.png?v=119">
-<link rel="apple-touch-icon" sizes="180x180" href="skripspace-touch-180.png?v=119">
-<link rel="apple-touch-icon" sizes="167x167" href="skripspace-touch-167.png?v=119">
-<link rel="apple-touch-icon" sizes="152x152" href="skripspace-touch-152.png?v=119">
+<link rel="icon" href="favicon.ico?v=120" sizes="16x16 32x32 48x48 64x64">
+<link rel="icon" type="image/png" sizes="32x32" href="skripspace-32.png?v=120">
+<link rel="icon" type="image/png" sizes="16x16" href="skripspace-16.png?v=120">
+<link rel="icon" type="image/png" sizes="192x192" href="skripspace-192.png?v=120">
+<link rel="apple-touch-icon" href="skripspace-touch-180.png?v=120">
+<link rel="apple-touch-icon" sizes="180x180" href="skripspace-touch-180.png?v=120">
+<link rel="apple-touch-icon" sizes="167x167" href="skripspace-touch-167.png?v=120">
+<link rel="apple-touch-icon" sizes="152x152" href="skripspace-touch-152.png?v=120">
 <link rel="preconnect" href="https://script.google.com" crossorigin><link rel="preconnect" href="https://script.googleusercontent.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 [hidden]{display:none!important}img{max-width:100%}
@@ -1343,25 +1343,51 @@ html { scroll-padding-top: 136px; }
 .rute-kepala { display: flex !important; flex-direction: row !important; justify-content: space-between; align-items: flex-end; gap: 10px 28px !important; flex-wrap: wrap; }
 .rute-kepala h2 { font-size: clamp(22px, 2.6vw, 28px) !important; margin-top: 8px; }
 .rute-kepala p { max-width: 46ch !important; font-size: 14.5px !important; }
-.rute3 { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
-.rute3 li { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
-.rute3 li:not(:last-child)::after { content: ""; position: absolute; top: 27px; left: calc(50% + 36px); width: calc(100% - 58px); height: 2px; border-radius: 1px; background: linear-gradient(90deg, rgba(212, 175, 106, .75), rgba(212, 175, 106, .25)); }
-.r-titik { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #0E1530; border: 1px solid rgba(212, 175, 106, .5); margin-bottom: 8px; }
-.r-titik svg { width: 24px; height: 24px; fill: none; stroke: #D4AF6A; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-.rute3 li:first-child .r-titik { background: linear-gradient(180deg, #E8CD92, #D4AF6A); border-color: transparent; box-shadow: 0 8px 22px rgba(212, 175, 106, .25); }
+/* web v120: rute penerbangan — dek futuristik: kisi radar, jalur lengkung bercahaya, pesawat bergerak di jalur, titik-titik bersinar */
+.rute-lembar { overflow: hidden; }
+.rute-deck { position: relative; margin-top: 10px; padding: 10px 0 40px; border-radius: 18px; isolation: isolate; }
+.rute-deck::before { content: ""; position: absolute; inset: 0; z-index: 0; border-radius: inherit; pointer-events: none;
+  background:
+    radial-gradient(60% 80% at 50% 50%, rgba(212, 175, 106, .10), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(168, 179, 199, .07) 0 1px, transparent 1px 60px),
+    repeating-linear-gradient(0deg, rgba(168, 179, 199, .06) 0 1px, transparent 1px 30px);
+  -webkit-mask-image: radial-gradient(80% 90% at 50% 50%, #000 40%, transparent 100%); mask-image: radial-gradient(80% 90% at 50% 50%, #000 40%, transparent 100%); }
+.rute-jalur3 { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 150px; z-index: 0; pointer-events: none; overflow: visible; }
+.rj-bayang { fill: none; stroke: rgba(212, 175, 106, .18); stroke-width: 14; stroke-linecap: round; filter: blur(6px); }
+.rj-garis { fill: none; stroke: url(#rjGrad); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 3 9; }
+.rj-alir { fill: none; stroke: #F4F6FB; stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 26 1200; stroke-dashoffset: 0; opacity: .85; animation: rjAlir 7s linear infinite; }
+@keyframes rjAlir { to { stroke-dashoffset: -1226; } }
+.rute-pesawat3 { position: absolute; z-index: 3; width: 30px; height: 30px; margin: -15px 0 0 -15px; display: grid; place-items: center; filter: drop-shadow(0 0 8px rgba(244, 246, 251, .75)); pointer-events: none;
+  offset-path: path('M100 82 C200 82 200 44 300 44 C400 44 400 82 500 82 C600 82 600 66 700 66 C800 66 800 44 900 44 C1000 44 1000 70 1100 70'); offset-rotate: auto 0deg; animation: rjTerbang 7s linear infinite; }
+.rute-pesawat3 svg { width: 22px; height: 22px; }
+@keyframes rjTerbang { 0% { offset-distance: 0%; opacity: 0; } 4% { opacity: 1; } 96% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+.rute3 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; position: relative; z-index: 2; }
+.rute3 li { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding-top: 6px; transform: translateY(var(--dy, 0)); }
+.rute3 li:nth-child(1) { --dy: 36px; } .rute3 li:nth-child(2) { --dy: -2px; } .rute3 li:nth-child(3) { --dy: 36px; } .rute3 li:nth-child(4) { --dy: 20px; } .rute3 li:nth-child(5) { --dy: -2px; } .rute3 li:nth-child(6) { --dy: 24px; }
+.r-titik { position: relative; width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #182448, #0B1020 70%); border: 1px solid rgba(212, 175, 106, .55); margin-bottom: 10px; box-shadow: inset 0 0 0 4px #0B0F1A, inset 0 0 0 5px rgba(212, 175, 106, .35), 0 0 0 1px rgba(11, 15, 26, .9), 0 10px 26px rgba(0, 0, 0, .35); }
+.r-titik::after { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 1px dashed rgba(212, 175, 106, .35); animation: rjPutar 24s linear infinite; }
+@keyframes rjPutar { to { transform: rotate(360deg); } }
+.r-titik svg { width: 24px; height: 24px; fill: none; stroke: #E8CD92; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.rute3 li:first-child .r-titik { background: linear-gradient(180deg, #E8CD92, #D4AF6A); border-color: transparent; box-shadow: inset 0 0 0 4px #0B0F1A, inset 0 0 0 5px rgba(232, 205, 146, .7), 0 0 28px rgba(212, 175, 106, .45); }
 .rute3 li:first-child .r-titik svg { stroke: #0B0F1A; }
-.rute3 li:last-child .r-titik { border-color: #E9B949; box-shadow: 0 0 22px rgba(233, 185, 73, .3); }
-.r-no { font: 700 10.5px/1.25 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: #D4AF6A; }
-.rute3 b { font: 800 16px/1.25 var(--f-display); color: #F4F6FB; }
+.rute3 li:last-child .r-titik { border-color: #E9B949; box-shadow: inset 0 0 0 4px #0B0F1A, inset 0 0 0 5px rgba(233, 185, 73, .6), 0 0 0 1px rgba(11, 15, 26, .9), 0 0 32px rgba(233, 185, 73, .45); animation: rjDenyut 2.8s ease-in-out infinite; }
+@keyframes rjDenyut { 0%, 100% { box-shadow: inset 0 0 0 4px #0B0F1A, inset 0 0 0 5px rgba(233, 185, 73, .6), 0 0 18px rgba(233, 185, 73, .3); } 50% { box-shadow: inset 0 0 0 4px #0B0F1A, inset 0 0 0 5px rgba(233, 185, 73, .9), 0 0 40px rgba(233, 185, 73, .6); } }
+.r-no { font: 700 10.5px/1.25 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: #D4AF6A; }
+.rute3 b { font: 800 16px/1.25 var(--f-display); color: #F4F6FB; letter-spacing: -.01em; }
 .r-ket { font-size: 13px; line-height: 1.45; color: #A8B3C7; max-width: 22ch; }
+@media (prefers-reduced-motion: reduce) { .rj-alir, .rute-pesawat3, .r-titik::after, .rute3 li:last-child .r-titik { animation: none; } .rute-pesawat3 { offset-distance: 62%; opacity: 1; } }
 @media (max-width: 900px) {
+  .rute-deck { padding: 0; }
+  .rute-deck::before, .rute-jalur3, .rute-pesawat3 { display: none; }
   .rute3 { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .rute3 li { display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: 16px; row-gap: 2px; text-align: left; align-items: start; padding-bottom: 18px; }
+  .rute3 li { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 16px; row-gap: 2px; text-align: left; align-items: start; padding: 0 0 20px; transform: none; }
   .rute3 li:last-child { padding-bottom: 0; }
-  .rute3 li:not(:last-child)::after { top: 56px; bottom: 4px; left: 25px; width: 2px; height: auto; background: linear-gradient(180deg, rgba(212, 175, 106, .7), rgba(212, 175, 106, .2)); }
-  .r-titik { grid-row: 1 / span 3; width: 52px; height: 52px; margin: 0; }
+  .rute3 li:not(:last-child)::after { content: ""; position: absolute; top: 60px; bottom: 6px; left: 27px; width: 2px; background: linear-gradient(180deg, rgba(212, 175, 106, .8), rgba(212, 175, 106, .15)); box-shadow: 0 0 10px rgba(212, 175, 106, .35); }
+  .r-titik { grid-row: 1 / span 3; width: 56px; height: 56px; margin: 0; }
+  .r-titik::after { inset: -6px; }
   .r-no, .rute3 b, .r-ket { grid-column: 2; max-width: none; }
-  .r-no { margin-top: 5px; }
+  .r-no { margin-top: 7px; }
+}
 }
 /* tracer ringkas */
 .beranda-duo { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 26px; align-items: start; }
@@ -1496,14 +1522,10 @@ span.foto-mini { display: grid; place-items: center; }
   .ag-bawah { grid-column: 1 / -1; }
   .aj-jam b { font-size: 56px; }
 }
-/* rute: tanpa keterangan panjang */
+/* rute: tanpa keterangan panjang (web v120: ukuran titik dan garis diatur di blok rute-deck) */
 .rute-lembar { padding: 22px; gap: 16px; }
-.rute3 { margin: 4px 0 0; }
-.r-titik { width: 50px; height: 50px; margin-bottom: 6px; }
-.rute3 li:not(:last-child)::after { top: 24px; left: calc(50% + 33px); width: calc(100% - 52px); }
 .r-no { font-family: var(--f-mono); }
 .rute3 b { font-size: 15px; }
-@media (max-width: 900px) { .rute3 li { padding-bottom: 14px; row-gap: 0; align-items: center; } .rute3 li:not(:last-child)::after { top: 50px; bottom: -2px; left: 24px; width: 2px; } .r-titik { grid-row: 1 / span 2; width: 48px; height: 48px; } .r-no { margin-top: 0; } }
 /* tracer & pasang: tinggi sama, isi ringkas */
 .beranda-duo { align-items: stretch; }
 .beranda-duo > section { padding: 22px !important; gap: 14px !important; display: flex; flex-direction: column; border-color: rgba(212, 175, 106, .2) !important; }
@@ -1674,7 +1696,7 @@ span.foto-mini { display: grid; place-items: center; }
 <body>
 <div class="app" id="app">
   <header class="bar">
-    <div class="merek"><button type="button" class="merek-logo" data-ke-lompat="beranda" tabindex="-1" aria-hidden="true"><img src="skripspace-logo.webp?v=119" alt="" width="49" height="40"></button><span class="merek-teks"><button type="button" data-ke-lompat="beranda">skrip<span>space</span></button><small>FH UNISSULA</small></span></div>
+    <div class="merek"><button type="button" class="merek-logo" data-ke-lompat="beranda" tabindex="-1" aria-hidden="true"><img src="skripspace-logo.webp?v=120" alt="" width="49" height="40"></button><span class="merek-teks"><button type="button" data-ke-lompat="beranda">skrip<span>space</span></button><small>FH UNISSULA</small></span></div>
     <nav class="nav" aria-label="Menu">
       <button type="button" data-ke="beranda" aria-current="true"><svg class="nav-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Beranda</span></button>
       <button type="button" data-ke="ajukan"><svg class="nav-ikon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg><span>Skripsi</span></button>
@@ -1700,7 +1722,7 @@ span.foto-mini { display: grid; place-items: center; }
           <p>Dari judul pertama sampai toga, semua dalam satu ruang kerja.</p>
           <div class="ajak"><button type="button" class="tombol utama" data-ke-lompat="ajukan">Ajukan Judul</button><button type="button" class="tombol" data-ke-lompat="admin">Log in</button><button type="button" class="tombol" id="bPasang" hidden>Pasang aplikasi</button></div>
         </div>
-        <div class="hero-gambar bumi"><picture><source media="(max-width: 680px)" srcset="hero-beranda-hp-960.webp?v=119 960w, hero-beranda-hp-1440.webp?v=119 1440w" sizes="100vw" width="1024" height="1536"><img src="hero-beranda-1100.webp?v=119" srcset="hero-beranda-1100.webp?v=119 1100w, hero-beranda-1600.webp?v=119 1600w" sizes="(max-width: 1100px) 52vw, 580px" width="1024" height="1536" alt="Bumi dengan Indonesia di tengah, cincin orbit emas, astronaut, Saturnus dan Bulan" fetchpriority="high" decoding="sync"></picture></div>
+        <div class="hero-gambar bumi"><picture><source media="(max-width: 680px)" srcset="hero-beranda-hp-960.webp?v=120 960w, hero-beranda-hp-1440.webp?v=120 1440w" sizes="100vw" width="1024" height="1536"><img src="hero-beranda-1100.webp?v=120" srcset="hero-beranda-1100.webp?v=120 1100w, hero-beranda-1600.webp?v=120 1600w" sizes="(max-width: 1100px) 52vw, 580px" width="1024" height="1536" alt="Bumi dengan Indonesia di tengah, cincin orbit emas, astronaut, Saturnus dan Bulan" fetchpriority="high" decoding="sync"></picture></div>
       </section>
       <section class="tracer-pita" id="sTracer" aria-label="Tracer study alumni S1 Ilmu Hukum FH UNISSULA">
         <div class="tp-label"><i class="tp-hidup" aria-hidden="true"></i><b>TRACER STUDY</b><span class="tp-total" id="tracerTotal"><b class="tracer-angka" data-angka="8666">0</b> lulusan</span></div>
@@ -1721,6 +1743,14 @@ span.foto-mini { display: grid; place-items: center; }
       </section>
       <section class="lembar rute-lembar">
         <header class="rute-kepala"><div><span class="bagian-tag">Rute penerbangan</span><h2>Enam titik menuju toga</h2></div></header>
+        <div class="rute-deck" aria-hidden="false">
+          <svg class="rute-jalur3" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="rjGrad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#E8CD92" stop-opacity=".95"/><stop offset=".55" stop-color="#D4AF6A" stop-opacity=".55"/><stop offset="1" stop-color="#E9B949" stop-opacity=".95"/></linearGradient></defs>
+            <path class="rj-bayang" d="M100 82 C200 82 200 44 300 44 C400 44 400 82 500 82 C600 82 600 66 700 66 C800 66 800 44 900 44 C1000 44 1000 70 1100 70"/>
+            <path class="rj-garis" d="M100 82 C200 82 200 44 300 44 C400 44 400 82 500 82 C600 82 600 66 700 66 C800 66 800 44 900 44 C1000 44 1000 70 1100 70"/>
+            <path class="rj-alir" d="M100 82 C200 82 200 44 300 44 C400 44 400 82 500 82 C600 82 600 66 700 66 C800 66 800 44 900 44 C1000 44 1000 70 1100 70"/>
+          </svg>
+          <span class="rute-pesawat3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 12.5 21 4l-5.2 17-3.6-6.6z" fill="#F4F6FB" stroke="#0B0F1A" stroke-width=".8" stroke-linejoin="round"/></svg></span>
         <ol class="rute3">
           <li><span class="r-titik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 22h20"/><path d="M6.36 17.4 4 17l-2-4 1.1-.55a2 2 0 0 1 1.8 0l.17.1a2 2 0 0 0 1.8 0L8 12 5 6l.9-.45a2 2 0 0 1 2.09.2l4.02 3a2 2 0 0 0 2.1.2l4.19-2.06a2.41 2.41 0 0 1 1.73-.17L21 7a1.4 1.4 0 0 1 .87 1.99l-.38.76c-.23.46-.6.84-1.07 1.08L7.58 17.2a2 2 0 0 1-1.22.18Z"/></svg></span><span class="r-no">01 · Lepas landas</span><b>Ajukan judul</b></li>
           <li><span class="r-titik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></span><span class="r-no">02 · Dapat kopilot</span><b>Pembimbing</b></li>
@@ -1729,6 +1759,7 @@ span.foto-mini { display: grid; place-items: center; }
           <li><span class="r-titik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 22h20"/><path d="M3.77 10.77 2 9l2-4.5 1.1.55c.55.28.9.84.9 1.45s.35 1.17.9 1.45L8 8.5l3-6 1.05.53a2 2 0 0 1 1.09 1.52l.72 5.4a2 2 0 0 0 1.09 1.52l4.4 2.2c.42.22.78.55 1.01.96l.6 1.03c.49.88-.06 1.98-1.06 2.1l-1.18.15c-.47.06-.95-.02-1.37-.24L4.29 11.15a2 2 0 0 1-.52-.38Z"/></svg></span><span class="r-no">05 · Siap mendarat</span><b>Ujian skripsi</b></li>
           <li><span class="r-titik"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span class="r-no">06 · Touchdown</span><b>Naskah akhir</b></li>
         </ol>
+        </div>
       </section>
       <div class="beranda-duo">
       <section class="lembar pasang" id="sPasang">
@@ -1767,7 +1798,7 @@ span.foto-mini { display: grid; place-items: center; }
             <span>Prodi S1 Ilmu Hukum</span>
           </div>
         </div>
-        <div class="hero-gambar"><picture><source media="(max-width: 680px)" srcset="hero-skripsi-hp-960.webp?v=119 960w, hero-skripsi-hp-1440.webp?v=119 1440w" sizes="100vw" width="1122" height="1402"><img src="hero-skripsi-1440.webp?v=119" srcset="hero-skripsi-1440.webp?v=119 1440w, hero-skripsi-2560.webp?v=119 2560w" sizes="(max-width: 1100px) 100vw, 1060px" width="1672" height="941" alt="Buku terbuka, lembaran naskah, topi toga, dan daftar periksa di luar angkasa" fetchpriority="low" decoding="sync"></picture></div>
+        <div class="hero-gambar"><picture><source media="(max-width: 680px)" srcset="hero-skripsi-hp-960.webp?v=120 960w, hero-skripsi-hp-1440.webp?v=120 1440w" sizes="100vw" width="1122" height="1402"><img src="hero-skripsi-1440.webp?v=120" srcset="hero-skripsi-1440.webp?v=120 1440w, hero-skripsi-2560.webp?v=120 2560w" sizes="(max-width: 1100px) 100vw, 1060px" width="1672" height="941" alt="Buku terbuka, lembaran naskah, topi toga, dan daftar periksa di luar angkasa" fetchpriority="low" decoding="sync"></picture></div>
       </section>
 
       <div class="catat galat" id="tutup" hidden>Pengajuan judul sedang ditutup. Pengajuan yang sudah dikirim tetap bisa dilihat lewat menu Log in.</div>
@@ -1872,7 +1903,7 @@ span.foto-mini { display: grid; place-items: center; }
           <p>Isi sekali, Kaprodi menyetujui, dua surat resmi langsung terbit: surat permohonan dan surat pengantar riset untuk instansi tujuanmu.</p>
           <div class="fakta"><span>Disetujui Kaprodi</span><span><b>2</b> surat sekali jadi</span><span>Satu permohonan per instansi</span></div>
         </div>
-        <div class="hero-gambar"><picture><source media="(max-width: 680px)" srcset="hero-riset-hp-960.webp?v=119 960w, hero-riset-hp-1440.webp?v=119 1440w" sizes="100vw" width="1122" height="1402"><img src="hero-riset-1440.webp?v=119" srcset="hero-riset-1440.webp?v=119 1440w, hero-riset-2560.webp?v=119 2560w" sizes="(max-width: 1100px) 100vw, 1060px" width="1672" height="941" alt="Buku hukum terbuka, kaca pembesar emas, penanda lokasi, dan bola dunia di meja marmer" fetchpriority="low" decoding="sync"></picture></div>
+        <div class="hero-gambar"><picture><source media="(max-width: 680px)" srcset="hero-riset-hp-960.webp?v=120 960w, hero-riset-hp-1440.webp?v=120 1440w" sizes="100vw" width="1122" height="1402"><img src="hero-riset-1440.webp?v=120" srcset="hero-riset-1440.webp?v=120 1440w, hero-riset-2560.webp?v=120 2560w" sizes="(max-width: 1100px) 100vw, 1060px" width="1672" height="941" alt="Buku hukum terbuka, kaca pembesar emas, penanda lokasi, dan bola dunia di meja marmer" fetchpriority="low" decoding="sync"></picture></div>
       </section>
       <div class="mode" role="radiogroup" aria-label="Izin riset">
         <label><input type="radio" name="rmode" value="ajukan" id="rmAjukan" checked><span><b>Ajukan izin riset</b><small>Isi data, lalu tunggu persetujuan Kaprodi.</small></span></label>
@@ -1947,7 +1978,7 @@ span.foto-mini { display: grid; place-items: center; }
           <p>Unggah semua syarat ujian skripsi sekali jalan. Berkasmu digabung otomatis menjadi satu PDF atas nama dan NIM-mu, lalu diperiksa pengelola prodi.</p>
           <div class="fakta"><span>Foto atau scan JPG/PNG</span><span>Sertifikat PWI dicek ke database</span><span>Turnitin maksimal <b id="sdMaks">24,99</b>%</span></div>
         </div>
-      <div class="hero-gambar"><picture><source media="(max-width: 680px)" srcset="hero-sidang-hp-960.webp?v=119 960w, hero-sidang-hp-1440.webp?v=119 1440w" sizes="100vw" width="1122" height="1402"><img src="hero-sidang-1440.webp?v=119" srcset="hero-sidang-1440.webp?v=119 1440w, hero-sidang-2560.webp?v=119 2560w" sizes="(max-width: 1100px) 100vw, 1060px" width="1672" height="941" alt="Topi toga di atas tumpukan buku di permukaan bulan dengan Bumi di belakangnya" fetchpriority="low" decoding="sync"></picture></div>
+      <div class="hero-gambar"><picture><source media="(max-width: 680px)" srcset="hero-sidang-hp-960.webp?v=120 960w, hero-sidang-hp-1440.webp?v=120 1440w" sizes="100vw" width="1122" height="1402"><img src="hero-sidang-1440.webp?v=120" srcset="hero-sidang-1440.webp?v=120 1440w, hero-sidang-2560.webp?v=120 2560w" sizes="(max-width: 1100px) 100vw, 1060px" width="1672" height="941" alt="Topi toga di atas tumpukan buku di permukaan bulan dengan Bumi di belakangnya" fetchpriority="low" decoding="sync"></picture></div>
       </section>
       <div class="catat galat" id="sdTutup" hidden></div>
       <div class="mode" role="radiogroup" aria-label="Ajukan sidang" id="sdModeWadah">
@@ -2082,7 +2113,7 @@ span.foto-mini { display: grid; place-items: center; }
           <p>Mahasiswa, dosen wali, dosen pembimbing, dan pengelola prodi masuk dari sini. Bimbingan tercatat, pesan tersambung, progres skripsi terpantau.</p>
           <div class="fakta"><span>Mahasiswa</span><span>Dosen pembimbing</span><span>Pengelola prodi</span></div>
         </div>
-        <div class="hero-gambar"><picture><source media="(max-width: 680px)" srcset="hero-masuk-hp-960.webp?v=119 960w, hero-masuk-hp-1440.webp?v=119 1440w" sizes="100vw" width="1122" height="1402"><img src="hero-masuk-1440.webp?v=119" srcset="hero-masuk-1440.webp?v=119 1440w, hero-masuk-2560.webp?v=119 2560w" sizes="(max-width: 1100px) 100vw, 1060px" width="1672" height="941" alt="Astronaut memandang Bumi dari luar angkasa" fetchpriority="low" decoding="sync"></picture></div>
+        <div class="hero-gambar"><picture><source media="(max-width: 680px)" srcset="hero-masuk-hp-960.webp?v=120 960w, hero-masuk-hp-1440.webp?v=120 1440w" sizes="100vw" width="1122" height="1402"><img src="hero-masuk-1440.webp?v=120" srcset="hero-masuk-1440.webp?v=120 1440w, hero-masuk-2560.webp?v=120 2560w" sizes="(max-width: 1100px) 100vw, 1060px" width="1672" height="941" alt="Astronaut memandang Bumi dari luar angkasa" fetchpriority="low" decoding="sync"></picture></div>
       </section>
       <section class="lembar" id="aMasuk">
         <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st"><path class="f-no tebal luar" d="M21 30V21c0-7 5-11 11-11s11 4 11 11v9"/><rect class="f-ink" x="15" y="32" width="42" height="28" rx="8"/><rect class="f-acc" x="11" y="28" width="42" height="28" rx="8"/><circle class="f-pop" cx="32" cy="39" r="4"/><path class="f-no" d="M32 43v6"/></g></svg><h2>Log in</h2><p>Pilih pintu masukmu. Tiap peran punya ruang kerjanya sendiri.</p></header>
@@ -2108,7 +2139,7 @@ span.foto-mini { display: grid; place-items: center; }
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 119</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 120</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
