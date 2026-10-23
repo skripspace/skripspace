@@ -1,7 +1,7 @@
 /* SKRIPSPACE: service worker. Versi 90: halaman tampil seketika dari salinan di perangkat, sementara versi terbaru diambil
    di belakang layar (berlaku saat dibuka berikutnya; halaman memberi tahu "Versi baru siap"). Berkas bertanda versi (?v=) diambil
    dari salinan dulu karena isinya tidak pernah berubah. Tanpa sinyal, salinan tetap dipakai. */
-var NAMA = 'skripspace-v132';
+var NAMA = 'skripspace-v133';
 var BERKAS = ['./', 'manifest.webmanifest', 'skripspace-192.png', 'skripspace-512.png', 'skripspace-maskable-512.png', 'skripspace-touch-180.png', 'skripspace-64.png', 'favicon.ico'];
 function simpan(r, j) { if (j && j.status === 200 && j.type === 'basic') { var s = j.clone(); caches.open(NAMA).then(function (c) { c.put(r, s); }); } return j; }
 self.addEventListener('install', function (ev) {
@@ -25,7 +25,8 @@ self.addEventListener('fetch', function (ev) {
     return;
   }
   if (/[?&]v=/.test(u.search)) {
-    ev.respondWith(caches.match(r).then(function (x) { return x || fetch(r).then(function (j) { return simpan(r, j); }); }));
+    /* v133: bila jaringan gagal, pakai salinan berkas yang sama dari versi sebelumnya (nama berkas sama, hanya ?v= berbeda) */
+    ev.respondWith(caches.match(r).then(function (x) { return x || fetch(r).then(function (j) { return simpan(r, j); }).catch(function () { return caches.match(r, { ignoreSearch: true }).then(function (y) { return y || Response.error(); }); }); }));
     return;
   }
   ev.respondWith(fetch(r).then(function (j) { return simpan(r, j); }).catch(function () { return caches.match(r).then(function (x) { return x || Response.error(); }); }));
