@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-GmgU/ieRISO3caNX/G5oKU3x2lXPJz5xtVob6LcVorc=' 'sha256-aTHeZf0IsW7HgOaEiDLeC8HFzkrQ4/FA7RYMBSeTPQ0=' 'sha256-Zh58Cso3CSy6CARo/+zqeKF0Ay0S6jWyt2yf3Qp42Vk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; worker-src 'self'; manifest-src 'self'; frame-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-GmgU/ieRISO3caNX/G5oKU3x2lXPJz5xtVob6LcVorc=' 'sha256-vIwpolwKZRkkAnfykdsEM+3oCFv/ZwJ1m6JChXWm+GE=' 'sha256-KE9nivC9+lHO0yHNL/XK0xg3lef92hgz6V4nrjJtTn4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; worker-src 'self'; manifest-src 'self'; frame-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="skripspace-api" content="https://script.google.com/macros/s/AKfycbzqE5cF29lOaA4Z776jYKUgIV8DPFdk5jYxUfJj_-xy99s-hEYxG2WeRVYqaJ23PpG_MQ/exec">
 <script>if (location.protocol === 'http:' && /(^|\.)skripspace\.com$/.test(location.hostname)) location.replace('https://' + location.host + location.pathname + location.search + location.hash);
@@ -519,7 +519,7 @@ if (window.top !== window.self) { var bolehBingkai = false; try { bolehBingkai =
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 175</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 176</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
@@ -4163,7 +4163,7 @@ if (window.top !== window.self) { var bolehBingkai = false; try { bolehBingkai =
       var pin = $('aPin').value.trim();
       if (!pin) { galat(g, p === 'wd1' ? 'Masukkan kode akses Wakil Dekan I.' : 'Masukkan kode akses pengelola.'); return; }
       fn = 'apiAdminData'; args = [pin];
-      terima = function (a, ulang) { simpanLokal('pjs-plen', pin.length); S.sesi = { peran: 'adm', k1: pin }; S.pin = pin; S.admin = a; S.adminMuat = Date.now(); if (!ulang) S.aTab = { sidang: 'sidang', wd1: 'antre', keuangan: 'bayar' }[a.peran] || 'ringkas'; if (a.pwi) S.pwi = a.pwi; $('aIsi').hidden = false; renderAdmin(); if (!ulang) praMuatAdmin(); setTimeout(pisahkanBuktiLama, 1500); };
+      terima = function (a, ulang) { simpanLokal('pjs-plen', pin.length); S.sesi = { peran: 'adm', k1: pin }; S.pin = pin; S.admin = a; S.adminMuat = Date.now(); if (!ulang) { S.aTab = S.aTabPulih || { sidang: 'sidang', wd1: 'antre', keuangan: 'bayar' }[a.peran] || 'ringkas'; S.aTabPulih = ''; } if (a.pwi) S.pwi = a.pwi; $('aIsi').hidden = false; renderAdmin(); if (!ulang) praMuatAdmin(); setTimeout(pisahkanBuktiLama, 1500); };
     }
     galat(g, '');
     var kilat = ambilKilat(fn, args), masukCepat = false;
@@ -5675,11 +5675,64 @@ if (window.top !== window.self) { var bolehBingkai = false; try { bolehBingkai =
         if (kt) { $('dKode').value = kt.toUpperCase(); try { history.replaceState(null, '', location.pathname + location.search); } catch (x) {} masuk(); }
         else setTimeout(function () { toast('Masukkan kode akses dari pesan WhatsApp, atau kode akses dosen Anda, lalu tekan Mengetahui.'); try { $('dKode').focus(); } catch (x) {} }, 400);
       }
+      pulihSesiPerbarui();
     }
     if (initKilat) { try { terapkanInit(initKilat); } catch (x) { initSudah = false; } }
     api('apiInit').then(function (init) { if (!initSudah || JSON.stringify(init) !== JSON.stringify(initKilat)) terapkanInit(init); S.init = S.init || init; setTimeout(panaskan, 300); })
       .catch(function (x) { if (!initSudah) galat($('galatMuat'), 'Aplikasi belum bisa dimuat: ' + x.message); });
   }
+  /* ---------------------------------------------------------------- web v176: pembaruan otomatis tanpa klik ----------------------------------------------------------------
+   * Setiap 5 menit, saat aplikasi kembali dibuka (pindah tab/aplikasi), dan saat sinyal kembali, versi.json diperiksa. Bila ada versi baru,
+   * halaman dimuat ulang sendiri — tetapi hanya saat aman: tidak ada isian yang sedang diketik/belum terkirim dan tidak ada proses berjalan.
+   * Sesi log in dan menu yang sedang dibuka dibawa melewati muat ulang (sessionStorage tab ini, berlaku 2 menit), jadi pengguna tidak perlu masuk lagi. */
+  var PERBARUI = { versi: ((document.querySelector('.versi') || {}).textContent || '').replace(/\D+/g, ''), baru: '', jalan: false, t: 0 };
+  function adaKetikan() {
+    if (S.sedangMasuk || document.querySelector('.sibuk')) return true;
+    var a = document.activeElement;
+    if (a && (a.isContentEditable || a.tagName === 'TEXTAREA' || a.tagName === 'SELECT' || (a.tagName === 'INPUT' && !/^(checkbox|radio|button|submit|search)$/.test(a.type)))) return true;
+    return [].some.call(document.querySelectorAll('textarea, input'), function (el) {
+      if (/^(checkbox|radio|button|submit|search|hidden|password)$/.test(el.type) || /^(mNim|mKode|dKode|aPin)$/.test(el.id)) return false;
+      if (!el.offsetParent) return false;   /* tersembunyi */
+      if (el.type === 'file') return !!(el.files && el.files.length);
+      return el.value !== el.defaultValue;
+    });
+  }
+  function halamanKini() { var h = ''; ['beranda', 'ajukan', 'riset', 'sidang', 'admin'].forEach(function (n) { var el = $('v' + n.charAt(0).toUpperCase() + n.slice(1)); if (el && !el.hidden) h = n; }); return h; }
+  function cobaPerbarui() {
+    if (!PERBARUI.baru || PERBARUI.jalan) return;
+    clearTimeout(PERBARUI.t);
+    if (adaKetikan()) { PERBARUI.t = setTimeout(cobaPerbarui, 20000); return; }   /* tunggu sampai pengguna selesai mengisi */
+    PERBARUI.jalan = true;
+    if (PERBARUI.baru !== 'sw') sesiSimpan('pjs-coba', { v: PERBARUI.baru, t: Date.now() });
+    sesiSimpan('pjs-perbarui', { sesi: S.sesi || null, wali: S.waliTuju || '', aTab: S.aTab || '', hal: halamanKini(), y: window.scrollY || 0, t: Date.now() });
+    location.reload();
+  }
+  function cekVersi() {
+    if (PERBARUI.jalan || !PERBARUI.versi || !/^https?:$/.test(location.protocol) || navigator.onLine === false) return;
+    fetch('versi.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      if (!j || !j.versi || String(j.versi) === PERBARUI.versi) return;
+      var c = sesiBaca('pjs-coba'); if (c && c.v === String(j.versi) && Date.now() - c.t < 600000) return;   /* sudah dicoba; tunggu salinan server menyusul */
+      PERBARUI.baru = String(j.versi);
+      try { navigator.serviceWorker.getRegistration().then(function (g) { if (g) g.update(); }).catch(function () {}); } catch (x) { /* abaikan */ }
+      cobaPerbarui();
+    }).catch(function () { /* coba lagi nanti */ });
+  }
+  function pulihSesiPerbarui() {
+    var d = sesiBaca('pjs-perbarui'); try { sessionStorage.removeItem('pjs-perbarui'); } catch (x) { /* abaikan */ }
+    if (!d || Date.now() - (d.t || 0) > 120000) return;
+    var s = d.sesi;
+    if (!s) { if (d.hal && d.hal !== 'beranda') tampil(d.hal); if (d.y) setTimeout(function () { window.scrollTo(0, d.y); }, 60); return; }
+    tampil('admin');
+    if (s.peran === 'mhs') { pilihPeran('mhs'); $('mNim').value = s.k1; $('mKode').value = s.k2; }
+    else if (s.peran === 'dsn') { var k = String(s.k1); if (k.indexOf('@') > 0) { S.waliTuju = d.wali || k.slice(k.indexOf('@') + 1); k = k.slice(0, k.indexOf('@')); } pilihPeran('dsn'); $('dKode').value = k; }
+    else { pilihPeran('adm'); $('aPin').value = s.k1; S.aTabPulih = d.aTab || ''; }
+    masuk();
+  }
+  window.addEventListener('skripspace-baru', function () { PERBARUI.baru = PERBARUI.baru || 'sw'; cobaPerbarui(); });
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') cekVersi(); });
+  window.addEventListener('online', cekVersi);
+  setInterval(cekVersi, 300000);
+  setTimeout(cekVersi, 15000);
   /* ======================================================================================================
    * Web v137 — TURNITIN | ACADEMIC INTEGRITY ENGINE (klien): panel mahasiswa di ruang (tab Turnitin),
    * verifikasi pembayaran penyuntingan di panel Sekprodi & Staf Keuangan, tahap "Tarik Data Hasil Turnitin" di sidang.
@@ -6224,7 +6277,7 @@ if (window.top !== window.self) { var bolehBingkai = false; try { bolehBingkai =
 <script>
 if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
   var swLama = !!navigator.serviceWorker.controller;
-  navigator.serviceWorker.addEventListener('controllerchange', function () { if (!swLama || document.getElementById('versiBaru')) return; var b = document.createElement('button'); b.type = 'button'; b.id = 'versiBaru'; b.className = 'versi-baru'; b.textContent = 'Versi baru SKRIPSPACE siap · ketuk untuk memuat'; b.onclick = function () { location.reload(); }; document.body.appendChild(b); });
+  navigator.serviceWorker.addEventListener('controllerchange', function () { if (swLama) window.dispatchEvent(new Event('skripspace-baru')); });
   window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () { /* tetap jalan tanpa SW */ }); });
 }
 </script>
