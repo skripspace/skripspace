@@ -1,4 +1,4 @@
-/* SKRIPSPACE: service worker. Versi 90: halaman tampil seketika dari salinan di perangkat, sementara versi terbaru diambil
+/* SKRIPSPACE: service worker. Versi 90/174: halaman diambil dari jaringan (maks. 3 detik), salinan di perangkat dipakai bila sinyal lambat; versi terbaru diambil
    di belakang layar (berlaku saat dibuka berikutnya; halaman memberi tahu "Versi baru siap"). Berkas bertanda versi (?v=) diambil
    dari salinan dulu karena isinya tidak pernah berubah. Tanpa sinyal, salinan tetap dipakai. */
 var NAMA = 'skripspace-v174';
@@ -17,10 +17,15 @@ self.addEventListener('fetch', function (ev) {
   if (r.mode === 'navigate') {
     var akar = new URL('./', self.location).pathname;
     if (u.pathname !== akar && u.pathname !== akar + 'index.html') return;   // halaman lain (PDF pedoman, dsb.) langsung dari jaringan
-    var segar = fetch(r.url, { cache: 'no-store', credentials: 'same-origin' }).then(function (j) { return simpan('./', j); });
-    ev.respondWith(caches.open(NAMA).then(function (c) { return c.match('./'); }).then(function (x) {
-      if (x) { ev.waitUntil(segar.catch(function () {})); return x; }
-      return segar.catch(function () { return caches.match('./'); });
+    /* v174: jaringan dulu (maks. 3 detik) supaya pengguna selalu mendapat versi terbaru setelah rilis; salinan di perangkat
+       hanya dipakai bila sinyal lambat atau putus. Dulu salinan selalu didahulukan sehingga versi baru baru tampil di kunjungan kedua. */
+    var segar = fetch(r.url, { cache: 'no-store', credentials: 'same-origin' }).then(function (j) { if (!j || !j.ok) throw new Error('gagal'); return simpan('./', j); });
+    ev.waitUntil(segar.catch(function () {}));
+    ev.respondWith(new Promise(function (selesai) {
+      var sudah = false, pakai = function (x) { if (!sudah && x) { sudah = true; selesai(x); } };
+      var cadang = function () { return caches.open(NAMA).then(function (c) { return c.match('./'); }).then(function (x) { if (x) pakai(x); return x; }); };
+      var jam = setTimeout(cadang, 3000);
+      segar.then(function (j) { clearTimeout(jam); pakai(j); }).catch(function () { clearTimeout(jam); cadang().then(function (x) { if (!x) segar.catch(function () { pakai(Response.error()); }); }); });
     }));
     return;
   }
