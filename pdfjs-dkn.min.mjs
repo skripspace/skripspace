@@ -1,3 +1,4 @@
+/* SKRIPSPACE: Safari (iPhone) belum mendukung for-await atas ReadableStream; tanpa ini getTextContent gagal "undefined is not a function" */if(typeof ReadableStream!=="undefined"&&!ReadableStream.prototype[Symbol.asyncIterator]){ReadableStream.prototype[Symbol.asyncIterator]=async function*(){const r=this.getReader();try{for(;;){const x=await r.read();if(x.done)return;yield x.value;}}finally{try{r.releaseLock();}catch(e){}}};}
 /**
  * @licstart The following is the entire license notice for the
  * JavaScript code in this page
