@@ -85,7 +85,6 @@
     for (var r = 0; r < pita.length; r++) {
       var ya = pita[r][0], yb = pita[r][1];
       if (yb - ya < H * 0.006) continue;
-      if (!abu(vl[1][0], (ya + yb) >> 1) && !abu(vl[1][1], (ya + yb) >> 1)) continue;   // bukan pita baris tabel
       var sel = kol.map(function (k) { return kotak(vl[k][1] + 2, vl[k + 1][0] - 2, ya, yb); });
       if (!sel[0]) continue;
       var atas = 1e9, bawah = -1; sel.forEach(function (c) { if (c) { atas = Math.min(atas, c.y); bawah = Math.max(bawah, c.y + c.h - 1); } });
