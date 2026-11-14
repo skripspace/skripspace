@@ -579,6 +579,37 @@ input[type=date]{font-family:inherit}
  .pembuka:not(#pembukaMasuk){padding-bottom:30px!important}
 }
 #aMasuk.lembar>.berikon,#aMasuk .lembar>.berikon{display:grid!important}#aMasuk .berikon>svg.ikon{display:block!important}
+
+/* Web 258 — Pasang aplikasi: pil minimalis */
+details.pasang{width:max-content;max-width:100%;margin:14px auto!important;border-radius:999px!important;background:#fff!important;box-shadow:none!important;border:1px solid #e6e1e1!important}
+details.pasang[open]{width:100%;border-radius:22px!important}
+.pasang-ringkas{justify-content:center;padding:9px 20px 9px 16px!important;gap:10px!important}
+.pasang-ringkas i{width:auto!important;height:auto!important;background:none!important;border-radius:0!important}
+.pasang-ringkas i svg{width:22px!important;height:22px!important;stroke:#7a7476!important}
+.pasang-ringkas span{flex:none!important;flex-direction:row!important;align-items:baseline;gap:8px!important}
+.pasang-ringkas b{font-size:15px!important;font-weight:600;color:#6f696b!important}
+.pasang-ringkas small{font-size:15px!important;color:#aaa4a6!important}
+details.pasang[open] .pasang-ringkas{border-bottom:1px solid #eee8e8}
+
+/* Web 258 — Log in: tata letak presisi di web */
+#aMasuk .berikon{grid-template-columns:46px 1fr!important;gap:0 14px!important;align-items:center!important;padding-bottom:16px;margin-bottom:18px!important;border-bottom:1px solid #eee6d8}
+#aMasuk .berikon h2{line-height:1.2;align-self:end}
+#aMasuk .berikon p{align-self:start;line-height:1.35}
+#aMasuk .mode.tiga{display:grid!important;grid-template-columns:repeat(6,1fr)!important;gap:8px!important;overflow:visible!important;padding:0!important;margin:0 0 20px!important}
+#aMasuk .mode.tiga label{grid-column:span 2;display:block;min-width:0}
+#aMasuk .mode.tiga label:nth-child(n+4){grid-column:span 3}
+#aMasuk .mode.tiga span{display:flex!important;align-items:center;justify-content:center;height:44px;padding:0 10px!important;border-radius:12px!important;text-align:center;white-space:nowrap}
+#aMasuk .mode.tiga span b{font-size:13.5px}
+#aMasuk .isian>label{display:block;margin:0 0 6px;font-size:12.5px;letter-spacing:.02em}
+#aMasuk .isian input{height:50px!important;border-radius:12px!important}
+#aMasuk .isian small,#aMasuk .isian .bantu{display:block;margin-top:6px;font-size:12.5px;line-height:1.45}
+#aMasuk .aksi{margin-top:20px!important}
+#aMasuk #bMasuk{height:52px;border-radius:12px!important}
+@media(min-width:760px){#pembukaMasuk+#aMasuk{max-width:520px!important;padding:28px 32px 30px!important}}
+@media(max-width:420px){#aMasuk .mode.tiga span{padding:0 4px!important}#aMasuk .mode.tiga span b{font-size:12.5px}}
+#aMasuk .mode.tiga{margin-bottom:6px!important}
+#aMasuk .mode.tiga span b{font-size:13px;letter-spacing:-.01em}
+#aMasuk .mode.tiga span{padding:0 6px!important}
 </style>
 </head>
 <body>
@@ -642,7 +673,7 @@ input[type=date]{font-family:inherit}
       </section>
       
       <div class="beranda-duo">
-      <details class="lembar pasang" id="sPasang"><summary class="pasang-ringkas"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></i><span><b>Pasang aplikasi di HP</b><small>Gratis, tanpa Play Store atau App Store</small></span><em aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></em></summary><div class="pasang-isi">
+      <details class="lembar pasang" id="sPasang"><summary class="pasang-ringkas"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></i><span><b>Pasang aplikasi</b><small>· Android · iOS</small></span></summary><div class="pasang-isi">
         <div class="pasang-aksi"><button type="button" class="tombol utama" id="bPasangSek" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Pasang sekarang</button><p class="pasang-status" id="pasangStatus">Pilih jenis HP-mu, lalu ikuti langkahnya.</p></div>
         <div class="pasang-pilih" role="tablist" aria-label="Jenis HP">
           <button type="button" role="tab" data-os="android" aria-selected="true">Android</button>
@@ -1036,7 +1067,7 @@ input[type=date]{font-family:inherit}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 258</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 259</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
