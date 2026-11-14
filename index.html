@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-GmgU/ieRISO3caNX/G5oKU3x2lXPJz5xtVob6LcVorc=' 'sha256-vwN9lDDSQdd5IZ/GL3Ueo+vmKkiVCCd8Pz6roQdhNtU=' 'sha256-KE9nivC9+lHO0yHNL/XK0xg3lef92hgz6V4nrjJtTn4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; worker-src 'self'; manifest-src 'self'; frame-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-GmgU/ieRISO3caNX/G5oKU3x2lXPJz5xtVob6LcVorc=' 'sha256-7HabGLloNaXBivc19gnNg5bTBUFolXI4GV8pvNbElaQ=' 'sha256-KE9nivC9+lHO0yHNL/XK0xg3lef92hgz6V4nrjJtTn4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; worker-src 'self'; manifest-src 'self'; frame-src 'self' blob: data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <meta name="skripspace-api" content="https://script.google.com/macros/s/AKfycbwWbOrqQu_hg9kglEaRQmscij1XYQAjCRdkp4tuAI8ZhFUuFcCV_XXfoG10chUkbp_RnA/exec">
 <script>if (location.protocol === 'http:' && /(^|\.)skripspace\.com$/.test(location.hostname)) location.replace('https://' + location.host + location.pathname + location.search + location.hash);
@@ -413,6 +413,45 @@ a{color:var(--accent)}
 .kls.eks{background:#7a6a66!important;color:#fff!important}
 .angkasa,.pembuka{height:auto!important;max-height:none!important;flex:none!important;justify-content:flex-start!important}
 .angkasa .teks,.pembuka .teks{margin:0!important;transform:none!important;top:auto!important}
+
+/* ===== Web 251: beranda gaya aplikasi flagship (pita sapa merah, kartu mengambang, menu bulat) ===== */
+:root{--bayang:0 2px 12px rgba(70,35,20,.06)}
+section.angkasa{background:linear-gradient(135deg,#b1252e 0,#8e1822 68%,#701019 100%)!important;color:#fff!important;border:0!important;border-radius:26px!important;box-shadow:inset 0 3px 0 #d4af6a!important;padding:24px 22px 64px!important}
+section.angkasa .teks{max-width:none!important;width:100%;gap:6px}
+.sapa{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;width:100%}
+section.angkasa .lencana{color:#f0d58f!important;letter-spacing:.16em;font-size:11px}
+section.angkasa h1{color:#fff!important;margin:4px 0 0!important;font-size:clamp(34px,9vw,48px)}
+section.angkasa h1 span{background-image:linear-gradient(180deg,#f6e2ab,#d4af6a)!important}
+section.angkasa .slogan{color:#fff!important;opacity:.92;margin:2px 0 0}
+.sapa-isi{color:rgba(255,255,255,.86)!important;margin:10px 0 0!important;max-width:46ch}
+.sapa-aksi{display:flex;gap:8px;flex-shrink:0}
+section.angkasa .segar,section.angkasa #bPasang{background:rgba(255,255,255,.16)!important;color:#fff!important;border:1px solid rgba(255,255,255,.38)!important;padding:8px 13px;min-height:0;font-size:13px;box-shadow:none!important}
+.cepat{margin-top:-52px;position:relative;z-index:2;display:flex;flex-direction:column;gap:18px}
+.cepat-kartu{margin:0 12px;background:#fff;border:1px solid #eadfce;border-radius:20px;padding:16px 18px;box-shadow:0 8px 24px rgba(70,35,20,.10);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 16px}
+.ck-teks{display:flex;flex-direction:column;gap:2px;min-width:200px;flex:1 1 220px}.ck-teks b{font-size:16px;color:var(--ink)}.ck-teks span{font-size:13.5px;color:var(--muted)}
+.cepat .ajak{margin:0}
+.menu-bulat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0 6px}
+.mb{display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:0;padding:4px 0;font:inherit;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mb i{display:grid;place-items:center;width:62px;height:62px;border-radius:50%;box-shadow:0 4px 12px rgba(70,35,20,.14);transition:transform .15s}
+.mb:active i{transform:scale(.94)}
+.mb svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.mb.m1 i{background:linear-gradient(160deg,#d8404a,#a51c25)}
+.mb.m2 i{background:linear-gradient(160deg,#ecd49a,#c9962b)}.mb.m2 svg{stroke:#2a1c10}
+.mb.m3 i{background:linear-gradient(160deg,#8e1822,#5e0d15)}
+.mb.m4 i{background:linear-gradient(160deg,#4a3a3d,#1d1517)}
+.mb.terang i{width:56px;height:56px;background:#fbf3e3;box-shadow:none;border:1px solid #eadfce}
+.mb.terang svg{stroke:#b1252e;width:25px;height:25px}
+#sAgenda,#sRute,#sTracer,#sPasang{scroll-margin-top:84px}
+/* ringan: tanpa tekstur kisi & bayangan tebal */
+.tracer-pita,.agenda,.agenda-jam,.agenda-kalender,.hud{background:#fff!important;background-image:none!important;box-shadow:none!important}
+.tracer-pita,.agenda{border:1px solid #eadfce!important;border-radius:20px!important}
+.lembar{box-shadow:var(--bayang)!important}
+@media(min-width:760px){.cepat-kartu{margin:0 24px}.menu-bulat{max-width:560px;margin:0 auto;gap:24px}}
+section.angkasa .lencana{font-size:10.5px!important;letter-spacing:.12em!important;white-space:nowrap}
+section.angkasa .slogan{font-size:15px!important;font-weight:500!important;line-height:1.3!important}
+.sapa-isi{font-size:14.5px!important;line-height:1.5!important}
+section.angkasa{padding:20px 20px 58px!important}
+section.angkasa .segar{padding:7px 11px}
 </style>
 </head>
 <body>
@@ -440,13 +479,22 @@ a{color:var(--accent)}
     <div style="display:flex;flex-direction:column;gap:26px">
       <section class="angkasa">
         <div class="teks">
-          <span class="lencana">Fakultas Hukum UNISSULA</span>
-          <h1>Skrip<span>space</span></h1>
-          <p class="slogan">Your Academic Workspace</p>
-          <p>Dari judul pertama sampai toga, semua dalam satu ruang kerja.</p>
-          <div class="ajak"><button type="button" class="tombol utama" data-ke-lompat="ajukan">Ajukan Judul</button><button type="button" class="tombol" data-ke-lompat="admin">Log in</button><button type="button" class="tombol" id="bPasang" hidden>Pasang aplikasi</button><button type="button" class="tombol polos segar" id="bSegar" title="Ambil ulang data terbaru dari sistem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg><span>Segarkan</span></button></div>
+          <div class="sapa">
+            <div><span class="lencana">Fakultas Hukum UNISSULA</span>
+            <h1>Skrip<span>space</span></h1>
+            <p class="slogan">Your Academic Workspace</p></div>
+            <div class="sapa-aksi"><button type="button" class="tombol" id="bPasang" hidden>Pasang aplikasi</button><button type="button" class="tombol polos segar" id="bSegar" title="Ambil ulang data terbaru dari sistem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg><span>Segarkan</span></button></div>
+          </div>
+          <p class="sapa-isi">Dari judul pertama sampai toga, semua dalam satu ruang kerja.</p>
         </div>
-        
+      </section>
+      <section class="cepat" aria-label="Pintasan">
+        <div class="cepat-kartu">
+          <div class="ck-teks"><b>Mulai dari sini</b><span>Ajukan judul, atau masuk untuk memantau skripsimu.</span></div>
+          <div class="ajak"><button type="button" class="tombol utama" data-ke-lompat="ajukan">Ajukan Judul</button><button type="button" class="tombol" data-ke-lompat="admin">Log in</button></div>
+        </div>
+        <nav class="menu-bulat" aria-label="Menu utama"><button type="button" class="mb m1" data-ke-lompat="ajukan"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg></i><span>Skripsi</span></button><button type="button" class="mb m2" data-ke-lompat="riset"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M21 21l-5-5"/></svg></i><span>Izin Riset</span></button><button type="button" class="mb m3" data-ke-lompat="sidang"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></i><span>Sidang</span></button><button type="button" class="mb m4" data-ke-lompat="admin"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></i><span>Log in</span></button></nav>
+        <nav class="menu-bulat" aria-label="Di halaman ini"><a class="mb terang" href="#sAgenda"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg></i><span>Agenda</span></a><a class="mb terang" href="#sRute"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></i><span>Rute</span></a><a class="mb terang" href="#sTracer"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></i><span>Tracer</span></a><a class="mb terang" href="#sPasang"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></i><span>Pasang</span></a></nav>
       </section>
       <section class="tracer-pita" id="sTracer" aria-label="Tracer study alumni S1 Ilmu Hukum FH UNISSULA">
         <div class="tp-label"><i class="tp-hidup" aria-hidden="true"></i><b>TRACER STUDY</b><span class="tp-total" id="tracerTotal"><b class="tracer-angka" data-angka="8666">0</b> lulusan</span></div>
@@ -465,7 +513,7 @@ a{color:var(--accent)}
         </div>
         <ul class="agenda-acara" id="agAcara" aria-label="Agenda terdekat"></ul>
       </section>
-      <section class="lembar rute-lembar">
+      <section class="lembar rute-lembar" id="sRute">
         <header class="rute-kepala"><div><span class="bagian-tag">Rute penerbangan</span><h2>Enam titik menuju toga</h2></div></header>
         <div class="rute-deck" aria-hidden="false">
           <svg class="rute-jalur3" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true">
@@ -888,7 +936,7 @@ a{color:var(--accent)}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 250</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 251</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
