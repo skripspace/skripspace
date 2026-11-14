@@ -637,6 +637,15 @@ details.pasang[open] .pasang-ringkas{border-bottom:1px solid #eee8e8}
  #pembukaMasuk p{margin:0!important;font-size:16.5px!important;max-width:30ch}
  #pembukaMasuk:after{content:"";display:block;width:56px;height:3px;border-radius:3px;background:#d4af6a;margin-top:26px}
 }
+
+/* Web 261 — HP: peran tidak keluar baris */
+@media(max-width:759px){
+ #aMasuk .mode.tiga{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ #aMasuk .mode.tiga label,#aMasuk .mode.tiga label:nth-child(n+4){grid-column:auto!important}
+ #aMasuk .mode.tiga label:nth-child(5){grid-column:1 / -1!important}
+ #aMasuk .mode.tiga span{height:46px!important;padding:0 8px!important;white-space:normal!important;min-width:0}
+ #aMasuk .mode.tiga span b{font-size:14px!important;line-height:1.15}
+}
 </style>
 </head>
 <body>
@@ -1094,7 +1103,7 @@ details.pasang[open] .pasang-ringkas{border-bottom:1px solid #eee8e8}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 261</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 262</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
