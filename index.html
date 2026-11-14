@@ -625,6 +625,18 @@ details.pasang[open] .pasang-ringkas{border-bottom:1px solid #eee8e8}
  #aMasuk .kisi{gap:16px!important}
 }
 @media(min-width:760px){#aMasuk .mode.tiga{margin-bottom:0!important}#aMasuk .kisi{margin-top:-2px!important}}
+
+/* Web 260 — Log in dua kolom di layar lebar */
+@media(min-width:1000px){
+ #vAdmin>div:has(>#pembukaMasuk){display:grid!important;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px!important;align-items:stretch}
+ #vAdmin>div:has(>#pembukaMasuk)>*{grid-column:1/-1}
+ #vAdmin>div:has(>#pembukaMasuk)>#pembukaMasuk{grid-column:1;grid-row:1;padding:48px 44px!important;align-items:flex-start!important;justify-content:center!important;text-align:left!important;min-height:560px!important;margin:0!important}
+ #vAdmin>div:has(>#pembukaMasuk)>#aMasuk{grid-column:2;grid-row:1;max-width:none!important;width:100%!important;margin:0!important;align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:40px 44px!important}
+ #pembukaMasuk .teks{align-items:flex-start!important;text-align:left!important}
+ #pembukaMasuk h1{font-size:clamp(40px,3.6vw,54px)!important;line-height:1.06!important;margin:14px 0 14px!important}
+ #pembukaMasuk p{margin:0!important;font-size:16.5px!important;max-width:30ch}
+ #pembukaMasuk:after{content:"";display:block;width:56px;height:3px;border-radius:3px;background:#d4af6a;margin-top:26px}
+}
 </style>
 </head>
 <body>
@@ -1082,7 +1094,7 @@ details.pasang[open] .pasang-ringkas{border-bottom:1px solid #eee8e8}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 260</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 261</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
