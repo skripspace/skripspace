@@ -666,6 +666,23 @@ details.pasang .pasang-isi li{width:100%!important;margin:0!important}
 #pembukaMasuk[hidden],#aMasuk[hidden]{display:none!important}
 @media(min-width:1000px){#vAdmin>div:has(>#aMasuk[hidden]){display:flex!important;flex-direction:column;gap:22px}}
 
+/* Web 267 — kepala beranda minimalis */
+.sapa{align-items:flex-start!important;gap:16px!important}
+.sapa>div:first-child{min-width:0}
+.sapa-aksi{gap:10px!important;margin-top:2px}
+section.angkasa .sapa-aksi .tombol{width:42px!important;height:42px!important;min-width:42px;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center;gap:0!important}
+section.angkasa .sapa-aksi .tombol[hidden]{display:none!important}
+section.angkasa .sapa-aksi .tombol svg{width:20px!important;height:20px!important;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;margin:0!important}
+section.angkasa .sapa-aksi .tombol span{display:none!important}
+.sapa .lencana{margin-bottom:10px!important}
+.sapa h1{margin:0!important;line-height:1!important}
+.sapa .slogan{margin:8px 0 0!important;font-size:13px!important;font-weight:600;letter-spacing:.14em!important;text-transform:uppercase;color:rgba(255,255,255,.72)!important}
+.sapa-isi{margin:22px 0 0!important;padding-top:18px;border-top:1px solid rgba(255,255,255,.18);font-size:17px!important;font-weight:500;color:#fff!important;max-width:none!important}
+.sapa .slogan{white-space:nowrap;font-size:12px!important;letter-spacing:.16em!important}
+.sapa-isi{border-top:1px solid rgba(255,255,255,.2);width:100%}
+.cepat-kartu .ajak{display:flex;gap:10px!important;flex-wrap:wrap}
+@media(min-width:900px){.cepat-kartu{display:flex!important;flex-direction:column;justify-content:center!important;gap:14px}.cepat-kartu .ck-teks{margin:0!important}}
+
 /* Web 263 — logo baru di header */
 .merek{display:flex;align-items:center;gap:0!important}
 .merek-logo{display:grid;place-items:center;padding:0 14px 0 0!important;margin:0!important;border:0;background:none!important;position:relative}
@@ -703,12 +720,12 @@ details.pasang .pasang-isi li{width:100%!important;margin:0!important}
       <section class="angkasa">
         <div class="teks">
           <div class="sapa">
-            <div><span class="lencana">Fakultas Hukum UNISSULA</span>
+            <div><span class="lencana">FH UNISSULA</span>
             <h1>Skrip<span>space</span></h1>
             <p class="slogan">Your Academic Workspace</p></div>
-            <div class="sapa-aksi"><button type="button" class="tombol" id="bPasang" hidden>Pasang aplikasi</button><button type="button" class="tombol polos segar" id="bSegar" title="Ambil ulang data terbaru dari sistem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg><span>Segarkan</span></button></div>
+            <div class="sapa-aksi"><button type="button" class="tombol" id="bPasang" hidden aria-label="Pasang aplikasi" title="Pasang aplikasi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg></button><button type="button" class="tombol polos segar" id="bSegar" title="Ambil ulang data terbaru dari sistem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg><span>Segarkan</span></button></div>
           </div>
-          <p class="sapa-isi">Dari judul pertama sampai toga, semua dalam satu ruang kerja.</p>
+          <p class="sapa-isi">Dari judul sampai toga.</p>
         </div>
       </section>
       <section class="cepat" aria-label="Pintasan">
@@ -1132,7 +1149,7 @@ details.pasang .pasang-isi li{width:100%!important;margin:0!important}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 266</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 267</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
