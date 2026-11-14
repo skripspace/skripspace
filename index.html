@@ -647,6 +647,21 @@ details.pasang[open] .pasang-ringkas{border-bottom:1px solid #eee8e8}
  #aMasuk .mode.tiga span b{font-size:14px!important;line-height:1.15}
 }
 
+/* Web 263 — panduan pasang: isi tertata */
+details.pasang{display:block!important;grid-template-columns:none!important}
+details.pasang[open]{max-width:720px;margin-left:auto!important;margin-right:auto!important}
+details.pasang .pasang-isi{display:flex!important;flex-direction:column;gap:14px;padding:18px 22px 22px!important;max-width:none!important;grid-column:auto!important;margin:0!important}
+details.pasang .pasang-isi>*{margin:0!important;max-width:100%!important;width:auto!important}
+details.pasang .pasang-isi ol,details.pasang .pasang-isi ul{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+details.pasang .pasang-isi li{width:100%!important;margin:0!important}
+#sPasang.lembar.pasang{display:block!important;grid-template-columns:none!important}
+#sPasang .pasang-ringkas{width:100%;box-sizing:border-box}
+#sPasang .pasang-isi{align-items:stretch!important}
+#sPasang .pasang-isi .pasang-pilih{align-self:flex-start}
+#sPasang .pasang-langkah{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:10px!important;width:100%!important}
+@media(max-width:640px){#sPasang .pasang-langkah{grid-template-columns:1fr!important}}
+#sPasang [hidden]{display:none!important}
+
 /* Web 263 — logo baru di header */
 .merek{display:flex;align-items:center;gap:0!important}
 .merek-logo{display:grid;place-items:center;padding:0 14px 0 0!important;margin:0!important;border:0;background:none!important;position:relative}
@@ -1113,7 +1128,7 @@ details.pasang[open] .pasang-ringkas{border-bottom:1px solid #eee8e8}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 263</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 264</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
