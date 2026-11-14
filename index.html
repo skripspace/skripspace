@@ -662,6 +662,10 @@ details.pasang .pasang-isi li{width:100%!important;margin:0!important}
 @media(max-width:640px){#sPasang .pasang-langkah{grid-template-columns:1fr!important}}
 #sPasang [hidden]{display:none!important}
 
+/* Web 265 — pita & kartu Log in wajib hilang setelah masuk */
+#pembukaMasuk[hidden],#aMasuk[hidden]{display:none!important}
+@media(min-width:1000px){#vAdmin>div:has(>#aMasuk[hidden]){display:flex!important;flex-direction:column;gap:22px}}
+
 /* Web 263 — logo baru di header */
 .merek{display:flex;align-items:center;gap:0!important}
 .merek-logo{display:grid;place-items:center;padding:0 14px 0 0!important;margin:0!important;border:0;background:none!important;position:relative}
@@ -1128,7 +1132,7 @@ details.pasang .pasang-isi li{width:100%!important;margin:0!important}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 264</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 265</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
