@@ -464,6 +464,43 @@ section.angkasa h1{font-size:56px!important}
 .menu-bulat:nth-of-type(1){grid-area:m1}.menu-bulat:nth-of-type(2){grid-area:m2}
 .menu-bulat+.menu-bulat{}
 }
+
+/* ===== Web 253: agenda lebih bersih (satu lapis kartu, tanpa siku emas & huruf mono) ===== */
+.hud:before,.hud:after{display:none!important}
+.bagian-tag,.aj-label,.ag-atas small,.kal-kepala b,.kal-nama,.kal-hari,.kal-rinci,.aj-tanggal,.aj-ta,.ag-tgl,.ag-hitung span,.ag-hitung b,.aj-jam b,.aj-jam span,.agenda-semangat,.tp-label,.lencana{font-family:var(--f-body)!important}
+.bagian-tag:before{display:none!important}
+.bagian-tag{font-size:12px!important;letter-spacing:.14em!important;color:#b1252e!important}
+#sAgenda.agenda{background:transparent!important;border:0!important;padding:4px 0!important;gap:14px}
+#sAgenda .agenda-kepala h2{font-size:clamp(22px,2.4vw,28px)!important}
+.agenda-semangat{font-size:14px!important;font-weight:500!important;letter-spacing:0!important;color:var(--muted)!important}
+.agenda-semangat:before{display:none!important}
+.agenda-jam,.agenda-kalender,.ag-kartu{background:#fff!important;border:1px solid #eadfce!important;border-radius:20px!important;box-shadow:0 2px 12px rgba(70,35,20,.05)!important}
+.aj-label{font-size:12px!important;letter-spacing:.08em!important;color:var(--muted)!important}
+.aj-jam b{font-size:clamp(52px,5.6vw,72px)!important;font-weight:800!important;color:var(--ink)!important;text-shadow:none!important;letter-spacing:-.03em!important}
+.aj-jam span{font-size:20px!important;color:#b1252e!important}
+.aj-bilah{background:#f4ecdc!important}.aj-bilah i{background:linear-gradient(90deg,#d4af6a,#b1252e)!important;box-shadow:none!important}
+.aj-tanggal,.aj-ta{font-size:13.5px!important;letter-spacing:0!important}
+.kal-kepala b{font-size:15px!important;letter-spacing:0!important;text-transform:none!important}
+.kal-nama{font-size:11px!important;letter-spacing:0!important}
+.kal-hari{height:34px!important;border-radius:50%!important;font-size:13.5px!important;border:0!important}
+.kal-hari.ada{background:transparent!important}
+.kal-hari.kini{background:#b1252e!important;color:#fff!important;box-shadow:none!important}
+.kal-hari.pilih{background:#d4af6a!important;color:#1d1517!important}
+.kal-tanda{position:absolute;left:0;right:0;bottom:3px;justify-content:center}
+.kal-rinci{font-size:13px!important;font-weight:500!important;letter-spacing:0!important}
+.ag-kartu{padding:18px 20px!important;min-height:0!important}
+.ag-atas small{font-size:12.5px!important;letter-spacing:.04em!important;text-transform:none!important;color:var(--muted)!important;font-weight:600!important}
+.ag-ikon{background:#fbf3e3!important;border:0!important}.ag-ikon svg{stroke:#b1252e!important}
+.ag-kartu[data-jenis=sidang] .ag-ikon,.ag-kartu[data-jenis=wisuda] .ag-ikon{background:#fbf3e3!important}
+.ag-kartu[data-jenis=sidang] .ag-ikon svg,.ag-kartu[data-jenis=wisuda] .ag-ikon svg{stroke:#b1252e!important}
+.ag-hitung b{font-size:40px!important;font-weight:800!important;color:#b1252e!important;letter-spacing:-.02em!important}
+.ag-hitung b.teks{font-size:22px!important;letter-spacing:.04em!important}
+.ag-hitung span{font-size:12.5px!important;letter-spacing:0!important;text-transform:none!important;color:var(--muted)!important}
+.ag-bawah{border-top:1px solid #f1e8d8!important}
+.ag-tgl{font-size:13.5px!important;letter-spacing:0!important;color:var(--ink)!important}
+.ag-aksi{color:#b1252e!important}
+.ag-kartu.jalan{border-color:#d4af6a!important;box-shadow:0 2px 12px rgba(70,35,20,.05)!important;background:linear-gradient(180deg,#fff,#fffaf0)!important}
+.tp-label,.tracer-pita b{letter-spacing:.08em}
 </style>
 </head>
 <body>
@@ -948,7 +985,7 @@ section.angkasa h1{font-size:56px!important}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 252</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 253</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
