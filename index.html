@@ -531,6 +531,38 @@ details.pasang[open] .pasang-ringkas em{transform:rotate(180deg)}
 .aj-tanggal{font-size:16px!important;font-weight:700!important;color:var(--ink)!important;letter-spacing:0!important}
 .kal-nama{font-size:10.5px!important;font-weight:700!important;letter-spacing:.04em!important;text-transform:uppercase}
 .kal-hari.kini{width:36px;margin:0 auto}
+
+/* ===== Web 257: Log in flagship ===== */
+#pembukaMasuk{background:linear-gradient(135deg,#b1252e 0,#8e1822 68%,#701019 100%)!important;color:#fff!important;border:0!important;border-radius:26px!important;box-shadow:inset 0 3px 0 #d4af6a!important;padding:24px 22px 76px!important;align-items:flex-start!important;display:flex!important;flex-direction:column!important;min-height:0!important}
+#pembukaMasuk .teks{max-width:none!important;gap:6px}
+#pembukaMasuk .lencana{color:#f0d58f!important;letter-spacing:.14em!important;font-size:10.5px!important;white-space:nowrap}
+#pembukaMasuk h1{color:#fff!important;font-size:clamp(28px,7.4vw,38px)!important;margin:6px 0 4px!important;line-height:1.1!important}
+#pembukaMasuk h1 span{background-image:linear-gradient(180deg,#f6e2ab,#d4af6a)!important}
+#pembukaMasuk p{color:rgba(255,255,255,.88)!important;font-size:14.5px!important;line-height:1.5!important;margin:0!important;max-width:46ch}
+#pembukaMasuk+#aMasuk{margin-top:-54px;position:relative;z-index:2;padding:20px 20px 22px!important;border-radius:22px!important;box-shadow:0 10px 28px rgba(70,35,20,.12)!important;background:#fff!important}
+#vAdmin #aMasuk{width:100%}
+@media(min-width:760px){#pembukaMasuk{padding:30px 36px 80px!important}#pembukaMasuk+#aMasuk{max-width:540px;margin-left:auto;margin-right:auto;padding:26px 28px 28px!important}}
+#aMasuk .berikon{display:grid!important;grid-template-columns:auto 1fr;gap:2px 14px;align-items:center;margin-bottom:6px}
+#aMasuk .berikon svg{grid-row:1 / 3;grid-column:1;width:46px!important;height:46px!important;padding:11px;border-radius:50%;background:#fbf3e3;color:#b1252e!important;fill:#b1252e!important;stroke:none;margin:0!important}
+#aMasuk .berikon h2{grid-column:2;margin:0!important;font-size:22px!important;color:var(--ink)!important}
+#aMasuk .berikon p{grid-column:2;margin:0!important;font-size:13.5px!important;color:var(--muted)!important}
+#aMasuk .mode.tiga{display:flex!important;flex-wrap:nowrap;overflow-x:auto;gap:8px;padding:4px 2px 6px;margin:6px -2px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+#aMasuk .mode.tiga::-webkit-scrollbar{display:none}
+#aMasuk .mode.tiga label{flex:none}
+#aMasuk .mode.tiga span{padding:10px 16px!important;border:1px solid #e3d8c6!important;border-radius:999px!important;background:#fff!important;box-shadow:none!important;white-space:nowrap}
+#aMasuk .mode.tiga span b{font-size:14px;color:var(--ink)}
+#aMasuk .mode.tiga span small{display:none}
+#aMasuk .mode.tiga input:checked+span{background:#b1252e!important;border-color:#b1252e!important;box-shadow:0 4px 12px rgba(165,28,37,.25)!important}
+#aMasuk .mode.tiga input:checked+span b{color:#fff}
+#aMasuk .kisi{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+#aMasuk .isian{max-width:none!important;margin:0}
+#aMasuk .isian>label{font-size:13px;color:var(--muted)!important;font-weight:600}
+#aMasuk .isian input{height:52px;padding:0 16px;border-radius:14px!important;background:#fff!important;border:1px solid #e3d8c6!important;font-size:16px;letter-spacing:.04em}
+#aMasuk .isian input:focus{border-color:#b1252e!important;box-shadow:0 0 0 4px rgba(177,37,46,.10)!important;outline:none}
+#aMasuk .aksi{margin-top:16px}
+#aMasuk .aksi .kanan{margin:0;width:100%}
+#aMasuk #bMasuk{width:100%;min-height:52px;font-size:16px;border-radius:14px!important}
+@media(min-width:760px){#aMasuk .mode.tiga{flex-wrap:wrap;overflow:visible}}
 </style>
 </head>
 <body>
@@ -963,14 +995,7 @@ details.pasang[open] .pasang-ringkas em{transform:rotate(180deg)}
   </main>
   <main id="vAdmin" hidden>
     <div style="display:flex;flex-direction:column;gap:22px">
-      <section class="pembuka" id="pembukaMasuk">
-        <div class="teks">
-          <h1>Satu pintu, <span class="stabilo">lima ruang kerja.</span></h1>
-          <p>Mahasiswa, dosen wali, dosen pembimbing, dan pengelola prodi masuk dari sini. Bimbingan tercatat, pesan tersambung, progres skripsi terpantau.</p>
-          <div class="fakta"><span>Mahasiswa</span><span>Dosen pembimbing</span><span>Pengelola prodi</span></div>
-        </div>
-        
-      </section>
+      <section class="pembuka" id="pembukaMasuk"><div class="teks"><span class="lencana">SKRIPSPACE · FH UNISSULA</span><h1>Masuk ke <span class="stabilo">ruang kerjamu</span></h1><p>Mahasiswa, dosen, dan pengelola prodi masuk dari satu pintu. Bimbingan tercatat, progres terpantau.</p></div></section>
       <section class="lembar" id="aMasuk">
         <header class="berikon"><svg class="ikon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><g class="st"><path class="f-no tebal luar" d="M21 30V21c0-7 5-11 11-11s11 4 11 11v9"/><rect class="f-ink" x="15" y="32" width="42" height="28" rx="8"/><rect class="f-acc" x="11" y="28" width="42" height="28" rx="8"/><circle class="f-pop" cx="32" cy="39" r="4"/><path class="f-no" d="M32 43v6"/></g></svg><h2>Log in</h2><p>Pilih pintu masukmu. Tiap peran punya ruang kerjanya sendiri.</p></header>
         <div class="mode tiga" role="radiogroup" aria-label="Masuk sebagai">
@@ -995,7 +1020,7 @@ details.pasang[open] .pasang-ringkas em{transform:rotate(180deg)}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 256</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 257</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
