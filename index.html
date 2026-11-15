@@ -841,13 +841,21 @@ body.bkv-buka{overflow:hidden}
 section.angkasa{padding-left:var(--hp)!important;padding-right:var(--hp)!important}
 .cepat-kartu{margin-left:var(--hp)!important;margin-right:var(--hp)!important}
 .cepat{gap:14px}
-.menu-bulat{width:100%;box-sizing:border-box;display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;gap:14px 0!important;max-width:560px;margin-left:auto;margin-right:auto;padding:0!important}
-.menu-bulat>.mb{grid-column:span 2}
-.menu-bulat:last-of-type>.mb:first-child{grid-column:2/span 2}
+.menu-bulat{width:100%;box-sizing:border-box;display:flex!important;flex-wrap:nowrap;align-items:flex-start;justify-content:space-between;gap:0!important;max-width:620px;margin-left:auto;margin-right:auto;padding:0!important}
+.menu-bulat>.mb{flex:1 1 0;min-width:0;text-align:center;font-size:clamp(10.5px,2.6vw,13px);gap:7px}
+.menu-bulat>.mb i{width:clamp(42px,8.4vw,62px);height:clamp(42px,8.4vw,62px)}
+.menu-bulat>.mb.terang i{width:clamp(42px,8.4vw,62px)!important;height:clamp(42px,8.4vw,62px)!important}
+.menu-bulat>.mb svg{width:clamp(20px,4vw,28px);height:clamp(20px,4vw,28px)}
+.menu-bulat>.mb.terang{color:#7a6864}
+.menu-bulat>.mb.terang svg{width:clamp(19px,3.8vw,26px)!important;height:clamp(19px,3.8vw,26px)!important}
+.mb-sekat{flex:none;width:1px;align-self:stretch;margin:6px clamp(4px,1.2vw,10px) 22px;background:linear-gradient(180deg,transparent,#d9c7a4 18%,#d9c7a4 82%,transparent)}
 @media(min-width:900px){
-.cepat{padding:0 var(--hp)!important;gap:16px!important}
+.cepat{padding:0 var(--hp)!important;gap:16px!important;grid-template-areas:"k m1"!important}
 .cepat-kartu{margin:0!important}
-.menu-bulat{max-width:none!important;margin:0!important;padding:16px 12px!important}
+.menu-bulat{max-width:none!important;margin:0!important;padding:18px 14px!important;grid-area:m1;align-items:center!important}
+.menu-bulat>.mb{font-size:12px!important}
+.mb-sekat{margin:0 clamp(4px,1.2vw,10px)!important;align-self:center!important;height:64px}
+.menu-bulat>.mb i,.menu-bulat>.mb.terang i{width:clamp(44px,4.4vw,56px)!important;height:clamp(44px,4.4vw,56px)!important}
 }
 .agenda-kepala{align-items:last baseline!important}
 
@@ -901,8 +909,7 @@ section.angkasa{padding-left:var(--hp)!important;padding-right:var(--hp)!importa
           <div class="ck-teks"><b>Mulai dari sini</b><span>Ajukan judul, atau masuk untuk memantau skripsimu.</span></div>
           <div class="ajak"><button type="button" class="tombol utama" data-ke-lompat="ajukan">Ajukan Judul</button><button type="button" class="tombol" data-ke-lompat="admin">Log in</button></div>
         </div>
-        <nav class="menu-bulat" aria-label="Menu utama"><button type="button" class="mb m1" data-ke-lompat="ajukan"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg></i><span>Skripsi</span></button><button type="button" class="mb m2" data-ke-lompat="riset"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M21 21l-5-5"/></svg></i><span>Izin Riset</span></button><button type="button" class="mb m3" data-ke-lompat="sidang"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></i><span>Sidang</span></button><button type="button" class="mb m4" data-ke-lompat="admin"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></i><span>Log in</span></button></nav>
-        <nav class="menu-bulat" aria-label="Di halaman ini"><a class="mb terang" href="#sAgenda"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg></i><span>Agenda</span></a><a class="mb terang" href="#sTracer"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></i><span>Tracer</span></a><a class="mb terang" href="#sPasang"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></i><span>Pasang</span></a></nav>
+        <nav class="menu-bulat" aria-label="Menu utama"><button type="button" class="mb m1" data-ke-lompat="ajukan"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg></i><span>Skripsi</span></button><button type="button" class="mb m2" data-ke-lompat="riset"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M21 21l-5-5"/></svg></i><span>Izin Riset</span></button><button type="button" class="mb m3" data-ke-lompat="sidang"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></i><span>Sidang</span></button><button type="button" class="mb m4" data-ke-lompat="admin"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></i><span>Log in</span></button><span class="mb-sekat" aria-hidden="true"></span><a class="mb terang" href="#sAgenda"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg></i><span>Agenda</span></a><a class="mb terang" href="#sTracer"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></i><span>Tracer</span></a><a class="mb terang" href="#sPasang"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></i><span>Pasang</span></a></nav>
       </section>
       <section class="tracer-pita" id="sTracer" aria-label="Tracer study alumni S1 Ilmu Hukum FH UNISSULA">
         <div class="tp-label"><i class="tp-hidup" aria-hidden="true"></i><b>TRACER STUDY</b><span class="tp-total" id="tracerTotal"><b class="tracer-angka" data-angka="8666">0</b> lulusan</span></div>
@@ -1317,7 +1324,7 @@ section.angkasa{padding-left:var(--hp)!important;padding-right:var(--hp)!importa
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 280</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 281</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
