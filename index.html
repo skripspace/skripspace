@@ -835,6 +835,21 @@ body.bkv-buka{overflow:hidden}
 .ttd-kotak p{margin:6px 0 10px;font-size:13.5px;color:#5b524b;line-height:1.5}
 .ttd-pilih{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
 .ttd-pilih img{height:62px;width:auto;border:1px solid #e3d3a8;border-radius:8px;background:#fff}
+/* Web 280: presisi tata letak beranda */
+:root{--hp:20px}
+@media(min-width:900px){:root{--hp:40px}}
+section.angkasa{padding-left:var(--hp)!important;padding-right:var(--hp)!important}
+.cepat-kartu{margin-left:var(--hp)!important;margin-right:var(--hp)!important}
+.cepat{gap:14px}
+.menu-bulat{width:100%;box-sizing:border-box;display:grid!important;grid-template-columns:repeat(8,minmax(0,1fr))!important;gap:14px 0!important;max-width:560px;margin-left:auto;margin-right:auto;padding:0!important}
+.menu-bulat>.mb{grid-column:span 2}
+.menu-bulat:last-of-type>.mb:first-child{grid-column:2/span 2}
+@media(min-width:900px){
+.cepat{padding:0 var(--hp)!important;gap:16px!important}
+.cepat-kartu{margin:0!important}
+.menu-bulat{max-width:none!important;margin:0!important;padding:16px 12px!important}
+}
+.agenda-kepala{align-items:last baseline!important}
 
 /* Web 263 — logo baru di header */
 .merek{display:flex;align-items:center;gap:0!important}
@@ -1302,7 +1317,7 @@ body.bkv-buka{overflow:hidden}
     </div>
   </main>
 
-  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 279</span></p>
+  <p class="kaki"><b>SKRIPSPACE</b> — Your Academic Workspace · Program Studi S1 Ilmu Hukum · Fakultas Hukum Universitas Islam Sultan Agung<span class="versi"> · versi 280</span></p>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
