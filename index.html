@@ -1072,6 +1072,36 @@ section.angkasa{padding-left:var(--hp)!important;padding-right:var(--hp)!importa
 #sAgenda .ag-stat.s-jalan i{background:#1f9d6a;box-shadow:0 0 0 4px rgba(31,157,106,.15)}
 #sAgenda .ag-stat.s-belum{color:#8a7a75}
 @media(max-width:620px){#sAgenda .papan .agenda-jam{padding:18px 18px!important}#sAgenda .papan .ag-kartu{padding:18px!important}}
+/* ===== Web 284d: satu keluarga huruf, tata letak presisi ===== */
+#sAgenda .papan,#sAgenda .papan *{font-family:var(--f-body)!important}
+#sAgenda .fl u:before,#sAgenda .fl-sep{font-family:var(--f-body)!important;font-weight:800;font-variant-numeric:tabular-nums;font-feature-settings:"tnum","lnum"}
+#sAgenda .fl{width:.64em}
+#sAgenda .papan .agenda-jam{display:grid!important;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"at jm" "bw jm";align-items:center;row-gap:12px;column-gap:24px}
+#sAgenda .aj-atas{grid-area:at;order:0}
+#sAgenda .aj-bawah{grid-area:bw;order:0;margin:0}
+#sAgenda .aj-jam{grid-area:jm;order:0;align-self:center;align-items:center;font-size:clamp(38px,4vw,52px)}
+#sAgenda .aj-jam #agDetik{align-self:flex-end;margin-bottom:.1em!important;font-size:.42em!important}
+#sAgenda .ag-kolom,#sAgenda .papan .ag-kartu{grid-template-columns:minmax(0,1.25fr) minmax(0,1.1fr) 120px 150px;column-gap:20px}
+#sAgenda .ag-kolom{padding:14px 32px 12px;font-size:11px}
+#sAgenda .papan .ag-kartu{align-items:center!important}
+#sAgenda .ag-atas small{font-size:16px!important;line-height:1.3}
+#sAgenda .ag-tgl{font-size:15px!important;line-height:1.35}
+#sAgenda .ag-hitung{display:flex!important;flex-direction:row!important;align-items:baseline!important;gap:8px!important}
+#sAgenda .ag-hitung b{align-items:center;line-height:1!important;font-size:32px!important}
+#sAgenda .ag-hitung b.teks{font-size:15px!important}
+#sAgenda .ag-hitung span{font-size:12px!important;letter-spacing:.04em!important;text-transform:none!important;white-space:nowrap}
+#sAgenda .ag-stat,#sAgenda .ag-stat.s-jalan,#sAgenda .ag-stat.s-akan{font-size:11.5px;line-height:1}
+@media(max-width:1020px){
+#sAgenda .papan .ag-kartu{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"at st" "ba hi";row-gap:14px}
+}
+@media(max-width:620px){
+#sAgenda .papan .agenda-jam{grid-template-columns:minmax(0,1fr);grid-template-areas:"at" "bw" "jm";row-gap:10px}
+#sAgenda .aj-jam{justify-self:start;font-size:44px}
+}
+#sAgenda .papan .aj-atas{justify-content:flex-start!important;justify-self:start;width:auto!important;gap:14px}
+#sAgenda .ag-hitung{align-items:flex-end!important}
+#sAgenda .ag-hitung span{padding-bottom:3px;line-height:1}
+#sAgenda .fl-sep{opacity:1;animation:none!important;color:#b1252e;margin:0 .05em;transform:translateY(-.06em)}
 
 /* Web 263 — logo baru di header */
 .merek{display:flex;align-items:center;gap:0!important}
