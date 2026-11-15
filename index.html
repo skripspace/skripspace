@@ -1130,6 +1130,30 @@ section.angkasa{padding-left:var(--hp)!important;padding-right:var(--hp)!importa
 #sAgenda .ag-hitung span{font-size:10px!important}
 #sAgenda .ag-stat,#sAgenda .ag-stat.s-jalan,#sAgenda .ag-stat.s-akan{font-size:9.5px;padding:5px 9px!important}
 }
+/* ===== Web 284f: kaki HP tiga baris ===== */
+@media(max-width:620px){
+.kaki{gap:7px}
+.kk-lembaga{flex-direction:row!important;flex-wrap:nowrap!important;gap:5px!important;font-size:9.5px!important;white-space:nowrap}
+.kk-lembaga i{display:block!important;width:2px;height:2px}
+.kk-bawah{flex-wrap:nowrap!important;gap:7px!important;padding-top:0!important;white-space:nowrap}
+.kk-chip{font-size:9.5px!important;padding:3px 8px!important}
+.kk-hak{font-size:8.5px!important}
+}
+@media(max-width:620px){
+.kk-bawah{gap:1.8vw!important;max-width:100%}
+.kk-chip{font-size:min(9.5px,2.25vw)!important;padding:3px 1.9vw!important}
+.kk-hak{font-size:min(8.5px,2.05vw)!important}
+.kk-lembaga{font-size:min(9.5px,2.4vw)!important}
+}
+.kk-hs{display:none}
+@media(max-width:620px){
+.kk-lembaga .kk-p,.kk-lembaga i.kk-p,.kk-hl{display:none!important}
+.kk-hs{display:inline!important}
+.kk-lembaga{font-size:11px!important}
+.kk-chip{font-size:10px!important;padding:4px 10px!important}
+.kk-hak{font-size:10px!important}
+.kk-bawah{gap:10px!important}
+}
 
 /* Web 263 — logo baru di header */
 .merek{display:flex;align-items:center;gap:0!important}
@@ -1596,7 +1620,7 @@ section.angkasa{padding-left:var(--hp)!important;padding-right:var(--hp)!importa
     </div>
   </main>
 
-  <footer class="kaki" role="contentinfo"><div class="kk-sekat" aria-hidden="true"><i></i></div><div class="kk-merek"><svg class="kk-logo" viewBox="0 0 293 250" width="34" height="29" aria-hidden="true" focusable="false"><defs><linearGradient id="lgR2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c92f39"/><stop offset="1" stop-color="#8e1822"/></linearGradient><linearGradient id="lgG2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c9993f"/><stop offset="1" stop-color="#ecd49b"/></linearGradient></defs><path fill="url(#lgR2)" d="M246.0 0.5 L245.5 0.0 L239.0 0.2 L216.5 3.2 L188.2 9.2 L173.8 13.5 L157.8 19.2 L143.8 25.2 L131.2 31.8 L39.0 174.0 L10.8 219.8 L10.2 221.8 L11.2 221.8 L22.5 209.2 L33.0 199.0 L45.5 188.0 L57.2 179.0 L77.8 165.5 L91.5 157.8 L104.8 151.2 L119.2 145.2 L133.5 140.2 L157.2 134.2 L181.2 131.0 L208.8 130.5Z"/><path fill="url(#lgG2)" d="M292.5 43.0 L291.5 42.2 L274.5 42.0 L256.0 42.2 L255.0 43.0 L224.8 154.0 L223.8 155.2 L198.8 154.2 L183.0 155.2 L165.2 157.5 L149.5 160.5 L135.0 164.2 L116.5 170.5 L101.8 176.2 L80.2 186.5 L67.5 193.5 L43.2 209.5 L28.0 221.8 L19.0 230.0 L1.2 248.0 L0.0 250.2 L1.2 250.0 L16.0 240.2 L42.8 225.0 L63.2 215.2 L78.8 208.8 L99.0 201.8 L127.0 194.2 L140.2 191.5 L162.5 188.2 L190.0 186.5 L220.0 187.5 L252.8 192.0 L254.2 188.5 L257.5 174.5 L269.2 132.0Z"/></svg><div class="kk-nama"><b>SKRIP<span>SPACE</span></b><small>Your Academic Workspace</small></div></div><p class="kk-lembaga"><span>Program Studi S1 Ilmu Hukum</span><i aria-hidden="true"></i><span>Fakultas Hukum</span><i aria-hidden="true"></i><span>Universitas Islam Sultan Agung</span></p><div class="kk-bawah"><span class="kk-chip"><i aria-hidden="true"></i><span class="kk-l">Versi</span><b class="kk-v">2.8.4</b><span class="kk-rel">Rilis Stabil</span><span class="versi" hidden>versi 284</span></span><span class="kk-hak">&copy; 2026 Fakultas Hukum UNISSULA. Semua hak dilindungi.</span></div></footer>
+  <footer class="kaki" role="contentinfo"><div class="kk-sekat" aria-hidden="true"><i></i></div><div class="kk-merek"><svg class="kk-logo" viewBox="0 0 293 250" width="34" height="29" aria-hidden="true" focusable="false"><defs><linearGradient id="lgR2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c92f39"/><stop offset="1" stop-color="#8e1822"/></linearGradient><linearGradient id="lgG2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#c9993f"/><stop offset="1" stop-color="#ecd49b"/></linearGradient></defs><path fill="url(#lgR2)" d="M246.0 0.5 L245.5 0.0 L239.0 0.2 L216.5 3.2 L188.2 9.2 L173.8 13.5 L157.8 19.2 L143.8 25.2 L131.2 31.8 L39.0 174.0 L10.8 219.8 L10.2 221.8 L11.2 221.8 L22.5 209.2 L33.0 199.0 L45.5 188.0 L57.2 179.0 L77.8 165.5 L91.5 157.8 L104.8 151.2 L119.2 145.2 L133.5 140.2 L157.2 134.2 L181.2 131.0 L208.8 130.5Z"/><path fill="url(#lgG2)" d="M292.5 43.0 L291.5 42.2 L274.5 42.0 L256.0 42.2 L255.0 43.0 L224.8 154.0 L223.8 155.2 L198.8 154.2 L183.0 155.2 L165.2 157.5 L149.5 160.5 L135.0 164.2 L116.5 170.5 L101.8 176.2 L80.2 186.5 L67.5 193.5 L43.2 209.5 L28.0 221.8 L19.0 230.0 L1.2 248.0 L0.0 250.2 L1.2 250.0 L16.0 240.2 L42.8 225.0 L63.2 215.2 L78.8 208.8 L99.0 201.8 L127.0 194.2 L140.2 191.5 L162.5 188.2 L190.0 186.5 L220.0 187.5 L252.8 192.0 L254.2 188.5 L257.5 174.5 L269.2 132.0Z"/></svg><div class="kk-nama"><b>SKRIP<span>SPACE</span></b><small>Your Academic Workspace</small></div></div><p class="kk-lembaga"><span>Program Studi S1 Ilmu Hukum</span><i aria-hidden="true"></i><span>Fakultas Hukum</span><i class="kk-p" aria-hidden="true"></i><span class="kk-p">Universitas Islam Sultan Agung</span></p><div class="kk-bawah"><span class="kk-chip"><i aria-hidden="true"></i><span class="kk-l">Versi</span><b class="kk-v">2.8.4</b><span class="kk-rel">Rilis Stabil</span><span class="versi" hidden>versi 284</span></span><span class="kk-hak kk-hl">&copy; 2026 Fakultas Hukum UNISSULA. Semua hak dilindungi.</span><span class="kk-hak kk-hs">&copy; 2026 FH UNISSULA</span></div></footer>
 </div>
 <div id="cetak"></div>
 <div id="verif" class="verif" hidden></div>
